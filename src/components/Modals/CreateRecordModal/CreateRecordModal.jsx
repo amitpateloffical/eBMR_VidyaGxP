@@ -17,42 +17,46 @@ function CreateRecordModal(_props) {
       name: "Dewas",
       projects: [
         {
-          name: "Differential Pressure Record",
-          link: "/differential-pressure-record",
+          name: "eBMR",
+          link: "/eBMR",
         },
-        {
-          name: "Area & Equipment Usage Log",
-          link: "/area-and-equiment-usage-log",
-        },
-        {
-          name: "Equipment Cleaning Checklist",
-          link: "/equipment-cleaning-checklist",
-        },
-        {
-          name: "Temperature Records",
-          link: "/temperature-records",
-        },
+        // {
+        //   name: "Area & Equipment Usage Log",
+        //   link: "/area-and-equiment-usage-log",
+        // },
+        // {
+        //   name: "Equipment Cleaning Checklist",
+        //   link: "/equipment-cleaning-checklist",
+        // },
+        // {
+        //   name: "Temperature Records",
+        //   link: "/temperature-records",
+        // },
       ],
     },
     {
       id: 2,
       name: "Corporate",
       projects: [
+        // {
+        //   name: "Differential Pressure Record",
+        //   link: "/differential-pressure-record",
+        // },
+        // {
+        //   name: "Area & Equipment Usage Log",
+        //   link: "/area-and-equiment-usage-log",
+        // },
+        // {
+        //   name: "Equipment Cleaning Checklist",
+        //   link: "/equipment-cleaning-checklist",
+        // },
+        // {
+        //   name: "Temperature Records",
+        //   link: "/temperature-records",
+        // },
         {
-          name: "Differential Pressure Record",
-          link: "/differential-pressure-record",
-        },
-        {
-          name: "Area & Equipment Usage Log",
-          link: "/area-and-equiment-usage-log",
-        },
-        {
-          name: "Equipment Cleaning Checklist",
-          link: "/equipment-cleaning-checklist",
-        },
-        {
-          name: "Temperature Records",
-          link: "/temperature-records",
+          name: "eBMR",
+          link: "/eBMR",
         },
       ],
     },

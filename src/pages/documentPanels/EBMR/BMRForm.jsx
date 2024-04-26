@@ -85,42 +85,42 @@ const BMRForm = () => {
             <div className="dual-group-input">
               <div className="group-input">
                 <label>Product Name</label>
-                <input value="" type="text" />
+                <input value="" type="text"  onChange={()=>{}} />
               </div>
 
               <div className="group-input">
                 <label>Document No</label>
-                <input value="" type="text" />
+                <input value="" type="text"  onChange={()=>{}} />
               </div>
 
               <div className="group-input">
                 <label>Product Code </label>
-                <input value="" type="text" />
+                <input value="" type="text"  onChange={()=>{}} />
               </div>
 
               <div className="group-input">
                 <label>Effective Date </label>
-                <input value="" type="text" />
+                <input value="" type="text"  onChange={()=>{}} />
               </div>
 
               <div className="group-input">
                 <label>Stage </label>
-                <input value="" type="text" />
+                <input value="" type="text"  onChange={()=>{}} />
               </div>
 
               <div className="group-input">
                 <label>Supersedes No </label>
-                <input value="" type="text" />
+                <input value="" type="text"  onChange={()=>{}} />
               </div>
 
               <div className="group-input">
                 <label>Batch No</label>
-                <input value="" type="text" />
+                <input value="" type="text"  onChange={()=>{}} />
               </div>
 
               <div className="group-input">
                 <label>Page No</label>
-                <input value="" type="text" />
+                <input value="" type="text"  onChange={()=>{}} />
               </div>
             </div>
           </div>
@@ -134,64 +134,64 @@ const BMRForm = () => {
             <div className="dual-group-input">
               <div className="group-input">
                 <label>Standard Batch Size </label>
-                <input value="" type="text" />
+                <input value="" type="text"  onChange={()=>{}} />
               </div>
               <div className="group-input">
                 <label>Actual Batch Size </label>
-                <input value="" type="text" />
+                <input value="" type="text"  onChange={()=>{}} />
               </div>
 
               <div className="group-input">
                 <label>Batch Starting Date </label>
-                <input value="" type="text" />
+                <input value="" type="text"  onChange={()=>{}} />
               </div>
 
               <div className="group-input">
                 <label> Time </label>
-                <input value="" type="text" />
+                <input value="" type="text"  onChange={()=>{}} />
               </div>
 
               <div className="group-input">
                 <label>Batch Complition Date </label>
-                <input value="" type="text" />
+                <input value="" type="text"  onChange={()=>{}} />
               </div>
 
               <div className="group-input">
                 <label>Time </label>
-                <input value="" type="text" />
+                <input value="" type="text"  onChange={()=>{}} />
               </div>
 
               <div className="group-input">
                 <label>Expected Output (kg) </label>
-                <input value="" type="text" />
+                <input value="" type="text"  onChange={()=>{}} />
               </div>
 
               <div className="group-input">
                 <label>Actual Output (Kg)</label>
-                <input value="" type="text" />
+                <input value="" type="text"  onChange={()=>{}} />
               </div>
 
               <div className="group-input">
                 <label>Expected Yield (%)</label>
-                <input value="" type="text" />
+                <input value="" type="text"  onChange={()=>{}} />
               </div>
 
               <div className="group-input">
                 <label>Actual Yield (%) </label>
-                <input value="" type="text" />
+                <input value="" type="text"  onChange={()=>{}} />
               </div>
               <div className="group-input">
                 <label>Manufacturing Date </label>
-                <input value="" type="text" />
+                <input value="" type="text"  onChange={()=>{}} />
               </div>
               <div className="group-input">
                 <label>Expiry/Retest Date</label>
-                <input value="" type="text" />
+                <input value="" type="text"  onChange={()=>{}} />
               </div>
 
               <div className="group-input">
                 <label>Packing And Storage Condition</label>
-                <input value="" type="text" />
+                <input value="" type="text"  onChange={()=>{}} />
               </div>
 
            
