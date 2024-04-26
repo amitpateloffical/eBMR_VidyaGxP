@@ -1,12 +1,6 @@
 import { useEffect, useReducer, useState } from "react";
 import HeaderTop from "../../../components/Header/HeaderTop";
 import "../ConfigForms.css";
-import {
-  docFormFile,
-  tableData,
-  time,
-} from "./DifferentialPressureFunction.jsx";
-import Grid from "../../../components/datafields/Grid.jsx";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
@@ -124,6 +118,9 @@ export default function DiffrentialPressure() {
                 <div className="main-head">
                   <div>BATCH MANUFACTURING RECORD (BMR)</div>
                 </div>
+                {/* <div className="logo">
+                  <img src="/navin.png" alt="..." />
+                </div> */}
               </div>
               </div>
               </div>
@@ -202,7 +199,8 @@ export default function DiffrentialPressure() {
               {isSelectedGeneral === true ? (
                 <>
                   <div className="group-input">
-                    <label className="color-label">Initiator </label>
+                    <label className="color-label">
+Standard Batch Size </label>
                     <div>
                       <input
                         type="text"
@@ -215,7 +213,7 @@ export default function DiffrentialPressure() {
                   </div>
 
                   <div className="group-input">
-                    <label className="color-label">Date of Initiation</label>
+                    <label className="color-label">Actual Batch Size</label>
                     <div>
                       <input
                         type="text"
@@ -230,7 +228,7 @@ export default function DiffrentialPressure() {
                   </div>
 
                   <div className="group-input">
-                    <label className="color-label">Short Description</label>
+                    <label className="color-label">Batch Starting date</label>
                     <div>
                       <input
                         type="text"
@@ -245,7 +243,7 @@ export default function DiffrentialPressure() {
                   </div>
 
                   <div className="group-input">
-                    <label className="color-label">Description</label>
+                    <label className="color-label">Batch Completion date</label>
                     <div>
                       <input
                         type="text"
@@ -260,7 +258,7 @@ export default function DiffrentialPressure() {
                   </div>
 
                   <div className="group-input">
-                    <label className="color-label">Status</label>
+                    <label className="color-label">Expected Output (kg)</label>
                     <div>
                       <input
                         type="text"
@@ -271,6 +269,84 @@ export default function DiffrentialPressure() {
                       />
                     </div>
                   </div>
+
+                  <div className="group-input">
+                    <label className="color-label">Actual Output (kg)</label>
+                    <div>
+                      <input
+                        type="text"
+                        value={differentialPRecord.status}
+                        onChange={(e) =>
+                          setDifferentialPRecord({ status: e.target.value })
+                        }
+                      />
+                    </div>
+                  </div>
+
+                  <div className="group-input">
+                    <label className="color-label">Expected Yield (%)</label>
+                    <div>
+                      <input
+                        type="text"
+                        value={differentialPRecord.status}
+                        onChange={(e) =>
+                          setDifferentialPRecord({ status: e.target.value })
+                        }
+                      />
+                    </div>
+                  </div>
+
+                  <div className="group-input">
+                    <label className="color-label">Actual Yield (%)</label>
+                    <div>
+                      <input
+                        type="text"
+                        value={differentialPRecord.status}
+                        onChange={(e) =>
+                          setDifferentialPRecord({ status: e.target.value })
+                        }
+                      />
+                    </div>
+                  </div>
+
+                  <div className="group-input">
+                    <label className="color-label">Manufacturing Date</label>
+                    <div>
+                      <input
+                        type="text"
+                        value={differentialPRecord.status}
+                        onChange={(e) =>
+                          setDifferentialPRecord({ status: e.target.value })
+                        }
+                      />
+                    </div>
+                  </div>
+
+                  <div className="group-input">
+                    <label className="color-label">Expiry/Retest Date</label>
+                    <div>
+                      <input
+                        type="text"
+                        value={differentialPRecord.status}
+                        onChange={(e) =>
+                          setDifferentialPRecord({ status: e.target.value })
+                        }
+                      />
+                    </div>
+                  </div>
+
+                  <div className="group-input">
+                    <label className="color-label">Packing and Storage Condition</label>
+                    <div>
+                      <input
+                        type="text"
+                        value={differentialPRecord.status}
+                        onChange={(e) =>
+                          setDifferentialPRecord({ status: e.target.value })
+                        }
+                      />
+                    </div>
+                  </div> 
                 </>
               ) : null}
 
