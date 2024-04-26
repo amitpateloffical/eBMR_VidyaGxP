@@ -14,7 +14,7 @@ function CreateRecordModal(_props) {
   const divisionList = [
     {
       id: 1,
-      name: "India",
+      name: "Dewas",
       projects: [
         {
           name: "Differential Pressure Record",
@@ -36,7 +36,7 @@ function CreateRecordModal(_props) {
     },
     {
       id: 2,
-      name: "Malaysia",
+      name: "Corporate",
       projects: [
         {
           name: "Differential Pressure Record",
@@ -56,50 +56,8 @@ function CreateRecordModal(_props) {
         },
       ],
     },
-    {
-      id: 3,
-      name: "EMEA",
-      projects: [
-        {
-          name: "Differential Pressure Record",
-          link: "/differential-pressure-record",
-        },
-        {
-          name: "Area & Equipment Usage Log",
-          link: "/area-and-equiment-usage-log",
-        },
-        {
-          name: "Equipment Cleaning Checklist",
-          link: "/equipment-cleaning-checklist",
-        },
-        {
-          name: "Temperature Records",
-          link: "/temperature-records",
-        },
-      ],
-    },
-    {
-      id: 4,
-      name: "EU",
-      projects: [
-        {
-          name: "Differential Pressure Record",
-          link: "/differential-pressure-record",
-        },
-        {
-          name: "Area & Equipment Usage Log",
-          link: "/area-and-equiment-usage-log",
-        },
-        {
-          name: "Equipment Cleaning Checklist",
-          link: "/equipment-cleaning-checklist",
-        },
-        {
-          name: "Temperature Records",
-          link: "/temperature-records",
-        },
-      ],
-    },
+  
+    
   ];
   return (
     <>
