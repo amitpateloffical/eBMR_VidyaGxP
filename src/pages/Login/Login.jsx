@@ -40,8 +40,7 @@ function Login() {
             <div className="logo">
               <img src="/vidyalogo2.png" alt="..." />
             </div>
-            <div className="head">Welcome to eLogBook</div>
-            
+            <div className="head">Welcome to eBMR</div>
           </div>
           <form onSubmit={handleSubmit}>
             <div className="group-input">
