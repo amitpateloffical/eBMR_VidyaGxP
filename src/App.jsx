@@ -17,6 +17,7 @@ import TempretureRecordsPanel from "./pages/documentPanels/TempreratureRecordsPa
 import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 import EquipmentCleaningCheckListPanel from "./pages/documentPanels/EquipmentChecklistPanel/EquipmentCleaningChecklistPanel.jsx";
 import AreaAndEquipmentPanel from "./pages/documentPanels/AreaAndEquipmentPanel/AreaAndEquipmentPanel.jsx";
+import BMRForm from "./pages/documentPanels/EBMR/BMRForm.jsx";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
             <Route path="/area-and-equiment-usage-log" element={<AreaAndEquiment />} />
             <Route path="/equipment-cleaning-checklist" element={<EquipmentCleaningCheckList />} />
             <Route path="/temperature-records" element={<TemperatureRecords/>}/>
+            <Route path="/eBMR" element={<BMRForm/>} />
           </Routes>
         </BrowserRouter>
         <ToastContainer autoClose={2000} pauseOnHover={false} />
