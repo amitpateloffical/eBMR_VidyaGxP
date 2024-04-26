@@ -115,35 +115,53 @@ export default function DiffrentialPressure() {
       <HeaderTop />
       <div id="main-form-container">
         <div id="config-form-document-page">
+        <div className="document-form">
+        <div className="details-form-data">
+        <div className="sop-type-header">
+                <div className="logo">
+                  <img src="/vidyalogo2.png" alt="..." />
+                </div>
+                <div className="main-head">
+                  <div>BATCH MANUFACTURING RECORD (BMR)</div>
+                </div>
+              </div>
+              </div>
+              </div>
           <div className="top-block">
             <div>
-              <strong> Record Name:&nbsp;</strong>Differential Pressure
+              <strong> Product Name &nbsp;:</strong>&nbsp; <input type="text" />
             </div>
             <div>
-              <strong> Site:&nbsp;</strong>
-              India
+              <strong> Document No.&nbsp;:</strong>&nbsp; <input type="text" />
+              
             </div>
             <div>
-              <strong> Current Status:&nbsp;</strong>Under Initiation
+              <strong> Product Code&nbsp;:</strong>&nbsp; <input type="text" />
             </div>
             <div>
-              <strong> Initiated By:&nbsp;</strong>
-              Amit Guru
+              <strong> Effective Date&nbsp;:</strong>&nbsp; <input type="text" />
+              
+            </div>
+          </div>
+          <div className="top-block m-1">
+            <div>
+              <strong> Stage &nbsp;:</strong>&nbsp; <input type="text" />
+            </div>
+            <div>
+              <strong> Supersedes No.&nbsp;:</strong>&nbsp; <input type="text" />
+              
+            </div>
+            <div>
+              <strong> Batch No.&nbsp;:</strong>&nbsp; <input type="text" />
+            </div>
+            <div>
+              <strong> Page No.&nbsp;:</strong>&nbsp; <input type="text" />
+              
             </div>
           </div>
 
           <div className="document-form">
             <div className="details-form-data">
-              <div className="sop-type-header">
-                <div className="logo">
-                  <img src="/vidyalogo2.png" alt="..." />
-                </div>
-                <div className="main-head">
-                  <div>VidyaGxP Private Limited</div>
-                </div>
-              </div>
-              <div className="sub-head-2">Differential Pressure Record</div>
-
               <div className="outerDiv5">
                 <div className="btn-forms">
                   <div
