@@ -6,7 +6,7 @@
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   background-size: cover;
   background-position: center;
   background-image: url("/public/bg2.jpg");
