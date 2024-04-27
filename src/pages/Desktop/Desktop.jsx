@@ -42,7 +42,7 @@ function Desktop() {
       <div className="desktop-input-table-wrapper">
         <div className="input-wrapper">
           <div className="group-input-2">
-            <label>eLog</label>
+            <label>eBMR</label>
             <select
               value={eLogSelect}
               onChange={(e) => setELogSelect(e.target.value)}
@@ -67,7 +67,7 @@ function Desktop() {
           <thead>
             <tr>
               <th>S no</th>
-              <th>E.Log no</th>
+              <th>eBMR no</th>
               <th>Initiator</th>
               <th>Date of initiation</th>
               <th>Short description</th>

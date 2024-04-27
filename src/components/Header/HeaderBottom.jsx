@@ -55,7 +55,7 @@ function HeaderBottom() {
                         </Link> */}
                     </div>
                     <div className="headerBottomRgt">
-                        <div className="themeBtn" onClick={() => setRecordModal(true)}>Initiate eLog</div>
+                        <div className="themeBtn" onClick={() => setRecordModal(true)}>Initiate eBMR</div>
                     </div>
                 </div>
             </div>
