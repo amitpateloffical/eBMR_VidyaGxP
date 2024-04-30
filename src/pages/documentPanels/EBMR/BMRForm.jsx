@@ -16,6 +16,9 @@ const BMRForm = () => {
   const [processSafetyTablesData, setProcessSafetyTablesData] = useState([]);
   const [ppeMatrixTablesData, setPPEMatrixTablesData] = useState([]);
   const [hazardAndControlTablesData, setHazardAndControlTablesData] = useState([]);
+  const [readAndUnderstood,setReadAndUnderstood ]=useState([])
+  const [CriticalProcessPFQ,setCriticalProcessPFQ]=useState([])
+  const [criticalProcessPFS,setCriticalProcessPFS]=useState([])
   const [ManufacturingRecord, setManufacturingRecord] = useReducer(
     (prev, next) => ({
       ...prev,
@@ -167,6 +170,32 @@ const BMRForm = () => {
     setHazardAndControlTablesData([...hazardAndControlTablesData, newRow]);
   };
 
+  const addReadAndUnderstood=()=>{
+   const newRow={
+    nameOfPerson:"",
+    Sign:"",
+    date:"",
+   } ;
+   setReadAndUnderstood([...readAndUnderstood,newRow])
+  }
+
+  const addCriticalProcessParameterForQuality=()=>{
+    const newRow={
+     BMRStepNo:"",
+     criticalProcessParameter:"",
+     justification:"",
+    } ;
+    setCriticalProcessPFQ([...CriticalProcessPFQ,newRow])
+   }
+
+   const addCriticalProcessParameterForSafety=()=>{
+    const newRow={
+     BMRStepNo:"",
+     criticalProcessParameter:"",
+     justification:"",
+    } ;
+    setCriticalProcessPFS([...criticalProcessPFS,newRow])
+   }
 
   const deleteRow = (index) => {
     const updatedData = [...allTableData];
@@ -1252,7 +1281,7 @@ const BMRForm = () => {
             <div className="sub-head">Critical Process Parameterfor Safety</div>
 
             <div className="AddRows d-flex">
-              <NoteAdd onClick={() => {}} />
+              <NoteAdd onClick={addCriticalProcessParameterForSafety} />
               <div className="addrowinstruction"></div>
             </div>
 
@@ -1266,12 +1295,15 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td></td>
-                  <td> </td>
-                  <td> </td>
+               {criticalProcessPFS?.map((item,index)=>{
+                return <tr>
+                    <td>{index+1}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
                 </tr>
+               })}
               </tbody>
             </table>
 
@@ -1280,7 +1312,7 @@ const BMRForm = () => {
             </div>
 
             <div className="AddRows d-flex">
-              <NoteAdd onClick={() => {}} />
+              <NoteAdd onClick={addCriticalProcessParameterForQuality} />
               <div className="addrowinstruction"></div>
             </div>
 
@@ -1294,19 +1326,21 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td></td>
-                  <td> </td>
-                  <td> </td>
-                </tr>
+             {CriticalProcessPFQ?.map((item,index)=>{
+                return    <tr>
+                <td>{index+1}</td>
+                <td></td>
+                <td> </td>
+                <td> </td>
+              </tr>
+             })}
               </tbody>
             </table>
 
             <div className="sub-head">Read And Understood</div>
 
             <div className="AddRows d-flex">
-              <NoteAdd onClick={() => {}} />
+              <NoteAdd onClick={addReadAndUnderstood} />
               <div className="addrowinstruction"></div>
             </div>
 
@@ -1320,12 +1354,15 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td></td>
-                  <td> </td>
-                  <td> </td>
-                </tr>
+                {readAndUnderstood?.map((itm,index)=>{
+                    return    <tr>
+                    <td>{index+1}</td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                  </tr>
+                })}
+            
               </tbody>
             </table>
 
