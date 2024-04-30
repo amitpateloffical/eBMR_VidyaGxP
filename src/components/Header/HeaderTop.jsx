@@ -55,12 +55,12 @@ function HeaderTop() {
             <div className="drop-container">
               <div className="drop-btn name-btn">
                 <div className="profile-img">
-                  <img src="amit_guru.jpg" alt="" />
+                  <img src="/amit_guru.jpg" alt="" />
                 </div>
               </div>
               <div className="drop-list">
                 <div className="image">
-                  <img src="amit_guru.jpg" alt="..." />
+                  <img src="/amit_guru.jpg" alt="..." />
                   <div className="manager-name">Mr.Amit Guru</div>
                 </div>
                 <Link to="#" className="drop-item">

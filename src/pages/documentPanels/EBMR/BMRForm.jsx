@@ -1,10 +1,105 @@
-import React, { useState } from "react";
+import React, { useReducer, useState } from "react";
 import "./BMR.css";
 import HeaderTop from "../../../components/Header/HeaderTop";
 import { NoteAdd } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const BMRForm = () => {
   const [tab, setTab] = useState("General");
+  const [allTableData, setAllTableData] = useState([]);
+  const [packingMaterialTablesData, setpackingMaterialTablesData] = useState([]);
+  const [batchCleaningTablesData, setbatchCleaningTablesData] = useState([]);
+  const [ManufacturingRecord, setManufacturingRecord] = useReducer(
+    (prev, next) => ({
+      ...prev,
+      ...next,
+    }),
+    {
+      process: "Batch Manufacturuing Record",
+      productName: "",
+      documentNo: "",
+      productCode: "",
+      effectiveDate: "",
+      stage: "",
+      supersedesNo: "",
+      batchNo: "",
+      pageNo: "",
+      standartBatchSize:"",
+      actualBatchSize:"",
+      batchStartingDate:"",
+      batchComplitionDate:"",
+      time:"",
+      expectedOutput:"",
+      actualOutput:"",
+      expectedYeild:"",
+      actualYeild:"",
+      manufacturingDate:"",
+      expiryRetestdate:"",
+      packingAndStoreCondition:""
+    }
+  );
+  useEffect(() => {
+    setManufacturingRecord({ gridData: allTableData });
+  }, [allTableData]);
+
+  const addRawMaterialRow = () => {
+    const currentTime = new Date().toLocaleTimeString();
+    const newRow = {
+      materialCode: "",
+      materialName: "",
+      UOM: "",
+      stepNo: "",
+      stdQty: "",
+      reqQty: "",
+      qtyUsed:"",
+      arNoBatchNo:"",
+      checkedBySign:"",
+      Date:""
+    };
+    setAllTableData([...allTableData, newRow]);
+  };
+
+  const addBatchCleaningRow = () => {
+    const currentTime = new Date().toLocaleTimeString();
+    const newRow = {
+      materialCode: "",
+      materialName: "",
+      UOM: "",
+      stepNo: "",
+      stdQty: "",
+      reqQty: "",
+      qtyUsed:"",
+      arNoBatchNo:"",
+      checkedBySign:"",
+      Date:""
+    };
+    setbatchCleaningTablesData([...batchCleaningTablesData, newRow]);
+  };
+
+  const addPackingMaterialRow = () => {
+    const currentTime = new Date().toLocaleTimeString();
+    const newRow = {
+      materialCode: "",
+      materialName: "",
+      UOM: "",
+      stepNo: "",
+      stdQty: "",
+      reqQty: "",
+      qtyUsed:"",
+      arNoBatchNo:"",
+      checkedBySign:"",
+      Date:""
+    };
+    setpackingMaterialTablesData([...packingMaterialTablesData, newRow]);
+  };
+
+  const deleteRow = (index) => {
+    const updatedData = [...allTableData];
+    updatedData.splice(index, 1);
+    setAllTableData(updatedData);
+  };
+  const navigate = useNavigate()
   return (
     <div id="config-form-document-page">
       <HeaderTop />
@@ -85,42 +180,42 @@ const BMRForm = () => {
             <div className="dual-group-input">
               <div className="group-input">
                 <label>Product Name</label>
-                <input value="" type="text" onChange={() => {}} />
+                <input value={ManufacturingRecord.productName} type="text"  onChange={(e) => setManufacturingRecord({productName:e.target.value})} />
               </div>
 
               <div className="group-input">
                 <label>Document No</label>
-                <input value="" type="text" onChange={() => {}} />
+                <input value={ManufacturingRecord.documentNo} type="text"  onChange={(e) => setManufacturingRecord({documentNo:e.target.value})} />
               </div>
 
               <div className="group-input">
                 <label>Product Code </label>
-                <input value="" type="text" onChange={() => {}} />
+                <input value={ManufacturingRecord.productCode} type="text"  onChange={(e) => setManufacturingRecord({productCode:e.target.value})} />
               </div>
 
               <div className="group-input">
                 <label>Effective Date </label>
-                <input value="" type="text" onChange={() => {}} />
+                <input value={ManufacturingRecord.effectiveDate} type="text"  onChange={(e) => setManufacturingRecord({effectiveDate:e.target.value})} />
               </div>
 
               <div className="group-input">
                 <label>Stage </label>
-                <input value="" type="text" onChange={() => {}} />
+                <input value={ManufacturingRecord.stage} type="text"  onChange={(e) => setManufacturingRecord({stage:e.target.value})} />
               </div>
 
               <div className="group-input">
                 <label>Supersedes No </label>
-                <input value="" type="text" onChange={() => {}} />
+                <input value={ManufacturingRecord.supersedesNo} type="text"  onChange={(e) => setManufacturingRecord({supersedesNo:e.target.value})} />
               </div>
 
               <div className="group-input">
                 <label>Batch No</label>
-                <input value="" type="text" onChange={() => {}} />
+                <input value={ManufacturingRecord.batchNo} type="text"  onChange={(e) => setManufacturingRecord({batchNo:e.target.value})} />
               </div>
 
               <div className="group-input">
                 <label>Page No</label>
-                <input value="" type="text" onChange={() => {}} />
+                <input value={ManufacturingRecord.pageNo} type="text"  onChange={(e) => setManufacturingRecord({pageNo:e.target.value})}/>
               </div>
             </div>
           </div>
@@ -134,73 +229,72 @@ const BMRForm = () => {
             <div className="dual-group-input">
               <div className="group-input">
                 <label>Standard Batch Size </label>
-                <input value="" type="text" onChange={() => {}} />
+                <input value={ManufacturingRecord.standartBatchSize} type="text"  onChange={(e) => setManufacturingRecord({standartBatchSize:e.target.value})} />
               </div>
               <div className="group-input">
                 <label>Actual Batch Size </label>
-                <input value="" type="text" onChange={() => {}} />
+                <input value={ManufacturingRecord.actualBatchSize} type="text"  onChange={(e) => setManufacturingRecord({actualBatchSize:e.target.value})} />
               </div>
 
               <div className="group-input">
                 <label>Batch Starting Date </label>
-                <input value="" type="text" onChange={() => {}} />
+                <input value={ManufacturingRecord.batchStartingDate} type="text"  onChange={(e) => setManufacturingRecord({batchStartingDate:e.target.value})} />
               </div>
 
               <div className="group-input">
                 <label> Time </label>
-                <input value="" type="text" onChange={() => {}} />
+                <input value={ManufacturingRecord.time} type="text"  onChange={(e) => setManufacturingRecord({time:e.target.value})}/>
               </div>
 
               <div className="group-input">
                 <label>Batch Complition Date </label>
-                <input value="" type="text" onChange={() => {}} />
+                <input value={ManufacturingRecord.batchComplitionDate} type="text"  onChange={(e) => setManufacturingRecord({batchComplitionDate:e.target.value})} />
               </div>
 
               <div className="group-input">
                 <label>Time </label>
-                <input value="" type="text" onChange={() => {}} />
+                <input value={ManufacturingRecord.time} type="text"  onChange={(e) => setManufacturingRecord({time:e.target.value})} />
               </div>
 
               <div className="group-input">
                 <label>Expected Output (kg) </label>
-                <input value="" type="text" onChange={() => {}} />
+                <input value={ManufacturingRecord.expectedOutput} type="text"  onChange={(e) => setManufacturingRecord({expectedOutput:e.target.value})}/>
               </div>
 
               <div className="group-input">
                 <label>Actual Output (Kg)</label>
-                <input value="" type="text" onChange={() => {}} />
+                <input value={ManufacturingRecord.actualOutput} type="text"  onChange={(e) => setManufacturingRecord({actualOutput:e.target.value})}/>
               </div>
 
               <div className="group-input">
                 <label>Expected Yield (%)</label>
-                <input value="" type="text" onChange={() => {}} />
+                <input value={ManufacturingRecord.expectedYeild} type="text"  onChange={(e) => setManufacturingRecord({expectedYeild:e.target.value})}/>
               </div>
 
               <div className="group-input">
                 <label>Actual Yield (%) </label>
-                <input value="" type="text" onChange={() => {}} />
+                <input value={ManufacturingRecord.actualYeild} type="text"  onChange={(e) => setManufacturingRecord({actualYeild:e.target.value})} />
               </div>
               <div className="group-input">
                 <label>Manufacturing Date </label>
-                <input value="" type="text" onChange={() => {}} />
+                <input value={ManufacturingRecord.manufacturingDate} type="text"  onChange={(e) => setManufacturingRecord({manufacturingDate:e.target.value})} />
               </div>
               <div className="group-input">
                 <label>Expiry/Retest Date</label>
-                <input value="" type="text" onChange={() => {}} />
+                <input value={ManufacturingRecord.expiryRetestdate} type="text"  onChange={(e) => setManufacturingRecord({expiryRetestdate:e.target.value})}/>
               </div>
 
               <div className="group-input">
                 <label>Packing And Storage Condition</label>
-                <input value="" type="text" onChange={() => {}} />
+                <input value={ManufacturingRecord.packingAndStoreCondition} type="text"  onChange={(e) => setManufacturingRecord({packingAndStoreCondition:e.target.value})} />
               </div>
             </div>
             <div className="sub-head">Input Raw Material Details</div>
 
             <div className="AddRows d-flex">
-              <NoteAdd onClick={() => {}} />
-              <div className="addrowinstruction"></div>
-            </div>
-
+                      <NoteAdd onClick={addRawMaterialRow} />
+                      <div className="addrowinstruction"></div>
+                    </div>
             <table>
               <thead>
                 <tr>
@@ -218,28 +312,120 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-              </tbody>
+                      {allTableData.map((item, index) => (
+                        <tr key={index}>
+                          <td>{index + 1}</td>
+                          <td>
+                            <input
+                              value={item.materialCode}
+                              onChange={(e) => {
+                                const newData = [...allTableData];
+                                newData[index].materialCode = e.target.value;
+                                setAllTableData(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              value={item.materialName}
+                              onChange={(e) => {
+                                const newData = [...allTableData];
+                                newData[index].materialName = e.target.value;
+                                setAllTableData(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              value={item.UOM}
+                              onChange={(e) => {
+                                const newData = [...allTableData];
+                                newData[index].UOM = e.target.value;
+                                setAllTableData(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              value={item.stepNo}
+                              onChange={(e) => {
+                                const newData = [...allTableData];
+                                newData[index].stepNo = e.target.value;
+                                setAllTableData(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              value={item.stdQty}
+                              onChange={(e) => {
+                                const newData = [...allTableData];
+                                newData[index].stdQty = e.target.value;
+                                setAllTableData(newData);
+                              }}
+                            />
+                          </td>
+                          <td >
+                          <input
+                              value={item.reqQty}
+                              onChange={(e) => {
+                                const newData = [...allTableData];
+                                newData[index].reqQty = e.target.value;
+                                setAllTableData(newData);
+                              }}
+                            />
+                          </td>
+                          <td >
+                          <input
+                              value={item.qtyUsed}
+                              onChange={(e) => {
+                                const newData = [...allTableData];
+                                newData[index].qtyUsed = e.target.value;
+                                setAllTableData(newData);
+                              }}
+                            />
+                          </td>
+                          <td >
+                          <input
+                              value={item.arNoBatchNo}
+                              onChange={(e) => {
+                                const newData = [...allTableData];
+                                newData[index].arNoBatchNo = e.target.value;
+                                setAllTableData(newData);
+                              }}
+                            />
+                          </td>
+                          <td >
+                          <input
+                              value={item.checkedBySign}
+                              onChange={(e) => {
+                                const newData = [...allTableData];
+                                newData[index].checkedBySign = e.target.value;
+                                setAllTableData(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                          <input
+                              value={item.Date}
+                              onChange={(e) => {
+                                const newData = [...allTableData];
+                                newData[index].Date = e.target.value;
+                                setAllTableData(newData);
+                              }}
+                            />
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
             </table>
 
             <div className="sub-head">Packing Material Details</div>
 
             <div className="AddRows d-flex">
-              <NoteAdd onClick={() => {}} />
-              <div className="addrowinstruction"></div>
-            </div>
-
+                      <NoteAdd onClick={addPackingMaterialRow} />
+                      <div className="addrowinstruction"></div>
+                    </div>
             <table>
               <thead>
                 <tr>
@@ -257,27 +443,120 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
+              {packingMaterialTablesData.map((item, index) => (
+                        <tr key={index}>
+                          <td>{index + 1}</td>
+                          <td>
+                            <input
+                              value={item.materialCode}
+                              onChange={(e) => {
+                                const newData = [...packingMaterialTablesData];
+                                newData[index].materialCode = e.target.value;
+                                setpackingMaterialTablesData(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              value={item.materialName}
+                              onChange={(e) => {
+                                const newData = [...packingMaterialTablesData];
+                                newData[index].materialName = e.target.value;
+                                setpackingMaterialTablesData(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              value={item.UOM}
+                              onChange={(e) => {
+                                const newData = [...packingMaterialTablesData];
+                                newData[index].UOM = e.target.value;
+                                setpackingMaterialTablesData(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              value={item.stepNo}
+                              onChange={(e) => {
+                                const newData = [...packingMaterialTablesData];
+                                newData[index].stepNo = e.target.value;
+                                setpackingMaterialTablesData(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              value={item.stdQty}
+                              onChange={(e) => {
+                                const newData = [...packingMaterialTablesData];
+                                newData[index].stdQty = e.target.value;
+                                setpackingMaterialTablesData(newData);
+                              }}
+                            />
+                          </td>
+                          <td >
+                          <input
+                              value={item.reqQty}
+                              onChange={(e) => {
+                                const newData = [...packingMaterialTablesData];
+                                newData[index].reqQty = e.target.value;
+                                setpackingMaterialTablesData(newData);
+                              }}
+                            />
+                          </td>
+                          <td >
+                          <input
+                              value={item.qtyUsed}
+                              onChange={(e) => {
+                                const newData = [...packingMaterialTablesData];
+                                newData[index].qtyUsed = e.target.value;
+                                setpackingMaterialTablesData(newData);
+                              }}
+                            />
+                          </td>
+                          <td >
+                          <input
+                              value={item.arNoBatchNo}
+                              onChange={(e) => {
+                                const newData = [...packingMaterialTablesData];
+                                newData[index].arNoBatchNo = e.target.value;
+                                setpackingMaterialTablesData(newData);
+                              }}
+                            />
+                          </td>
+                          <td >
+                          <input
+                              value={item.checkedBySign}
+                              onChange={(e) => {
+                                const newData = [...packingMaterialTablesData];
+                                newData[index].checkedBySign = e.target.value;
+                                setpackingMaterialTablesData(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                          <input
+                              value={item.Date}
+                              onChange={(e) => {
+                                const newData = [...packingMaterialTablesData];
+                                newData[index].Date = e.target.value;
+                                setpackingMaterialTablesData(newData);
+                              }}
+                            />
+                          </td>
+                        </tr>
+                      ))}
               </tbody>
             </table>
 
             <div className="sub-head">Solvent For Batch To Batch Cleaning </div>
 
             <div className="AddRows d-flex">
-              <NoteAdd onClick={() => {}} />
-              <div className="addrowinstruction"></div>
-            </div>
+                      <NoteAdd onClick={addBatchCleaningRow} />
+                      <div className="addrowinstruction"></div>
+                    </div>
 
             <table>
               <thead>
@@ -296,18 +575,111 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
+              {batchCleaningTablesData.map((item, index) => (
+                        <tr key={index}>
+                          <td>{index + 1}</td>
+                          <td>
+                            <input
+                              value={item.materialCode}
+                              onChange={(e) => {
+                                const newData = [...batchCleaningTablesData];
+                                newData[index].materialCode = e.target.value;
+                                setbatchCleaningTablesData(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              value={item.materialName}
+                              onChange={(e) => {
+                                const newData = [...batchCleaningTablesData];
+                                newData[index].materialName = e.target.value;
+                                setbatchCleaningTablesData(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              value={item.UOM}
+                              onChange={(e) => {
+                                const newData = [...batchCleaningTablesData];
+                                newData[index].UOM = e.target.value;
+                                setbatchCleaningTablesData(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              value={item.stepNo}
+                              onChange={(e) => {
+                                const newData = [...batchCleaningTablesData];
+                                newData[index].stepNo = e.target.value;
+                                setbatchCleaningTablesData(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              value={item.stdQty}
+                              onChange={(e) => {
+                                const newData = [...batchCleaningTablesData];
+                                newData[index].stdQty = e.target.value;
+                                setbatchCleaningTablesData(newData);
+                              }}
+                            />
+                          </td>
+                          <td >
+                          <input
+                              value={item.reqQty}
+                              onChange={(e) => {
+                                const newData = [...batchCleaningTablesData];
+                                newData[index].reqQty = e.target.value;
+                                setbatchCleaningTablesData(newData);
+                              }}
+                            />
+                          </td>
+                          <td >
+                          <input
+                              value={item.qtyUsed}
+                              onChange={(e) => {
+                                const newData = [...batchCleaningTablesData];
+                                newData[index].qtyUsed = e.target.value;
+                                setbatchCleaningTablesData(newData);
+                              }}
+                            />
+                          </td>
+                          <td >
+                          <input
+                              value={item.arNoBatchNo}
+                              onChange={(e) => {
+                                const newData = [...batchCleaningTablesData];
+                                newData[index].arNoBatchNo = e.target.value;
+                                setbatchCleaningTablesData(newData);
+                              }}
+                            />
+                          </td>
+                          <td >
+                          <input
+                              value={item.checkedBySign}
+                              onChange={(e) => {
+                                const newData = [...batchCleaningTablesData];
+                                newData[index].checkedBySign = e.target.value;
+                                setbatchCleaningTablesData(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                          <input
+                              value={item.Date}
+                              onChange={(e) => {
+                                const newData = [...batchCleaningTablesData];
+                                newData[index].Date = e.target.value;
+                                setbatchCleaningTablesData(newData);
+                              }}
+                            />
+                          </td>
+                        </tr>
+                      ))}
               </tbody>
             </table>
 
@@ -338,7 +710,7 @@ const BMRForm = () => {
               </thead>
               <tbody>
                 <tr>
-                  <td></td>
+                  <td>1</td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -373,7 +745,7 @@ const BMRForm = () => {
               </thead>
               <tbody>
                 <tr>
-                  <td></td>
+                  <td>1</td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -400,7 +772,7 @@ const BMRForm = () => {
               </thead>
               <tbody>
                 <tr>
-                  <td></td>
+                  <td>1</td>
                   <td></td>
                   <td>
                     {" "}
@@ -435,7 +807,7 @@ const BMRForm = () => {
               </thead>
               <tbody>
                 <tr>
-                  <td></td>
+                  <td>1</td>
                   <td></td>
                   <td> </td>
                   <td> </td>
@@ -466,7 +838,7 @@ const BMRForm = () => {
               </thead>
               <tbody>
                 <tr>
-                  <td></td>
+                  <td>1</td>
                   <td></td>
                   <td> </td>
                   <td> </td>
@@ -498,7 +870,7 @@ const BMRForm = () => {
               </thead>
               <tbody>
                 <tr>
-                  <td></td>
+                  <td>1</td>
                   <td></td>
                   <td> </td>
                   <td> </td>
@@ -525,7 +897,7 @@ const BMRForm = () => {
               </thead>
               <tbody>
                 <tr>
-                  <td></td>
+                  <td>1</td>
                   <td></td>
                   <td> </td>
                   <td> </td>
@@ -553,7 +925,7 @@ const BMRForm = () => {
               </thead>
               <tbody>
                 <tr>
-                  <td></td>
+                  <td>1</td>
                   <td></td>
                   <td> </td>
                   <td> </td>
@@ -579,7 +951,7 @@ const BMRForm = () => {
               </thead>
               <tbody>
                 <tr>
-                  <td></td>
+                  <td>1</td>
                   <td></td>
                   <td> </td>
                   <td> </td>
@@ -1067,6 +1439,21 @@ const BMRForm = () => {
           </div>
         </div>
       ) : null}
+       <div className="button-block" style={{ width: "100%" }}>
+                <button
+                  className="themeBtn"
+                 
+                >
+                  Save
+                </button>
+
+                <button
+                  className="themeBtn"
+                  onClick={() => navigate("/desktop")}
+                >
+                  Exit
+                </button>
+              </div>
     </div>
   );
 };
