@@ -20,9 +20,6 @@ const BMRForm = () => {
   const [processSafetyTablesData, setProcessSafetyTablesData] = useState([]);
   const [ppeMatrixTablesData, setPPEMatrixTablesData] = useState([]);
   const [hazardAndControlTablesData, setHazardAndControlTablesData] = useState([]);
-  const [readAndUnderstood,setReadAndUnderstood ]=useState([])
-  const [CriticalProcessPFQ,setCriticalProcessPFQ]=useState([])
-  const [criticalProcessPFS,setCriticalProcessPFS]=useState([])
   const [readAndUnderstood, setReadAndUnderstood] = useState([]);
   const [CriticalProcessPFQ, setCriticalProcessPFQ] = useState([]);
   const [criticalProcessPFS, setCriticalProcessPFS] = useState([]);
@@ -208,15 +205,6 @@ const BMRForm = () => {
    } ;
    setReadAndUnderstood([...readAndUnderstood,newRow])
   }
-  const addReadAndUnderstood = () => {
-    const newRow = {
-      nameOfPerson: "",
-      Sign: "",
-      date: "",
-    };
-    setReadAndUnderstood([...readAndUnderstood, newRow]);
-  };
-
   const addCriticalProcessParameterForQuality = () => {
     const newRow = {
       BMRStepNo: "",
