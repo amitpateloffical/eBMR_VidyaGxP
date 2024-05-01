@@ -23,7 +23,8 @@ function Desktop() {
   const [eLogSelect, setELogSelect] = useState("All_Records");
   const [getId, setGetId] = useState(null);
   const dispatch = useDispatch();
-
+const Ebmr=useSelector((state)=>state.ebmrData.EBMRFormData)
+console.log(Ebmr,"Ebmr")
   const handleRowClick = (row) => {
     dispatch({ type: "SELECT_ROW", payload: row });
   };
@@ -68,29 +69,29 @@ function Desktop() {
             <tr>
               <th>S no</th>
               <th>eBMR no</th>
-              <th>Initiator</th>
-              <th>Date of initiation</th>
-              <th>Short description</th>
+              <th>Product Name</th>
+              <th>Product Code</th>
               <th>Process</th>
             </tr>
           </thead>
           <tbody>
-            {eLogSelect === "diffrential_pressure"
-              ? differentialPRecordHistory?.map((item, index) => {
+          
+             
+                {Ebmr?.map((item,index)=>{
                   return (
                     <tr key={item.index}>
-                      <td> {index + 1}</td>
-                      <td onClick={() => navigate("/dpr-panel")}>
-                        {item.eLogId}
-                      </td>
-                      <td>{item.initiator}</td>
-                      <td>{item.dateOfInitiation}</td>
-                      <td>{item.shortDescription}</td>
-                      <td>{item.process}</td>
-                    </tr>
-                  );
-                })
-              : null}
+                    <td> {index + 1}</td>
+                    <td onClick={() => navigate("/dpr-panel")}>
+                      {item.eBMRId}
+                    </td>
+                    <td>{item.productName}</td>
+                    <td>{item.productCode}</td>
+                    <td>{item.process}</td>
+                  </tr>
+                  )
+                })}
+                 
+                 
 
             {eLogSelect === "area_and_equipment"
               ? areaAndERecordHistory?.map((item, index) => {

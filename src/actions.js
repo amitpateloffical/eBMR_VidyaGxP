@@ -35,4 +35,9 @@ export const selectRow = (row) => ({
 export const temperatureRecord=(temperature)=>({
 type:"TEMPERATURE_RECORD_DATA",
 payload:temperature
+});
+
+export const EBMRformData=(formData)=>({
+type:"EBMR_FORM_DATA",
+payload:formData
 })
