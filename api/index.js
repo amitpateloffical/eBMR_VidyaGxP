@@ -15,6 +15,7 @@ const __dirname = path.dirname(__filename);
 const port = process.env.PORT || 3000;
 
 app.use(cors());
+app.use(express.json());
 app.use("/test", testrouter);
 app.use("/user", userRouter);
 
