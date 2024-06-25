@@ -3,11 +3,11 @@ dotenv.config();
 import express from "express";
 import { connectToDB } from "./src/config/db.js";
 import cors from "cors";
-import router from "./src/routes/testRoute.js";
+import testrouter from "./src/routes/testRoute.js";
 import helmet from "helmet";
 import path from "path";
 import { fileURLToPath } from "url";
-
+import userRouter from "./src/routes/userRouter.js";
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
@@ -15,7 +15,8 @@ const __dirname = path.dirname(__filename);
 const port = process.env.PORT || 3000;
 
 app.use(cors());
-app.use("/test", router);
+app.use("/test", testrouter);
+app.use("/user", userRouter);
 
 app.use(
   helmet({
