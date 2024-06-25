@@ -7,21 +7,9 @@ import { useDispatch, useSelector } from "react-redux";
 
 function Desktop() {
   const navigate = useNavigate();
-  const differentialPRecordHistory = useSelector(
-    (state) => state.objects.objects
-  );
-  const equipmentCRecordHistory = useSelector(
-    (state) => state.equipment.EquipmentCleaningData
-  );
-  const areaAndERecordHistory = useSelector(
-    (state) => state.area.areaAndEquipmentData
-  );
-  const temperatureRecordHistory = useSelector(
-    (state) => state.temperature.temperatureRecordData
-  );
 
-  const [eLogSelect, setELogSelect] = useState("All_Records");
-  const [getId, setGetId] = useState(null);
+
+ 
   const dispatch = useDispatch();
 const Ebmr=useSelector((state)=>state.ebmrData.EBMRFormData)
 console.log(Ebmr,"Ebmr")
@@ -29,19 +17,14 @@ console.log(Ebmr,"Ebmr")
     dispatch({ type: "SELECT_ROW", payload: row });
   };
 
-  const combinedRecords = [
-    ...differentialPRecordHistory,
-    ...areaAndERecordHistory,
-    ...equipmentCRecordHistory,
-    ...temperatureRecordHistory,
-  ];
+
 
   return (
     <>
       <HeaderTop />
       <HeaderBottom />
       <div className="desktop-input-table-wrapper">
-        <div className="input-wrapper">
+        {/* <div className="input-wrapper">
           <div className="group-input-2">
             <label>eBMR</label>
             <select
@@ -62,7 +45,7 @@ console.log(Ebmr,"Ebmr")
             </select>
           </div>
           <button className="btn">Print</button>
-        </div>
+        </div> */}
 
         <table>
           <thead>
@@ -75,8 +58,7 @@ console.log(Ebmr,"Ebmr")
             </tr>
           </thead>
           <tbody>
-          
-             
+                  
                 {Ebmr?.map((item,index)=>{
                   return (
                     <tr key={item.index}>
@@ -90,98 +72,6 @@ console.log(Ebmr,"Ebmr")
                   </tr>
                   )
                 })}
-                 
-                 
-
-            {eLogSelect === "area_and_equipment"
-              ? areaAndERecordHistory?.map((item, index) => {
-                  return (
-                    <tr key={item.index}>
-                      <td> {index + 1}</td>
-                      <td onClick={() => navigate("/area-and-equipment-panel")}>{item.eLogId}</td>
-                      <td>{item.initiator}</td>
-                      <td>{item.dateOfInitiation}</td>
-                      <td>{item.shortDescription}</td>
-                      <td>{item.process}</td>
-                    </tr>
-                  );
-                })
-              : null}
-
-            {eLogSelect === "equipment_cleaning"
-              ? equipmentCRecordHistory?.map((item, index) => {
-                  return (
-                    <tr key={item.index}>
-                      <td> {index + 1}</td>
-                      <td onClick={() => navigate("/ecc-panel")}>
-                        {item.eLogId}
-                      </td>
-                      <td>{item.initiator}</td>
-                      <td>{item.dateOfInitiation}</td>
-                      <td>{item.shortDescription}</td>
-                      <td>{item.process}</td>
-                    </tr>
-                  );
-                })
-              : null}
-
-            {eLogSelect === "temperature_records"
-              ? temperatureRecordHistory?.map((item, index) => {
-                  return (
-                    <tr key={item.index}>
-                      <td> {index + 1}</td>
-                      <td onClick={() => navigate("/tpr-panel")}>
-                        {item.eLogId}
-                      </td>
-                      <td>{item.initiator}</td>
-                      <td>{item.dateOfInitiation}</td>
-                      <td>{item.shortDescription}</td>
-                      <td>{item.process}</td>
-                    </tr>
-                  );
-                })
-              : null}
-
-            {eLogSelect === "All_Records" &&
-              combinedRecords?.map((item, index) => {
-                return (
-                  <tr key={item.eLogId}>
-                    <td> {index + 1}</td>
-                    <td
-                      style={{
-                        cursor: "pointer",
-                        color: "black",
-                      }}
-                      onClick={() => {
-                        handleRowClick(item);
-                        navigate(
-                          item.process === "Diffrential pressure"
-                            ? "/dpr-panel"
-                            : item.process === "Area and equipment"
-                            ? "/area-and-equipment-panel"
-                            : item.process === "Temperature Records"
-                            ? "/tpr-panel"
-                            : item.process === "Equipment cleaning checklist"
-                            ? "/ecc-panel"
-                            : ""
-                        );
-                      }}
-                      onMouseEnter={(e) => {
-                        e.target.style.color = "blue";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.target.style.color = "black";
-                      }}
-                    >
-                      {item.eLogId}
-                    </td>
-                    <td>{item.initiator}</td>
-                    <td>{item.dateOfInitiation}</td>
-                    <td>{item.shortDescription}</td>
-                    <td>{item.process}</td>
-                  </tr>
-                );
-              })}
           </tbody>
         </table>
       </div>

@@ -25,7 +25,10 @@ function Login() {
     if (username === "Gaurav" && password === "Gaurav") {
       navigate("/desktop");
       toast.success("Login Successful");
-    } else if (username === "Amit" && password === "Amit@121") {
+    } else if (username === "Pankaj" && password === "Pankaj") {
+      navigate("/desktop");
+      toast.success("Login Successful");
+    }  else if (username === "Amit" && password === "Amit@121") {
       navigate("/desktop");
       toast.success("Login Successful");
     } else {

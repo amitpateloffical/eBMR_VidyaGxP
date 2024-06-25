@@ -14,17 +14,21 @@ const BMRForm = () => {
     []
   );
   const [batchCleaningTablesData, setbatchCleaningTablesData] = useState([]);
-  const [accessoriesCleaningTablesData, setAccessoriesCleaningTablesData] = useState([]);
-  const [intermadiateIssuanceTablesData, setIntermadiateIssuanceTablesData] = useState([]);
+  const [accessoriesCleaningTablesData, setAccessoriesCleaningTablesData] =
+    useState([]);
+  const [intermadiateIssuanceTablesData, setIntermadiateIssuanceTablesData] =
+    useState([]);
   const [hazopTablesData, setHazopTablesData] = useState([]);
   const [processSafetyTablesData, setProcessSafetyTablesData] = useState([]);
   const [ppeMatrixTablesData, setPPEMatrixTablesData] = useState([]);
-  const [hazardAndControlTablesData, setHazardAndControlTablesData] = useState([]);
+  const [hazardAndControlTablesData, setHazardAndControlTablesData] = useState(
+    []
+  );
   const [readAndUnderstood, setReadAndUnderstood] = useState([]);
   const [CriticalProcessPFQ, setCriticalProcessPFQ] = useState([]);
   const [criticalProcessPFS, setCriticalProcessPFS] = useState([]);
   const navigate = useNavigate();
-  const dispatch=useDispatch()
+  const dispatch = useDispatch();
   const uniqueId =
     "ABC/" +
     Math.floor(Math.random() * 1000)
@@ -40,7 +44,7 @@ const BMRForm = () => {
       ...next,
     }),
     {
-        eBMRId:uniqueId+1,
+      eBMRId: uniqueId + 1,
       process: "Batch Manufacturuing Record",
       productName: "",
       documentNo: "",
@@ -64,7 +68,7 @@ const BMRForm = () => {
       packingAndStoreCondition: "",
     }
   );
-  console.log(ManufacturingRecord,"ManufacturingRecord")
+  console.log(ManufacturingRecord, "ManufacturingRecord");
   useEffect(() => {
     setManufacturingRecord({ gridData: allTableData });
   }, [allTableData]);
@@ -138,12 +142,15 @@ const BMRForm = () => {
       stepNo: "",
       stdQty: "",
       reqQty: "",
-      qtyUsed:"",
-      arNoBatchNo:"",
-      checkedBySign:"",
-      Date:""
+      qtyUsed: "",
+      arNoBatchNo: "",
+      checkedBySign: "",
+      Date: "",
     };
-    setAccessoriesCleaningTablesData([...accessoriesCleaningTablesData, newRow]);
+    setAccessoriesCleaningTablesData([
+      ...accessoriesCleaningTablesData,
+      newRow,
+    ]);
   };
 
   const addIntermediateIssanceRow = () => {
@@ -153,11 +160,14 @@ const BMRForm = () => {
       batchNo: "",
       actualIssuedQty: "",
       sign: "",
-      date:""
+      date: "",
     };
-    setIntermadiateIssuanceTablesData([...intermadiateIssuanceTablesData, newRow]);
+    setIntermadiateIssuanceTablesData([
+      ...intermadiateIssuanceTablesData,
+      newRow,
+    ]);
   };
-  
+
   const addHazopRow = () => {
     const newRow = {
       HAZOP_Recommendation: "",
@@ -165,12 +175,12 @@ const BMRForm = () => {
     };
     setHazopTablesData([...hazopTablesData, newRow]);
   };
-    
+
   const addprocessSafetyRow = () => {
     const newRow = {
       test: "",
       result: "",
-      remark:""
+      remark: "",
     };
     setProcessSafetyTablesData([...processSafetyTablesData, newRow]);
   };
@@ -179,10 +189,10 @@ const BMRForm = () => {
     const newRow = {
       chemicalName: "",
       handProtection: "",
-      eyeProtection:"",
-      respiratoryProtection:"",
-      footshoes:"",
-      bodyProtection:""
+      eyeProtection: "",
+      respiratoryProtection: "",
+      footshoes: "",
+      bodyProtection: "",
     };
     setPPEMatrixTablesData([...ppeMatrixTablesData, newRow]);
   };
@@ -191,20 +201,20 @@ const BMRForm = () => {
     const newRow = {
       name: "",
       antidot: "",
-      specificHazard:"",
-      precaution:"",
+      specificHazard: "",
+      precaution: "",
     };
     setHazardAndControlTablesData([...hazardAndControlTablesData, newRow]);
   };
 
-  const addReadAndUnderstood=()=>{
-   const newRow={
-    nameOfPerson:"",
-    Sign:"",
-    date:"",
-   } ;
-   setReadAndUnderstood([...readAndUnderstood,newRow])
-  }
+  const addReadAndUnderstood = () => {
+    const newRow = {
+      nameOfPerson: "",
+      Sign: "",
+      date: "",
+    };
+    setReadAndUnderstood([...readAndUnderstood, newRow]);
+  };
   const addCriticalProcessParameterForQuality = () => {
     const newRow = {
       BMRStepNo: "",
@@ -228,7 +238,7 @@ const BMRForm = () => {
     updatedData.splice(index, 1);
     setAllTableData(updatedData);
   };
- 
+
   return (
     <div id="config-form-document-page">
       <HeaderTop />
@@ -974,111 +984,111 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-              {accessoriesCleaningTablesData.map((item, index) => (
-                        <tr key={index}>
-                          <td>{index + 1}</td>
-                          <td>
-                            <input
-                              value={item.materialCode}
-                              onChange={(e) => {
-                                const newData = [...accessoriesCleaningTablesData];
-                                newData[index].materialCode = e.target.value;
-                                setAccessoriesCleaningTablesData(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.materialName}
-                              onChange={(e) => {
-                                const newData = [...accessoriesCleaningTablesData];
-                                newData[index].materialName = e.target.value;
-                                setAccessoriesCleaningTablesData(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.UOM}
-                              onChange={(e) => {
-                                const newData = [...accessoriesCleaningTablesData];
-                                newData[index].UOM = e.target.value;
-                                setAccessoriesCleaningTablesData(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.stepNo}
-                              onChange={(e) => {
-                                const newData = [...accessoriesCleaningTablesData];
-                                newData[index].stepNo = e.target.value;
-                                setAccessoriesCleaningTablesData(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.stdQty}
-                              onChange={(e) => {
-                                const newData = [...accessoriesCleaningTablesData];
-                                newData[index].stdQty = e.target.value;
-                                setAccessoriesCleaningTablesData(newData);
-                              }}
-                            />
-                          </td>
-                          <td >
-                          <input
-                              value={item.reqQty}
-                              onChange={(e) => {
-                                const newData = [...accessoriesCleaningTablesData];
-                                newData[index].reqQty = e.target.value;
-                                setAccessoriesCleaningTablesData(newData);
-                              }}
-                            />
-                          </td>
-                          <td >
-                          <input
-                              value={item.qtyUsed}
-                              onChange={(e) => {
-                                const newData = [...accessoriesCleaningTablesData];
-                                newData[index].qtyUsed = e.target.value;
-                                setAccessoriesCleaningTablesData(newData);
-                              }}
-                            />
-                          </td>
-                          <td >
-                          <input
-                              value={item.arNoBatchNo}
-                              onChange={(e) => {
-                                const newData = [...accessoriesCleaningTablesData];
-                                newData[index].arNoBatchNo = e.target.value;
-                                setAccessoriesCleaningTablesData(newData);
-                              }}
-                            />
-                          </td>
-                          <td >
-                          <input
-                              value={item.checkedBySign}
-                              onChange={(e) => {
-                                const newData = [...accessoriesCleaningTablesData];
-                                newData[index].checkedBySign = e.target.value;
-                                setAccessoriesCleaningTablesData(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                          <input
-                              value={item.Date}
-                              onChange={(e) => {
-                                const newData = [...accessoriesCleaningTablesData];
-                                newData[index].Date = e.target.value;
-                                setAccessoriesCleaningTablesData(newData);
-                              }}
-                            />
-                          </td>
-                        </tr>
-                      ))}
+                {accessoriesCleaningTablesData.map((item, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>
+                      <input
+                        value={item.materialCode}
+                        onChange={(e) => {
+                          const newData = [...accessoriesCleaningTablesData];
+                          newData[index].materialCode = e.target.value;
+                          setAccessoriesCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.materialName}
+                        onChange={(e) => {
+                          const newData = [...accessoriesCleaningTablesData];
+                          newData[index].materialName = e.target.value;
+                          setAccessoriesCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.UOM}
+                        onChange={(e) => {
+                          const newData = [...accessoriesCleaningTablesData];
+                          newData[index].UOM = e.target.value;
+                          setAccessoriesCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.stepNo}
+                        onChange={(e) => {
+                          const newData = [...accessoriesCleaningTablesData];
+                          newData[index].stepNo = e.target.value;
+                          setAccessoriesCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.stdQty}
+                        onChange={(e) => {
+                          const newData = [...accessoriesCleaningTablesData];
+                          newData[index].stdQty = e.target.value;
+                          setAccessoriesCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.reqQty}
+                        onChange={(e) => {
+                          const newData = [...accessoriesCleaningTablesData];
+                          newData[index].reqQty = e.target.value;
+                          setAccessoriesCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.qtyUsed}
+                        onChange={(e) => {
+                          const newData = [...accessoriesCleaningTablesData];
+                          newData[index].qtyUsed = e.target.value;
+                          setAccessoriesCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.arNoBatchNo}
+                        onChange={(e) => {
+                          const newData = [...accessoriesCleaningTablesData];
+                          newData[index].arNoBatchNo = e.target.value;
+                          setAccessoriesCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.checkedBySign}
+                        onChange={(e) => {
+                          const newData = [...accessoriesCleaningTablesData];
+                          newData[index].checkedBySign = e.target.value;
+                          setAccessoriesCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.Date}
+                        onChange={(e) => {
+                          const newData = [...accessoriesCleaningTablesData];
+                          newData[index].Date = e.target.value;
+                          setAccessoriesCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
 
@@ -1102,72 +1112,71 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-              {intermadiateIssuanceTablesData.map((item, index) => (
-                        <tr key={index}>
-                          <td>{index + 1}</td>
-                          <td>
-                            <input
-                              value={item.inpQtyKg}
-                              onChange={(e) => {
-                                const newData = [...intermadiateIssuanceTablesData];
-                                newData[index].inpQtyKg = e.target.value;
-                                setIntermadiateIssuanceTablesData(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.materialCode}
-                              onChange={(e) => {
-                                const newData = [...intermadiateIssuanceTablesData];
-                                newData[index].materialCode = e.target.value;
-                                setIntermadiateIssuanceTablesData(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.batchNo}
-                              onChange={(e) => {
-                                const newData = [...intermadiateIssuanceTablesData];
-                                newData[index].batchNo = e.target.value;
-                                setIntermadiateIssuanceTablesData(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.actualIssuedQty}
-                              onChange={(e) => {
-                                const newData = [...intermadiateIssuanceTablesData];
-                                newData[index].stepNo = e.target.value;
-                                setIntermadiateIssuanceTablesData(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.sign}
-                              onChange={(e) => {
-                                const newData = [...intermadiateIssuanceTablesData];
-                                newData[index].sign = e.target.value;
-                                setAccessoriesCleaningTablesData(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.date}
-                              onChange={(e) => {
-                                const newData = [...intermadiateIssuanceTablesData];
-                                newData[index].date = e.target.value;
-                                setAccessoriesCleaningTablesData(newData);
-                              }}
-                            />
-                          </td>
-                         
-                        </tr>
-                      ))}
+                {intermadiateIssuanceTablesData.map((item, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>
+                      <input
+                        value={item.inpQtyKg}
+                        onChange={(e) => {
+                          const newData = [...intermadiateIssuanceTablesData];
+                          newData[index].inpQtyKg = e.target.value;
+                          setIntermadiateIssuanceTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.materialCode}
+                        onChange={(e) => {
+                          const newData = [...intermadiateIssuanceTablesData];
+                          newData[index].materialCode = e.target.value;
+                          setIntermadiateIssuanceTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.batchNo}
+                        onChange={(e) => {
+                          const newData = [...intermadiateIssuanceTablesData];
+                          newData[index].batchNo = e.target.value;
+                          setIntermadiateIssuanceTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.actualIssuedQty}
+                        onChange={(e) => {
+                          const newData = [...intermadiateIssuanceTablesData];
+                          newData[index].stepNo = e.target.value;
+                          setIntermadiateIssuanceTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.sign}
+                        onChange={(e) => {
+                          const newData = [...intermadiateIssuanceTablesData];
+                          newData[index].sign = e.target.value;
+                          setAccessoriesCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.date}
+                        onChange={(e) => {
+                          const newData = [...intermadiateIssuanceTablesData];
+                          newData[index].date = e.target.value;
+                          setAccessoriesCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
 
@@ -1187,34 +1196,37 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-              {hazopTablesData.map((item, index) => (
-                        <tr key={index}>
-                          <td>{index + 1}</td>
-                          <td>
-                            <input
-                              value={item.HAZOP_Recommendation}
-                              onChange={(e) => {
-                                const newData = [...hazopTablesData];
-                                newData[index].HAZOP_Recommendation = e.target.value;
-                                setHazopTablesData(newData);
-                              }}
-                            />
-                          </td>
-                           <td>
-                    {" "}
-                    <select value={item.category}  onChange={(e) => {
-                                const newData = [...hazopTablesData];
-                                newData[index].category = e.target.value;
-                                setHazopTablesData(newData);
-                              }}>
-                      <option>Low</option>
-                      <option>Medium</option>
-                      <option>High</option>
-                    </select>
-                  </td>                                                                   
-                        </tr>
-                      ))}
-                      </tbody>
+                {hazopTablesData.map((item, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>
+                      <input
+                        value={item.HAZOP_Recommendation}
+                        onChange={(e) => {
+                          const newData = [...hazopTablesData];
+                          newData[index].HAZOP_Recommendation = e.target.value;
+                          setHazopTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      {" "}
+                      <select
+                        value={item.category}
+                        onChange={(e) => {
+                          const newData = [...hazopTablesData];
+                          newData[index].category = e.target.value;
+                          setHazopTablesData(newData);
+                        }}
+                      >
+                        <option>Low</option>
+                        <option>Medium</option>
+                        <option>High</option>
+                      </select>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
             </table>
 
             <div className="sub-head">
@@ -1237,43 +1249,41 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-              {processSafetyTablesData.map((item, index) => (
-                        <tr key={index}>
-                          <td>{index + 1}</td>
-                          <td>
-                            <input
-                              value={item.test}
-                              onChange={(e) => {
-                                const newData = [...processSafetyTablesData];
-                                newData[index].test = e.target.value;
-                                setProcessSafetyTablesData(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.result}
-                              onChange={(e) => {
-                                const newData = [...processSafetyTablesData];
-                                newData[index].result = e.target.value;
-                                setProcessSafetyTablesData(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.remark}
-                              onChange={(e) => {
-                                const newData = [...processSafetyTablesData];
-                                newData[index].remark = e.target.value;
-                                setProcessSafetyTablesData(newData);
-                              }}
-                            />
-                          </td>
-                         
-                         
-                        </tr>
-                      ))}
+                {processSafetyTablesData.map((item, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>
+                      <input
+                        value={item.test}
+                        onChange={(e) => {
+                          const newData = [...processSafetyTablesData];
+                          newData[index].test = e.target.value;
+                          setProcessSafetyTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.result}
+                        onChange={(e) => {
+                          const newData = [...processSafetyTablesData];
+                          newData[index].result = e.target.value;
+                          setProcessSafetyTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.remark}
+                        onChange={(e) => {
+                          const newData = [...processSafetyTablesData];
+                          newData[index].remark = e.target.value;
+                          setProcessSafetyTablesData(newData);
+                        }}
+                      />
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
 
@@ -1299,74 +1309,72 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-              {ppeMatrixTablesData.map((item, index) => (
-                        <tr key={index}>
-                          <td>{index + 1}</td>
-                          <td>
-                            <input
-                              value={item.chemicalName}
-                              onChange={(e) => {
-                                const newData = [...ppeMatrixTablesData];
-                                newData[index].chemicalName = e.target.value;
-                                setPPEMatrixTablesData(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.handProtection}
-                              onChange={(e) => {
-                                const newData = [...ppeMatrixTablesData];
-                                newData[index].handProtection = e.target.value;
-                                setPPEMatrixTablesData(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.eyeProtection}
-                              onChange={(e) => {
-                                const newData = [...ppeMatrixTablesData];
-                                newData[index].eyeProtection = e.target.value;
-                                setPPEMatrixTablesData(newData);
-                              }}
-                            />
-                          </td>
-                         
-                          <td>
-                            <input
-                              value={item.respiratoryProtection}
-                              onChange={(e) => {
-                                const newData = [...ppeMatrixTablesData];
-                                newData[index].respiratoryProtection = e.target.value;
-                                setPPEMatrixTablesData(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.footshoes}
-                              onChange={(e) => {
-                                const newData = [...ppeMatrixTablesData];
-                                newData[index].footshoes = e.target.value;
-                                setPPEMatrixTablesData(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.bodyProtection}
-                              onChange={(e) => {
-                                const newData = [...ppeMatrixTablesData];
-                                newData[index].bodyProtection = e.target.value;
-                                setPPEMatrixTablesData(newData);
-                              }}
-                            />
-                          </td>
-                         
-                         
-                        </tr>
-                      ))}
+                {ppeMatrixTablesData.map((item, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>
+                      <input
+                        value={item.chemicalName}
+                        onChange={(e) => {
+                          const newData = [...ppeMatrixTablesData];
+                          newData[index].chemicalName = e.target.value;
+                          setPPEMatrixTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.handProtection}
+                        onChange={(e) => {
+                          const newData = [...ppeMatrixTablesData];
+                          newData[index].handProtection = e.target.value;
+                          setPPEMatrixTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.eyeProtection}
+                        onChange={(e) => {
+                          const newData = [...ppeMatrixTablesData];
+                          newData[index].eyeProtection = e.target.value;
+                          setPPEMatrixTablesData(newData);
+                        }}
+                      />
+                    </td>
+
+                    <td>
+                      <input
+                        value={item.respiratoryProtection}
+                        onChange={(e) => {
+                          const newData = [...ppeMatrixTablesData];
+                          newData[index].respiratoryProtection = e.target.value;
+                          setPPEMatrixTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.footshoes}
+                        onChange={(e) => {
+                          const newData = [...ppeMatrixTablesData];
+                          newData[index].footshoes = e.target.value;
+                          setPPEMatrixTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.bodyProtection}
+                        onChange={(e) => {
+                          const newData = [...ppeMatrixTablesData];
+                          newData[index].bodyProtection = e.target.value;
+                          setPPEMatrixTablesData(newData);
+                        }}
+                      />
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
 
@@ -1390,53 +1398,52 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-              {hazardAndControlTablesData.map((item, index) => (
-                        <tr key={index}>
-                          <td>{index + 1}</td>
-                          <td>
-                            <input
-                              value={item.name}
-                              onChange={(e) => {
-                                const newData = [...hazardAndControlTablesData];
-                                newData[index].name = e.target.value;
-                                setHazardAndControlTablesData(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.antidot}
-                              onChange={(e) => {
-                                const newData = [...hazardAndControlTablesData];
-                                newData[index].antidot = e.target.value;
-                                setHazardAndControlTablesData(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.specificHazard}
-                              onChange={(e) => {
-                                const newData = [...hazardAndControlTablesData];
-                                newData[index].specificHazard = e.target.value;
-                                setHazardAndControlTablesData(newData);
-                              }}
-                            />
-                          </td>
-                         
-                          <td>
-                            <input
-                              value={item.precaution}
-                              onChange={(e) => {
-                                const newData = [...hazardAndControlTablesData];
-                                newData[index].precaution = e.target.value;
-                                setHazardAndControlTablesData(newData);
-                              }}
-                            />
-                          </td>
-                         
-                        </tr>
-                      ))}
+                {hazardAndControlTablesData.map((item, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>
+                      <input
+                        value={item.name}
+                        onChange={(e) => {
+                          const newData = [...hazardAndControlTablesData];
+                          newData[index].name = e.target.value;
+                          setHazardAndControlTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.antidot}
+                        onChange={(e) => {
+                          const newData = [...hazardAndControlTablesData];
+                          newData[index].antidot = e.target.value;
+                          setHazardAndControlTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.specificHazard}
+                        onChange={(e) => {
+                          const newData = [...hazardAndControlTablesData];
+                          newData[index].specificHazard = e.target.value;
+                          setHazardAndControlTablesData(newData);
+                        }}
+                      />
+                    </td>
+
+                    <td>
+                      <input
+                        value={item.precaution}
+                        onChange={(e) => {
+                          const newData = [...hazardAndControlTablesData];
+                          newData[index].precaution = e.target.value;
+                          setHazardAndControlTablesData(newData);
+                        }}
+                      />
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
 
@@ -2016,9 +2023,14 @@ const BMRForm = () => {
         </div>
       ) : null}
       <div className="button-block" style={{ width: "100%" }}>
-        <button className="themeBtn"  onClick={() => {
-                  handleSave(ManufacturingRecord)
-                }}>Save</button>
+        <button
+          className="themeBtn"
+          onClick={() => {
+            handleSave(ManufacturingRecord);
+          }}
+        >
+          Save
+        </button>
 
         <button className="themeBtn" onClick={() => navigate("/desktop")}>
           Exit
