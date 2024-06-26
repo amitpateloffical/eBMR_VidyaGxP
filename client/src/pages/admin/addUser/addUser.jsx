@@ -141,6 +141,12 @@ function AddNewUser() {
           <div
             id="config-form-document-page"
             className="shadow-sm md:shadow-md lg:shadow-lg xl:shadow-xl 2xl:shadow-2xl inset-shadow-1 p-6"
+            style={{
+              padding:"1%",
+              margin: "10%",
+              marginTop: "1%",
+              boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+            }}
           >
             <form onSubmit={handleSubmit} style={{}}>
               <h2 style={{ textAlign: "center" }}>

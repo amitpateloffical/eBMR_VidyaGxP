@@ -142,10 +142,18 @@ function EditUser() {
   return (
     <>
       {/* <AdminHeaderTop /> */}
-      <div id="main-form-container">
-        <div id="config-form-document-page " className=" p-2 shadow-2xl">
+      <div id="main-form-container" className="">
+        <div
+          id="config-form-document-page "
+          className=" p-2 shadow-2xl"
+          style={{
+            margin: "10%",
+            marginTop: "1%",
+            boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
+          }}
+        >
           <form onSubmit={handleSubmit} style={{}}>
-            <h2 style={{ textAlign: "center" }}>
+            <h2 style={{ textAlign: "center" ,color:"black"}}>
               <div className="sub-head"> Edit User</div>
             </h2>
             <div className="group-input" style={{ margin: "15px" }}>

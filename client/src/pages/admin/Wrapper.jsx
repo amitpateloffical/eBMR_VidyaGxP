@@ -7,9 +7,11 @@ const Wrapper = () => {
     <div className="flex flex-col h-screen">
       <div className="fixed top-0 left-0 w-full z-50">
         <AdminHeaderTop />
+      </div>
+      <div className="mt-20">
         <Outlet />
       </div>
-        {/* <div className="flex flex-grow mt-16">
+      {/* <div className="flex flex-grow mt-16">
             <div className="fixed top-16 left-0 w-64 h-full z-40">
             <Sidebar />
             </div>

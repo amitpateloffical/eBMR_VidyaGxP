@@ -13,6 +13,9 @@ import BMRForm from "./pages/EBMR/BMRForm.jsx";
 import AdminLogin from "./pages/admin/adminlogin/AdminLogin.jsx";
 import AdminDashboard from "./pages/admin/dashboard/AdminDashboard.jsx";
 import Wrapper from "./pages/admin/Wrapper.jsx";
+import AddNewUser from "./pages/admin/addUser/addUser.jsx";
+import DuplicateUser from "./pages/admin/DuplicateUser/DuplicateUser.jsx";
+import EditUser from "./pages/admin/EditUser/EditUser.jsx";
 
 function App() {
   return (
@@ -32,6 +35,9 @@ function App() {
             <Route path="/admin-login" element={<AdminLogin />} />
             <Route path="" element={<Wrapper />}>
               <Route path="/admin-dashboard" element={<AdminDashboard />} />
+              <Route path="/admin-add-user" element={<AddNewUser />} />
+              <Route path="/admin-edit-user" element={<EditUser />} />
+              <Route path="/duplicate-user" element={<DuplicateUser />} />
             </Route>
           </Routes>
         </BrowserRouter>
