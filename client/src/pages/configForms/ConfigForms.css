@@ -709,7 +709,7 @@ table textarea {
 /*! ===================================================================== */
 /*! TABLE CSS */
 /*! ===================================================================== */
-table {
+/* table {
   width: 100%;
 }
 
@@ -717,9 +717,9 @@ th,
 td {
   padding: 6px;
   font-size: 0.85rem;
-}
+} */
 
-table,
+/* table,
 td,
 th {
   border: 1px solid #808080;
@@ -748,11 +748,10 @@ table tbody .serial {
 
 table tbody tr:nth-child(2n) {
   background: #fcd6a1;
-}
+} */
 
 .document-form {
   padding: 15px;
-  margin: 15px;
   border-radius: 5px;
   order: 3;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
