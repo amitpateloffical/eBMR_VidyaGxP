@@ -1,11 +1,11 @@
 import React, { useReducer, useState } from "react";
 import "./BMR.css";
-import HeaderTop from "../../../components/Header/HeaderTop";
 import { NoteAdd } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
+import HeaderTop from "../../components/Header/HeaderTop";
 
 const BMRForm = () => {
   const [tab, setTab] = useState("General");
