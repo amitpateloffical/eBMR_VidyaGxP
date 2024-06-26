@@ -8,7 +8,7 @@ dotenv.config();
 
 export const Adminlogin = (req, res) => {
   const { email, password } = req.body;
-//   console.log("Hello", req.body);
+  //   console.log("Hello", req.body);
   if (email.toLowerCase() !== "admin@vidyagxp.com") {
     res.status(401).json({
       error: false,

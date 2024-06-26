@@ -49,7 +49,7 @@ function AdminLogin() {
       });
 
     //   console.log(response);
-      navigate("/dashboard");
+      navigate("/admin-dashboard");
       toast.success("Login Successful");
       localStorage.setItem("admin-token", response.data.token);
     //   console.log(response.data.token);
