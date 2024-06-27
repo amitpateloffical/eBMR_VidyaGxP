@@ -43,4 +43,4 @@ const User = sequelize.define("User", {
 // User.belongsToMany(Project, { through: UserProject });
 // Project.belongsToMany(User, { through: UserProject });
 
-module.exports = User;
+export default User;

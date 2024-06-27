@@ -21,10 +21,11 @@ Process.addHook("afterSync", async () => {
     const processesCount = await Process.count();
     if (processesCount === 0) {
       await Process.bulkCreate([
-        { process: "Differential Pressure Record" },
-        { process: "Area and Equipment Usage Log" },
-        { process: "Equipment Cleaning Checklist" },
-        { process: "Temprature Records" },
+        { process: "Batch Manufacturing Record" },
+        // { process: "Differential Pressure Record" },
+        // { process: "Area and Equipment Usage Log" },
+        // { process: "Equipment Cleaning Checklist" },
+        // { process: "Temprature Records" },
       ]);
       console.log("Processes created");
     } else {

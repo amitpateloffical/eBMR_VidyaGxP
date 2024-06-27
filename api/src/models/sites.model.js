@@ -21,10 +21,8 @@ Site.addHook("afterSync", async () => {
     const sitesCount = await Site.count();
     if (sitesCount === 0) {
       await Site.bulkCreate([
-        { site: "India" },
-        { site: "Malaysia" },
-        { site: "EMEA" },
-        { site: "EU" },
+        { site: "Dewas" },
+        { site: "Corporate" },
       ]);
       console.log("Sites created");
     } else {
