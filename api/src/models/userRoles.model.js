@@ -1,16 +1,10 @@
+import { sequelize } from "../config/db.js";
 import { DataTypes } from "sequelize";
-import { sequelize } from "../config/db";
-import User from "./users.model";
-import Role from "./roles.model";
-import Site from "./sites.model";
-import Process from "./processes.model";
-import RoleGroup from "./roleGroups.model";
-
-// const { default: Role } = require("./roles.model");
-// const { default: Site } = require("./sites.model");
-// const { default: Process } = require("./processes.model");
-// const { default: RoleGroup } = require("./roleGroups.model");
-// const { default: User } = require("./users.model");
+import User from "./users.model.js";
+import Role from "./roles.model.js";
+import Site from "./sites.model.js";
+import Process from "./processes.model.js";
+import RoleGroup from "./roleGroups.model.js";
 
 const UserRole = sequelize.define("UserRole", {
   userRole_id: {

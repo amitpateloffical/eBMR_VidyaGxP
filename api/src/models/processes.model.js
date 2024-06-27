@@ -29,7 +29,7 @@ Process.addHook("afterSync", async () => {
       ]);
       console.log("Processes created");
     } else {
-      console.log("Processes already exist");
+      // console.log("Processes already exist");
     }
   } catch (error) {
     console.error("Error creating processes:", error);

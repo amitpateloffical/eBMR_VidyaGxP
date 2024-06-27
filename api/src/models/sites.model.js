@@ -26,7 +26,7 @@ Site.addHook("afterSync", async () => {
       ]);
       console.log("Sites created");
     } else {
-      console.log("Sites already exist");
+    //   console.log("Sites already exist");
     }
   } catch (error) {
     console.error("Error creating sites:", error);

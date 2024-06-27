@@ -29,7 +29,7 @@ Role.addHook("afterSync", async () => {
       ]);
       console.log("Roles created");
     } else {
-      console.log("Roles already exist");
+      // console.log("Roles already exist");
     }
   } catch (error) {
     console.error("Error creating roles:", error);

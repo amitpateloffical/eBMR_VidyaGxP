@@ -26,7 +26,7 @@ function AddNewUser() {
   }, [selectedOptions]);
 
   useEffect(() => {
-    const url = "http://localhost:1000/user/get-all-rolegroups";
+    const url = "http://localhost:3000/user/get-all-rolegroups";
     axios
       .get(url)
       .then((response) => {
@@ -142,13 +142,13 @@ function AddNewUser() {
             id="config-form-document-page"
             className="shadow-sm md:shadow-md lg:shadow-lg xl:shadow-xl 2xl:shadow-2xl inset-shadow-1 p-6"
             style={{
-              padding:"1%",
+              padding: "1%",
               margin: "10%",
               marginTop: "1%",
               boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
             }}
           >
-            <form onSubmit={handleSubmit} style={{}}>
+            <form onSubmit={handleSubmit} style={{}} enctype="multipart/form-data" >
               <h2 style={{ textAlign: "center" }}>
                 <div className="sub-head"> Add User</div>
               </h2>
