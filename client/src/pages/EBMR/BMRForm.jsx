@@ -99,7 +99,6 @@ const BMRForm = () => {
     };
     setAllTableData([...allTableData, newRow]);
   };
-
   const addBatchCleaningRow = () => {
     const currentTime = new Date().toLocaleTimeString();
     const newRow = {
@@ -308,7 +307,7 @@ const BMRForm = () => {
                     setIsSelectedDetails(true), setIsSelectedGeneral(false);
                   }}
                 >
-                  {" "}
+
                   Details
                 </div> */}
       </div>
@@ -411,7 +410,7 @@ const BMRForm = () => {
 
       {tab === "QA" ? (
         <div className="document-form">
-          {" "}
+
           <div className="section-body">
             <div className="dual-group-input">
               <div className="group-input">
@@ -441,7 +440,7 @@ const BMRForm = () => {
                 <label>Batch Starting Date </label>
                 <input
                   value={ManufacturingRecord.batchStartingDate}
-                  type="text"
+                  type="date"
                   onChange={(e) =>
                     setManufacturingRecord({
                       batchStartingDate: e.target.value,
@@ -454,7 +453,7 @@ const BMRForm = () => {
                 <label> Time </label>
                 <input
                   value={ManufacturingRecord.time}
-                  type="text"
+                  type="time"
                   onChange={(e) =>
                     setManufacturingRecord({ time: e.target.value })
                   }
@@ -465,7 +464,7 @@ const BMRForm = () => {
                 <label>Batch Complition Date </label>
                 <input
                   value={ManufacturingRecord.batchComplitionDate}
-                  type="text"
+                  type="date"
                   onChange={(e) =>
                     setManufacturingRecord({
                       batchComplitionDate: e.target.value,
@@ -478,7 +477,7 @@ const BMRForm = () => {
                 <label>Time </label>
                 <input
                   value={ManufacturingRecord.time}
-                  type="text"
+                  type="time"
                   onChange={(e) =>
                     setManufacturingRecord({ time: e.target.value })
                   }
@@ -532,7 +531,7 @@ const BMRForm = () => {
                 <label>Manufacturing Date </label>
                 <input
                   value={ManufacturingRecord.manufacturingDate}
-                  type="text"
+                  type="date"
                   onChange={(e) =>
                     setManufacturingRecord({
                       manufacturingDate: e.target.value,
@@ -544,7 +543,7 @@ const BMRForm = () => {
                 <label>Expiry/Retest Date</label>
                 <input
                   value={ManufacturingRecord.expiryRetestdate}
-                  type="text"
+                  type="date"
                   onChange={(e) =>
                     setManufacturingRecord({ expiryRetestdate: e.target.value })
                   }
@@ -682,6 +681,7 @@ const BMRForm = () => {
                     </td>
                     <td>
                       <input
+                        type="date"
                         value={item.Date}
                         onChange={(e) => {
                           const newData = [...allTableData];
@@ -813,6 +813,7 @@ const BMRForm = () => {
                     </td>
                     <td>
                       <input
+                        type="date"
                         value={item.Date}
                         onChange={(e) => {
                           const newData = [...packingMaterialTablesData];
@@ -945,6 +946,7 @@ const BMRForm = () => {
                     </td>
                     <td>
                       <input
+                        type="date"
                         value={item.Date}
                         onChange={(e) => {
                           const newData = [...batchCleaningTablesData];
@@ -959,7 +961,7 @@ const BMRForm = () => {
             </table>
 
             <div className="sub-head">
-              Solvent For Container/Hosepipe And Accessories Cleaning{" "}
+              Solvent For Container/Hosepipe And Accessories Cleaning 
             </div>
 
             <div className="AddRows d-flex">
@@ -1079,6 +1081,7 @@ const BMRForm = () => {
                     </td>
                     <td>
                       <input
+                        type="date"
                         value={item.Date}
                         onChange={(e) => {
                           const newData = [...accessoriesCleaningTablesData];
@@ -1137,6 +1140,7 @@ const BMRForm = () => {
                     </td>
                     <td>
                       <input
+                        type="number"
                         value={item.batchNo}
                         onChange={(e) => {
                           const newData = [...intermadiateIssuanceTablesData];
@@ -1167,6 +1171,7 @@ const BMRForm = () => {
                     </td>
                     <td>
                       <input
+                        type="date"
                         value={item.date}
                         onChange={(e) => {
                           const newData = [...intermadiateIssuanceTablesData];
@@ -1210,7 +1215,7 @@ const BMRForm = () => {
                       />
                     </td>
                     <td>
-                      {" "}
+                        
                       <select
                         value={item.category}
                         onChange={(e) => {
@@ -1219,6 +1224,7 @@ const BMRForm = () => {
                           setHazopTablesData(newData);
                         }}
                       >
+                        <option>--Select Category--</option>
                         <option>Low</option>
                         <option>Medium</option>
                         <option>High</option>
@@ -1468,9 +1474,15 @@ const BMRForm = () => {
                   return (
                     <tr>
                       <td>{index + 1}</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input />
+                      </td>
                     </tr>
                   );
                 })}
@@ -1478,7 +1490,7 @@ const BMRForm = () => {
             </table>
 
             <div className="sub-head">
-              Critical Process Parameterfor Quality
+              Critical Process Parameter For Quality
             </div>
 
             <div className="AddRows d-flex">
@@ -1491,7 +1503,7 @@ const BMRForm = () => {
                 <tr>
                   <th>S no.</th>
                   <th>BMR Step No. </th>
-                  <th> Critical Process Parameter </th>
+                  <th>Critical Process Parameter </th>
                   <th>Justification</th>
                 </tr>
               </thead>
@@ -1500,9 +1512,15 @@ const BMRForm = () => {
                   return (
                     <tr>
                       <td>{index + 1}</td>
-                      <td></td>
-                      <td> </td>
-                      <td> </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input /> 
+                      </td> 
+                      <td>
+                        <input /> 
+                      </td>
                     </tr>
                   );
                 })}
@@ -1521,7 +1539,7 @@ const BMRForm = () => {
                 <tr>
                   <th>S no.</th>
                   <th>Name Of Person </th>
-                  <th> Sign </th>
+                  <th>Sign </th>
                   <th>Date</th>
                 </tr>
               </thead>
@@ -1530,9 +1548,15 @@ const BMRForm = () => {
                   return (
                     <tr>
                       <td>{index + 1}</td>
-                      <td> </td>
-                      <td> </td>
-                      <td> </td>
+                      <td>
+                        <input />
+                      </td>
+                      <td>
+                        <input /> 
+                      </td>
+                      <td>
+                        <input type="date" /> 
+                      </td>
                     </tr>
                   );
                 })}
@@ -1595,28 +1619,25 @@ const BMRForm = () => {
                 <thead>
                   <tr>
                     <th colspan="10" className="font-bold text-lg text-center">
-                      {" "}
+
                       Intermediate Dispensing
                     </th>
                   </tr>
                   <tr>
-                    <th>
-                      {" "}
-                      Sr.
-                      <br />
-                      No.
-                    </th>
-                    <th>
-                      {" "}
-                      Material <br /> Code
-                    </th>
-                    <th>
-                      Batch <br /> No.
-                    </th>
+                    <th rowSpan={2}> Sr. No.</th>
+                    <th rowSpan={2}> Material Code</th>
+                    <th rowSpan={2}>Batch No.</th>
                     <th colspan="2">Time</th>
 
                     <th colspan="3"> Dispensing</th>
-                    <th>Done by </th>
+                    <th rowSpan={2}>Done by </th>
+                  </tr>
+                  <tr>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Gross Wt.</th>
+                    <th>Tare Wt.</th>
+                    <th>Net Wt.</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -1637,7 +1658,7 @@ const BMRForm = () => {
                 <thead>
                   <tr className="">
                     <th colspan="10" className="font-bold text-lg text-center">
-                      {" "}
+
                       After dispensing, clean the dispensing area and weighing
                       balance using a lint-free cloth.
                     </th>
@@ -1672,43 +1693,51 @@ const BMRForm = () => {
               <table className="Main-table">
                 <thead>
                   <tr>
-                    <th>Step No.</th>
-                    <th>Operation</th>
-                    <th>Date</th>
-                    <th>
-                      Time (hrs)
-                      <tr colSpan="2">
-                        <th>Fro</th>
-                        <th>To</th>
-                      </tr>
-                    </th>
-                    <th>Recordings and Observations</th>
-                    <th>Done by</th>
+                    <th rowspan="2">Step No.</th>
+                    <th rowspan="2">Operation</th>
+                    <th rowspan="2">Date</th>
+                    <th colspan="2">Time (hrs)</th>
+                    <th rowspan="2">Recordings and Observations</th>
+                    <th rowspan="2">Done by</th>
+                  </tr>
+                  <tr>
+                    <th>From</th>
+                    <th>To</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>1.</td>
-                    <td></td>
+                    <td>Check valve pressure</td>
+                    <td>2024-06-24</td>
                     <td></td>
                     <td></td>
                     <td>
-                      Pressure -------kg/cm2 Leakage <br />
-                      Observed/Not observed
+                      Pressure: 12 kg/cm2 Leakage <br />
+                      Observed
                     </td>
-                    <td>
-                      <hr />
-                      Checked by:
-                    </td>
+                    <td>Engineer A</td>
                   </tr>
-
                   <tr>
                     <td>2.</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>---</td>
-                    <td></td>
+                    <td>Inspect pipe fittings</td>
+                    <td>2024-06-25</td>
+                    <td colspan="2">---</td>
+                    <td>No issues found</td>
+                    <td>Technician B</td>
+                  </tr>
+                  <tr>
+                    <td>3.</td>
+                    <td>Test flow rate</td>
+                    <td>2024-06-26</td>
+                    <td>
+                      <strong>9:30</strong>
+                    </td>
+                    <td>
+                      <strong>11:00</strong>
+                    </td>
+                    <td>Flow rate within acceptable limits</td>
+                    <td>Engineer C</td>
                   </tr>
                 </tbody>
               </table>
@@ -1773,13 +1802,8 @@ const BMRForm = () => {
                   <th>Step No.</th>
                   <th>Operation</th>
                   <th>Date</th>
-                  <th>
-                    Time
-                    <tr>
-                      <th>Fro</th>
-                      <th>To</th>
-                    </tr>
-                  </th>
+                  <th> Time (From) </th>
+                  <th> Time (To) </th>
                   <th>Recordings and</th>
                   <th>Done</th>
                 </tr>
@@ -1793,6 +1817,7 @@ const BMRForm = () => {
 
                 <tr>
                   <td>1</td>
+                  <td></td>
                   <td></td>
                   <td></td>
                   <td></td>
@@ -1812,7 +1837,7 @@ const BMRForm = () => {
                   <td></td>
                   <td></td>
                   <td></td>
-
+                  <td></td>
                   <td></td>
                 </tr>
               </tbody>

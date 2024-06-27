@@ -11,13 +11,13 @@ function HeaderBottom() {
             <div className="Header_Bottom">
                 <div className="headerBottomInner">
                     <div className="headerBottomLft">
-                        <Link to="/desktop">
+                        {/* <Link to="/desktop">
                             <div className="navItem">
                                 <i className="ri-home-3-fill"></i>
                                 <h3>Desktop</h3>
                             </div>
-                        </Link>
-                        <Link to="/dashboard">
+                        </Link> */}
+                        <Link to="/desktop">
                             <div className="navItem">
                                 <i className="ri-dashboard-3-fill"></i>
                                 <h3>Dashboard</h3>
