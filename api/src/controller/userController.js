@@ -1,5 +1,7 @@
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import RoleGroup from "../models/roleGroups.model.js";
+// import RoleGroup from "module";
 
 dotenv.config();
 //   res.json({
@@ -36,5 +38,20 @@ export const Adminlogin = (req, res) => {
         });
       }
     }
+  }
+};
+
+export const getAllRoleGroups = async (req, res) => {
+  try {
+    const result = await RoleGroup.findAll();
+    res.status(200).json({
+      error: false,
+      response: result,
+    });
+  } catch (e) {
+    res.status(400).json({
+      error: true,
+      response: e.message,
+    });
   }
 };
