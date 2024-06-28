@@ -5,6 +5,9 @@ import {
   getAllRoleGroups,
   getAllUsers,
   getUserPermissions,
+  editUser,
+  getAUser,
+  // deleteUser,
 } from "../controller/userController.js";
 import { checkAdminJwtToken } from "../middleware/authentication.js";
 // import { upload } from "../../index.js";
@@ -27,7 +30,14 @@ export const upload = multer({ storage: storage });
 router.post("/admin-login", Adminlogin);
 router.get("/get-all-role-groups", getAllRoleGroups);
 router.post("/add-user", checkAdminJwtToken, upload.single("profile_pic"), createUser);
+// router.put("/edit-user/:id", upload.single("profile_pic"), checkAdminJwtToken, editUser);
+router.put("/edit-user/:id", upload.single("profile_pic"), editUser);
+
 router.get("/get-all-users", getAllUsers);
+router.get("/get-a-user/:id", getAUser);
+
 // router.get("/get-user-permissions/:id", checkAdminJwtToken, getUserPermissions);
 router.get("/get-user-permissions/:id", getUserPermissions);
+// router.delete("/delete-user/:id", checkAdminJwtToken, deleteUser);
+
 export default router;
