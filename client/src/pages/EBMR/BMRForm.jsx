@@ -410,7 +410,6 @@ const BMRForm = () => {
 
       {tab === "QA" ? (
         <div className="document-form">
-
           <div className="section-body">
             <div className="dual-group-input">
               <div className="group-input">
@@ -961,7 +960,7 @@ const BMRForm = () => {
             </table>
 
             <div className="sub-head">
-              Solvent For Container/Hosepipe And Accessories Cleaning 
+              Solvent For Container/Hosepipe And Accessories Cleaning
             </div>
 
             <div className="AddRows d-flex">
@@ -1215,7 +1214,6 @@ const BMRForm = () => {
                       />
                     </td>
                     <td>
-                        
                       <select
                         value={item.category}
                         onChange={(e) => {
@@ -1516,10 +1514,10 @@ const BMRForm = () => {
                         <input />
                       </td>
                       <td>
-                        <input /> 
-                      </td> 
+                        <input />
+                      </td>
                       <td>
-                        <input /> 
+                        <input />
                       </td>
                     </tr>
                   );
@@ -1552,10 +1550,10 @@ const BMRForm = () => {
                         <input />
                       </td>
                       <td>
-                        <input /> 
+                        <input />
                       </td>
                       <td>
-                        <input type="date" /> 
+                        <input type="date" />
                       </td>
                     </tr>
                   );
@@ -1619,7 +1617,6 @@ const BMRForm = () => {
                 <thead>
                   <tr>
                     <th colspan="10" className="font-bold text-lg text-center">
-
                       Intermediate Dispensing
                     </th>
                   </tr>
@@ -1658,7 +1655,6 @@ const BMRForm = () => {
                 <thead>
                   <tr className="">
                     <th colspan="10" className="font-bold text-lg text-center">
-
                       After dispensing, clean the dispensing area and weighing
                       balance using a lint-free cloth.
                     </th>
