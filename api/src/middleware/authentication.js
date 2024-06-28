@@ -6,17 +6,17 @@ dotenv.config();
 export function checkAdminJwtToken(req, res, next) {
     const token = req.headers.authorization?.split(" ")[1];
     // console.log(token);
-  if (!token) {
-    return res.status(401).json({
-      error: true,
-      message: "Unauthorized User",
-    });
-  }
-  jwt.verify(token, process.env.JWT_ADMIN_SECRET, (err, decoded) => {
-    if (err) {
+    if (!token) {
       return res.status(401).json({
         error: true,
         message: "Unauthorized User",
+      });
+    }
+    jwt.verify(token, process.env.JWT_ADMIN_SECRET, (err, decoded) => {
+      if (err) {
+      return res.status(401).json({
+        error: true,
+        message: "jwt tokens doesn't match",
       });
     }
     req.user = decoded;
