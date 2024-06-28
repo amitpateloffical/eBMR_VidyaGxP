@@ -1,5 +1,11 @@
 import express from "express";
-import { Adminlogin, createUser, getAllRoleGroups } from "../controller/userController.js";
+import {
+  Adminlogin,
+  createUser,
+  getAllRoleGroups,
+  getAllUsers,
+  getUserPermissions,
+} from "../controller/userController.js";
 import { checkAdminJwtToken } from "../middleware/authentication.js";
 // import { upload } from "../../index.js";
 import multer from "multer";
@@ -21,6 +27,7 @@ export const upload = multer({ storage: storage });
 router.post("/admin-login", Adminlogin);
 router.get("/get-all-role-groups", getAllRoleGroups);
 router.post("/add-user", checkAdminJwtToken, upload.single("profile_pic"), createUser);
-
-
+router.get("/get-all-users", getAllUsers);
+// router.get("/get-user-permissions/:id", checkAdminJwtToken, getUserPermissions);
+router.get("/get-user-permissions/:id", getUserPermissions);
 export default router;

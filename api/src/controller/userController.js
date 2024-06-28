@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import RoleGroup from "../models/roleGroups.model.js";
 // import RoleGroup from "module";
-import bcrypt from 'bcrypt'
+import bcrypt from "bcrypt";
 import { getFileUrl } from "../middleware/authentication.js";
 import Role from "../models/roles.model.js";
 import Process from "../models/processes.model.js";
@@ -31,7 +31,7 @@ export const Adminlogin = (req, res) => {
       });
     } else {
       const token = jwt.sign({ user: "Admin" }, process.env.JWT_ADMIN_SECRET, {
-        expiresIn: "1h",
+        expiresIn: "24h",
       });
       if (token) {
         res.status(200).json({
@@ -50,7 +50,7 @@ export const Adminlogin = (req, res) => {
 
 export const createUser = async (req, res) => {
   const { password, email, name, rolesArray, age, gender } = req.body;
-
+  // console.log(req.body);
   if (!password || !email || !name || !rolesArray) {
     return res.status(400).json({
       error: true,
@@ -138,6 +138,46 @@ export const createUser = async (req, res) => {
   }
 };
 
+export const getAllUsers = async (req, res) => {
+  User.findAll()
+    .then((result) => {
+      res.status(200).json({
+        error: false,
+        response: result,
+      });
+    })
+    .catch((e) => {
+      res.status(400).json({
+        error: true,
+        response: e.message,
+      });
+    });
+};
+export const getUserPermissions = async (req, res) => {
+  UserRole.findAll({
+    where: {
+      user_id: req.params.id,
+    },
+    include: [
+      {
+        model: RoleGroup,
+        // model: Site,
+      },
+    ],
+  })
+    .then((result) => {
+      res.json({
+        error: false,
+        message: result,
+      });
+    })
+    .catch((error) => {
+      res.status(400).json({
+        error: true,
+        message: error.message,
+      });
+    });
+};
 
 export const getAllRoleGroups = async (req, res) => {
   try {

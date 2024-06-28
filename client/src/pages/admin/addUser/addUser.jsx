@@ -26,7 +26,7 @@ function AddNewUser() {
   }, [selectedOptions]);
 
   useEffect(() => {
-    const url = "http://localhost:3000/user/get-all-rolegroups";
+    const url = "http://localhost:3000/user/get-all-role-groups";
     axios
       .get(url)
       .then((response) => {
@@ -93,7 +93,7 @@ function AddNewUser() {
     };
 
     axios
-      .post("http://localhost:1000/user/add-user", formData, {
+      .post("http://localhost:3000/user/add-user", formData, {
         headers: myHeaders,
       })
       .then(() => {
@@ -148,7 +148,7 @@ function AddNewUser() {
               boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
             }}
           >
-            <form onSubmit={handleSubmit} style={{}} enctype="multipart/form-data" >
+            <form onSubmit={handleSubmit} style={{}} enctype="multipart/form-data">
               <h2 style={{ textAlign: "center" }}>
                 <div className="sub-head"> Add User</div>
               </h2>
