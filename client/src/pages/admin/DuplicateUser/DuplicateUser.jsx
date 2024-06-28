@@ -24,7 +24,7 @@ function DuplicateUser() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:1000/user/get-a-user/${location.state.id}`, {
+      .get(`http://localhost:3000/user/get-a-user/${location.state.id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("admin-token")}`,
         },
@@ -38,7 +38,7 @@ function DuplicateUser() {
       });
 
     axios
-      .get("http://localhost:1000/user/get-all-rolegroups")
+      .get("http://localhost:3000/user/get-all-role-groups")
       .then((response) => {
         setRoleGroups(response.data.response || []); // Ensure it's an array
       })
@@ -94,11 +94,11 @@ function DuplicateUser() {
     };
 
     axios
-      .post("http://localhost:1000/user/add-user", formData, {
+      .post("http://localhost:3000/user/add-user", formData, {
         headers: myHeaders,
       })
       .then(() => {
-        toast.success("Dupliacted User successfully!!");
+        toast.success("Duplicated User successfully!!");
         navigate(-1);
       })
       .catch((error) => {

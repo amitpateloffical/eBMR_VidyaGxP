@@ -153,7 +153,34 @@ export const getAllUsers = async (req, res) => {
       });
     });
 };
-// export const deleteUser = async (req, res) => {};
+export const deleteUser = async (req, res) => {
+  const transaction = await sequelize.transaction();
+
+  try {
+    const user = await User.findOne({ where: { user_id: req.params.id } }, { transaction });
+    if (!user) {
+      return res.status(404).json({
+        error: true,
+        message: "User not found",
+      });
+    }
+
+    await UserRole.destroy({ where: { user_id: req.params.id } }, { transaction });
+
+    await User.destroy({ where: { user_id: req.params.id } }, { transaction });
+    await transaction.commit();
+    res.json({
+      error: false,
+      message: "User deleted successfully",
+    });
+  } catch (err) {
+    await transaction.rollback();
+    res.status(500).json({
+      error: true,
+      message: err.message,
+    });
+  }
+};
 
 export const getAUser = async (req, res) => {
   try {

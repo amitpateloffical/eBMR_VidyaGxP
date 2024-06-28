@@ -42,7 +42,7 @@ function AdminDashboard() {
   const handleDelete = () => {
     const config = {
       method: "delete",
-      url: `http://localhost:1000/user/delete-user/${selectedUser.user_id}`,
+      url: `http://localhost:3000/user/delete-user/${selectedUser.user_id}`,
       headers: {
         Authorization: `Bearer ${localStorage.getItem("admin-token")}`,
       },

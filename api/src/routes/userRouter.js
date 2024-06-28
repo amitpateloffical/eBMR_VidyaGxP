@@ -7,7 +7,7 @@ import {
   getUserPermissions,
   editUser,
   getAUser,
-  // deleteUser,
+  deleteUser,
 } from "../controller/userController.js";
 import { checkAdminJwtToken } from "../middleware/authentication.js";
 // import { upload } from "../../index.js";
@@ -38,6 +38,6 @@ router.get("/get-a-user/:id", getAUser);
 
 // router.get("/get-user-permissions/:id", checkAdminJwtToken, getUserPermissions);
 router.get("/get-user-permissions/:id", getUserPermissions);
-// router.delete("/delete-user/:id", checkAdminJwtToken, deleteUser);
+router.delete("/delete-user/:id", checkAdminJwtToken, deleteUser);
 
 export default router;
