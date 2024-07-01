@@ -20,6 +20,10 @@ function CreateRecordModal(_props) {
           name: "eBMR",
           link: "/eBMR",
         },
+        {
+          name: "Capsule-eBMR",
+          link: "/capsule-eBMR",
+        },
         // {
         //   name: "Area & Equipment Usage Log",
         //   link: "/area-and-equiment-usage-log",
@@ -57,6 +61,10 @@ function CreateRecordModal(_props) {
         {
           name: "eBMR",
           link: "/eBMR",
+        },
+        {
+          name: "Capsule-eBMR",
+          link: "/capsule-eBMR",
         },
       ],
     },
