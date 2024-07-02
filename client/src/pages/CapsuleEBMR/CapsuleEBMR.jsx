@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./CapsuleEBMR.css";
 import HeaderTop from "../../components/Header/HeaderTop";
 import { CheckBox } from "@mui/icons-material";
+import { Radio } from "@mui/material";
 const CapsuleEBMR = () => {
   const [tab, setTab] = useState("General");
   return (
@@ -4367,154 +4368,1536 @@ const CapsuleEBMR = () => {
                   <td></td>
                 </tr>
                 <tr>
-                    <td colSpan={4}><b>Area / Equipments To Be Used</b></td>
-                    <td className="bg-gray-400"></td>
-                    <td className="bg-gray-400"></td>
-                    <td className="bg-gray-400"></td>
+                  <td colSpan={4}>
+                    <b>Area / Equipments To Be Used</b>
+                  </td>
+                  <td className="bg-gray-400"></td>
+                  <td className="bg-gray-400"></td>
+                  <td className="bg-gray-400"></td>
                 </tr>
                 <tr>
-                    <td>Capsule Filling Area </td>
-                    <td colSpan={2}>M…….. </td>
-                    <td>M…….. </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <td>Capsule Filling Area </td>
+                  <td colSpan={2}>M…….. </td>
+                  <td>M…….. </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
-                    <td>Capsule Filling Machine</td>
-                    <td colSpan={2}>PR462 <CheckBox/> </td>
-                    <td>PR176 <CheckBox/></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr> <tr>
-                    <td>Empty Capsule Sorter Elevator SE-100 </td>
-                    <td colSpan={2}>PR463 <CheckBox/> </td>
-                    <td>PR177 <CheckBox/> </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr> <tr>
-                    <td>Mini Capsule Sorter </td>
-                    <td colSpan={2}>PR464 <CheckBox/> </td>
-                    <td>PR178 <CheckBox/> </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr> <tr>
-                    <td>Empty Capsule Sorter ECS- 100 </td>
-                    <td colSpan={2}>PR465 <CheckBox/> </td>
-                    <td>PR179 <CheckBox/> </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr> <tr>
-                    <td>Dedusting and Polishing machine </td>
-                    <td colSpan={2}>PR466 <CheckBox/> </td>
-                    <td>PR290 <CheckBox/> </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr> <tr>
-                    <td>Metal Detector </td>
-                    <td colSpan={2}>PR467 <CheckBox/> </td>
-                    <td>PR184  <CheckBox/> </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr> <tr>
-                    <td>ADU 100 </td>
-                    <td colSpan={2}>PR468 <CheckBox/> </td>
-                    <td>PR186  <CheckBox/> </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr> <tr>
-                    <td>Product Conveying System </td>
-                    <td colSpan={2}>PR470 <CheckBox/> </td>
-                    <td>PR183 <CheckBox/> </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <td>Capsule Filling Machine</td>
+                  <td colSpan={2}>
+                    PR462 <CheckBox />{" "}
+                  </td>
+                  <td>
+                    PR176 <CheckBox />
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>{" "}
+                <tr>
+                  <td>Empty Capsule Sorter Elevator SE-100 </td>
+                  <td colSpan={2}>
+                    PR463 <CheckBox />{" "}
+                  </td>
+                  <td>
+                    PR177 <CheckBox />{" "}
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>{" "}
+                <tr>
+                  <td>Mini Capsule Sorter </td>
+                  <td colSpan={2}>
+                    PR464 <CheckBox />{" "}
+                  </td>
+                  <td>
+                    PR178 <CheckBox />{" "}
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>{" "}
+                <tr>
+                  <td>Empty Capsule Sorter ECS- 100 </td>
+                  <td colSpan={2}>
+                    PR465 <CheckBox />{" "}
+                  </td>
+                  <td>
+                    PR179 <CheckBox />{" "}
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>{" "}
+                <tr>
+                  <td>Dedusting and Polishing machine </td>
+                  <td colSpan={2}>
+                    PR466 <CheckBox />{" "}
+                  </td>
+                  <td>
+                    PR290 <CheckBox />{" "}
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>{" "}
+                <tr>
+                  <td>Metal Detector </td>
+                  <td colSpan={2}>
+                    PR467 <CheckBox />{" "}
+                  </td>
+                  <td>
+                    PR184 <CheckBox />{" "}
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>{" "}
+                <tr>
+                  <td>ADU 100 </td>
+                  <td colSpan={2}>
+                    PR468 <CheckBox />{" "}
+                  </td>
+                  <td>
+                    PR186 <CheckBox />{" "}
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>{" "}
+                <tr>
+                  <td>Product Conveying System </td>
+                  <td colSpan={2}>
+                    PR470 <CheckBox />{" "}
+                  </td>
+                  <td>
+                    PR183 <CheckBox />{" "}
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
-                    <td rowSpan={2}>Weighing balance </td>
-                    <td  colSpan={2}>PR... </td>
-                    <td >PR...  </td>
-                    <td ></td>
-                    <td ></td>
-                    <td></td>
+                  <td rowSpan={2}>Weighing balance </td>
+                  <td colSpan={2}>PR... </td>
+                  <td>PR... </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
-                    <td>PR...</td>
-                    <td></td>PR...<td></td><td></td><td></td>
-                </tr>
-               
-                <tr>
-                    <td>Vacuum cleaner  </td>
-                    <td colSpan={2}>PR.. </td>
-                    <td>PR...</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <td>PR...</td>
+                  <td></td>PR...<td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
-                    <td>Hygrometer ID No</td>
-                    <td colSpan={3}><input placeholder="....."/> </td>
-                   
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                  <td>Vacuum cleaner </td>
+                  <td colSpan={2}>PR.. </td>
+                  <td>PR...</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Hygrometer ID No</td>
+                  <td colSpan={3}>
+                    <input placeholder="....." />{" "}
+                  </td>
+
+                  <td></td>
+                  <td></td>
+                  <td></td>
                 </tr>
               </tbody>
             </table>
 
-            <div className="sub-head">Equipment’s PPM And Calibration Status</div>
+            <div className="sub-head">
+              Equipment’s PPM And Calibration Status
+            </div>
             <table>
-                <thead>
-                    <tr>
-                        <th>Equipment’s Name </th>
-                        <th>Equipment’s ID</th>
-                        <th>PPM done on</th>
-                        <th>PPM due on
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
+              <thead>
                 <tr>
-                    <td>Capsule Filling Machine </td>
-                    <td>PR………..</td>
-                    <td></td>
-                    <td></td>
+                  <th>Equipment’s Name </th>
+                  <th>Equipment’s ID</th>
+                  <th>PPM done on</th>
+                  <th>PPM due on</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Capsule Filling Machine </td>
+                  <td>PR………..</td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
-                    <td>Empty Capsule Sorter Elevator
-                    SE-100 </td>
-                    <td>PR………..</td>
-                    <td></td>
-                    <td></td>
+                  <td>Empty Capsule Sorter Elevator SE-100 </td>
+                  <td>PR………..</td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
-                    <td>Mini Capsule Sorter </td>
-                    <td>PR………..</td>
-                    <td></td>
-                    <td></td>
+                  <td>Mini Capsule Sorter </td>
+                  <td>PR………..</td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
-                    <td>Empty Capsule Sorter ECS- 100  </td>
-                    <td>PR………..</td>
-                    <td></td>
-                    <td></td>
+                  <td>Empty Capsule Sorter ECS- 100 </td>
+                  <td>PR………..</td>
+                  <td></td>
+                  <td></td>
                 </tr>
                 <tr>
-                    <td>Dedusting and Polishing machine  </td>
-                    <td>PR………..</td>
-                    <td></td>
-                    <td></td>
+                  <td>Dedusting and Polishing machine </td>
+                  <td>PR………..</td>
+                  <td></td>
+                  <td></td>
                 </tr>
-                </tbody>
+                <tr>
+                  <td>Metal Detector</td>
+                  <td>PR……….. </td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td rowSpan={2}>ADU 100</td>
+                  <td>PR………..</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>PR.....</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Product Conveying System</td>
+                  <td>PR...</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td className="bg-gray-400"></td>
+                  <td className="bg-gray-400"></td>
+                  <td>
+                    <b>Calibration done on</b>
+                  </td>
+                  <td>
+                    <b>Calibration due on</b>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Weighing Balance</td>
+                  <td>PR...</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Disintegration test apparatus </td>
+                  <td>PR...</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Vernier Calipers</td>
+                  <td>PR...</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>Hygrometer ID No.</td>
+                  <td>...</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>
+                    <b>Checked by (Sign/date)</b>
+                  </td>
+                  <td colSpan={3}></td>
+                </tr>
+                <tr>
+                  <td>
+                    <b>Verified by (Sign/date)</b>
+                  </td>
+                  <td colSpan={3}></td>
+                </tr>
+              </tbody>
             </table>
+
+            <div className="sub-head">
+              Cleaning Verification And Line Clearance
+            </div>
+            <table>
+              <thead>
+                <tr>
+                  <td rowSpan={10}>
+                    Line Clearance checks as per SOP: ML11/SOP/QAGN/0001
+                  </td>
+                  <th colSpan={4}>
+                    <b>Line Clearance </b>
+                  </th>
+                  <th colSpan={4}>
+                    <b># Repeat Line Clearance</b>
+                  </th>
+                </tr>
+                <tr>
+                  <th colSpan={2}>Done by </th>
+                  <th colSpan={2}>Verified by</th>
+                  <th colSpan={2}>Done by </th>
+                  <th colSpan={2}>Verified by</th>
+                </tr>
+                <tr>
+                  <th>Sign </th>
+                  <th>Date</th>
+                  <th>Sign </th>
+                  <th>Date</th>
+                  <th>Sign </th>
+                  <th>Date</th>
+                  <th>Sign </th>
+                  <th>Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <input />
+                  </td>
+                  <td>
+                    <input />
+                  </td>
+                  <td>
+                    <input />
+                  </td>
+                  <td>
+                    <input />
+                  </td>
+                  <td>
+                    <input />
+                  </td>
+                  <td>
+                    <input />
+                  </td>
+                  <td>
+                    <input />
+                  </td>
+                  <td>
+                    <input />
+                  </td>
+                  <td>
+                    <input />
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div className="sub-head">
+              Calcultion For Actual Fill Weight Per Capsule
+            </div>
+
+            <div></div>
           </div>
+        </div>
+      ) : null}
+
+      {tab === "CFMS" ? (
+        <div className="document-form">
+          <table>
+            <thead>
+              <tr>
+                <th>STEP No.</th>
+                <th>INSTRUCTIONS</th>
+                <th>Done by</th>
+                <th>Checked by sign & date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>
+                  Verify the Labels on the containers of lubricated blend and
+                  transfer the blend and Empty Hard Gelatin capsules to capsule
+                  filling area.{" "}
+                </td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>
+                  Clean empty containers, Polybags & labels Verified and Issued
+                </td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td className="flex flex-col">
+                  Determination of standard Empty capsule shell weight:
+                  <span>
+                    a) Take 20 empty capsules from the individual A.R number.
+                  </span>
+                  <span>
+                    b) Determine and record the average weight of 20 empty
+                    capsules.
+                  </span>
+                  <span>
+                    c) The mean average of empty capsules should be considered
+                    as standard empty capsule shell weight for initial machine
+                    setting.
+                  </span>
+                  <span>d) Record the observations in the table 16.1</span>{" "}
+                </td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>
+                  Operate the Capsule filling machine (AF-90T / AF-150T) as per
+                  ML11/SOP/PROP/0043 / ML11/SOP/PROP/0021 at speed of 80 to 104
+                  / 100 to 140 Strokes per minute respectively.
+                </td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>
+                  Adjust the machine as per the parameters mentioned in table
+                  no.:17.0
+                </td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>
+                  Run the machine, collect the samples and carry out machine
+                  setting checks for Group mass (weight.), Uniformity of mass
+                  (weight) and other parameters. Record the details in the
+                  respective table in the BMR.{" "}
+                </td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td className="flex flex-col">
+                  {" "}
+                  Setting of empty capsule sorter (ECS100): Voltage limit: 145
+                  to 155 volts.
+                  <span>
+                    a) Take 20 nos. filled capsules of the batch under filling
+                    and 10 nos. empty capsule shells and load slowly to the
+                    hopper.
+                  </span>
+                  <span>
+                    b) Set the machine at 150 volts as per ML11/SOP/PROP/0043 /
+                    ML11/SOP/PROP/0021.
+                  </span>
+                  <span>
+                    c) Look for separation of empty capsule shells and the
+                    filled capsules.
+                  </span>
+                  <span>d) Repeat the trial at 145 and 155 volts.</span>
+                  <span>
+                    e) Acceptance criteria: All the 10 empty capsule shells
+                    should be separated in all the three trials.
+                  </span>
+                  <span>f) Record the observations in the table 18.1. 1</span>
+                </td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div className="sub-head">Empty Capsule Weight Determination</div>
+          <table>
+            <thead>
+              <tr>
+                <th>Sr. No</th>
+                <th>Average weight of 20 empty capsules (mg)</th>
+                <th>A.R. Number</th>
+                <th>Mean Average (mg)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td rowSpan={3}>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td colSpan={2}>Done by Production (Sign/Date): </td>
+                <td colSpan={2}>Verified by IPQA (Sign/Date):</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      ) : null}
+
+      {tab === "CFP" ? (
+        <div className="document-form">
+          <table border="1">
+            <thead>
+              <tr>
+                <th>Sr. No.</th>
+                <th>Parameter</th>
+                <th>Limits</th>
+                <th>Theoretical</th>
+                <th>Actual</th>
+                <th>Frequency</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1.</td>
+                <td>Appearance</td>
+                <td colSpan="3">
+                  Empty Hard Gelatin Capsules- Color and Size:
+                  <br />
+                  Cap: Maroon & Body: yellow
+                  <br />
+                  Size '0'EL' Printing: "____" printed on cap and body in white
+                  ink linearly and containing white / off-white powder.
+                </td>
+                <td rowSpan="15">
+                  Frequencies to be followed as per SOP.
+                  <br />
+                  [ML11/SOP/QAGN/0064# - Inprocess checks and challenges during
+                  manufacturing and packing]
+                </td>
+              </tr>
+              <tr>
+                <td>2.</td>
+                <td>Target Fill Weight. (Theoretical Weight)</td>
+                <td></td>
+                <td>_____ mg</td>
+                <td>
+                  .......... mg ± 2.0 %<br />
+                  (.......... to .......... mg)
+                </td>
+              </tr>
+              <tr>
+                <td>3.</td>
+                <td>Weight of Empty Capsule</td>
+                <td></td>
+                <td>_____ mg</td>
+                <td>
+                  .......... mg ± 10.0 %<br />
+                  (.......... to .......... mg)
+                </td>
+              </tr>
+              <tr>
+                <td>4.</td>
+                <td>Weight of Filled Capsule</td>
+                <td></td>
+                <td>_____ mg</td>
+                <td>
+                  .......... mg ± 2.0 %<br />
+                  (.......... to .......... mg)
+                </td>
+              </tr>
+              <tr>
+                <td>5.</td>
+                <td>Average Weight of 20 Filled Capsules</td>
+                <td></td>
+                <td>
+                  _____ mg ± 2.0 %<br />
+                  (_____ mg to _____ mg)
+                </td>
+                <td>
+                  .......... mg ± 2.0 %<br />
+                  (.......... to .......... mg)
+                </td>
+              </tr>
+              <tr>
+                <td>6.</td>
+                <td>Group mass (Wt) of 20 Filled Capsules</td>
+                <td></td>
+                <td>
+                  _____ g ± 2.0 %<br />
+                  (_____ g to _____ g)
+                </td>
+                <td>
+                  .......... g ± 2.0 %<br />
+                  (.......... to .......... g)
+                </td>
+              </tr>
+              <tr>
+                <td>7.</td>
+                <td>Uniformity of fill mass (wt.)</td>
+                <td></td>
+                <td>
+                  ± 5 % of{" "}
+                  <span style={{ color: "red" }}>target fill mass</span>
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>8.</td>
+                <td>Uniformity of mass (wt.) of filled capsule</td>
+                <td></td>
+                <td>
+                  ± 5 % of <span style={{ color: "red" }}>target mass</span> of
+                  filled capsule
+                </td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>9.</td>
+                <td>Disintegration Time</td>
+                <td>NMT 10 minutes at 37°C ± 2°C</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>10.</td>
+                <td>Locking length</td>
+                <td>23.10mm to 23.90mm</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>11.</td>
+                <td>Machine speed</td>
+                <td colSpan="3">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td>AF-90 T</td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                        <td>AF-150 T</td>
+                        <td>
+                          <input type="checkbox" />
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colSpan="4" style={{ textAlign: "center" }}>
+                          80-104 SPM <input type="checkbox" /> 100-140 SPM{" "}
+                          <input type="checkbox" />
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+              </tr>
+              <tr>
+                <td>12.</td>
+                <td>Metal Detection</td>
+                <td colSpan="3">
+                  For ferrous, nonferrous and SS deflection observed and for
+                  blank no deflection.
+                </td>
+              </tr>
+              <tr>
+                <td>13.</td>
+                <td>Environmental conditions</td>
+                <td colSpan="3">Temperature: NMT 25°C and RH:NMT 45%</td>
+              </tr>
+              <tr>
+                <td>14.</td>
+                <td>ECS Challenging</td>
+                <td colSpan="3">
+                  20 Filled capsules + 10 Empty capsule shells.
+                </td>
+              </tr>
+              <tr>
+                <td>15.</td>
+                <td>Voltage reading of ECS-100 and challenge</td>
+                <td colSpan="3">± 5% volts from the set value</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      ) : null}
+
+      {tab === "MSCFCF" ? (
+        <div className="document-form">
+          <table>
+            <thead>
+              <tr>
+                <th>Sr.No.</th>
+                <th>Parameter</th>
+                <th>Limits</th>
+                <th>Observations</th>
+                <th>Checked by Production (Sign/date)</th>
+                <th>Verified by IPQA (Sign/date)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Group weight of 20 filled capsules </td>
+                <td>……….g ±2.0% (……….…..to………....g)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Average weight of filled capsule </td>
+                <td>……..mg ±2.0% (………..to……….....mg)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Uniformity of filled capsule weight </td>
+                <td>……..mg ±5.0% (………..to……...mg) </td>
+                <td>Min…………. Max…………</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Uniformity of mass </td>
+                <td>……..mg ±5.0% (………..to………....mg) </td>
+                <td>Min…………. Max…………</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>Average weight of empty capsule </td>
+                <td>………mg ± 10 % (………mg to ……… mg) </td>
+                <td>Min…………. Max…………</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>Tamping pin position</td>
+                <td colSpan={2}>
+                  1)…....mm 2)…....mm 3)……..mm 4)…….mm 5)…….mm
+                </td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td>Dosing disc </td>
+                <td colSpan={2}> …….mm</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td>Disintegration time</td>
+                <td>NMT 10 minutes at 37ºC ±2ºC</td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td className="bg-gray-400"></td>
+                <td>
+                  <b>Description of capsule #</b>
+                </td>
+                <td>
+                  <b>Weight of Filled capsule in mg</b>
+                </td>
+                <td>
+                  <b>Weight of Empty capsule in mg</b>
+                </td>
+                <td>
+                  <b>Net weight in mg</b>
+                </td>
+                <td>
+                  <b>Lock Length in mm (23.10 to 23.90 mm)</b>
+                </td>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td className="flex gap-3">
+                  Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] w-[30px] mt-2 mb-1"
+                  />
+                  /Not Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] mb-1 w-[30px] mt-2"
+                  />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td className="flex gap-3">
+                  Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] w-[30px] mt-2 mb-1"
+                  />
+                  /Not Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] mb-1 w-[30px] mt-2"
+                  />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td className="flex gap-3">
+                  Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] w-[30px] mt-2 mb-1"
+                  />
+                  /Not Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] mb-1 w-[30px] mt-2"
+                  />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td className="flex gap-3">
+                  Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] w-[30px] mt-2 mb-1"
+                  />
+                  /Not Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] mb-1 w-[30px] mt-2"
+                  />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td className="flex gap-3">
+                  Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] w-[30px] mt-2 mb-1"
+                  />
+                  /Not Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] mb-1 w-[30px] mt-2"
+                  />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td className="flex gap-3">
+                  Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] w-[30px] mt-2 mb-1"
+                  />
+                  /Not Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] mb-1 w-[30px] mt-2"
+                  />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td className="flex gap-3">
+                  Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] w-[30px] mt-2 mb-1"
+                  />
+                  /Not Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] mb-1 w-[30px] mt-2"
+                  />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td className="flex gap-3">
+                  Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] w-[30px] mt-2 mb-1"
+                  />
+                  /Not Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] mb-1 w-[30px] mt-2"
+                  />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>9</td>
+                <td className="flex gap-3">
+                  Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] w-[30px] mt-2 mb-1"
+                  />
+                  /Not Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] mb-1 w-[30px] mt-2"
+                  />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>10</td>
+                <td className="flex gap-3">
+                  Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] w-[30px] mt-2 mb-1"
+                  />
+                  /Not Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] mb-1 w-[30px] mt-2"
+                  />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>12</td>
+                <td className="flex gap-3">
+                  Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] w-[30px] mt-2 mb-1"
+                  />
+                  /Not Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] mb-1 w-[30px] mt-2"
+                  />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>13</td>
+                <td className="flex gap-3">
+                  Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] w-[30px] mt-2 mb-1"
+                  />
+                  /Not Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] mb-1 w-[30px] mt-2"
+                  />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>14</td>
+                <td className="flex gap-3">
+                  Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] w-[30px] mt-2 mb-1"
+                  />
+                  /Not Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] mb-1 w-[30px] mt-2"
+                  />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>15</td>
+                <td className="flex gap-3">
+                  Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] w-[30px] mt-2 mb-1"
+                  />
+                  /Not Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] mb-1 w-[30px] mt-2"
+                  />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>16</td>
+                <td className="flex gap-3">
+                  Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] w-[30px] mt-2 mb-1"
+                  />
+                  /Not Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] mb-1 w-[30px] mt-2"
+                  />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>17</td>
+                <td className="flex gap-3">
+                  Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] w-[30px] mt-2 mb-1"
+                  />
+                  /Not Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] mb-1 w-[30px] mt-2"
+                  />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>18</td>
+                <td className="flex gap-3">
+                  Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] w-[30px] mt-2 mb-1"
+                  />
+                  /Not Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] mb-1 w-[30px] mt-2"
+                  />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>19</td>
+                <td className="flex gap-3">
+                  Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] w-[30px] mt-2 mb-1"
+                  />
+                  /Not Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] mb-1 w-[30px] mt-2"
+                  />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>20</td>
+                <td className="flex gap-3">
+                  Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] w-[30px] mt-2 mb-1"
+                  />
+                  /Not Ok{" "}
+                  <input
+                    type="checkbox"
+                    className="h-[20px] mb-1 w-[30px] mt-2"
+                  />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td colSpan={6}>
+                  {" "}
+                  <b>Done by Production:</b>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div className="sub-head">Set Voltage Record</div>
+          <table>
+            <thead>
+              <tr>
+                <th rowSpan={2}>Sr. No.</th>
+                <th rowSpan={2}>Voltage value</th>
+                <th rowSpan={2}>No. of capsules charged</th>
+                <th colSpan={2}>Observation for separation of capsules</th>
+                <th rowSpan={2}>Done by Production (Sign/date)</th>
+                <th rowSpan={2}>Verified by IPQA (Sign/date)</th>
+              </tr>
+              <tr>
+                <th>No. of filled capsules</th>
+                <th>No. of empty capsules</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1 </td>
+                <td>145 volts</td>
+                <td rowSpan={3}>
+                  20 filled capsules + 10 empty capsule shells
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>2 </td>
+                <td>150 volts</td>
+
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>3 </td>
+                <td>155 volts</td>
+
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td colspan={4}>Set voltage: ……………….. volts</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div className="sub-head"> Metal Detector Setting</div>
+          <table>
+            <thead>
+              <tr>
+                <td rowSpan={19}>
+                  Initial Metal Detector Check as per ML11/SOP/PROP/0043 /
+                  ML11/SOP/PROP/0021
+                </td>
+                <th>Date/Time</th>
+                <th>Sr. No</th>
+                <th>Check List</th>
+                <th>Deflection Observation*</th>
+                <th>Checked by Production (Sign/date)</th>
+                <th>Verified by IPQA (Sign/date)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowSpan={19}></td>
+                <td rowSpan={4}>
+                  <input />
+                </td>
+                <td>1</td>
+                <td>Ferrous standard </td>
+                <td>Yes/No</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Non Ferrous standard</td>
+                <td>Yes/No</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Non Ferrous standard</td>
+                <td>Yes/No</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Non Ferrous standard</td>
+                <td>Yes/No</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td rowSpan={4}>
+                  <input />
+                </td>
+                <td>1</td>
+                <td>Ferrous standard </td>
+                <td>Yes / No </td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Non Ferrous standard </td>
+                <td>Yes / No </td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>S.S. standard </td>
+                <td>Yes / No </td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Blank </td>
+                <td>Yes / No </td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td rowSpan={4}>
+                  <input />
+                </td>
+                <td>1</td>
+                <td>Ferrous standard </td>
+                <td>Yes / No </td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Non Ferrous standard </td>
+                <td>Yes / No </td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>S.S. standard </td>
+                <td>Yes / No </td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>Blank </td>
+                <td>Yes / No </td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div className="sub-head">
+            Approval For Commencement Of Capsule Filling
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th rowSpan={0}></th>
+                <th colSpan={2}>Day...</th>
+                <th colSpan={2}>Day...</th>
+              </tr>
+              <tr>
+                <th>Sign</th>
+                <th>Date</th>
+                <th>Sign</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  Receipt and verification of materials dispensed for the batch
+                  is done Line clearance <CheckBox /> / Repeat Line clearance{" "}
+                  <CheckBox />
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      ) : null}
+
+      {tab === "CFIAR" ? (
+        <div className="document-form">
+          <table>
+            <thead>
+              <tr>
+                <th>Step No.</th>
+                <th>Manufacturing Procedure</th>
+                <th>Done by </th>
+                <th>Checked by sign & date</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Start capsule filling of the batch. Record the In process capsule filling parameter
+                    checks as per the Capsule Filling Parameters. </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>In process checks to be performed as per SOP: ML11/SOP/QAGN/0064 </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Record the quantity of samples and losses. </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Collect samples at capsule filling stage for QC analysis, fill the test request form and
+                    send Sample to AQA through IPQA. </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Transfer the Filled capsules to the quarantine area. Store below 25°C and below 45%
+                    RH. Protect from light and moisture. </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>I Record the Net Weight of Filled capsules and calculate the Actual Net % Yield in
+                    Reconciliation Sheet.  </td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+          </table>
+
+          <div className="sub-head"> Metal Detector Sensitivity In-Process Checks.</div>
+
+          <table>
+            <thead>
+                <tr>
+                    <th rowSpan={3}>Date</th>
+                    <th rowSpan={3}>Time</th>
+                    <th colspan={4}>Metal detector Challenge Test</th>
+                    <th rowSpan={3}>Checked by </th>
+                    <th rowSpan={3}>Remarks</th>
+                </tr>
+                <tr>
+                    <th colSpan={4}>Observation (Write YES or NO) </th>
+                </tr>
+                <tr>
+                    <th>Ferrous </th>
+                    <th>Non
+                    Ferrous </th>
+                    <th>SS 316</th>
+                    <th>Blank
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                </tr>
+                <tr>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                </tr>   <tr>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                </tr>
+            </tbody>
+          </table>
+          <div className="sub-head">ECS Challenging In-Process Checks</div>
+          <table>
+            <thead>
+                <tr>
+                    <th rowSpan={2}>Date </th>
+                    <th rowSpan={2}>Time</th>
+                    <th colSpan={2}>ECS Challenge Test</th>
+                    <th rowSpan={2}>Checked by</th>
+                    <th rowSpan={2}>Remarks </th>
+                </tr>
+                <tr>
+                    <th>Voltage Observed </th>
+                    <th>Observation*</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Complies / Does not complies</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Complies / Does not complies</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Complies / Does not complies</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Complies / Does not complies</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Complies / Does not complies</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Complies / Does not complies</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>Complies / Does not complies</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+          </table>
         </div>
       ) : null}
     </div>
