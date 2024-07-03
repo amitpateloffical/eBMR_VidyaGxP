@@ -4,10 +4,11 @@ import { NoteAdd } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import HeaderTop from "../../../components/Header/HeaderTop";
 
 const BMRForm = () => {
+  const Ebmr = useSelector((state) => state.ebmrData.EBMRFormData);
   const [tab, setTab] = useState("General");
   const [allTableData, setAllTableData] = useState([]);
   const [packingMaterialTablesData, setpackingMaterialTablesData] = useState([]);
@@ -39,30 +40,31 @@ const BMRForm = () => {
     }),
     {
       eBMRId: uniqueId + 1,
-      process: "Batch Manufacturuing Record",
-      productName: "",
-      documentNo: "",
-      productCode: "",
-      effectiveDate: "",
-      stage: "",
-      supersedesNo: "",
-      batchNo: "",
-      pageNo: "",
-      standartBatchSize: "",
-      actualBatchSize: "",
-      batchStartingDate: "",
-      batchComplitionDate: "",
-      time: "",
-      expectedOutput: "",
-      actualOutput: "",
-      expectedYeild: "",
-      actualYeild: "",
-      manufacturingDate: "",
-      expiryRetestdate: "",
-      packingAndStoreCondition: "",
+      process: "Batch Manufacturing Record",
+      productName: Ebmr[0].productName,
+      documentNo: Ebmr[0].documentNo,
+      productCode: Ebmr[0].productCode,
+      effectiveDate: Ebmr[0].effectiveDate,
+      stage: Ebmr[0].stage,
+      supersedesNo: Ebmr[0].supersedesNo,
+      batchNo: Ebmr[0].batchNo,
+      pageNo: Ebmr[0].pageNo,
+      standartBatchSize: Ebmr[0].standartBatchSize,
+      actualBatchSize: Ebmr[0].actualBatchSize,
+      batchStartingDate: Ebmr[0].batchStartingDate,
+      batchComplitionDate: Ebmr[0].batchComplitionDate,
+      time: Ebmr[0].time,
+      expectedOutput: Ebmr[0].expectedOutput,
+      actualOutput: Ebmr[0].actualOutput,
+      expectedYeild: Ebmr[0].expectedYeild,
+      actualYeild: Ebmr[0].actualYeild,
+      manufacturingDate: Ebmr[0].manufacturingDate,
+      expiryRetestdate: Ebmr[0].expiryRetestdate,
+      packingAndStoreCondition: Ebmr[0].packingAndStoreCondition,
     }
   );
   console.log(ManufacturingRecord, "ManufacturingRecord");
+
   useEffect(() => {
     setManufacturingRecord({ gridData: allTableData });
   }, [allTableData]);

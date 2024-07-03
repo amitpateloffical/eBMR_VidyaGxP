@@ -68,7 +68,7 @@ const BMRForm = () => {
       packingAndStoreCondition: "",
     }
   );
-  console.log(ManufacturingRecord, "ManufacturingRecord");
+  // console.log(ManufacturingRecord, "ManufacturingRecord");
   useEffect(() => {
     setManufacturingRecord({ gridData: allTableData });
   }, [allTableData]);
