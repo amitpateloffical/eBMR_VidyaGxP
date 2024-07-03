@@ -153,6 +153,76 @@ export const getAllUsers = async (req, res) => {
       });
     });
 };
+export const deleteUser = async (req, res) => {
+  const transaction = await sequelize.transaction();
+
+  try {
+    const user = await User.findOne({ where: { user_id: req.params.id } }, { transaction });
+    if (!user) {
+      return res.status(404).json({
+        error: true,
+        message: "User not found",
+      });
+    }
+
+    await UserRole.destroy({ where: { user_id: req.params.id } }, { transaction });
+
+    await User.destroy({ where: { user_id: req.params.id } }, { transaction });
+    await transaction.commit();
+    res.json({
+      error: false,
+      message: "User deleted successfully",
+    });
+  } catch (err) {
+    await transaction.rollback();
+    res.status(500).json({
+      error: true,
+      message: err.message,
+    });
+  }
+};
+
+export const getAUser = async (req, res) => {
+  try {
+    const user = await User.findOne({
+      where: { user_id: req.params.id },
+      include: [
+        {
+          model: UserRole,
+          include: [
+            {
+              model: RoleGroup,
+              attributes: ["roleGroup", "roleGroup_id"], // Select roleGroup and roleGroup_id attributes
+            },
+          ],
+        },
+      ],
+    });
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found" });
+    }
+
+    const formattedUser = {
+      user_id: user.user_id,
+      name: user.name,
+      email: user.email,
+      age: user.age,
+      gender: user.gender,
+      profile_pic: user.profile_pic,
+      roles: user.UserRoles.map((userRole) => ({
+        label: userRole.RoleGroup.roleGroup,
+        value: userRole.RoleGroup.roleGroup_id,
+      })),
+    };
+
+    res.status(200).json(formattedUser);
+  } catch (error) {
+    console.error("Error fetching user with role groups:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
 export const getUserPermissions = async (req, res) => {
   UserRole.findAll({
     where: {
@@ -161,7 +231,6 @@ export const getUserPermissions = async (req, res) => {
     include: [
       {
         model: RoleGroup,
-        // model: Site,
       },
     ],
   })
@@ -177,6 +246,91 @@ export const getUserPermissions = async (req, res) => {
         message: error.message,
       });
     });
+};
+
+export const editUser = async (req, res) => {
+  // Check if request body is empty
+  if (!req.body && !req.files) {
+    return res.status(400).json({
+      error: true,
+      message: "Please provide details to update!",
+    });
+  }
+
+  // Start a transaction
+  const transaction = await sequelize.transaction();
+
+  try {
+    // Update user details
+    const userdetails = {
+      name: req.body.name,
+      email: req.body.email,
+      age: req.body.age,
+      gender: req.body.gender,
+      profile_pic: getFileUrl(req?.file),
+    };
+
+    await User.update(userdetails, {
+      where: { user_id: req.params.id },
+      transaction,
+    });
+
+    // Delete existing UserRole entries
+    await UserRole.destroy({
+      where: { user_id: req.params.id },
+      transaction,
+    });
+
+    // Process roles array
+    const rolesArray = req.body.rolesArray;
+    for (const role of rolesArray) {
+      const singleRole = role.label.split("-");
+      const roleId = await Role.findOne({
+        where: { role: singleRole[2] },
+        transaction,
+      });
+      const processId = await Process.findOne({
+        where: { process: singleRole[1] },
+        transaction,
+      });
+      const siteId = await Site.findOne({
+        where: { site: singleRole[0] },
+        transaction,
+      });
+      const roleGroup = await RoleGroup.findOne({
+        where: { roleGroup: role.label },
+        transaction,
+      });
+
+      await UserRole.create(
+        {
+          user_id: req.params.id,
+          site_id: siteId.site_id,
+          process_id: processId.process_id,
+          role_id: roleId.role_id,
+          roleGroup_id: roleGroup.roleGroup_id,
+        },
+        { transaction }
+      );
+    }
+
+    // Commit the transaction
+    await transaction.commit();
+
+    console.log("User Edited Successfully");
+    return res.status(200).json({
+      error: false,
+      message: "User Details Updated",
+    });
+  } catch (error) {
+    // Rollback the transaction in case of error
+    await transaction.rollback();
+
+    return res.status(500).json({
+      error: true,
+      message: `Error during update: ${error.message}`,
+    });
+  }
 };
 
 export const getAllRoleGroups = async (req, res) => {

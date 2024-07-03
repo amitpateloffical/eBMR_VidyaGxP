@@ -23,7 +23,7 @@ function EditUser() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:1000/user/get-a-user/${location.state.id}`, {
+      .get(`http://localhost:3000/user/get-a-user/${location.state.id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("admin-token")}`,
         },
@@ -37,7 +37,7 @@ function EditUser() {
       });
 
     axios
-      .get("http://localhost:1000/user/get-all-rolegroups")
+      .get("http://localhost:3000/user/get-all-role-groups")
       .then((response) => {
         setRoleGroups(response.data.response || []); // Ensure it's an array
       })
@@ -105,7 +105,7 @@ function EditUser() {
     };
 
     axios
-      .put(`http://localhost:1000/user/edit-user/${location.state.id}`, resultObj, {
+      .put(`http://localhost:3000/user/edit-user/${location.state.id}`, resultObj, {
         headers: myHeaders,
       })
       .then(() => {
@@ -153,7 +153,7 @@ function EditUser() {
           }}
         >
           <form onSubmit={handleSubmit} style={{}}>
-            <h2 style={{ textAlign: "center" ,color:"black"}}>
+            <h2 style={{ textAlign: "center", color: "black" }}>
               <div className="sub-head"> Edit User</div>
             </h2>
             <div className="group-input" style={{ margin: "15px" }}>
