@@ -20,7 +20,7 @@ export const Adminlogin = (req, res) => {
   //   console.log("Hello", req.body);
   if (email.toLowerCase() !== "admin@vidyagxp.com") {
     res.status(401).json({
-      error: false,
+      error: false,                                                                       
       message: "Couldn't find User!",
     });
   } else {
