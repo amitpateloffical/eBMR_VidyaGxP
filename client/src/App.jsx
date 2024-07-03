@@ -17,6 +17,7 @@ import AddNewUser from "./pages/admin/addUser/addUser.jsx";
 import DuplicateUser from "./pages/admin/DuplicateUser/DuplicateUser.jsx";
 import EditUser from "./pages/admin/EditUser/EditUser.jsx";
 import CapsuleEBMR from "./pages/CapsuleEBMR/CapsuleEBMR.jsx";
+import BMRPanel from "./pages/panels/ebmr/BMRPanel.jsx";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             <Route path="/desktop" element={<Desktop />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/eBMR" element={<BMRForm />} />
+            <Route path="/eBMR-panel" element={<BMRPanel />} />
             <Route path="/capsule-eBMR" element={<CapsuleEBMR />} />
             {/* Admin Components */}
             <Route path="/admin-login" element={<AdminLogin />} />

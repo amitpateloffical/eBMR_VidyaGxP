@@ -8,16 +8,12 @@ import { useDispatch, useSelector } from "react-redux";
 function Desktop() {
   const navigate = useNavigate();
 
-
- 
   const dispatch = useDispatch();
-const Ebmr=useSelector((state)=>state.ebmrData.EBMRFormData)
-console.log(Ebmr,"Ebmr")
+  const Ebmr = useSelector((state) => state.ebmrData.EBMRFormData);
+  console.log(Ebmr, "Ebmr");
   const handleRowClick = (row) => {
     dispatch({ type: "SELECT_ROW", payload: row });
   };
-
-
 
   return (
     <>
@@ -58,20 +54,17 @@ console.log(Ebmr,"Ebmr")
             </tr>
           </thead>
           <tbody>
-                  
-                {Ebmr?.map((item,index)=>{
-                  return (
-                    <tr key={item.index}>
-                    <td> {index + 1}</td>
-                    <td onClick={() => navigate("/dpr-panel")}>
-                      {item.eBMRId}
-                    </td>
-                    <td>{item.productName}</td>
-                    <td>{item.productCode}</td>
-                    <td>{item.process}</td>
-                  </tr>
-                  )
-                })}
+            {Ebmr?.map((item, index) => {
+              return (
+                <tr key={item.index}>
+                  <td> {index + 1}</td>
+                  <td onClick={() => navigate("/eBMR-panel")}>{item.eBMRId}</td>
+                  <td>{item.productName}</td>
+                  <td>{item.productCode}</td>
+                  <td>{item.process}</td>
+                </tr>
+              );
+            })}
           </tbody>
         </table>
       </div>
