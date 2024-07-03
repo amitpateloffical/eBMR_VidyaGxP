@@ -64,12 +64,12 @@ const CapsuleEBMR = () => {
         >
           Potency Calculation of API and Excipients
         </div>
-        <div
+        {/* <div
           onClick={() => setTab("GIFPP")}
           className={tab === "GIFPP" ? "active" : ""}
         >
           General instructions for product processing
-        </div>
+        </div> */}
 
         <div
           onClick={() => setTab("LOPIID")}
@@ -120,12 +120,12 @@ const CapsuleEBMR = () => {
           Weighing Record of Lubricated blend
         </div>
 
-        <div
+        {/* <div
           onClick={() => setTab("TRF")}
           className={tab === "TRF" ? "active" : ""}
         >
           Test request form
-        </div>
+        </div> */}
 
         <div
           onClick={() => setTab("R")}
@@ -182,13 +182,13 @@ const CapsuleEBMR = () => {
         >
           Filled capsule weighing record
         </div>
-
+{/* 
         <div
           onClick={() => setTab("TRF")}
           className={tab === "TRF" ? "active" : ""}
         >
           Test request form
-        </div>
+        </div> */}
 
         <div
           onClick={() => setTab("RCFS")}
@@ -197,19 +197,19 @@ const CapsuleEBMR = () => {
           Reconciliation (Capsule Filling Stage)
         </div>
 
-        <div
+        {/* <div
           onClick={() => setTab("BR")}
           className={tab === "BR" ? "active" : ""}
         >
           Batch Reconciliation
-        </div>
+        </div> */}
 
-        <div
+        {/* <div
           onClick={() => setTab("PHS")}
           className={tab === "PHS" ? "active" : ""}
         >
           Process History Sheet
-        </div>
+        </div> */}
 
         <div
           onClick={() => setTab("PIS")}
@@ -5726,70 +5726,3092 @@ const CapsuleEBMR = () => {
               </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Start capsule filling of the batch. Record the In process capsule filling parameter
-                    checks as per the Capsule Filling Parameters. </td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>In process checks to be performed as per SOP: ML11/SOP/QAGN/0064 </td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Record the quantity of samples and losses. </td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Collect samples at capsule filling stage for QC analysis, fill the test request form and
-                    send Sample to AQA through IPQA. </td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Transfer the Filled capsules to the quarantine area. Store below 25°C and below 45%
-                    RH. Protect from light and moisture. </td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>I Record the Net Weight of Filled capsules and calculate the Actual Net % Yield in
-                    Reconciliation Sheet.  </td>
-                    <td></td>
-                    <td></td>
-                </tr>
+              <tr>
+                <td>1</td>
+                <td>
+                  Start capsule filling of the batch. Record the In process
+                  capsule filling parameter checks as per the Capsule Filling
+                  Parameters.{" "}
+                </td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>
+                  In process checks to be performed as per SOP:
+                  ML11/SOP/QAGN/0064{" "}
+                </td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>Record the quantity of samples and losses. </td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>
+                  Collect samples at capsule filling stage for QC analysis, fill
+                  the test request form and send Sample to AQA through IPQA.{" "}
+                </td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td>
+                  Transfer the Filled capsules to the quarantine area. Store
+                  below 25°C and below 45% RH. Protect from light and moisture.{" "}
+                </td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td>
+                  I Record the Net Weight of Filled capsules and calculate the
+                  Actual Net % Yield in Reconciliation Sheet.{" "}
+                </td>
+                <td></td>
+                <td></td>
+              </tr>
             </tbody>
           </table>
 
-          <div className="sub-head"> Metal Detector Sensitivity In-Process Checks.</div>
+          <div className="sub-head">
+            {" "}
+            Metal Detector Sensitivity In-Process Checks.
+          </div>
 
           <table>
             <thead>
+              <tr>
+                <th rowSpan={3}>Date</th>
+                <th rowSpan={3}>Time</th>
+                <th colspan={4}>Metal detector Challenge Test</th>
+                <th rowSpan={3}>Checked by </th>
+                <th rowSpan={3}>Remarks</th>
+              </tr>
+              <tr>
+                <th colSpan={4}>Observation (Write YES or NO) </th>
+              </tr>
+              <tr>
+                <th>Ferrous </th>
+                <th>Non Ferrous </th>
+                <th>SS 316</th>
+                <th>Blank</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>{" "}
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div className="sub-head">ECS Challenging In-Process Checks</div>
+          <table>
+            <thead>
+              <tr>
+                <th rowSpan={2}>Date </th>
+                <th rowSpan={2}>Time</th>
+                <th colSpan={2}>ECS Challenge Test</th>
+                <th rowSpan={2}>Checked by</th>
+                <th rowSpan={2}>Remarks </th>
+              </tr>
+              <tr>
+                <th>Voltage Observed </th>
+                <th>Observation*</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Complies / Does not complies</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Complies / Does not complies</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Complies / Does not complies</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Complies / Does not complies</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Complies / Does not complies</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Complies / Does not complies</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>Complies / Does not complies</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      ) : null}
+      {tab === "IPC" ? (
+        <div className="document-form">
+          <div className="sub-head">
+            Sample Collection Details To Perform The Inprocess Checks And
+            Apperance Of Capsules
+          </div>
+          <table>
+            <tr>
+              <td>Date</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+
+            <tr>
+              <td>Time</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+
+            <tr>
+              <td>Sample collected by</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+
+            <tr>
+              <td>Appearance* </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+
+            <tr>
+              <td>Checked by</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+          </table>
+          <div className="sub-head">
+            Environmental Conditions And Machine Speed
+          </div>
+
+          <tr>
+            <td>Date</td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+          </tr>
+          <tr>
+            <td>Time</td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+          </tr>
+          <tr>
+            <td>Parameters </td>
+            <td>Limits</td>
+            <td colSpan={13}>Observations</td>
+          </tr>
+          <tr>
+            <td>M/C speed</td>
+            <td>
+              <tr>
+                <td>AF-90T 80 - 104 SPM</td>
+                <td>AF-150T 100 - 140 SPM</td>
+              </tr>
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+          </tr>
+          <tr>
+            <td>Temperature</td>
+            <td>NMT 25°C</td>
+
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+          </tr>
+          <tr>
+            <td>RH</td>
+            <td colSpan={1}>NMT 45%</td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>{" "}
+            <td>
+              <input />
+            </td>
+          </tr>
+          <tr>
+            <td colSpan={3}>Checked by </td>
+
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+            <td>
+              <input />
+            </td>
+          </tr>
+
+          <div className="sub-head">
+            Locking Length (Limit: 23.10mm to 23.90mm){" "}
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>Date/Time</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Locking length of filled capsules </td>
+                <td>
+                  <tr>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                  </tr>
+                </td>
+                <td>
+                  <tr>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                    <td>
+                      <input />
+                    </td>
+                  </tr>
+                </td>
+              </tr>
+              <tr>
+                <td>Checked By</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+          <div className="sub-head">Group Weight Check</div>
+          <table>
+            <thead>
+              <tr>
+                <th>Sr. No.</th>
+                <th>Instructions </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td className="flex flex-col">
+                  <span>
+                    1.Group Weight of 20 Capsules: ……………. g ± 2.0% (Limit:
+                    ………….g to ……………… g)
+                  </span>
+                  <span>
+                    2. Limit for Average mass (weight) of filled Capsule:
+                    …….……mg ± 2.0 % (Limit:………… mg and ……..…… mg)
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table>
+            <tr>
+              <td className="bg-gray-400">
+                <div className="flex gap-2">
+                  <span>MAX</span>{" "}
+                  <input placeholder=" ……….." className="w-[80px]" />
+                  <span>g</span>{" "}
+                </div>
+              </td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+            </tr>
+            <tr>
+              <td>
+                <div className="flex gap-2">
+                  <input placeholder=" ……….." className="w-[80px]" />
+                  <span>g</span>{" "}
+                </div>
+              </td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+            </tr>
+            <tr>
+              <td>
+                <div className="flex gap-2">
+                  <input placeholder=" ……….." className="w-[80px]" />
+                  <span>g</span>{" "}
+                </div>
+              </td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+            </tr>{" "}
+            <tr>
+              <td>
+                <div className="flex gap-2">
+                  <input placeholder=" ……….." className="w-[80px]" />
+                  <span>g</span>{" "}
+                </div>
+              </td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+            </tr>{" "}
+            <tr>
+              <td>
+                <div className="flex gap-2">
+                  <input placeholder=" ……….." className="w-[80px]" />
+                  <span>g</span>{" "}
+                </div>
+              </td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+            </tr>{" "}
+            <tr>
+              <td>
+                <div className="flex gap-2">
+                  <input placeholder=" ……….." className="w-[80px]" />
+                  <span>g</span>{" "}
+                </div>
+              </td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+            </tr>{" "}
+            <tr>
+              <td>
+                <div className="flex gap-2">
+                  <input placeholder=" ……….." className="w-[80px]" />
+                  <span>g</span>{" "}
+                </div>
+              </td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+            </tr>{" "}
+            <tr>
+              <td>
+                <div className="flex gap-2">
+                  <input placeholder=" ……….." className="w-[80px]" />
+                  <span>g</span>{" "}
+                </div>
+              </td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+            </tr>
+            <tr>
+              <td className="bg-gray-400">
+                <div className="flex gap-2">
+                  <span>STD</span>{" "}
+                  <input placeholder=" ……….." className="w-[80px]" />
+                  <span>g</span>{" "}
+                </div>
+              </td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+            </tr>
+            <tr>
+              <td>
+                <div className="flex gap-2">
+                  <input placeholder=" ……….." className="w-[80px]" />
+                  <span>g</span>{" "}
+                </div>
+              </td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+            </tr>
+            <tr>
+              <td>
+                <div className="flex gap-2">
+                  <input placeholder=" ……….." className="w-[80px]" />
+                  <span>g</span>{" "}
+                </div>
+              </td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+            </tr>{" "}
+            <tr>
+              <td>
+                <div className="flex gap-2">
+                  <input placeholder=" ……….." className="w-[80px]" />
+                  <span>g</span>{" "}
+                </div>
+              </td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+            </tr>{" "}
+            <tr>
+              <td>
+                <div className="flex gap-2">
+                  <input placeholder=" ……….." className="w-[80px]" />
+                  <span>g</span>{" "}
+                </div>
+              </td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+            </tr>{" "}
+            <tr>
+              <td>
+                <div className="flex gap-2">
+                  <input placeholder=" ……….." className="w-[80px]" />
+                  <span>g</span>{" "}
+                </div>
+              </td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+            </tr>{" "}
+            <tr>
+              <td>
+                <div className="flex gap-2">
+                  <input placeholder=" ……….." className="w-[80px]" />
+                  <span>g</span>{" "}
+                </div>
+              </td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+            </tr>{" "}
+            <tr>
+              <td>
+                <div className="flex gap-2">
+                  <input placeholder=" ……….." className="w-[80px]" />
+                  <span>g</span>{" "}
+                </div>
+              </td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+              <td>+</td>
+            </tr>
+            <tr>
+              <td className="bg-gray-400">
+                <div className="flex gap-2">
+                  <span>Min</span>{" "}
+                  <input placeholder=" ……….." className="w-[80px]" />
+                  <span>g</span>{" "}
+                </div>
+              </td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+              <td className="bg-gray-400">+</td>
+            </tr>
+            <tr>
+              <td>Group Mass (Weight) of 20 capsules (g)</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>Average Weight (mg)</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>Time</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>Date</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>Checked by</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+          </table>
+
+          <div className="sub-head">Filled Capsule Weight Variation</div>
+          <table>
+            <tr>
+              <td>Date</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>Time</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>Group weight of 20 filled capsules</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>Average weight of capsules</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td colSpan={9}>Individual weight of filled capsules</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>11</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>12</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>13</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>14</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>15</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>16</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>17</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>18</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>19</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>20</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>Max Weight</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>Min Weight</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>Remarks</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+            <tr>
+              <td>Checked By</td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+              <td>
+                <input />
+              </td>
+            </tr>
+          </table>
+
+          <div className="sub-head">
+            Samples / Rejects (Process Losses - Capsule Filling
+            batchStartingDate)
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th rowSpan={3}>Sr. No</th>
+                <th rowSpan={3}></th>
+                <th rowSpan={3}></th>
+                <th rowSpan={3}>Type</th>
+                <th colSpan={6}>Quantity</th>
+                <th colSpan={2}>Total</th>
+              </tr>
+              <tr>
+                <th colSpan={2}>Day...</th>
+                <th colSpan={2}>Day...</th>
+                <th colSpan={2}>Day...</th>
+                <th colSpan={2}></th>
+              </tr>
+              <tr>
+                <th>Kg</th>
+                <th>Nos.</th>
+                <th>Kg</th>
+                <th>Nos.</th> <th>Kg</th>
+                <th>Nos.</th>
+                <th>In Kg</th>
+                <th>In Nos.</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowSpan={5}>1</td>
+                <td rowSpan={5}>Samples</td>
+                <td>1.1</td>
+                <td>QC Samples for Analysis</td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td rowSpan={5}>
+                  <input />
+                </td>
+                <td rowSpan={5}>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td>1.2</td>
+                <td>Validation Samples (If Applicable)</td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td>1.3</td>
+                <td>AQL Samples #</td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td>1.4</td>
+                <td>Samples used and rejected for in-process checks #</td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td>1.5</td>
+                <td>Others………………….</td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td rowSpan={4}>2</td>
+                <td rowSpan={4}>Rejects#</td>
+                <td>2.1</td>
+                <td>Machine setting rejects</td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td rowSpan={4}>
+                  <input />
+                </td>
+                <td rowSpan={4}>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td>2.2</td>
+                <td>Metal detector rejects</td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td>2.3</td>
+                <td>Wastage during capsule filling</td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td>2.4</td>
+                <td>Balance Blend</td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td colSpan={10}>Total Losses (Samples + Rejects)</td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+         
+        </div>
+      ) : null}
+      {tab==="FCWR"?<div className="document-form">
+        <div className="sub-head">Filled Capsules Weighing Record</div>
+          <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Container cleanliness checked by</th>
+                <th>Container Sr. No.</th>
+                <th>Gross Wt. (kg)</th>
+                <th>Tare Wt.(kg)</th>
+                <th>Net Wt.(kg)</th>
+                <th>Weighed by</th>
+                <th>Checked by sign & date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td colSpan={5}>Total</td>
+                <td>
+                  <input />
+                </td>
+                <td colSpan={2}>
+                  <input />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div className="sub-head"> Capsule Issuance For Split Batches</div>
+          <table>
+            <thead>
+              <tr>
+                <th>Date </th>
+                <th>Split</th>
+                <th>Container cleanliness checked by</th>
+                <th>Container Sr. No.</th>
+                <th>Gross Wt. (kg)</th>
+                <th>Tare Wt. (kg)</th>
+                <th>Net Wt. (kg) </th>
+                <th>Weighed by</th>
+                <th>Checked by Sign / Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td colSpan={8}>Total</td>
+                <td></td>
+                <td colSpan={2}></td>
+              </tr>
+            </tbody>
+          </table>
+      </div>:null}
+
+      {tab==="RCFS"?<div className="document-form">
+        <table>
+           <tr>
+            <td>Target fill weight</td>
+            <td className="flex gap-1"><input/><span>mg</span></td>
+           </tr>
+           <tr>
+            <td>Average weight of capsules</td>
+            <td className="flex gap-1"><input/><span>mg</span></td>
+           </tr>
+           </table>
+           <table>
+           <tr>
+            <td>A</td>
+            <td>Weight of Lubricated blend transferred for Capsule Filling</td>
+            <td className="flex gap-1"><input/><span>Kg</span></td>
+            <td className="flex gap-1"><input/><span>Nos.</span></td>
+           </tr>
+           <tr>
+            <td>B</td>
+            <td>Quantity of filled capsules </td>
+            <td className="flex gap-1"><input/><span>Kg</span></td>
+            <td className="flex gap-1"><input/><span>Nos.</span></td>
+           </tr>
+           <tr>
+            <td>C</td>
+            <td>#Total capsule filling rejects</td>
+            <td className="flex gap-1"><input/><span>Kg</span></td>
+            <td className="flex gap-1"><input/><span>Nos.</span></td>
+           </tr>
+           <tr>
+            <td>D</td>
+            <td>#Total Samples </td>
+            <td className="flex gap-1"><input/><span>Kg</span></td>
+            <td className="flex gap-1"><input/><span>Nos.</span></td>
+           </tr>
+           <tr>
+            <td>E</td>
+            <td>Total Losses (Rejects + Samples) (C+D)  </td>
+            <td className="flex gap-1"><input/><span>Kg</span></td>
+            <td className="flex gap-1"><input/><span>Nos.</span></td>
+           </tr>
+           <tr>
+            <td>F</td>
+            <td>Total Quantity reconciled (B + E)  </td>
+            <td className="flex gap-1"><input/><span>Kg</span></td>
+            <td className="flex gap-1"><input/><span>Nos.</span></td>
+           </tr>
+           <tr>
+            <td>G</td>
+            <td> % Reconciliation (F/A) X 100  </td>
+            <td className="flex gap-1 bg-gray-400"><input/></td>
+            <td className="flex gap-1"><input/><span>%</span></td>
+           </tr>
+           <tr>
+            <td>H</td>
+            <td>% Yield: (B+D/ A) X 100 (Limit: 98.00% to 100.00%) </td>
+            <td className="flex gap-1  bg-gray-400"><input/></td>
+            <td className="flex gap-1"><input/><span>%</span></td>
+           </tr>
+           </table>
+      
+      </div>:null}
+
+      {tab==="BR"?<div className="document-form"></div>:null}
+      {tab==="PHS"?<div className="document-form"></div>:null}
+      {tab==="PIS"?<div className="document-form">
+        <table>
+            <thead>
                 <tr>
-                    <th rowSpan={3}>Date</th>
-                    <th rowSpan={3}>Time</th>
-                    <th colspan={4}>Metal detector Challenge Test</th>
-                    <th rowSpan={3}>Checked by </th>
-                    <th rowSpan={3}>Remarks</th>
+                    <th rowSpan={2}>Date </th>
+                    <th colSpan={2}>Time</th>
+                    <th rowSpan={2}>Stage</th>
+                    <th rowSpan={2}>Reason</th>
+                    <th rowSpan={2}>Corrective Action</th>
+                    <th colSpan={2}>(Sign& Date)</th>
                 </tr>
                 <tr>
-                    <th colSpan={4}>Observation (Write YES or NO) </th>
-                </tr>
-                <tr>
-                    <th>Ferrous </th>
-                    <th>Non
-                    Ferrous </th>
-                    <th>SS 316</th>
-                    <th>Blank
-                    </th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Production </th>
+                    <th>IPQA</th>
                 </tr>
             </thead>
             <tbody>
@@ -5802,6 +8824,7 @@ const CapsuleEBMR = () => {
                     <td><input/></td>
                     <td><input/></td>
                     <td><input/></td>
+
                 </tr>
                 <tr>
                     <td><input/></td>
@@ -5812,6 +8835,7 @@ const CapsuleEBMR = () => {
                     <td><input/></td>
                     <td><input/></td>
                     <td><input/></td>
+
                 </tr>   <tr>
                     <td><input/></td>
                     <td><input/></td>
@@ -5821,194 +8845,167 @@ const CapsuleEBMR = () => {
                     <td><input/></td>
                     <td><input/></td>
                     <td><input/></td>
+
+                </tr>   <tr>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+
+                </tr>   <tr>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+
+                </tr>   <tr>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+
+                </tr>   <tr>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+
+                </tr>   <tr>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+
                 </tr>
             </tbody>
-          </table>
-          <div className="sub-head">ECS Challenging In-Process Checks</div>
-          <table>
+        </table>
+      </div>:null}
+
+      {tab==="DS"?<div className="document-form">
+        <table>
             <thead>
                 <tr>
-                    <th rowSpan={2}>Date </th>
-                    <th rowSpan={2}>Time</th>
-                    <th colSpan={2}>ECS Challenge Test</th>
-                    <th rowSpan={2}>Checked by</th>
-                    <th rowSpan={2}>Remarks </th>
+                    <th>Deviation No</th>
+                    <th>Details Of Deviation</th>
+                    <th>Corrective Action Taken /Proposed</th>
+                    <th>Production
+                    Sign/Date </th>
+                    <th>Q.A. Sign/Date
+                    </th>
+                </tr>
+                
+            </thead>
+            <tbody>
+                <tr>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+
                 </tr>
                 <tr>
-                    <th>Voltage Observed </th>
-                    <th>Observation*</th>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+
+                </tr>  <tr>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+
+                </tr>  <tr>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+
+                </tr>  <tr>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+
+                </tr>  <tr>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+
+                </tr>  <tr>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+
+                </tr>  <tr>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+                    <td><input/></td>
+
+                </tr>
+            </tbody>
+        </table>
+      </div>:null}
+      {tab==="ROBMR"?<div className="document-form">
+        <table>
+            <thead>
+                <tr>
+                    <th>Instruction</th>
+                    <th>Prod. Section Head (Sign/Date) </th>
+                    <th>IPQA Head (Sign/Date)
+                    </th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Complies / Does not complies</td>
-                    <td></td>
-                    <td></td>
+                    <td>Review of In-process parameters and batch details.</td>
+                    <td><input/></td>
+                    <td><input/></td>
+
                 </tr>
                 <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Complies / Does not complies</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Complies / Does not complies</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Complies / Does not complies</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Complies / Does not complies</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td> 
-                    <td>Complies / Does not complies</td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>Complies / Does not complies</td>
-                    <td></td>
-                    <td></td>
+                    <td>Review of In-process parameters and batch details.</td>
+                    <td><input/></td>
+                    <td><input/></td>
+
                 </tr>
             </tbody>
-          </table>
-        </div>
-        
-      ) : null}
-      {tab==="IPC"?<div className="document-form">
-        <div className="sub-head">Sample Collection Details To Perform The Inprocess Checks And Apperance Of Capsules</div>
-        <table>
-            
-         <tr>
-            <td>Date</td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-
-         </tr>
-              
-         <tr>
-            <td>Time
-            </td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-
-         </tr>
-              
-         <tr>
-            <td>Sample collected by
-            </td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-
-         </tr>
-              
-         <tr>
-            <td>Appearance* </td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-
-         </tr>
-              
-         <tr>
-            <td>Checked by</td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-            <td><input/></td>
-
-         </tr>
         </table>
-        <div className="sub-head">Environmental Conditions And Machine Speed</div>
       </div>:null}
+
+
+
     </div>
   );
 };
