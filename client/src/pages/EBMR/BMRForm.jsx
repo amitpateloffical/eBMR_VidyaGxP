@@ -10,20 +10,14 @@ import HeaderTop from "../../components/Header/HeaderTop";
 const BMRForm = () => {
   const [tab, setTab] = useState("General");
   const [allTableData, setAllTableData] = useState([]);
-  const [packingMaterialTablesData, setpackingMaterialTablesData] = useState(
-    []
-  );
+  const [packingMaterialTablesData, setpackingMaterialTablesData] = useState([]);
   const [batchCleaningTablesData, setbatchCleaningTablesData] = useState([]);
-  const [accessoriesCleaningTablesData, setAccessoriesCleaningTablesData] =
-    useState([]);
-  const [intermadiateIssuanceTablesData, setIntermadiateIssuanceTablesData] =
-    useState([]);
+  const [accessoriesCleaningTablesData, setAccessoriesCleaningTablesData] = useState([]);
+  const [intermadiateIssuanceTablesData, setIntermadiateIssuanceTablesData] = useState([]);
   const [hazopTablesData, setHazopTablesData] = useState([]);
   const [processSafetyTablesData, setProcessSafetyTablesData] = useState([]);
   const [ppeMatrixTablesData, setPPEMatrixTablesData] = useState([]);
-  const [hazardAndControlTablesData, setHazardAndControlTablesData] = useState(
-    []
-  );
+  const [hazardAndControlTablesData, setHazardAndControlTablesData] = useState([]);
   const [readAndUnderstood, setReadAndUnderstood] = useState([]);
   const [CriticalProcessPFQ, setCriticalProcessPFQ] = useState([]);
   const [criticalProcessPFS, setCriticalProcessPFS] = useState([]);
@@ -99,6 +93,27 @@ const BMRForm = () => {
     };
     setAllTableData([...allTableData, newRow]);
   };
+  useEffect(() => {
+    console.log(addRawMaterialRow, "addRawMaterialRow");
+    // console.log(allTableData, "allTableData");
+  }, [addRawMaterialRow]);
+  useEffect(() => {
+    console.log(packingMaterialTablesData, "packingMaterialTablesData");
+    // console.log(allTableData, "allTableData");
+  }, [packingMaterialTablesData]);
+  useEffect(() => {
+    console.log(batchCleaningTablesData, "batchCleaningTablesData");
+    // console.log(allTableData, "allTableData");
+  }, [batchCleaningTablesData]);
+  useEffect(() => {
+    console.log(accessoriesCleaningTablesData, "accessoriesCleaningTablesData");
+    // console.log(allTableData, "allTableData");
+  }, [accessoriesCleaningTablesData]);
+  useEffect(() => {
+    console.log(intermadiateIssuanceTablesData, "intermadiateIssuanceTablesData");
+    // console.log(allTableData, "allTableData");
+  }, [intermadiateIssuanceTablesData]);
+
   const addBatchCleaningRow = () => {
     const currentTime = new Date().toLocaleTimeString();
     const newRow = {
@@ -146,10 +161,7 @@ const BMRForm = () => {
       checkedBySign: "",
       Date: "",
     };
-    setAccessoriesCleaningTablesData([
-      ...accessoriesCleaningTablesData,
-      newRow,
-    ]);
+    setAccessoriesCleaningTablesData([...accessoriesCleaningTablesData, newRow]);
   };
 
   const addIntermediateIssanceRow = () => {
@@ -161,10 +173,7 @@ const BMRForm = () => {
       sign: "",
       date: "",
     };
-    setIntermadiateIssuanceTablesData([
-      ...intermadiateIssuanceTablesData,
-      newRow,
-    ]);
+    setIntermadiateIssuanceTablesData([...intermadiateIssuanceTablesData, newRow]);
   };
 
   const addHazopRow = () => {
@@ -273,16 +282,10 @@ const BMRForm = () => {
         </div>
       </div>
       <div className="form-tabs">
-        <div
-          onClick={() => setTab("General")}
-          className={tab === "General" ? "active" : ""}
-        >
+        <div onClick={() => setTab("General")} className={tab === "General" ? "active" : ""}>
           General Information
         </div>
-        <div
-          onClick={() => setTab("QA")}
-          className={tab === "QA" ? "active" : ""}
-        >
+        <div onClick={() => setTab("QA")} className={tab === "QA" ? "active" : ""}>
           Batch Record Issued BY QA
         </div>
         {/* <div
@@ -321,9 +324,7 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.productName}
                   type="text"
-                  onChange={(e) =>
-                    setManufacturingRecord({ productName: e.target.value })
-                  }
+                  onChange={(e) => setManufacturingRecord({ productName: e.target.value })}
                 />
               </div>
 
@@ -332,9 +333,7 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.documentNo}
                   type="text"
-                  onChange={(e) =>
-                    setManufacturingRecord({ documentNo: e.target.value })
-                  }
+                  onChange={(e) => setManufacturingRecord({ documentNo: e.target.value })}
                 />
               </div>
 
@@ -343,9 +342,7 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.productCode}
                   type="text"
-                  onChange={(e) =>
-                    setManufacturingRecord({ productCode: e.target.value })
-                  }
+                  onChange={(e) => setManufacturingRecord({ productCode: e.target.value })}
                 />
               </div>
 
@@ -354,9 +351,7 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.effectiveDate}
                   type="text"
-                  onChange={(e) =>
-                    setManufacturingRecord({ effectiveDate: e.target.value })
-                  }
+                  onChange={(e) => setManufacturingRecord({ effectiveDate: e.target.value })}
                 />
               </div>
 
@@ -365,9 +360,7 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.stage}
                   type="text"
-                  onChange={(e) =>
-                    setManufacturingRecord({ stage: e.target.value })
-                  }
+                  onChange={(e) => setManufacturingRecord({ stage: e.target.value })}
                 />
               </div>
 
@@ -376,9 +369,7 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.supersedesNo}
                   type="text"
-                  onChange={(e) =>
-                    setManufacturingRecord({ supersedesNo: e.target.value })
-                  }
+                  onChange={(e) => setManufacturingRecord({ supersedesNo: e.target.value })}
                 />
               </div>
 
@@ -387,9 +378,7 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.batchNo}
                   type="text"
-                  onChange={(e) =>
-                    setManufacturingRecord({ batchNo: e.target.value })
-                  }
+                  onChange={(e) => setManufacturingRecord({ batchNo: e.target.value })}
                 />
               </div>
 
@@ -398,9 +387,7 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.pageNo}
                   type="text"
-                  onChange={(e) =>
-                    setManufacturingRecord({ pageNo: e.target.value })
-                  }
+                  onChange={(e) => setManufacturingRecord({ pageNo: e.target.value })}
                 />
               </div>
             </div>
@@ -429,9 +416,7 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.actualBatchSize}
                   type="text"
-                  onChange={(e) =>
-                    setManufacturingRecord({ actualBatchSize: e.target.value })
-                  }
+                  onChange={(e) => setManufacturingRecord({ actualBatchSize: e.target.value })}
                 />
               </div>
 
@@ -453,9 +438,7 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.time}
                   type="time"
-                  onChange={(e) =>
-                    setManufacturingRecord({ time: e.target.value })
-                  }
+                  onChange={(e) => setManufacturingRecord({ time: e.target.value })}
                 />
               </div>
 
@@ -477,9 +460,7 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.time}
                   type="time"
-                  onChange={(e) =>
-                    setManufacturingRecord({ time: e.target.value })
-                  }
+                  onChange={(e) => setManufacturingRecord({ time: e.target.value })}
                 />
               </div>
 
@@ -488,9 +469,7 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.expectedOutput}
                   type="text"
-                  onChange={(e) =>
-                    setManufacturingRecord({ expectedOutput: e.target.value })
-                  }
+                  onChange={(e) => setManufacturingRecord({ expectedOutput: e.target.value })}
                 />
               </div>
 
@@ -499,9 +478,7 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.actualOutput}
                   type="text"
-                  onChange={(e) =>
-                    setManufacturingRecord({ actualOutput: e.target.value })
-                  }
+                  onChange={(e) => setManufacturingRecord({ actualOutput: e.target.value })}
                 />
               </div>
 
@@ -510,9 +487,7 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.expectedYeild}
                   type="text"
-                  onChange={(e) =>
-                    setManufacturingRecord({ expectedYeild: e.target.value })
-                  }
+                  onChange={(e) => setManufacturingRecord({ expectedYeild: e.target.value })}
                 />
               </div>
 
@@ -521,9 +496,7 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.actualYeild}
                   type="text"
-                  onChange={(e) =>
-                    setManufacturingRecord({ actualYeild: e.target.value })
-                  }
+                  onChange={(e) => setManufacturingRecord({ actualYeild: e.target.value })}
                 />
               </div>
               <div className="group-input">
@@ -543,9 +516,7 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.expiryRetestdate}
                   type="date"
-                  onChange={(e) =>
-                    setManufacturingRecord({ expiryRetestdate: e.target.value })
-                  }
+                  onChange={(e) => setManufacturingRecord({ expiryRetestdate: e.target.value })}
                 />
               </div>
 
@@ -959,9 +930,7 @@ const BMRForm = () => {
               </tbody>
             </table>
 
-            <div className="sub-head">
-              Solvent For Container/Hosepipe And Accessories Cleaning
-            </div>
+            <div className="sub-head">Solvent For Container/Hosepipe And Accessories Cleaning</div>
 
             <div className="AddRows d-flex">
               <NoteAdd onClick={addaccessoriesRow} />
@@ -1234,8 +1203,7 @@ const BMRForm = () => {
             </table>
 
             <div className="sub-head">
-              Process Safety Study Details And Gas /By Product Generation
-              Details
+              Process Safety Study Details And Gas /By Product Generation Details
             </div>
 
             <div className="AddRows d-flex">
@@ -1291,9 +1259,7 @@ const BMRForm = () => {
               </tbody>
             </table>
 
-            <div className="sub-head">
-              Personal Protective Equipment (PPE) Matrix
-            </div>
+            <div className="sub-head">Personal Protective Equipment (PPE) Matrix</div>
 
             <div className="AddRows d-flex">
               <NoteAdd onClick={addPPEMatrixRow} />
@@ -1382,9 +1348,7 @@ const BMRForm = () => {
               </tbody>
             </table>
 
-            <div className="sub-head">
-              Identification Of Hazards And Control
-            </div>
+            <div className="sub-head">Identification Of Hazards And Control</div>
 
             <div className="AddRows d-flex">
               <NoteAdd onClick={addHazardAndControlRow} />
@@ -1487,9 +1451,7 @@ const BMRForm = () => {
               </tbody>
             </table>
 
-            <div className="sub-head">
-              Critical Process Parameter For Quality
-            </div>
+            <div className="sub-head">Critical Process Parameter For Quality</div>
 
             <div className="AddRows d-flex">
               <NoteAdd onClick={addCriticalProcessParameterForQuality} />
@@ -1655,8 +1617,8 @@ const BMRForm = () => {
                 <thead>
                   <tr className="">
                     <th colspan="10" className="font-bold text-lg text-center">
-                      After dispensing, clean the dispensing area and weighing
-                      balance using a lint-free cloth.
+                      After dispensing, clean the dispensing area and weighing balance using a
+                      lint-free cloth.
                     </th>
                   </tr>
                   <tr>
@@ -1739,9 +1701,7 @@ const BMRForm = () => {
               </table>
             </div>
 
-            <div className="sub-head">
-              Milling, Sifting and Packing Operation:
-            </div>
+            <div className="sub-head">Milling, Sifting and Packing Operation:</div>
             <div className="font-bold pb-1">Weight details:</div>
             <table>
               <thead>
@@ -1758,21 +1718,21 @@ const BMRForm = () => {
               </thead>
               <tbody>
                 <tr>
-                  <td>1 </td>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
-                  <td> </td>
+                  <td><input type="number" /></td>
+                  <td><input type="number" /></td>
+                  <td><input type="number" /></td>
+                  <td><input type="number" /></td>
+                  <td><input type="text" /></td>
+                  <td><input type="text" /></td>
+                  <td><input type="text" /></td>
+                  <td><input type="text" /></td>
                 </tr>
                 <tr>
                   <td colspan="3">Total Qty. </td>
-                  <td> </td>
-                  <td> </td>
+                  <td><input type="number" /></td>
                   <td colspan="2"></td>
-                  <td> </td>
+                  <td><input type="text" /></td>
+                  <td><input type="text" /></td>
                 </tr>
               </tbody>
             </table>
@@ -1781,16 +1741,11 @@ const BMRForm = () => {
             <div className="font-bold pb-1">Specimen Product label:</div>
 
             <div class="group-input border border-black">
-              <textarea
-                class="summernote"
-                name="initiated_through"
-                id="summernote-1"
-              ></textarea>
+              <textarea class="summernote" name="initiated_through" id="summernote-1"></textarea>
             </div>
+            
 
-            <div className="sub-head">
-              Batch to Batch Cleaning Record (Type “A” cleaning):
-            </div>
+            <div className="sub-head">Batch to Batch Cleaning Record (Type “A” cleaning):</div>
 
             <table>
               <thead>
@@ -1813,12 +1768,24 @@ const BMRForm = () => {
 
                 <tr>
                   <td>1</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                  <td>
+                    <input type="text" />
+                  </td>
                 </tr>
 
                 <tr>
@@ -1829,12 +1796,24 @@ const BMRForm = () => {
 
                 <tr>
                   <td>1</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                  <td>
+                    <input type="text" />
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -1874,9 +1853,7 @@ const BMRForm = () => {
                 </tr>
                 <tr>
                   <td>5.</td>
-                  <td>
-                    Final pack quantity is to offered for complete analysis
-                  </td>
+                  <td>Final pack quantity is to offered for complete analysis</td>
                   <td>:</td>
                   <td>-------------Kg</td>
                 </tr>
@@ -1903,62 +1880,26 @@ const BMRForm = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>6</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>7</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
+                    {Array.from({ length: 7 }).map((_, index) => (
+                      <tr key={index}>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input type="text" className="p-2 border border-gray-300 rounded-md" />
+                        </td>
+                        <td>
+                          <input type="text" className="p-2 border border-gray-300 rounded-md" />
+                        </td>
+                        <td>
+                          <input type="text" className="p-2 border border-gray-300 rounded-md" />
+                        </td>
+                        <td>
+                          <input type="text" className="p-2 border border-gray-300 rounded-md" />
+                        </td>
+                        <td>
+                          <input type="text" className="p-2 border border-gray-300 rounded-md" />
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>
@@ -1980,62 +1921,28 @@ const BMRForm = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1/02/2024</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>1/02/2024</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>1/02/2024</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>1/02/2024</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>1/02/2024</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>1/02/2024</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>1/02/2024</td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
+                    {Array.from({ length: 7 }).map((_, index) => (
+                      <tr key={index}>
+                        <td>
+                          <input type="date" className="p-2 border border-gray-300 rounded-md" />
+                        </td>
+                        <td>
+                          <input type="text" className="p-2 border border-gray-300 rounded-md" />
+                        </td>
+                        <td>
+                          <input type="text" className="p-2 border border-gray-300 rounded-md" />
+                        </td>
+                        <td>
+                          <input type="text" className="p-2 border border-gray-300 rounded-md" />
+                        </td>
+                        <td>
+                          <input type="text" className="p-2 border border-gray-300 rounded-md" />
+                        </td>
+                        <td>
+                          <input type="text" className="p-2 border border-gray-300 rounded-md" />
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>

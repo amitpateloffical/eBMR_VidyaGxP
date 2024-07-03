@@ -14,7 +14,7 @@ function CreateRecordModal(_props) {
   const divisionList = [
     {
       id: 1,
-      name: "Dewas",
+      name: "India",
       projects: [
         {
           name: "eBMR",
@@ -24,18 +24,6 @@ function CreateRecordModal(_props) {
           name: "Capsule-eBMR",
           link: "/capsule-eBMR",
         },
-        // {
-        //   name: "Area & Equipment Usage Log",
-        //   link: "/area-and-equiment-usage-log",
-        // },
-        // {
-        //   name: "Equipment Cleaning Checklist",
-        //   link: "/equipment-cleaning-checklist",
-        // },
-        // {
-        //   name: "Temperature Records",
-        //   link: "/temperature-records",
-        // },
       ],
     },
     {
@@ -68,8 +56,48 @@ function CreateRecordModal(_props) {
         },
       ],
     },
-  
-    
+    {
+      id: 3,
+      name: "Jordan",
+      projects: [
+        {
+          name: "eBMR",
+          link: "/eBMR",
+        },
+        {
+          name: "Capsule-eBMR",
+          link: "/capsule-eBMR",
+        },
+      ],
+    },
+    {
+      id: 4,
+      name: "Pakistan",
+      projects: [
+        {
+          name: "eBMR",
+          link: "/eBMR",
+        },
+        {
+          name: "Capsule-eBMR",
+          link: "/capsule-eBMR",
+        },
+      ],
+    },
+    {
+      id: 4,
+      name: "Iraq",
+      projects: [
+        {
+          name: "eBMR",
+          link: "/eBMR",
+        },
+        {
+          name: "Capsule-eBMR",
+          link: "/capsule-eBMR",
+        },
+      ],
+    },
   ];
   return (
     <>

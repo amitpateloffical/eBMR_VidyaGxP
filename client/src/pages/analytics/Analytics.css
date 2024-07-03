@@ -1,4 +1,4 @@
-
+/* 
 .graph-2{
     padding: 10px 20px;
 }
@@ -14,4 +14,13 @@ display: flex;
 justify-content: center;
 align-items: center;
 padding-top: 2rem;
+} */
+
+.chartsContainer {
+}
+
+.singleChartContainer {
+  padding: 20px;
+  width: 50%;
+  height: 500px;
 }
