@@ -58,7 +58,7 @@ function Desktop() {
               return (
                 <tr key={item.index}>
                   <td> {index + 1}</td>
-                  <td onClick={() => navigate("/eBMR-panel")}>{item.eBMRId}</td>
+                  <td onClick={() => navigate("/eBMR-panel")} className="cursor-pointer hover:text-blue-600">{item.eBMRId}</td>
                   <td>{item.productName}</td>
                   <td>{item.productCode}</td>
                   <td>{item.process}</td>
