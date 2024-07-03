@@ -5883,7 +5883,7 @@ const CapsuleEBMR = () => {
                 <tr>
                     <td></td>
                     <td></td>
-                    <td></td>
+                    <td></td> 
                     <td>Complies / Does not complies</td>
                     <td></td>
                     <td></td>
@@ -5899,7 +5899,116 @@ const CapsuleEBMR = () => {
             </tbody>
           </table>
         </div>
+        
       ) : null}
+      {tab==="IPC"?<div className="document-form">
+        <div className="sub-head">Sample Collection Details To Perform The Inprocess Checks And Apperance Of Capsules</div>
+        <table>
+            
+         <tr>
+            <td>Date</td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+
+         </tr>
+              
+         <tr>
+            <td>Time
+            </td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+
+         </tr>
+              
+         <tr>
+            <td>Sample collected by
+            </td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+
+         </tr>
+              
+         <tr>
+            <td>Appearance* </td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+
+         </tr>
+              
+         <tr>
+            <td>Checked by</td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+            <td><input/></td>
+
+         </tr>
+        </table>
+        <div className="sub-head">Environmental Conditions And Machine Speed</div>
+      </div>:null}
     </div>
   );
 };
