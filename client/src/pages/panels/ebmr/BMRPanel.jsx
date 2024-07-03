@@ -61,9 +61,21 @@ const BMRForm = () => {
       manufacturingDate: Ebmr[0].manufacturingDate,
       expiryRetestdate: Ebmr[0].expiryRetestdate,
       packingAndStoreCondition: Ebmr[0].packingAndStoreCondition,
+      batchCleaningTablesData:Ebmr[0]. batchCleaningTablesData,
+      packingMaterialTablesData:Ebmr[0].packingMaterialTablesData,
+      accessoriesCleaningTablesData:Ebmr[0].accessoriesCleaningTablesData,
+      intermadiateIssuanceTablesData:Ebmr[0].intermadiateIssuanceTablesData,
+      hazopTablesData:Ebmr[0].hazopTablesData,
+      processSafetyTablesData:Ebmr[0].processSafetyTablesData,
+      ppeMatrixTablesData:Ebmr[0].ppeMatrixTablesData,
+      hazardAndControlTablesData:Ebmr[0].hazardAndControlTablesData,
+      readAndUnderstood:Ebmr[0].readAndUnderstood,
+      CriticalProcessPFQ:Ebmr[0].CriticalProcessPFQ,
+      criticalProcessPFS:Ebmr[0].criticalProcessPFS,
+      gridData:Ebmr[0].gridData
     }
   );
-  console.log(ManufacturingRecord, "ManufacturingRecord");
+  console.log(Ebmr, "Ebmr");
 
   useEffect(() => {
     setManufacturingRecord({ gridData: allTableData });
@@ -537,7 +549,7 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                {allTableData.map((item, index) => (
+                {ManufacturingRecord.gridData?.map((item, index) => (
                   <tr key={index}>
                     <td>{index + 1}</td>
                     <td>
@@ -669,7 +681,7 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                {packingMaterialTablesData.map((item, index) => (
+                {ManufacturingRecord?.packingMaterialTablesData?.map((item, index) => (
                   <tr key={index}>
                     <td>{index + 1}</td>
                     <td>
@@ -802,7 +814,7 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                {batchCleaningTablesData.map((item, index) => (
+                {ManufacturingRecord?.batchCleaningTablesData.map((item, index) => (
                   <tr key={index}>
                     <td>{index + 1}</td>
                     <td>
@@ -935,7 +947,7 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                {accessoriesCleaningTablesData.map((item, index) => (
+                {ManufacturingRecord?.accessoriesCleaningTablesData.map((item, index) => (
                   <tr key={index}>
                     <td>{index + 1}</td>
                     <td>
@@ -1064,7 +1076,7 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                {intermadiateIssuanceTablesData.map((item, index) => (
+                {ManufacturingRecord?.intermadiateIssuanceTablesData.map((item, index) => (
                   <tr key={index}>
                     <td>{index + 1}</td>
                     <td>
@@ -1150,7 +1162,7 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                {hazopTablesData.map((item, index) => (
+                {ManufacturingRecord?.hazopTablesData.map((item, index) => (
                   <tr key={index}>
                     <td>{index + 1}</td>
                     <td>
@@ -1202,7 +1214,7 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                {processSafetyTablesData.map((item, index) => (
+                {ManufacturingRecord?.processSafetyTablesData.map((item, index) => (
                   <tr key={index}>
                     <td>{index + 1}</td>
                     <td>
@@ -1260,7 +1272,7 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                {ppeMatrixTablesData.map((item, index) => (
+                {ManufacturingRecord?.ppeMatrixTablesData.map((item, index) => (
                   <tr key={index}>
                     <td>{index + 1}</td>
                     <td>
@@ -1347,7 +1359,7 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                {hazardAndControlTablesData.map((item, index) => (
+                {ManufacturingRecord?.hazardAndControlTablesData.map((item, index) => (
                   <tr key={index}>
                     <td>{index + 1}</td>
                     <td>
@@ -1413,7 +1425,7 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                {criticalProcessPFS?.map((item, index) => {
+                {ManufacturingRecord?.criticalProcessPFS?.map((item, index) => {
                   return (
                     <tr>
                       <td>{index + 1}</td>
@@ -1449,7 +1461,7 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                {CriticalProcessPFQ?.map((item, index) => {
+                {ManufacturingRecord?.CriticalProcessPFQ?.map((item, index) => {
                   return (
                     <tr>
                       <td>{index + 1}</td>
@@ -1485,7 +1497,7 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                {readAndUnderstood?.map((itm, index) => {
+                {ManufacturingRecord?.readAndUnderstood?.map((itm, index) => {
                   return (
                     <tr>
                       <td>{index + 1}</td>
