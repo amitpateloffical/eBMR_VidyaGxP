@@ -250,7 +250,7 @@ const BMRForm = () => {
               <img src="/vidyalogo2.png" alt="..." />
             </div>
             <div className="main-head">
-              <div>BATCH MANUFACTURING RECORD (BMR)</div>
+              <div>Batch Manufactutring Record (BMR) Panel</div>
             </div>
             {/* <div className="logo">
                   <img src="/navin.png" alt="..." />

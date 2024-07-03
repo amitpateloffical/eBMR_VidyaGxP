@@ -108,27 +108,7 @@ const BMRForm = () => {
     };
     setAllTableData([...allTableData, newRow]);
   };
-  useEffect(() => {
-    console.log(addRawMaterialRow, "addRawMaterialRow");
-    // console.log(allTableData, "allTableData");
-  }, [addRawMaterialRow]);
-  useEffect(() => {
-    console.log(packingMaterialTablesData, "packingMaterialTablesData");
-    // console.log(allTableData, "allTableData");
-  }, [packingMaterialTablesData]);
-  useEffect(() => {
-    console.log(batchCleaningTablesData, "batchCleaningTablesData");
-    // console.log(allTableData, "allTableData");
-  }, [batchCleaningTablesData]);
-  useEffect(() => {
-    console.log(accessoriesCleaningTablesData, "accessoriesCleaningTablesData");
-    // console.log(allTableData, "allTableData");
-  }, [accessoriesCleaningTablesData]);
-  useEffect(() => {
-    console.log(intermadiateIssuanceTablesData, "intermadiateIssuanceTablesData");
-    // console.log(allTableData, "allTableData");
-  }, [intermadiateIssuanceTablesData]);
-
+ 
   const addBatchCleaningRow = () => {
     const currentTime = new Date().toLocaleTimeString();
     const newRow = {

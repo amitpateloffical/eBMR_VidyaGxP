@@ -3,8 +3,10 @@ import "./CapsuleEBMR.css";
 import HeaderTop from "../../components/Header/HeaderTop";
 import { CheckBox } from "@mui/icons-material";
 import { Radio } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 const CapsuleEBMR = () => {
   const [tab, setTab] = useState("General");
+  const navigate=useNavigate()
   return (
     <div id="config-form-document-page">
       <HeaderTop />
@@ -9003,7 +9005,20 @@ const CapsuleEBMR = () => {
             </tbody>
         </table>
       </div>:null}
+      <div className="button-block" style={{ width: "100%" }}>
+        <button
+          className="themeBtn"
+          onClick={() => {
+            // handleSave(ManufacturingRecord);
+          }}
+        >
+          Save
+        </button>
 
+        <button className="themeBtn" onClick={() => navigate("/desktop")}>
+          Exit
+        </button>
+      </div>
 
 
     </div>
