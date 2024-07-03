@@ -70,11 +70,26 @@ const BMRForm = () => {
   );
   // console.log(ManufacturingRecord, "ManufacturingRecord");
   useEffect(() => {
-    setManufacturingRecord({ gridData: allTableData });
-  }, [allTableData]);
+    setManufacturingRecord({
+      gridData: allTableData,
+      batchCleaningTablesData: batchCleaningTablesData,
+      packingMaterialTablesData:packingMaterialTablesData,
+      accessoriesCleaningTablesData:accessoriesCleaningTablesData,
+      intermadiateIssuanceTablesData:intermadiateIssuanceTablesData,
+      hazopTablesData:hazopTablesData,
+      processSafetyTablesData:processSafetyTablesData,
+      ppeMatrixTablesData:ppeMatrixTablesData,
+      hazardAndControlTablesData:hazardAndControlTablesData,
+      readAndUnderstood:readAndUnderstood,
+      CriticalProcessPFQ:CriticalProcessPFQ,
+      criticalProcessPFS:criticalProcessPFS
+    });
+  }, [allTableData, batchCleaningTablesData,packingMaterialTablesData,accessoriesCleaningTablesData,
+    intermadiateIssuanceTablesData,hazopTablesData,processSafetyTablesData,ppeMatrixTablesData,
+    hazardAndControlTablesData,readAndUnderstood,CriticalProcessPFQ,criticalProcessPFS]);
 
   const handleSave = (data) => {
-    toast.success("eLog Saved Successfully!");
+    toast.success("eBMR Saved Successfully!");
     createObject(data);
     navigate("/desktop");
   };
