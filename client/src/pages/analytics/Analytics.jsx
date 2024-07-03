@@ -209,6 +209,10 @@ import React from "react";
 import HeaderTop from "../../components/Header/HeaderTop";
 import HeaderBottom from "../../components/Header/HeaderBottom";
 import BatchFailureRateChart from "../../components/Charts/BatchFailureRateChart";
+import DeviationChart from "../../components/Charts/DeviationChart";
+import RadarChart from "../../components/Charts/RadarChart";
+import BarChart from "../../components/Charts/BarChart";
+import PieChart from "../../components/Charts/PieChart";
 
 export default function Analytics() {
   return (
@@ -217,7 +221,11 @@ export default function Analytics() {
       <HeaderBottom />
       <div className="chartsContainer">
         <div className="singleChartContainer">
+          <PieChart />
           <BatchFailureRateChart />
+          <DeviationChart />
+          <RadarChart />
+          <BarChart />
         </div>
       </div>
     </div>
