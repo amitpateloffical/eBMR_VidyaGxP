@@ -12,20 +12,20 @@ function CreateRecordModal(_props) {
     localStorage.setItem("site", division);
   };
   const divisionList = [
-    {
-      id: 1,
-      name: "India",
-      projects: [
-        {
-          name: "eBMR",
-          link: "/eBMR",
-        },
-        {
-          name: "Capsule-eBMR",
-          link: "/capsule-eBMR",
-        },
-      ],
-    },
+    // {
+    //   id: 1,
+    //   name: "India",
+    //   projects: [
+    //     {
+    //       name: "eBMR",
+    //       link: "/eBMR",
+    //     },
+    //     {
+    //       name: "Capsule-eBMR",
+    //       link: "/capsule-eBMR",
+    //     },
+    //   ],
+    // },
     {
       id: 2,
       name: "Corporate",

@@ -220,7 +220,7 @@ table tbody .serial {
 }
 
 table tbody tr:nth-child(2n) {
-  background: #fcd6a1;
+  background: #90e48e;
 }
 
 .form-tabs {
@@ -253,7 +253,7 @@ table tbody tr:nth-child(2n) {
   padding: 7px 15px;
   border-radius: 35px;
   font-weight: bold;
-  background: #fcd6a1;
+  background: #6ed88c;
   cursor: pointer;
 }
 .form-tabs div.active {
@@ -262,8 +262,8 @@ table tbody tr:nth-child(2n) {
   font-weight: 400;
 }
 .sub-head {
-  color: #efa035;
-  border-bottom: 2px solid #fcd6a1;
+  color: #155a0a;
+  border-bottom: 2px solid #115110;
   padding-bottom: 5px;
   margin: 20px 0px;
   font-weight: bold;
