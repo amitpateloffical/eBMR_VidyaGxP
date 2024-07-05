@@ -1,12 +1,100 @@
 import React, { useState } from "react";
 import "./CapsuleEBMR.css";
 import HeaderTop from "../../components/Header/HeaderTop";
-import { CheckBox } from "@mui/icons-material";
+import { CheckBox, NoteAdd } from "@mui/icons-material";
 import { Radio } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { useReducer } from "react";
 const CapsuleEBMR = () => {
   const [tab, setTab] = useState("General");
-  const navigate=useNavigate()
+  const [apiSourceTable, setApiSourceTable] = useState([]);
+  const [batchManufacturingFormulaTable, setBatchManufacturingFormulaTable] =
+    useState([]);
+  const [listOfPersonalTable, setListOfPersonalTable] = useState([]);
+  const [weighingRecordOLBTable,setWeighingRecordOLBTable]=useState([]);
+  const navigate = useNavigate();
+  const [capsuleEBMR, setCapsuleEBMR] = useReducer(
+    (prev, next) => ({
+      ...prev,
+      ...next,
+    }),
+    {
+      productName: "",
+      genericName: "",
+      bmrNo: "",
+      effectiveDate: "",
+      batchSize: "",
+      batchNo: "",
+      supersedesNo: "",
+      bmrIsssueNo: "",
+      mFRNo: "",
+      bMRIssuedByQA: "",
+      date: "",
+      mfgLicNo: "",
+      dateOfCommencement: "",
+      plNo: "",
+      dateOfCompletion: "",
+      shelfLife: "",
+      mfgDate: "",
+      mAHolder: "",
+      expiryDate: "",
+    }
+  );
+  console.log(capsuleEBMR);
+  const addApiSourceRow = () => {
+    const newRow = {
+      NameOfPharmaceuticalIngredient: "",
+      vendor: "",
+      ItemCode: "",
+      checkedBy: "",
+      verifiedBy: "",
+    };
+    setApiSourceTable([...apiSourceTable, newRow]);
+  };
+
+  const addBatchManufacturingRow = () => {
+    const newRow = {
+      DescriptionOfEmptyHardGelatinCapsules: "",
+      Grade: "",
+      ItemCode: "",
+      LabelClaimPerCapsuleInMg: "",
+      overages: "",
+      inputQty: "",
+      actualQty: "",
+    };
+    setBatchManufacturingFormulaTable([
+      ...batchManufacturingFormulaTable,
+      newRow,
+    ]);
+  };
+
+  const addListOfPersonalRow = () => {
+    const newRow = {
+      NameOfThePerson: "",
+      department: "",
+      specimenSignature: "",
+      date: "",
+    };
+    setListOfPersonalTable([...listOfPersonalTable, newRow]);
+  };
+
+  const addWeighingRecordOLBRow=()=>{
+    const newRow={
+      containerCleannessCheckedby:"",
+      containerSrNo:"",
+      grossWeight:"",
+      tareWeight:"",
+      netWeight:"",
+      weighedBy:"",
+      checkedBy:"",
+    }
+    setWeighingRecordOLBTable([...weighingRecordOLBTable,newRow])
+  }
+  const handleSave = (data) => {
+    toast.success("eBMR Saved Successfully!");
+    // createObject(data);
+    navigate("/desktop");
+  };
   return (
     <div id="config-form-document-page">
       <HeaderTop />
@@ -184,7 +272,7 @@ const CapsuleEBMR = () => {
         >
           Filled capsule weighing record
         </div>
-{/* 
+        {/* 
         <div
           onClick={() => setTab("TRF")}
           className={tab === "TRF" ? "active" : ""}
@@ -240,57 +328,114 @@ const CapsuleEBMR = () => {
             <div className="dual-group-input">
               <div className="group-input">
                 <label>Product Name</label>
-                <input />
+                <input
+                  value={capsuleEBMR.productName}
+                  onChange={(e) => {
+                    setCapsuleEBMR({ productName: e.target.value });
+                  }}
+                />
               </div>
 
               <div className="group-input">
                 <label>Generic Name</label>
-                <input />
+                <input
+                  value={capsuleEBMR.genericName}
+                  onChange={(e) => {
+                    setCapsuleEBMR({ genericName: e.target.value });
+                  }}
+                />
               </div>
 
               <div className="group-input">
                 <label>BMR No </label>
-                <input />
+                <input
+                  value={capsuleEBMR.bmrNo}
+                  onChange={(e) => {
+                    setCapsuleEBMR({ bmrNo: e.target.value });
+                  }}
+                />
               </div>
 
               <div className="group-input">
                 <label>Effective Date </label>
-                <input />
+                <input
+                  type="date"
+                  value={capsuleEBMR.effectiveDate}
+                  onChange={(e) => {
+                    setCapsuleEBMR({ effectiveDate: e.target.value });
+                  }}
+                />
               </div>
 
               <div className="group-input">
                 <label>Batch Size </label>
-                <input />
+                <input
+                  value={capsuleEBMR.batchSize}
+                  onChange={(e) => {
+                    setCapsuleEBMR({ batchSize: e.target.value });
+                  }}
+                />
               </div>
 
               <div className="group-input">
                 <label> Batch No. </label>
-                <input />
+                <input
+                  value={capsuleEBMR.batchNo}
+                  onChange={(e) => {
+                    setCapsuleEBMR({ batchNo: e.target.value });
+                  }}
+                />
               </div>
 
               <div className="group-input">
                 <label>Supersedes No</label>
-                <input />
+                <input
+                  value={capsuleEBMR.supersedesNo}
+                  onChange={(e) => {
+                    setCapsuleEBMR({ supersedesNo: e.target.value });
+                  }}
+                />
               </div>
 
               <div className="group-input">
                 <label> BMR Issue No</label>
-                <input />
+                <input
+                  value={capsuleEBMR.bmrIsssueNo}
+                  onChange={(e) => {
+                    setCapsuleEBMR({ bmrIsssueNo: e.target.value });
+                  }}
+                />
               </div>
 
               <div className="group-input">
                 <label> MFR No</label>
-                <input />
+                <input
+                  value={capsuleEBMR.mFRNo}
+                  onChange={(e) => {
+                    setCapsuleEBMR({ mFRNo: e.target.value });
+                  }}
+                />
               </div>
 
               <div className="group-input">
                 <label> BMR Issued By (QA)</label>
-                <input />
+                <input
+                  value={capsuleEBMR.bMRIssuedByQA}
+                  onChange={(e) => {
+                    setCapsuleEBMR({ bMRIssuedByQA: e.target.value });
+                  }}
+                />
               </div>
 
               <div className="group-input">
                 <label> Date</label>
-                <input />
+                <input
+                  type="date"
+                  value={capsuleEBMR.date}
+                  onChange={(e) => {
+                    setCapsuleEBMR({ date: e.target.value });
+                  }}
+                />
               </div>
             </div>
           </div>
@@ -304,41 +449,85 @@ const CapsuleEBMR = () => {
             <div className="dual-group-input">
               <div className="group-input">
                 <label>Mfg. Lic. No.</label>
-                <input />
+                <input
+                  value={capsuleEBMR.mfgLicNo}
+                  onChange={(e) => {
+                    setCapsuleEBMR({ mfgLicNo: e.target.value });
+                  }}
+                />
               </div>
 
               <div className="group-input">
                 <label>Date Of Commencement</label>
-                <input />
+                <input
+                  type="date"
+                  value={capsuleEBMR.dateOfCommencement}
+                  onChange={(e) => {
+                    setCapsuleEBMR({ dateOfCommencement: e.target.value });
+                  }}
+                />
               </div>
 
               <div className="group-input">
                 <label>PL No. </label>
-                <input />
+                <input
+                  value={capsuleEBMR.plNo}
+                  onChange={(e) => {
+                    setCapsuleEBMR({ plNo: e.target.value });
+                  }}
+                />
               </div>
 
               <div className="group-input">
                 <label>Date Of Completion</label>
-                <input />
+                <input
+                  type="date"
+                  value={capsuleEBMR.dateOfCompletion}
+                  onChange={(e) => {
+                    setCapsuleEBMR({ dateOfCompletion: e.target.value });
+                  }}
+                />
               </div>
 
               <div className="group-input">
                 <label>Shelf Life</label>
-                <input />
+                <input
+                  value={capsuleEBMR.shelfLife}
+                  onChange={(e) => {
+                    setCapsuleEBMR({ shelfLife: e.target.value });
+                  }}
+                />
               </div>
 
               <div className="group-input">
                 <label>Mfg. Date </label>
-                <input />
+                <input
+                  type="date"
+                  value={capsuleEBMR.mfgDate}
+                  onChange={(e) => {
+                    setCapsuleEBMR({ mfgDate: e.target.value });
+                  }}
+                />
               </div>
 
               <div className="group-input">
                 <label>M.A. Holder</label>
-                <input />
+                <input
+                  value={capsuleEBMR.mAHolder}
+                  onChange={(e) => {
+                    setCapsuleEBMR({ mAHolder: e.target.value });
+                  }}
+                />
               </div>
               <div className="group-input">
                 <label>Expiry Date</label>
-                <input />
+                <input
+                  type="date"
+                  value={capsuleEBMR.expiryDate}
+                  onChange={(e) => {
+                    setCapsuleEBMR({ expiryDate: e.target.value });
+                  }}
+                />
               </div>
             </div>
             <div className="sub-head">
@@ -583,40 +772,81 @@ const CapsuleEBMR = () => {
               </tbody>
             </table>
             <div className="sub-head">API Source</div>
+            <div className="AddRows d-flex">
+              <NoteAdd onClick={addApiSourceRow} />
+              <div className="addrowinstruction"></div>
+            </div>
             <table>
               <thead>
                 <tr>
                   <th>Name of Pharmaceutical Ingredient </th>
-                  <th>VENDOR </th>
+                  <th>Vendor </th>
                   <th>Item Code (SAP code)</th>
                   <th>Checked by (Sign/Date ) </th>
                   <th>Verified by (Sign/Date )</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    <input />
-                  </td>
-                  <td>
-                    <input />
-                  </td>
-                  <td>
-                    <input />
-                  </td>
-                  <td>
-                    <input />
-                  </td>
-                  <td>
-                    <input />
-                  </td>
-                </tr>
+                {apiSourceTable.map((item, index) => {
+                  return (
+                    <tr>
+                      <td>
+                        <input  value={item.NameOfPharmaceuticalIngredient} 
+                         onChange={(e)=>{
+                           const newData=[...apiSourceTable]
+                           newData[index].NameOfPharmaceuticalIngredient=e.target.value;
+                           setApiSourceTable(newData)
+                         }} />
+                      </td>
+                      <td>
+                        <input 
+                        value={item.vendor} 
+                        onChange={(e)=>{
+                          const newData=[...apiSourceTable]
+                          newData[index].vendor=e.target.value;
+                          setApiSourceTable(newData)
+                        }} />
+                      </td>
+                      <td>
+                        <input 
+                        value={item.ItemCode} 
+                        onChange={(e)=>{
+                          const newData=[...apiSourceTable]
+                          newData[index].ItemCode=e.target.value;
+                          setApiSourceTable(newData)
+                        }}/>
+                      </td>
+                      <td>
+                        <input
+                        value={item.checkedBy} 
+                        onChange={(e)=>{
+                          const newData=[...apiSourceTable]
+                          newData[index].checkedBy=e.target.value;
+                          setApiSourceTable(newData)
+                        }} />
+                      </td>
+                      <td>
+                        <input
+                        value={item.verifiedBy} 
+                        onChange={(e)=>{
+                          const newData=[...apiSourceTable]
+                          newData[index].verifiedBy=e.target.value;
+                          setApiSourceTable(newData)
+                        }} />
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
 
             <div className="sub-head">
               {" "}
               Batch Manufacturing Formula (For Capsule filling)
+            </div>
+            <div className="AddRows d-flex">
+              <NoteAdd onClick={addBatchManufacturingRow} />
+              <div className="addrowinstruction"></div>
             </div>
             <table>
               <thead>
@@ -632,30 +862,75 @@ const CapsuleEBMR = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>
-                    <input />
-                  </td>
-                  <td>
-                    <input />
-                  </td>
-                  <td>
-                    <input />
-                  </td>
-                  <td>
-                    <input />
-                  </td>
-                  <td>
-                    <input />
-                  </td>
-                  <td>
-                    <input />
-                  </td>
-                  <td>
-                    <input />
-                  </td>
-                </tr>
+                {batchManufacturingFormulaTable.map((item, index) => {
+                  return (
+                    <tr>
+                      <td>{index + 1}</td>
+                      <td>
+                        <input 
+                        value={item.DescriptionOfEmptyHardGelatinCapsules} 
+                        onChange={(e)=>{
+                          const newData=[...batchManufacturingFormulaTable]
+                          newData[index].DescriptionOfEmptyHardGelatinCapsules=e.target.value;
+                          setBatchManufacturingFormulaTable(newData)
+                        }} />
+                      </td>
+                      <td>
+                        <input  value={item.grade} 
+                        onChange={(e)=>{
+                          const newData=[...batchManufacturingFormulaTable]
+                          newData[index].grade=e.target.value;
+                          setBatchManufacturingFormulaTable(newData)
+                        }} />
+                      </td>
+                      <td>
+                        <input 
+                         value={item.ItemCode} 
+                         onChange={(e)=>{
+                           const newData=[...batchManufacturingFormulaTable]
+                           newData[index].ItemCode=e.target.value;
+                           setBatchManufacturingFormulaTable(newData)
+                         }}/>
+                      </td>
+                      <td>
+                        <input 
+                         value={item.LabelClaimPerCapsuleInMg} 
+                         onChange={(e)=>{
+                           const newData=[...batchManufacturingFormulaTable]
+                           newData[index].LabelClaimPerCapsuleInMg=e.target.value;
+                           setBatchManufacturingFormulaTable(newData)
+                         }} />
+                      </td>
+                      <td>
+                        <input 
+                         value={item.overages} 
+                         onChange={(e)=>{
+                           const newData=[...batchManufacturingFormulaTable]
+                           newData[index].overages=e.target.value;
+                           setBatchManufacturingFormulaTable(newData)
+                         }}/>
+                      </td>
+                      <td>
+                        <input 
+                         value={item.inputQty} 
+                         onChange={(e)=>{
+                           const newData=[...batchManufacturingFormulaTable]
+                           newData[index].inputQty=e.target.value;
+                           setBatchManufacturingFormulaTable(newData)
+                         }}/>
+                      </td>
+                      <td>
+                        <input 
+                         value={item.actualQty} 
+                         onChange={(e)=>{
+                           const newData=[...batchManufacturingFormulaTable]
+                           newData[index].actualQty=e.target.value;
+                           setBatchManufacturingFormulaTable(newData)
+                         }}/>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
@@ -864,7 +1139,7 @@ const CapsuleEBMR = () => {
                   <td>
                     Minimum content of the active entity (as required in the
                     finished product) in the API on as is basis (b) (Refer point
-                    14){" "}
+                    14)
                   </td>
                   <td>
                     <input /> on as is basis=81.23%(b)
@@ -884,7 +1159,7 @@ const CapsuleEBMR = () => {
                   </td>
                   <td>
                     Theoretical quantity of API on as is basis required for
-                    batch size a x Standard Batch size x 100 A= <input />
+                    batch size a x Standard Batch size x 100 A= <input placeholder="........." />
                     b <input />x 1000# x 1000##
                     <input /> x 20,00,000 x 100 = 81.23 x 1000# x 1000## ={" "}
                     <input />/{" "}
@@ -894,11 +1169,11 @@ const CapsuleEBMR = () => {
                   </td>
                   <td>
                     Actual quantity of API on as is basis required for batch
-                    size a x Actual Batch size x 100 A= <input />
+                    size a x Actual Batch size x 100 A= <input placeholder="........."/>
                     b1 x 1000# x 1000##
-                    <input /> x 20,00,000 x 100 = <input />
-                    <input />
-                    x1000# x 1000## = <input /> kg/ 20,00,000 Capsules # For
+                    <input placeholder="........" /> x 20,00,000 x 100 = <input placeholder="......."/>
+                    <input placeholder="........" />
+                    x1000# x 1000## = <input placeholder="......."/> kg/ 20,00,000 Capsules # For
                     converting mg to g. ## For converting g to Kg a = Refer
                     point 4. b1 = Refer to point 16.
                   </td>
@@ -931,7 +1206,7 @@ const CapsuleEBMR = () => {
                     $<input />
                   </td>
                   <td className="flex">
-                    Approved by- Head QC <input />
+                    Approved by- Head QC <input placeholder="......." />
                   </td>
                 </tr>
                 <tr>
@@ -941,7 +1216,7 @@ const CapsuleEBMR = () => {
                     $<input />
                   </td>
                   <td className="flex">
-                    Authorised byManager QA <input />
+                    Authorised byManager QA <input placeholder="....." />
                   </td>
                 </tr>
               </tbody>
@@ -1355,6 +1630,10 @@ const CapsuleEBMR = () => {
       {tab === "LOPIID" ? (
         <div className="document-form">
           <div className="section-body">
+            <div className="AddRows d-flex">
+              <NoteAdd onClick={addListOfPersonalRow} />
+              <div className="addrowinstruction"></div>
+            </div>
             <table>
               <thead>
                 <tr>
@@ -1365,20 +1644,48 @@ const CapsuleEBMR = () => {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>
-                    <input />
-                  </td>
-                  <td>
-                    <input />
-                  </td>
-                  <td>
-                    <input />
-                  </td>
-                  <td>
-                    <input type="date" />
-                  </td>
-                </tr>
+                {listOfPersonalTable.map((item, index) => {
+                  return (
+                    <tr>
+                      <td>
+                        <input 
+                         value={item.NameOfThePerson} 
+                         onChange={(e)=>{
+                           const newData=[...listOfPersonalTable]
+                           newData[index].NameOfThePerson=e.target.value;
+                           setListOfPersonalTable(newData)
+                         }}/>
+                      </td>
+                      <td>
+                        <input
+                         value={item.department} 
+                         onChange={(e)=>{
+                           const newData=[...listOfPersonalTable]
+                           newData[index].department=e.target.value;
+                           setListOfPersonalTable(newData)
+                         }} />
+                      </td>
+                      <td>
+                        <input 
+                         value={item.specimenSignature} 
+                         onChange={(e)=>{
+                           const newData=[...listOfPersonalTable]
+                           newData[index].specimenSignature=e.target.value;
+                           setListOfPersonalTable(newData)
+                         }}/>
+                      </td>
+                      <td>
+                        <input type="date" 
+                         value={item.date} 
+                         onChange={(e)=>{
+                           const newData=[...listOfPersonalTable]
+                           newData[index].date=e.target.value;
+                           setListOfPersonalTable(newData)
+                         }}/>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>
@@ -1565,7 +1872,7 @@ const CapsuleEBMR = () => {
                 <tr>
                   <td className="bg-gray-300"></td>
                   <td>Day..</td>
-                  <td>Day..</td>
+                  <td>Day..</td>xc
                   <td>Day..</td>
                 </tr>
                 <tr>
@@ -1761,7 +2068,6 @@ const CapsuleEBMR = () => {
                 <tr>
                   <td>Prefilter</td>
                 </tr>
-                {/* Holiday */}
                 <tr>
                   <td>Intermediate filter (Fine filter)</td>
                 </tr>
@@ -4104,6 +4410,10 @@ const CapsuleEBMR = () => {
 
       {tab === "WROLB" ? (
         <div className="document-form">
+           <div className="AddRows d-flex">
+              <NoteAdd onClick={addWeighingRecordOLBRow} />
+              <div className="addrowinstruction"></div>
+            </div>
           <table>
             <thead>
               <tr>
@@ -4122,6 +4432,65 @@ const CapsuleEBMR = () => {
                 <th>Checked by Sign/Date</th>
               </tr>
             </thead>
+            <tbody>
+              {weighingRecordOLBTable.map((item,index)=>{
+                return  <tr>
+                <td><input value={item.containerCleannessCheckedby} 
+                onChange={(e)=>{
+                  const newData=[...weighingRecordOLBTable]
+                  newData[index].containerCleannessCheckedby=e.target.value;
+                  setWeighingRecordOLBTable(newData)
+                }}/></td>
+                <td><input
+                value={item.containerSrNo} 
+                onChange={(e)=>{
+                  const newData=[...weighingRecordOLBTable]
+                  newData[index].containerSrNo=e.target.value;
+                  setWeighingRecordOLBTable(newData)
+                }}/></td>
+                <td><input  value={item.grossWeight} 
+                onChange={(e)=>{
+                  const newData=[...weighingRecordOLBTable]
+                  newData[index].grossWeight=e.target.value;
+                  setWeighingRecordOLBTable(newData)
+                }}
+                /></td>
+                <td><input
+                 value={item.tareWeight} 
+                 onChange={(e)=>{
+                   const newData=[...weighingRecordOLBTable]
+                   newData[index].tareWeight=e.target.value;
+                   setWeighingRecordOLBTable(newData)
+                 }}/></td>
+                <td><input
+                 value={item.netWeight} 
+                 onChange={(e)=>{
+                   const newData=[...weighingRecordOLBTable]
+                   newData[index].netWeight=e.target.value;
+                   setWeighingRecordOLBTable(newData)
+                 }}/></td>
+                <td><input
+                 value={item.weighedBy} 
+                 onChange={(e)=>{
+                   const newData=[...weighingRecordOLBTable]
+                   newData[index].weighedBy=e.target.value;
+                   setWeighingRecordOLBTable(newData)
+                 }}/></td>
+                <td><input
+                 value={item.checkedBy} 
+                 onChange={(e)=>{
+                   const newData=[...weighingRecordOLBTable]
+                   newData[index].checkedBy=e.target.value;
+                   setWeighingRecordOLBTable(newData)
+                 }}/></td>
+
+
+              </tr>
+              })}
+              <tr>
+                <td></td>
+              </tr>
+            </tbody>
           </table>
         </div>
       ) : null}
@@ -8261,12 +8630,11 @@ const CapsuleEBMR = () => {
               </tr>
             </tbody>
           </table>
-
-         
         </div>
       ) : null}
-      {tab==="FCWR"?<div className="document-form">
-        <div className="sub-head">Filled Capsules Weighing Record</div>
+      {tab === "FCWR" ? (
+        <div className="document-form">
+          <div className="sub-head">Filled Capsules Weighing Record</div>
           <table>
             <thead>
               <tr>
@@ -8730,286 +9098,554 @@ const CapsuleEBMR = () => {
               </tr>
             </tbody>
           </table>
-      </div>:null}
+        </div>
+      ) : null}
 
-      {tab==="RCFS"?<div className="document-form">
-        <table>
-           <tr>
-            <td>Target fill weight</td>
-            <td className="flex gap-1"><input/><span>mg</span></td>
-           </tr>
-           <tr>
-            <td>Average weight of capsules</td>
-            <td className="flex gap-1"><input/><span>mg</span></td>
-           </tr>
-           </table>
-           <table>
-           <tr>
-            <td>A</td>
-            <td>Weight of Lubricated blend transferred for Capsule Filling</td>
-            <td className="flex gap-1"><input/><span>Kg</span></td>
-            <td className="flex gap-1"><input/><span>Nos.</span></td>
-           </tr>
-           <tr>
-            <td>B</td>
-            <td>Quantity of filled capsules </td>
-            <td className="flex gap-1"><input/><span>Kg</span></td>
-            <td className="flex gap-1"><input/><span>Nos.</span></td>
-           </tr>
-           <tr>
-            <td>C</td>
-            <td>#Total capsule filling rejects</td>
-            <td className="flex gap-1"><input/><span>Kg</span></td>
-            <td className="flex gap-1"><input/><span>Nos.</span></td>
-           </tr>
-           <tr>
-            <td>D</td>
-            <td>#Total Samples </td>
-            <td className="flex gap-1"><input/><span>Kg</span></td>
-            <td className="flex gap-1"><input/><span>Nos.</span></td>
-           </tr>
-           <tr>
-            <td>E</td>
-            <td>Total Losses (Rejects + Samples) (C+D)  </td>
-            <td className="flex gap-1"><input/><span>Kg</span></td>
-            <td className="flex gap-1"><input/><span>Nos.</span></td>
-           </tr>
-           <tr>
-            <td>F</td>
-            <td>Total Quantity reconciled (B + E)  </td>
-            <td className="flex gap-1"><input/><span>Kg</span></td>
-            <td className="flex gap-1"><input/><span>Nos.</span></td>
-           </tr>
-           <tr>
-            <td>G</td>
-            <td> % Reconciliation (F/A) X 100  </td>
-            <td className="flex gap-1 bg-gray-400"><input/></td>
-            <td className="flex gap-1"><input/><span>%</span></td>
-           </tr>
-           <tr>
-            <td>H</td>
-            <td>% Yield: (B+D/ A) X 100 (Limit: 98.00% to 100.00%) </td>
-            <td className="flex gap-1  bg-gray-400"><input/></td>
-            <td className="flex gap-1"><input/><span>%</span></td>
-           </tr>
-           </table>
-      
-      </div>:null}
+      {tab === "RCFS" ? (
+        <div className="document-form">
+          <table>
+            <tr>
+              <td>Target fill weight</td>
+              <td className="flex gap-1">
+                <input />
+                <span>mg</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Average weight of capsules</td>
+              <td className="flex gap-1">
+                <input />
+                <span>mg</span>
+              </td>
+            </tr>
+          </table>
+          <table>
+            <tr>
+              <td>A</td>
+              <td>
+                Weight of Lubricated blend transferred for Capsule Filling
+              </td>
+              <td className="flex gap-1">
+                <input />
+                <span>Kg</span>
+              </td>
+              <td className="flex gap-1">
+                <input />
+                <span>Nos.</span>
+              </td>
+            </tr>
+            <tr>
+              <td>B</td>
+              <td>Quantity of filled capsules </td>
+              <td className="flex gap-1">
+                <input />
+                <span>Kg</span>
+              </td>
+              <td className="flex gap-1">
+                <input />
+                <span>Nos.</span>
+              </td>
+            </tr>
+            <tr>
+              <td>C</td>
+              <td>#Total capsule filling rejects</td>
+              <td className="flex gap-1">
+                <input />
+                <span>Kg</span>
+              </td>
+              <td className="flex gap-1">
+                <input />
+                <span>Nos.</span>
+              </td>
+            </tr>
+            <tr>
+              <td>D</td>
+              <td>#Total Samples </td>
+              <td className="flex gap-1">
+                <input />
+                <span>Kg</span>
+              </td>
+              <td className="flex gap-1">
+                <input />
+                <span>Nos.</span>
+              </td>
+            </tr>
+            <tr>
+              <td>E</td>
+              <td>Total Losses (Rejects + Samples) (C+D) </td>
+              <td className="flex gap-1">
+                <input />
+                <span>Kg</span>
+              </td>
+              <td className="flex gap-1">
+                <input />
+                <span>Nos.</span>
+              </td>
+            </tr>
+            <tr>
+              <td>F</td>
+              <td>Total Quantity reconciled (B + E) </td>
+              <td className="flex gap-1">
+                <input />
+                <span>Kg</span>
+              </td>
+              <td className="flex gap-1">
+                <input />
+                <span>Nos.</span>
+              </td>
+            </tr>
+            <tr>
+              <td>G</td>
+              <td> % Reconciliation (F/A) X 100 </td>
+              <td className="flex gap-1 bg-gray-400">
+                <input />
+              </td>
+              <td className="flex gap-1">
+                <input />
+                <span>%</span>
+              </td>
+            </tr>
+            <tr>
+              <td>H</td>
+              <td>% Yield: (B+D/ A) X 100 (Limit: 98.00% to 100.00%) </td>
+              <td className="flex gap-1  bg-gray-400">
+                <input />
+              </td>
+              <td className="flex gap-1">
+                <input />
+                <span>%</span>
+              </td>
+            </tr>
+          </table>
+        </div>
+      ) : null}
 
-      {tab==="BR"?<div className="document-form"></div>:null}
-      {tab==="PHS"?<div className="document-form"></div>:null}
-      {tab==="PIS"?<div className="document-form">
-        <table>
+      {tab === "BR" ? <div className="document-form"></div> : null}
+      {tab === "PHS" ? <div className="document-form"></div> : null}
+      {tab === "PIS" ? (
+        <div className="document-form">
+          <table>
             <thead>
-                <tr>
-                    <th rowSpan={2}>Date </th>
-                    <th colSpan={2}>Time</th>
-                    <th rowSpan={2}>Stage</th>
-                    <th rowSpan={2}>Reason</th>
-                    <th rowSpan={2}>Corrective Action</th>
-                    <th colSpan={2}>(Sign& Date)</th>
-                </tr>
-                <tr>
-                    <th>From</th>
-                    <th>To</th>
-                    <th>Production </th>
-                    <th>IPQA</th>
-                </tr>
+              <tr>
+                <th rowSpan={2}>Date </th>
+                <th colSpan={2}>Time</th>
+                <th rowSpan={2}>Stage</th>
+                <th rowSpan={2}>Reason</th>
+                <th rowSpan={2}>Corrective Action</th>
+                <th colSpan={2}>(Sign& Date)</th>
+              </tr>
+              <tr>
+                <th>From</th>
+                <th>To</th>
+                <th>Production </th>
+                <th>IPQA</th>
+              </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-
-                </tr>
-                <tr>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-
-                </tr>   <tr>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-
-                </tr>   <tr>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-
-                </tr>   <tr>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-
-                </tr>   <tr>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-
-                </tr>   <tr>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-
-                </tr>   <tr>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-
-                </tr>
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>{" "}
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>{" "}
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>{" "}
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>{" "}
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>{" "}
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>{" "}
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
             </tbody>
-        </table>
-      </div>:null}
+          </table>
+        </div>
+      ) : null}
 
-      {tab==="DS"?<div className="document-form">
-        <table>
+      {tab === "DS" ? (
+        <div className="document-form">
+          <table>
             <thead>
-                <tr>
-                    <th>Deviation No</th>
-                    <th>Details Of Deviation</th>
-                    <th>Corrective Action Taken /Proposed</th>
-                    <th>Production
-                    Sign/Date </th>
-                    <th>Q.A. Sign/Date
-                    </th>
-                </tr>
-                
+              <tr>
+                <th>Deviation No</th>
+                <th>Details Of Deviation</th>
+                <th>Corrective Action Taken /Proposed</th>
+                <th>Production Sign/Date </th>
+                <th>Q.A. Sign/Date</th>
+              </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-
-                </tr>
-                <tr>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-
-                </tr>  <tr>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-
-                </tr>  <tr>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-
-                </tr>  <tr>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-
-                </tr>  <tr>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-
-                </tr>  <tr>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-
-                </tr>  <tr>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-                    <td><input/></td>
-
-                </tr>
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>{" "}
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>{" "}
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>{" "}
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>{" "}
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>{" "}
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>{" "}
+              <tr>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
             </tbody>
-        </table>
-      </div>:null}
-      {tab==="ROBMR"?<div className="document-form">
-        <table>
+          </table>
+        </div>
+      ) : null}
+      {tab === "ROBMR" ? (
+        <div className="document-form">
+          <table>
             <thead>
-                <tr>
-                    <th>Instruction</th>
-                    <th>Prod. Section Head (Sign/Date) </th>
-                    <th>IPQA Head (Sign/Date)
-                    </th>
-                </tr>
+              <tr>
+                <th>Instruction</th>
+                <th>Prod. Section Head (Sign/Date) </th>
+                <th>IPQA Head (Sign/Date)</th>
+              </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Review of In-process parameters and batch details.</td>
-                    <td><input/></td>
-                    <td><input/></td>
-
-                </tr>
-                <tr>
-                    <td>Review of In-process parameters and batch details.</td>
-                    <td><input/></td>
-                    <td><input/></td>
-
-                </tr>
+              <tr>
+                <td>Review of In-process parameters and batch details.</td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
+              <tr>
+                <td>Review of In-process parameters and batch details.</td>
+                <td>
+                  <input />
+                </td>
+                <td>
+                  <input />
+                </td>
+              </tr>
             </tbody>
-        </table>
-      </div>:null}
+          </table>
+        </div>
+      ) : null}
       <div className="button-block" style={{ width: "100%" }}>
         <button
           className="themeBtn"
           onClick={() => {
-            // handleSave(ManufacturingRecord);
+            handleSave(capsuleEBMR);
           }}
         >
           Save
@@ -9019,8 +9655,6 @@ const CapsuleEBMR = () => {
           Exit
         </button>
       </div>
-
-
     </div>
   );
 };
