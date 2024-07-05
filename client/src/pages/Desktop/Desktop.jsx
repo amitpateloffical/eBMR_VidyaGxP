@@ -11,38 +11,20 @@ function Desktop() {
   const dispatch = useDispatch();
   const Ebmr = useSelector((state) => state.ebmrData.EBMRFormData);
   console.log(Ebmr, "Ebmr");
+
   const handleRowClick = (row) => {
     dispatch({ type: "SELECT_ROW", payload: row });
+    navigate("/eBMR-panel");
   };
+
+  const pankaj = useSelector((state) => state.dprPanelData.selectedRow);
+  console.log(pankaj, "ghj");
 
   return (
     <>
       <HeaderTop />
       <HeaderBottom />
       <div className="desktop-input-table-wrapper">
-        {/* <div className="input-wrapper">
-          <div className="group-input-2">
-            <label>eBMR</label>
-            <select
-              value={eLogSelect}
-              onChange={(e) => setELogSelect(e.target.value)}
-            >
-              <option value="All_Records">All Records</option>
-              <option value="diffrential_pressure">
-                Diffrential Pressure Record
-              </option>
-              <option value="area_and_equipment">
-                Area & Equipment Usage Log
-              </option>
-              <option value="equipment_cleaning">
-                Equipment Cleaning Checklist
-              </option>
-              <option value="temperature_records">Temperature Records</option>
-            </select>
-          </div>
-          <button className="btn">Print</button>
-        </div> */}
-
         <table>
           <thead>
             <tr>
@@ -56,9 +38,14 @@ function Desktop() {
           <tbody>
             {Ebmr?.map((item, index) => {
               return (
-                <tr key={item.index}>
-                  <td> {index + 1}</td>
-                  <td onClick={() => navigate("/eBMR-panel")} className="cursor-pointer hover:text-blue-600">{item.eBMRId}</td>
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td
+                    onClick={() => handleRowClick(item)}
+                    className="cursor-pointer hover:text-blue-600"
+                  >
+                    {item.eBMRId}
+                  </td>
                   <td>{item.productName}</td>
                   <td>{item.productCode}</td>
                   <td>{item.process}</td>

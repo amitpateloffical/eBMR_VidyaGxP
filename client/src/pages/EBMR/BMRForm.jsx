@@ -10,17 +10,28 @@ import HeaderTop from "../../components/Header/HeaderTop";
 const BMRForm = () => {
   const [tab, setTab] = useState("General");
   const [allTableData, setAllTableData] = useState([]);
-  const [packingMaterialTablesData, setpackingMaterialTablesData] = useState([]);
+  const [packingMaterialTablesData, setpackingMaterialTablesData] = useState(
+    []
+  );
   const [batchCleaningTablesData, setbatchCleaningTablesData] = useState([]);
-  const [accessoriesCleaningTablesData, setAccessoriesCleaningTablesData] = useState([]);
-  const [intermadiateIssuanceTablesData, setIntermadiateIssuanceTablesData] = useState([]);
+  const [accessoriesCleaningTablesData, setAccessoriesCleaningTablesData] =
+    useState([]);
+  const [intermadiateIssuanceTablesData, setIntermadiateIssuanceTablesData] =
+    useState([]);
   const [hazopTablesData, setHazopTablesData] = useState([]);
   const [processSafetyTablesData, setProcessSafetyTablesData] = useState([]);
   const [ppeMatrixTablesData, setPPEMatrixTablesData] = useState([]);
-  const [hazardAndControlTablesData, setHazardAndControlTablesData] = useState([]);
+  const [hazardAndControlTablesData, setHazardAndControlTablesData] = useState(
+    []
+  );
   const [readAndUnderstood, setReadAndUnderstood] = useState([]);
   const [CriticalProcessPFQ, setCriticalProcessPFQ] = useState([]);
   const [criticalProcessPFS, setCriticalProcessPFS] = useState([]);
+  const [intermediateDispensing, setIntermediateDispensing] = useState([]);
+  const [afterDispensing, setAfterDispensing] = useState([]);
+  const [weightDetails, setWeightDetails] = useState([]);
+  const [rMR, setRMR] = useState([]);
+  const [deviation, setDeviation] = useState([]);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const uniqueId =
@@ -67,20 +78,42 @@ const BMRForm = () => {
     setManufacturingRecord({
       gridData: allTableData,
       batchCleaningTablesData: batchCleaningTablesData,
-      packingMaterialTablesData:packingMaterialTablesData,
-      accessoriesCleaningTablesData:accessoriesCleaningTablesData,
-      intermadiateIssuanceTablesData:intermadiateIssuanceTablesData,
-      hazopTablesData:hazopTablesData,
-      processSafetyTablesData:processSafetyTablesData,
-      ppeMatrixTablesData:ppeMatrixTablesData,
-      hazardAndControlTablesData:hazardAndControlTablesData,
-      readAndUnderstood:readAndUnderstood,
-      CriticalProcessPFQ:CriticalProcessPFQ,
-      criticalProcessPFS:criticalProcessPFS
+      packingMaterialTablesData: packingMaterialTablesData,
+      accessoriesCleaningTablesData: accessoriesCleaningTablesData,
+      intermadiateIssuanceTablesData: intermadiateIssuanceTablesData,
+      hazopTablesData: hazopTablesData,
+      processSafetyTablesData: processSafetyTablesData,
+      ppeMatrixTablesData: ppeMatrixTablesData,
+      hazardAndControlTablesData: hazardAndControlTablesData,
+      readAndUnderstood: readAndUnderstood,
+      CriticalProcessPFQ: CriticalProcessPFQ,
+      criticalProcessPFS: criticalProcessPFS,
+      intermediateDispensing: intermediateDispensing,
+      afterDispensing: afterDispensing,
+      weightDetails: weightDetails,
+      rMR: rMR,
+      deviation: deviation,
     });
-  }, [allTableData, batchCleaningTablesData,packingMaterialTablesData,accessoriesCleaningTablesData,
-    intermadiateIssuanceTablesData,hazopTablesData,processSafetyTablesData,ppeMatrixTablesData,
-    hazardAndControlTablesData,readAndUnderstood,CriticalProcessPFQ,criticalProcessPFS]);
+  }, [
+    allTableData,
+    batchCleaningTablesData,
+    packingMaterialTablesData,
+    accessoriesCleaningTablesData,
+    intermadiateIssuanceTablesData,
+    hazopTablesData,
+    processSafetyTablesData,
+    ppeMatrixTablesData,
+    hazardAndControlTablesData,
+    readAndUnderstood,
+    CriticalProcessPFQ,
+    criticalProcessPFS,
+    intermediateDispensing,
+    ,
+    weightDetails,
+    afterDispensing,
+    rMR,
+    deviation,
+  ]);
 
   const handleSave = (data) => {
     toast.success("eBMR Saved Successfully!");
@@ -108,7 +141,7 @@ const BMRForm = () => {
     };
     setAllTableData([...allTableData, newRow]);
   };
- 
+
   const addBatchCleaningRow = () => {
     const currentTime = new Date().toLocaleTimeString();
     const newRow = {
@@ -156,7 +189,10 @@ const BMRForm = () => {
       checkedBySign: "",
       Date: "",
     };
-    setAccessoriesCleaningTablesData([...accessoriesCleaningTablesData, newRow]);
+    setAccessoriesCleaningTablesData([
+      ...accessoriesCleaningTablesData,
+      newRow,
+    ]);
   };
 
   const addIntermediateIssanceRow = () => {
@@ -168,7 +204,10 @@ const BMRForm = () => {
       sign: "",
       date: "",
     };
-    setIntermadiateIssuanceTablesData([...intermadiateIssuanceTablesData, newRow]);
+    setIntermadiateIssuanceTablesData([
+      ...intermadiateIssuanceTablesData,
+      newRow,
+    ]);
   };
 
   const addHazopRow = () => {
@@ -227,6 +266,16 @@ const BMRForm = () => {
     setCriticalProcessPFQ([...CriticalProcessPFQ, newRow]);
   };
 
+  const addIntermediateDispensing = () => {
+    const newRow = {
+      materialCode: "",
+      batchNo: "",
+      time: { from: "", to: "" },
+      dispensing: { grossWt: "", tareWt: "", netWt: "" },
+      doneBy: "",
+    };
+    setIntermediateDispensing([...intermediateDispensing, newRow]);
+  };
   const addCriticalProcessParameterForSafety = () => {
     const newRow = {
       BMRStepNo: "",
@@ -234,6 +283,54 @@ const BMRForm = () => {
       justification: "",
     };
     setCriticalProcessPFS([...criticalProcessPFS, newRow]);
+  };
+
+  const addAfterDispensing = () => {
+    const newRow = {
+      cleaningAfterDispensing: "",
+      recordingsAndObservations: "",
+      date: "",
+      time: { from: "", to: "" },
+      doneBy: "",
+      cleanNotClean: "",
+    };
+    setAfterDispensing([...afterDispensing, newRow]);
+  };
+
+  const addWeightDetails = () => {
+    const newRow = {
+      grossContainerNo: "",
+      weight: "",
+      tareWeight: "",
+      netWeight: "",
+      doneBy: "",
+      sealByNo: "",
+      sealedByQC: "",
+      checkedBy: "",
+    };
+    setWeightDetails([...weightDetails, newRow]);
+  };
+
+  const addrMR = () => {
+    const newRow = {
+      rawMaterialName: "",
+      UOM: "",
+      issuedQty: "",
+      usedQty: "",
+      remark: "",
+    };
+    setRMR([...rMR, newRow]);
+  };
+  const addDeviation = () => {
+    const newRow = {
+      date: "",
+      stepnoPageno: "",
+      observation: "",
+      reason: "",
+      recordedOn: "",
+      recordedSign: "",
+    };
+    setDeviation([...deviation, newRow]);
   };
 
   const deleteRow = (index) => {
@@ -277,10 +374,16 @@ const BMRForm = () => {
         </div>
       </div>
       <div className="form-tabs">
-        <div onClick={() => setTab("General")} className={tab === "General" ? "active" : ""}>
+        <div
+          onClick={() => setTab("General")}
+          className={tab === "General" ? "active" : ""}
+        >
           General Information
         </div>
-        <div onClick={() => setTab("QA")} className={tab === "QA" ? "active" : ""}>
+        <div
+          onClick={() => setTab("QA")}
+          className={tab === "QA" ? "active" : ""}
+        >
           Batch Record Issued BY QA
         </div>
         {/* <div
@@ -319,7 +422,9 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.productName}
                   type="text"
-                  onChange={(e) => setManufacturingRecord({ productName: e.target.value })}
+                  onChange={(e) =>
+                    setManufacturingRecord({ productName: e.target.value })
+                  }
                 />
               </div>
 
@@ -328,7 +433,9 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.documentNo}
                   type="text"
-                  onChange={(e) => setManufacturingRecord({ documentNo: e.target.value })}
+                  onChange={(e) =>
+                    setManufacturingRecord({ documentNo: e.target.value })
+                  }
                 />
               </div>
 
@@ -337,7 +444,9 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.productCode}
                   type="text"
-                  onChange={(e) => setManufacturingRecord({ productCode: e.target.value })}
+                  onChange={(e) =>
+                    setManufacturingRecord({ productCode: e.target.value })
+                  }
                 />
               </div>
 
@@ -346,7 +455,9 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.effectiveDate}
                   type="text"
-                  onChange={(e) => setManufacturingRecord({ effectiveDate: e.target.value })}
+                  onChange={(e) =>
+                    setManufacturingRecord({ effectiveDate: e.target.value })
+                  }
                 />
               </div>
 
@@ -355,7 +466,9 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.stage}
                   type="text"
-                  onChange={(e) => setManufacturingRecord({ stage: e.target.value })}
+                  onChange={(e) =>
+                    setManufacturingRecord({ stage: e.target.value })
+                  }
                 />
               </div>
 
@@ -364,7 +477,9 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.supersedesNo}
                   type="text"
-                  onChange={(e) => setManufacturingRecord({ supersedesNo: e.target.value })}
+                  onChange={(e) =>
+                    setManufacturingRecord({ supersedesNo: e.target.value })
+                  }
                 />
               </div>
 
@@ -373,7 +488,9 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.batchNo}
                   type="text"
-                  onChange={(e) => setManufacturingRecord({ batchNo: e.target.value })}
+                  onChange={(e) =>
+                    setManufacturingRecord({ batchNo: e.target.value })
+                  }
                 />
               </div>
 
@@ -382,7 +499,9 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.pageNo}
                   type="text"
-                  onChange={(e) => setManufacturingRecord({ pageNo: e.target.value })}
+                  onChange={(e) =>
+                    setManufacturingRecord({ pageNo: e.target.value })
+                  }
                 />
               </div>
             </div>
@@ -411,7 +530,9 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.actualBatchSize}
                   type="text"
-                  onChange={(e) => setManufacturingRecord({ actualBatchSize: e.target.value })}
+                  onChange={(e) =>
+                    setManufacturingRecord({ actualBatchSize: e.target.value })
+                  }
                 />
               </div>
 
@@ -433,7 +554,9 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.time}
                   type="time"
-                  onChange={(e) => setManufacturingRecord({ time: e.target.value })}
+                  onChange={(e) =>
+                    setManufacturingRecord({ time: e.target.value })
+                  }
                 />
               </div>
 
@@ -455,7 +578,9 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.time}
                   type="time"
-                  onChange={(e) => setManufacturingRecord({ time: e.target.value })}
+                  onChange={(e) =>
+                    setManufacturingRecord({ time: e.target.value })
+                  }
                 />
               </div>
 
@@ -464,7 +589,9 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.expectedOutput}
                   type="text"
-                  onChange={(e) => setManufacturingRecord({ expectedOutput: e.target.value })}
+                  onChange={(e) =>
+                    setManufacturingRecord({ expectedOutput: e.target.value })
+                  }
                 />
               </div>
 
@@ -473,7 +600,9 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.actualOutput}
                   type="text"
-                  onChange={(e) => setManufacturingRecord({ actualOutput: e.target.value })}
+                  onChange={(e) =>
+                    setManufacturingRecord({ actualOutput: e.target.value })
+                  }
                 />
               </div>
 
@@ -482,7 +611,9 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.expectedYeild}
                   type="text"
-                  onChange={(e) => setManufacturingRecord({ expectedYeild: e.target.value })}
+                  onChange={(e) =>
+                    setManufacturingRecord({ expectedYeild: e.target.value })
+                  }
                 />
               </div>
 
@@ -491,7 +622,9 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.actualYeild}
                   type="text"
-                  onChange={(e) => setManufacturingRecord({ actualYeild: e.target.value })}
+                  onChange={(e) =>
+                    setManufacturingRecord({ actualYeild: e.target.value })
+                  }
                 />
               </div>
               <div className="group-input">
@@ -511,7 +644,9 @@ const BMRForm = () => {
                 <input
                   value={ManufacturingRecord.expiryRetestdate}
                   type="date"
-                  onChange={(e) => setManufacturingRecord({ expiryRetestdate: e.target.value })}
+                  onChange={(e) =>
+                    setManufacturingRecord({ expiryRetestdate: e.target.value })
+                  }
                 />
               </div>
 
@@ -925,7 +1060,9 @@ const BMRForm = () => {
               </tbody>
             </table>
 
-            <div className="sub-head">Solvent For Container/Hosepipe And Accessories Cleaning</div>
+            <div className="sub-head">
+              Solvent For Container/Hosepipe And Accessories Cleaning
+            </div>
 
             <div className="AddRows d-flex">
               <NoteAdd onClick={addaccessoriesRow} />
@@ -1198,7 +1335,8 @@ const BMRForm = () => {
             </table>
 
             <div className="sub-head">
-              Process Safety Study Details And Gas /By Product Generation Details
+              Process Safety Study Details And Gas /By Product Generation
+              Details
             </div>
 
             <div className="AddRows d-flex">
@@ -1254,7 +1392,9 @@ const BMRForm = () => {
               </tbody>
             </table>
 
-            <div className="sub-head">Personal Protective Equipment (PPE) Matrix</div>
+            <div className="sub-head">
+              Personal Protective Equipment (PPE) Matrix
+            </div>
 
             <div className="AddRows d-flex">
               <NoteAdd onClick={addPPEMatrixRow} />
@@ -1343,7 +1483,9 @@ const BMRForm = () => {
               </tbody>
             </table>
 
-            <div className="sub-head">Identification Of Hazards And Control</div>
+            <div className="sub-head">
+              Identification Of Hazards And Control
+            </div>
 
             <div className="AddRows d-flex">
               <NoteAdd onClick={addHazardAndControlRow} />
@@ -1432,13 +1574,35 @@ const BMRForm = () => {
                     <tr>
                       <td>{index + 1}</td>
                       <td>
-                        <input />
+                        <input
+                          value={item.BMRStepNo}
+                          onChange={(e) => {
+                            const newData = [...criticalProcessPFS];
+                            newData[index].BMRStepNo = e.target.value;
+                            setCriticalProcessPFS(newData);
+                          }}
+                        />
                       </td>
                       <td>
-                        <input />
+                        <input
+                          value={item.criticalProcessParameter}
+                          onChange={(e) => {
+                            const newData = [...criticalProcessPFS];
+                            newData[index].criticalProcessParameter =
+                              e.target.value;
+                            setCriticalProcessPFS(newData);
+                          }}
+                        />
                       </td>
                       <td>
-                        <input />
+                        <input
+                          value={item.justification}
+                          onChange={(e) => {
+                            const newData = [...criticalProcessPFS];
+                            newData[index].justification = e.target.value;
+                            setCriticalProcessPFS(newData);
+                          }}
+                        />
                       </td>
                     </tr>
                   );
@@ -1446,7 +1610,9 @@ const BMRForm = () => {
               </tbody>
             </table>
 
-            <div className="sub-head">Critical Process Parameter For Quality</div>
+            <div className="sub-head">
+              Critical Process Parameter For Quality
+            </div>
 
             <div className="AddRows d-flex">
               <NoteAdd onClick={addCriticalProcessParameterForQuality} />
@@ -1468,13 +1634,35 @@ const BMRForm = () => {
                     <tr>
                       <td>{index + 1}</td>
                       <td>
-                        <input />
+                        <input
+                          value={item.BMRStepNo}
+                          onChange={(e) => {
+                            const newData = [...CriticalProcessPFQ];
+                            newData[index].BMRStepNo = e.target.value;
+                            setCriticalProcessPFQ(newData);
+                          }}
+                        />
                       </td>
                       <td>
-                        <input />
+                        <input
+                          value={item.criticalProcessParameter}
+                          onChange={(e) => {
+                            const newData = [...CriticalProcessPFQ];
+                            newData[index].criticalProcessParameter =
+                              e.target.value;
+                            setCriticalProcessPFQ(newData);
+                          }}
+                        />
                       </td>
                       <td>
-                        <input />
+                        <input
+                          value={item.justification}
+                          onChange={(e) => {
+                            const newData = [...CriticalProcessPFQ];
+                            newData[index].justification = e.target.value;
+                            setCriticalProcessPFQ(newData);
+                          }}
+                        />
                       </td>
                     </tr>
                   );
@@ -1504,13 +1692,35 @@ const BMRForm = () => {
                     <tr>
                       <td>{index + 1}</td>
                       <td>
-                        <input />
+                        <input
+                          value={itm.nameOfPerson}
+                          onChange={(e) => {
+                            const newData = [...readAndUnderstood];
+                            newData[index].nameOfPerson = e.target.value;
+                            setReadAndUnderstood(newData);
+                          }}
+                        />
                       </td>
                       <td>
-                        <input />
+                        <input
+                          value={itm.sign}
+                          onChange={(e) => {
+                            const newData = [...readAndUnderstood];
+                            newData[index].sign = e.target.value;
+                            setReadAndUnderstood(newData);
+                          }}
+                        />
                       </td>
                       <td>
-                        <input type="date" />
+                        <input
+                          type="date"
+                          value={itm.date}
+                          onChange={(e) => {
+                            const newData = [...readAndUnderstood];
+                            newData[index].date = e.target.value;
+                            setReadAndUnderstood(newData);
+                          }}
+                        />
                       </td>
                     </tr>
                   );
@@ -1570,79 +1780,247 @@ const BMRForm = () => {
             <div className="sub-head">Manufacturing Process</div>
 
             <div className="flex flex-col gap-8">
-              <table border="1" align="center" width="700">
-                <thead>
-                  <tr>
-                    <th colspan="10" className="font-bold text-lg text-center">
-                      Intermediate Dispensing
-                    </th>
-                  </tr>
-                  <tr>
-                    <th rowSpan={2}> Sr. No.</th>
-                    <th rowSpan={2}> Material Code</th>
-                    <th rowSpan={2}>Batch No.</th>
-                    <th colspan="2">Time</th>
+              <div>
+                <div className="AddRows d-flex">
+                  <NoteAdd onClick={addIntermediateDispensing} />
+                  <div className="addrowinstruction"></div>
+                </div>
+                <table border="1" align="center" width="700">
+                  <thead>
+                    <tr>
+                      <th
+                        colspan="10"
+                        className="font-bold text-lg text-center"
+                      >
+                        Intermediate Dispensing
+                      </th>
+                    </tr>
+                    <tr>
+                      <th rowSpan={2}> Sr. No.</th>
+                      <th rowSpan={2}> Material Code</th>
+                      <th rowSpan={2}>Batch No.</th>
+                      <th colspan="2">Time</th>
 
-                    <th colspan="3"> Dispensing</th>
-                    <th rowSpan={2}>Done by </th>
-                  </tr>
-                  <tr>
-                    <th>From</th>
-                    <th>To</th>
-                    <th>Gross Wt.</th>
-                    <th>Tare Wt.</th>
-                    <th>Net Wt.</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
-              <table border="1" align="center" width="700">
-                <thead>
-                  <tr className="">
-                    <th colspan="10" className="font-bold text-lg text-center">
-                      After dispensing, clean the dispensing area and weighing balance using a
-                      lint-free cloth.
-                    </th>
-                  </tr>
-                  <tr>
-                    <th>Sr. Operation No.</th>
-                    <th>Cleaning After dispensing</th>
-                    <th>Recordings and observations</th>
-                    <th>Date</th>
-                    <th>Time (Hrs.)</th>
-                    <th>From</th>
-                    <th>To</th>
-                    <th>Done By/Date</th>
-                    <th>Clean/Not cleaned</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                </tbody>
-              </table>
+                      <th colspan="3"> Dispensing</th>
+                      <th rowSpan={2}>Done by </th>
+                    </tr>
+                    <tr>
+                      <th>From</th>
+                      <th>To</th>
+                      <th>Gross Wt.</th>
+                      <th>Tare Wt.</th>
+                      <th>Net Wt.</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {intermediateDispensing.map((item, index) => {
+                      return (
+                        <tr>
+                          <td>{index + 1}</td>
+                          <td>
+                            <input
+                              value={item.materialCode}
+                              onChange={(e) => {
+                                const newData = [...intermediateDispensing];
+                                newData[index].materialCode = e.target.value;
+                                setIntermediateDispensing(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              value={item.batchNo}
+                              onChange={(e) => {
+                                const newData = [...intermediateDispensing];
+                                newData[index].batchNo = e.target.value;
+                                setIntermediateDispensing(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              value={item?.time?.from}
+                              onChange={(e) => {
+                                const newData = [...intermediateDispensing];
+                                newData[index].time.from = e.target.value;
+                                setIntermediateDispensing(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              value={item?.time?.to}
+                              onChange={(e) => {
+                                const newData = [...intermediateDispensing];
+                                newData[index].time.to = e.target.value;
+                                setIntermediateDispensing(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              value={item?.dispensing?.grossWt}
+                              onChange={(e) => {
+                                const newData = [...intermediateDispensing];
+                                newData[index].dispensing.grossWt =
+                                  e.target.value;
+                                setIntermediateDispensing(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              value={item?.dispensing?.tareWt}
+                              onChange={(e) => {
+                                const newData = [...intermediateDispensing];
+                                newData[index].dispensing.tareWt =
+                                  e.target.value;
+                                setIntermediateDispensing(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              value={item?.dispensing?.netWt}
+                              onChange={(e) => {
+                                const newData = [...intermediateDispensing];
+                                newData[index].dispensing.netWt =
+                                  e.target.value;
+                                setIntermediateDispensing(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              value={item?.doneBy}
+                              onChange={(e) => {
+                                const newData = [...intermediateDispensing];
+                                newData[index].doneBy = e.target.value;
+                                setIntermediateDispensing(newData);
+                              }}
+                            />
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
 
+              <div>
+                <div className="AddRows d-flex">
+                  <NoteAdd onClick={addAfterDispensing} />
+                  <div className="addrowinstruction"></div>
+                </div>
+                <table border="1" align="center" width="700">
+                  <thead>
+                    <tr className="">
+                      <th
+                        colspan="10"
+                        className="font-bold text-lg text-center"
+                      >
+                        After dispensing, clean the dispensing area and weighing
+                        balance using a lint-free cloth.
+                      </th>
+                    </tr>
+                    <tr>
+                      <th rowSpan={2}>Sr. Operation No.</th>
+                      <th rowSpan={2}>Cleaning After dispensing</th>
+                      <th rowSpan={2}>Recordings and observations</th>
+                      <th rowSpan={2}>Date</th>
+                      <th colSpan={2}>Time (Hrs.)</th>
+                      <th rowSpan={2}>Done By/Date</th>
+                      <th rowSpan={2}>Clean/Not cleaned</th>
+                    </tr>
+                    <tr>
+                      <th>From</th>
+                      <th>To</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {afterDispensing.map((item, index) => {
+                      return (
+                        <tr>
+                          <td>{index + 1}</td>
+                          <td>
+                            <input
+                              value={item.cleaningAfterDispensing}
+                              onChange={(e) => {
+                                const newData = [...afterDispensing];
+                                newData[index].cleaningAfterDispensing =
+                                  e.target.value;
+                                setAfterDispensing(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              value={item.recordingsAndObservations}
+                              onChange={(e) => {
+                                const newData = [...afterDispensing];
+                                newData[index].recordingsAndObservations =
+                                  e.target.value;
+                                setAfterDispensing(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="date"
+                              value={item.date}
+                              onChange={(e) => {
+                                const newData = [...afterDispensing];
+                                newData[index].date = e.target.value;
+                                setAfterDispensing(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              value={item.time.from}
+                              onChange={(e) => {
+                                const newData = [...afterDispensing];
+                                newData[index].time.from = e.target.value;
+                                setAfterDispensing(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              value={item.time.to}
+                              onChange={(e) => {
+                                const newData = [...afterDispensing];
+                                newData[index].time.to = e.target.value;
+                                setAfterDispensing(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              value={item.doneBy}
+                              onChange={(e) => {
+                                const newData = [...afterDispensing];
+                                newData[index].doneBy = e.target.value;
+                                setAfterDispensing(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              value={item.cleanNotClean}
+                              onChange={(e) => {
+                                const newData = [...afterDispensing];
+                                newData[index].cleanNotClean = e.target.value;
+                                setAfterDispensing(newData);
+                              }}
+                            />
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
               <table className="Main-table">
                 <thead>
                   <tr>
@@ -1696,8 +2074,15 @@ const BMRForm = () => {
               </table>
             </div>
 
-            <div className="sub-head">Milling, Sifting and Packing Operation:</div>
+            <div className="sub-head">
+              Milling, Sifting and Packing Operation:
+            </div>
+            <div className="AddRows d-flex">
+              <NoteAdd onClick={addWeightDetails} />
+              <div className="addrowinstruction"></div>
+            </div>
             <div className="font-bold pb-1">Weight details:</div>
+
             <table>
               <thead>
                 <tr>
@@ -1712,22 +2097,139 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
+                {weightDetails.map((item, index) => {
+                  return (
+                    <tr>
+                      <td>
+                        <input
+                          type=""
+                          value={item.grossContainerNo}
+                          onChange={(e) => {
+                            const newData = [...weightDetails];
+                            newData[index].grossContainerNo = e.target.value;
+                            setWeightDetails(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type=""
+                          value={item.weight}
+                          onChange={(e) => {
+                            const newData = [...weightDetails];
+                            newData[index].weight = e.target.value;
+                            setWeightDetails(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type=""
+                          value={item.tareWeight}
+                          onChange={(e) => {
+                            const newData = [...weightDetails];
+                            newData[index].tareWeight = e.target.value;
+                            setWeightDetails(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type=""
+                          value={item.netWeight}
+                          onChange={(e) => {
+                            const newData = [...weightDetails];
+                            newData[index].netWeight = e.target.value;
+                            setWeightDetails(newData);
+                          }}
+                        />
+                      </td>
+
+                      <td>
+                        <input
+                          type=""
+                          value={item.doneBy}
+                          onChange={(e) => {
+                            const newData = [...weightDetails];
+                            newData[index].doneBy = e.target.value;
+                            setWeightDetails(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type=""
+                          value={item.sealByNo}
+                          onChange={(e) => {
+                            const newData = [...weightDetails];
+                            newData[index].sealByNo = e.target.value;
+                            setWeightDetails(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type=""
+                          value={item.sealedByQC}
+                          onChange={(e) => {
+                            const newData = [...weightDetails];
+                            newData[index].sealedByQC = e.target.value;
+                            setWeightDetails(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type=""
+                          value={item.checkedBy}
+                          onChange={(e) => {
+                            const newData = [...weightDetails];
+                            newData[index].checkedBy = e.target.value;
+                            setWeightDetails(newData);
+                          }}
+                        />
+                      </td>
+                    </tr>
+                  );
+                })}
                 <tr>
-                  <td><input type="number" /></td>
-                  <td><input type="number" /></td>
-                  <td><input type="number" /></td>
-                  <td><input type="number" /></td>
-                  <td><input type="text" /></td>
-                  <td><input type="text" /></td>
-                  <td><input type="text" /></td>
-                  <td><input type="text" /></td>
+                  <td>
+                    <input type="number" />
+                  </td>
+                  <td>
+                    <input type="number" />
+                  </td>
+                  <td>
+                    <input type="number" />
+                  </td>
+                  <td>
+                    <input type="number" />
+                  </td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                  <td>
+                    <input type="text" />
+                  </td>
                 </tr>
                 <tr>
                   <td colspan="3">Total Qty. </td>
-                  <td><input type="number" /></td>
+                  <td>
+                    <input type="number" />
+                  </td>
                   <td colspan="2"></td>
-                  <td><input type="text" /></td>
-                  <td><input type="text" /></td>
+                  <td>
+                    <input type="text" />
+                  </td>
+                  <td>
+                    <input type="text" />
+                  </td>
                 </tr>
               </tbody>
             </table>
@@ -1736,11 +2238,16 @@ const BMRForm = () => {
             <div className="font-bold pb-1">Specimen Product label:</div>
 
             <div class="group-input border border-black">
-              <textarea class="summernote" name="initiated_through" id="summernote-1"></textarea>
+              <textarea
+                class="summernote"
+                name="initiated_through"
+                id="summernote-1"
+              ></textarea>
             </div>
-            
 
-            <div className="sub-head">Batch to Batch Cleaning Record (Type “A” cleaning):</div>
+            <div className="sub-head">
+              Batch to Batch Cleaning Record (Type “A” cleaning):
+            </div>
 
             <table>
               <thead>
@@ -1848,7 +2355,9 @@ const BMRForm = () => {
                 </tr>
                 <tr>
                   <td>5.</td>
-                  <td>Final pack quantity is to offered for complete analysis</td>
+                  <td>
+                    Final pack quantity is to offered for complete analysis
+                  </td>
                   <td>:</td>
                   <td>-------------Kg</td>
                 </tr>
@@ -1863,6 +2372,10 @@ const BMRForm = () => {
 
             <div className="flex flex-col gap-8">
               <div>
+                <div className="AddRows d-flex">
+                  <NoteAdd onClick={addrMR} />
+                  <div className="addrowinstruction"></div>
+                </div>
                 <table>
                   <thead>
                     <tr>
@@ -1875,23 +2388,68 @@ const BMRForm = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {Array.from({ length: 7 }).map((_, index) => (
+                    {rMR.map((item, index) => (
                       <tr key={index}>
                         <td>{index + 1}</td>
                         <td>
-                          <input type="text" className="p-2 border border-gray-300 rounded-md" />
+                          <input
+                            type="text"
+                            className="p-2 border border-gray-300 rounded-md"
+                            value={item.rawMaterialName}
+                            onChange={(e) => {
+                              const newData = [...rMR];
+                              newData[index].rawMaterialName = e.target.value;
+                              setRMR(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input type="text" className="p-2 border border-gray-300 rounded-md" />
+                          <input
+                            type="text"
+                            className="p-2 border border-gray-300 rounded-md"
+                            value={item.UOM}
+                            onChange={(e) => {
+                              const newData = [...rMR];
+                              newData[index].UOM = e.target.value;
+                              setRMR(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input type="text" className="p-2 border border-gray-300 rounded-md" />
+                          <input
+                            type="text"
+                            className="p-2 border border-gray-300 rounded-md"
+                            value={item.issuedQty}
+                            onChange={(e) => {
+                              const newData = [...rMR];
+                              newData[index].issuedQty = e.target.value;
+                              setRMR(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input type="text" className="p-2 border border-gray-300 rounded-md" />
+                          <input
+                            type="text"
+                            className="p-2 border border-gray-300 rounded-md"
+                            value={item.usedQty}
+                            onChange={(e) => {
+                              const newData = [...rMR];
+                              newData[index].usedQty = e.target.value;
+                              setRMR(newData);
+                            }}
+                          />
                         </td>
                         <td>
-                          <input type="text" className="p-2 border border-gray-300 rounded-md" />
+                          <input
+                            type="text"
+                            className="p-2 border border-gray-300 rounded-md"
+                            value={item.remark}
+                            onChange={(e) => {
+                              const newData = [...rMR];
+                              newData[index].remark = e.target.value;
+                              setRMR(newData);
+                            }}
+                          />
                         </td>
                       </tr>
                     ))}
@@ -1899,6 +2457,10 @@ const BMRForm = () => {
                 </table>
               </div>
               <div>
+                <div className="AddRows d-flex">
+                  <NoteAdd onClick={addDeviation} />
+                  <div className="addrowinstruction"></div>
+                </div>
                 <table>
                   <thead>
                     <tr>
@@ -1916,25 +2478,73 @@ const BMRForm = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {Array.from({ length: 7 }).map((_, index) => (
+                    {deviation?.map((item, index) => (
                       <tr key={index}>
                         <td>
-                          <input type="date" className="p-2 border border-gray-300 rounded-md" />
+                          <input
+                            type="date"
+                            className="p-2 border border-gray-300 rounded-md"
+                            value={item.date}
+                            onChange={(e) => {
+                              const newData = [...deviation];
+                              newData[index].date = e.target.value;
+                            }}
+                          />
                         </td>
                         <td>
-                          <input type="text" className="p-2 border border-gray-300 rounded-md" />
+                          <input
+                            type="text"
+                            className="p-2 border border-gray-300 rounded-md"
+                            value={item.stepnoPageno}
+                            onChange={(e) => {
+                              const newData = [...deviation];
+                              newData[index].stepnoPageno = e.target.value;
+                            }}
+                          />
                         </td>
                         <td>
-                          <input type="text" className="p-2 border border-gray-300 rounded-md" />
+                          <input
+                            type="text"
+                            className="p-2 border border-gray-300 rounded-md"
+                            value={item.observation}
+                            onChange={(e) => {
+                              const newData = [...deviation];
+                              newData[index].observation = e.target.value;
+                            }}
+                          />
                         </td>
                         <td>
-                          <input type="text" className="p-2 border border-gray-300 rounded-md" />
+                          <input
+                            type="text"
+                            className="p-2 border border-gray-300 rounded-md"
+                            value={item.reason}
+                            onChange={(e) => {
+                              const newData = [...deviation];
+                              newData[index].reason = e.target.value;
+                            }}
+                          />
                         </td>
                         <td>
-                          <input type="text" className="p-2 border border-gray-300 rounded-md" />
+                          <input
+                            type="text"
+                            className="p-2 border border-gray-300 rounded-md"
+                            value={item.recordedOn}
+                            onChange={(e) => {
+                              const newData = [...deviation];
+                              newData[index].recordedOn = e.target.value;
+                            }}
+                          />
                         </td>
                         <td>
-                          <input type="text" className="p-2 border border-gray-300 rounded-md" />
+                          <input
+                            type="text"
+                            className="p-2 border border-gray-300 rounded-md"
+                            value={item.recordedSign}
+                            onChange={(e) => {
+                              const newData = [...deviation];
+                              newData[index].recordedSign = e.target.value;
+                            }}
+                          />
                         </td>
                       </tr>
                     ))}
