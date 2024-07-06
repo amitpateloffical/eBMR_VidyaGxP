@@ -12,6 +12,7 @@ const CapsuleEBMR = () => {
     useState([]);
   const [listOfPersonalTable, setListOfPersonalTable] = useState([]);
   const [weighingRecordOLBTable,setWeighingRecordOLBTable]=useState([]);
+  const [deviationTable,setDeviationTable]=useState([]);
   const navigate = useNavigate();
   const [capsuleEBMR, setCapsuleEBMR] = useReducer(
     (prev, next) => ({
@@ -89,6 +90,17 @@ const CapsuleEBMR = () => {
       checkedBy:"",
     }
     setWeighingRecordOLBTable([...weighingRecordOLBTable,newRow])
+  }
+
+  const addDeviationRow=()=>{
+    const newRow={
+      deviationNo:"",
+      detailsOfDeviation:"",
+      CorrectiveActionTaken:"",
+      productionSign:"",
+      qASign:""
+    }
+    setDeviationTable([...deviationTable,newRow])
   }
   const handleSave = (data) => {
     toast.success("eBMR Saved Successfully!");
@@ -9457,6 +9469,7 @@ const CapsuleEBMR = () => {
 
       {tab === "DS" ? (
         <div className="document-form">
+          
           <table>
             <thead>
               <tr>
