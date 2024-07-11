@@ -4,12 +4,13 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export function checkAdminJwtToken(req, res, next) {
-    const token = req.headers.authorization?.split(" ")[1];
+    const token = req.headers.authorization
     // console.log(token);
     if (!token) {
       return res.status(401).json({
         error: true,
         message: "Unauthorized User",
+      
       });
     }
     jwt.verify(token, process.env.JWT_ADMIN_SECRET, (err, decoded) => {
@@ -22,6 +23,26 @@ export function checkAdminJwtToken(req, res, next) {
     req.user = decoded;
     next();
   });
+}
+
+export function checkUserJwtToken(req,res,next){
+  const token = req.headers.authorization?.split(" ")[1];
+  if(!token){
+    return res.status(401).json({
+      error:true,
+      message:"Unauthorized User"
+    })
+  }
+  jwt.verify(token,process.env.JWT_ADMIN_SECRET),(err,decoded)=>{
+    if(err) {
+      return res.status(401).json({
+        error:true,
+        message:"Unauthorized User"
+      })
+    }
+    req.user=decoded,
+    next()
+  }
 }
 
 export const getFileUrl = (file) => {

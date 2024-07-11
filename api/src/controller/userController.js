@@ -138,6 +138,55 @@ export const createUser = async (req, res) => {
   }
 };
 
+export const Userlogin = async (req, res) => {
+  const { email, password } = req.body;
+  User.findOne({
+    where: {
+      email: email.toLowerCase(),
+    },
+    raw: true,
+  })
+    .then((data) => {
+      bcrypt.compare(password, data.password, async (_err, result) => {
+        if (!result) {
+          res.status(400).json({
+            error: true,
+            message: "Invalid Password!",
+          });
+        } else {
+          let userRoles = await UserRole.findAll({
+            where: {
+              user_id: data?.user_id,
+            },
+            attributes: { exclude: ["createdAt", "updatedAt"] },
+          });
+          const token = jwt.sign(
+            { userId: data.user_id, roles: userRoles },
+            process.env.JWT_ADMIN_SECRET,
+            { expiresIn: "24h" }
+          );
+          if (token) {
+            res.status(200).json({
+              error: false,
+              token: token,
+            });
+          } else {
+            res.status(400).json({
+              error: true,
+              message: "Some unknown error",
+            });
+          }
+        }
+      });
+    })
+    .catch((e) => {
+      res.status(401).json({
+        error: false,
+        message: "Couldn't find User!",
+      });
+    });
+};
+
 export const getAllUsers = async (req, res) => {
   User.findAll()
     .then((result) => {

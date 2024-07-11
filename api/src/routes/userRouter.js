@@ -8,10 +8,12 @@ import {
   editUser,
   getAUser,
   deleteUser,
+  Userlogin,
 } from "../controller/userController.js";
 import { checkAdminJwtToken } from "../middleware/authentication.js";
 // import { upload } from "../../index.js";
 import multer from "multer";
+import { InserteBMRRecord } from "../controller/eBMRRecordController.js";
 
 const router = express.Router();
 
@@ -39,5 +41,6 @@ router.get("/get-a-user/:id", getAUser);
 // router.get("/get-user-permissions/:id", checkAdminJwtToken, getUserPermissions);
 router.get("/get-user-permissions/:id", getUserPermissions);
 router.delete("/delete-user/:id", checkAdminJwtToken, deleteUser);
-
+router.post("/user-login",Userlogin);
+router.post("/add-eBMR",InserteBMRRecord)
 export default router;
