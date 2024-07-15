@@ -26,7 +26,7 @@ function AddNewUser() {
   }, [selectedOptions]);
 
   useEffect(() => {
-    const url = "http://localhost:3000/user/get-all-role-groups";
+    const url = "http://ebmrapi.vidyagxp.com/user/get-all-role-groups";
     axios
       .get(url)
       .then((response) => {
@@ -93,7 +93,7 @@ function AddNewUser() {
     };
 
     axios
-      .post("http://localhost:3000/user/add-user", formData, {
+      .post("http://ebmrapi.vidyagxp.com/user/add-user", formData, {
         headers: myHeaders,
       })
       .then(() => {

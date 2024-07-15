@@ -42,7 +42,7 @@ function AdminLogin() {
     };
 
     try {
-      const response = await axios.post("http://localhost:3000/user/admin-login", data, {
+      const response = await axios.post("https://ebmrapi.vidyagxp.com/user/admin-login", data, {
         headers: {
           "Content-Type": "application/json",
         },
