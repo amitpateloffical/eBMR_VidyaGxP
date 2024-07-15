@@ -5,7 +5,7 @@ import config from "./config.json" assert {type: 'json'};
 
 
 
-const sequelize = new Sequelize("test",  
+const sequelize = new Sequelize(config.development.dbName,  
   config.development.username,
   config.development.password,
   {
