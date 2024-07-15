@@ -10,6 +10,7 @@ import Site from "../models/sites.model.js";
 import UserRole from "../models/userRoles.model.js";
 import User from "../models/users.model.js";
 import { sequelize } from "../config/db.js";
+import config from "../config/config.json" assert {type:'json'}
 dotenv.config();
 //   res.json({
 //     message: "Api route is working!!",
@@ -30,7 +31,7 @@ export const Adminlogin = (req, res) => {
         message: "Incorrect Password!",
       });
     } else {
-      const token = jwt.sign({ user: "Admin" }, process.env.JWT_ADMIN_SECRET, {
+      const token = jwt.sign({ user: "Admin" }, config.development.JWT_ADMIN_SECRET, {
         expiresIn: "24h",
       });
       if (token) {
@@ -162,7 +163,7 @@ export const Userlogin = async (req, res) => {
           });
           const token = jwt.sign(
             { userId: data.user_id, roles: userRoles },
-            process.env.JWT_ADMIN_SECRET,
+            config.development.JWT_ADMIN_SECRET,
             { expiresIn: "24h" }
           );
           if (token) {

@@ -1,7 +1,8 @@
 import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
+// import dotenv from "dotenv";
+import config from "../config/config.json" assert {type: 'json'}
 
-dotenv.config();
+
 
 export function checkAdminJwtToken(req, res, next) {
     const token = req.headers.authorization
@@ -13,7 +14,7 @@ export function checkAdminJwtToken(req, res, next) {
       
       });
     }
-    jwt.verify(token, process.env.JWT_ADMIN_SECRET, (err, decoded) => {
+    jwt.verify(token, config.development.JWT_ADMIN_SECRET, (err, decoded) => {
       if (err) {
       return res.status(401).json({
         error: true,
@@ -33,7 +34,7 @@ export function checkUserJwtToken(req,res,next){
       message:"Unauthorized User"
     })
   }
-  jwt.verify(token,process.env.JWT_ADMIN_SECRET),(err,decoded)=>{
+  jwt.verify(token,config.development.JWT_ADMIN_SECRET),(err,decoded)=>{
     if(err) {
       return res.status(401).json({
         error:true,

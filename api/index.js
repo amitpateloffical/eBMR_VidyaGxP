@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-dotenv.config();
+// dotenv.config();
 import express from "express";
 import cors from "cors";
 import helmet from "helmet";
@@ -8,13 +8,12 @@ import { fileURLToPath } from "url";
 import { connectToDB } from "./src/config/db.js";
 import testrouter from "./src/routes/testRoute.js";
 import userRouter from "./src/routes/userRouter.js";
+import config from "./src/config/config.json" assert { type: "json" };
 
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const port = process.env.PORT || 3000;
-
-
+const port = config.development.PORT || 1005;
 
 // Middleware setup
 app.use(cors());

@@ -1,4 +1,4 @@
-{
+{ 
     "development" : {
             "PORT": 1003,
             "dbName": "test",
@@ -6,7 +6,7 @@
             "password": "root",
             "dialect": "mysql",
             "host": "localhost",
-            "JWT_SECRET": "NAHKNAHRAF",
+            "JWT_SECRET": "PANKAJ",
             "JWT_ADMIN_SECRET": "GAURAV"
     },
     "production": {
