@@ -1,8 +1,14 @@
 import { sequelize } from "../config/db.js";
+import { eBMRCriticalPPForQuality } from "../models/eBMRCriticalPPForQuality.model.js";
+import { eBMRCriticalProcessParameterFS } from "../models/eBMRCriticalProcessParameterFS.model.js";
 import { eBMRHazopRecommendations } from "../models/eBMRHazopRecommendations.model.js";
+import { eBMRIdentificationOfHazardsAndControls } from "../models/eBMRIdentificationOfHazardsAndControls.model.js";
 import { eBMRInputRawMaterial } from "../models/eBMRInputRawMaterial.model.js";
 import { eBMRIntermediateIssuance } from "../models/eBMRIntermediateIssaunce.model.js";
 import { eBMRPackingMaterial } from "../models/eBMRPackingMaterial.model.js";
+import { eBMRPersonalProtectiveEquipment } from "../models/eBMRPersonalProtectiveEquipment.model.js";
+import { eBMRProcessSafetyStudyDetails } from "../models/eBMRProcessSafetyStudyDetails.model.js";
+import { eBMRReadAndUnderstood } from "../models/eBMRReadAndUnderstood.model.js";
 import { eBMRRecord } from "../models/eBMRRecord.model.js";
 import { eBMRSolventForBatchToBatchC } from "../models/eBMRSolventForBatchToBatchC.model.js";
 import { ebmrSolventForContainerC } from "../models/eBMRSolventForContainer.model.js";
@@ -36,6 +42,12 @@ export const InserteBMRRecord = async (req, res) => {
     solventForContainerCleaningArray,
     intermediateIssuanceArray,
     hazopRecommendationsArray,
+    processSafetyStudyDetailsArray,
+    personalProtectiveEquipmentArray,
+    identificationOfHazardsACArray,
+    criticalProcessPFSafetyArray,
+    criticalProcessPFQualityArray,
+    readAndUnderstoodArray,
   } = req.body;
 
   // Start transaction
@@ -188,6 +200,82 @@ export const InserteBMRRecord = async (req, res) => {
       await eBMRHazopRecommendations.bulkCreate(hazopRecommendations, {
         transaction,
       });
+    }
+
+    if (
+      Array.isArray(processSafetyStudyDetailsArray) &&
+      processSafetyStudyDetailsArray.length > 0
+    ) {
+      const processSafetyStudyDetails = processSafetyStudyDetailsArray.map(
+        (record) => ({
+          form_id: eBMRRecords?.form_id,
+          test: record.test,
+          result: record.result,
+          remark: record.remark,
+        })
+      );
+      await eBMRProcessSafetyStudyDetails.bulkCreate(
+        processSafetyStudyDetails,
+        { transaction }
+      );
+    }
+
+    if (
+      Array.isArray(personalProtectiveEquipmentArray) &&
+      personalProtectiveEquipmentArray.length > 0
+    ) {
+      const personalProtectiveEquipment = personalProtectiveEquipmentArray.map(
+        (record) => ({
+          form_id: eBMRRecords?.form_id,
+          chemicalName: record.chemicalName,
+          handProtection: record.handProtection,
+          eyeProtection: record.eyeProtection,
+          respiratoryProtection: record.respiratoryProtection,
+          footShoes: record.footShoes,
+          bodyProtection: record.bodyProtection,
+        })
+      );await eBMRPersonalProtectiveEquipment.bulkCreate(personalProtectiveEquipment,{transaction})
+    } 
+
+    if(Array.isArray(identificationOfHazardsACArray)&&identificationOfHazardsACArray.length>0){
+      const identificationOfHAC=identificationOfHazardsACArray.map((record)=>({
+        form_id: eBMRRecords?.form_id,
+name:record.name,
+antidote:record.antidote,
+specificHazard:record.specificHazard,
+precaution:record.precaution,
+      }))
+      await eBMRIdentificationOfHazardsAndControls.bulkCreate(identificationOfHAC,{transaction})
+    }
+
+    if(Array.isArray(criticalProcessPFSafetyArray)&&criticalProcessPFSafetyArray.length>0){
+      const criticalProcessPFSafety=criticalProcessPFSafetyArray.map((record)=>({
+        form_id: eBMRRecords?.form_id,
+bMRStepNo:record.bMRStepNo,
+criticalProcessParameter:record.criticalProcessParameter,
+justification:record.justification
+      }))
+       await eBMRCriticalProcessParameterFS.bulkCreate(criticalProcessPFSafety,{transaction})
+    }
+
+    if(Array.isArray(criticalProcessPFQualityArray)&&criticalProcessPFQualityArray.length>0){
+      const criticalProcessPFQuality=criticalProcessPFQualityArray.map((record)=>({
+        form_id: eBMRRecords?.form_id,
+        bMRStepNo:record.bMRStepNo,
+        criticalProcessParameter:record.criticalProcessParameter,
+        justification:record.justification
+      }))
+      await eBMRCriticalPPForQuality.bulkCreate(criticalProcessPFQuality,{transaction})
+    }
+
+    if(Array.isArray(readAndUnderstoodArray)&&readAndUnderstoodArray.length>0){
+      const readAndUnderstood=readAndUnderstoodArray.map((record)=>({
+        form_id: eBMRRecords?.form_id,
+        nameOfPerson:record.nameOfPerson,
+        sign:record.sign,
+        date:record.date
+      }))
+      await eBMRReadAndUnderstood.bulkCreate(readAndUnderstood,{transaction})
     }
     // Commit transaction
     await transaction.commit();
