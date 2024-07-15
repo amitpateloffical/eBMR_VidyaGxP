@@ -2,15 +2,15 @@ import { DataTypes } from "sequelize";
 import { sequelize } from "../config/db.js";
 import { eBMRRecord } from "./eBMRRecord.model.js";
 
- export const eBMRInputRawMaterial=sequelize.define("eBMRInputRawMaterial",{
-    form_id: {
-        type: DataTypes.INTEGER,
+export const eBMRPackingMaterial=sequelize.define("eBMRPackingMaterial",{
+    form_id:{
+        type:DataTypes.INTEGER,
         allowNull: false,
         references: {
-          model: eBMRRecord,
-          key: 'form_id',
-        }
-      },
+            model: eBMRRecord,
+            key: 'form_id',
+          }
+    },
     materialCode:{
         type:DataTypes.STRING,
         allowNull:true
@@ -53,5 +53,5 @@ date:{
 }
 })
 
-eBMRInputRawMaterial.belongsTo(eBMRRecord, { foreignKey: 'form_id' });
-eBMRRecord.hasMany(eBMRInputRawMaterial, { foreignKey: 'form_id' });
+eBMRPackingMaterial.belongsTo(eBMRRecord, { foreignKey: 'form_id' });
+eBMRRecord.hasMany(eBMRPackingMaterial, { foreignKey: 'form_id' });
