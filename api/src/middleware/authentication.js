@@ -5,8 +5,9 @@ import config from "../config/config.json" assert {type: 'json'}
 
 
 export function checkAdminJwtToken(req, res, next) {
-    const token = req.headers.authorization
+    const token = req.headers.authorization?.split(" ")[1];
     // console.log(token);
+
     if (!token) {
       return res.status(401).json({
         error: true,

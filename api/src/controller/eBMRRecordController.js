@@ -1,12 +1,16 @@
-import { sequelize } from '../config/db.js';
-import { eBMRInputRawMaterial } from '../models/eBMRInputRawMaterial.model.js';
-import { eBMRPackingMaterial } from '../models/eBMRPackingMaterial.model.js';
-import { eBMRRecord } from '../models/eBMRRecord.model.js';
+import { sequelize } from "../config/db.js";
+import { eBMRHazopRecommendations } from "../models/eBMRHazopRecommendations.model.js";
+import { eBMRInputRawMaterial } from "../models/eBMRInputRawMaterial.model.js";
+import { eBMRIntermediateIssuance } from "../models/eBMRIntermediateIssaunce.model.js";
+import { eBMRPackingMaterial } from "../models/eBMRPackingMaterial.model.js";
+import { eBMRRecord } from "../models/eBMRRecord.model.js";
+import { eBMRSolventForBatchToBatchC } from "../models/eBMRSolventForBatchToBatchC.model.js";
+import { ebmrSolventForContainerC } from "../models/eBMRSolventForContainer.model.js";
 
 export const InserteBMRRecord = async (req, res) => {
   const {
     productName,
-    documentNo, 
+    documentNo,
     productCode,
     effectiveDate,
     stage,
@@ -27,7 +31,11 @@ export const InserteBMRRecord = async (req, res) => {
     expiry_Retest_Date,
     packingAndStorageCondition,
     InputRawMaterialArray,
-    packingMaterialArray
+    packingMaterialArray,
+    solventForBatchToBatchCleaningArray,
+    solventForContainerCleaningArray,
+    intermediateIssuanceArray,
+    hazopRecommendationsArray,
   } = req.body;
 
   // Start transaction
@@ -35,32 +43,38 @@ export const InserteBMRRecord = async (req, res) => {
 
   try {
     // Create eBMRRecord
-    const eBMRRecords = await eBMRRecord.create({
-      productName,
-      documentNo,
-      productCode,
-      effectiveDate,
-      stage,
-      supersedesNo,
-      batchNo,
-      pageNo,
-      standardBatchSize,
-      actualBatchSize,
-      batchStartingDate,
-      time,
-      batchComplitionDate,
-      _time,
-      expectedOutput,
-      actualOutput,
-      expectedYield,
-      actualYield,
-      manufacturingDate,
-      expiry_Retest_Date,
-      packingAndStorageCondition
-    }, { transaction });
+    const eBMRRecords = await eBMRRecord.create(
+      {
+        productName,
+        documentNo,
+        productCode,
+        effectiveDate,
+        stage,
+        supersedesNo,
+        batchNo,
+        pageNo,
+        standardBatchSize,
+        actualBatchSize,
+        batchStartingDate,
+        time,
+        batchComplitionDate,
+        _time,
+        expectedOutput,
+        actualOutput,
+        expectedYield,
+        actualYield,
+        manufacturingDate,
+        expiry_Retest_Date,
+        packingAndStorageCondition,
+      },
+      { transaction }
+    );
 
     // Insert InputRawMaterialArray if it exists
-    if (Array.isArray(InputRawMaterialArray) && InputRawMaterialArray.length > 0) {
+    if (
+      Array.isArray(InputRawMaterialArray) &&
+      InputRawMaterialArray.length > 0
+    ) {
       const bMRRecords = InputRawMaterialArray.map((record) => ({
         form_id: eBMRRecords?.form_id,
         materialCode: record.materialCode,
@@ -72,41 +86,121 @@ export const InserteBMRRecord = async (req, res) => {
         quantityUsed: record.quantityUsed,
         ARNo: record.ARNo,
         checkedBy: record.checkedBy,
-        date: record.date
+        date: record.date,
       }));
       await eBMRInputRawMaterial.bulkCreate(bMRRecords, { transaction });
     }
 
-    if(Array.isArray(packingMaterialArray)&&packingMaterialArray.length>0){
-        const packingMaterial=packingMaterialArray.map((record)=>({
-            form_id: eBMRRecords?.form_id,
-            materialCode: record.materialCode,
-            materialName: record.materialName,
-            UOM: record.UOM,
-            stepNo: record.stepNo,
-            standardQuantity: record.standardQuantity,
-            requiredQuantity: record.requiredQuantity,
-            quantityUsed: record.quantityUsed,
-            ARNo: record.ARNo,
-            checkedBy: record.checkedBy,
-            date: record.date
-        }))
+    if (
+      Array.isArray(packingMaterialArray) &&
+      packingMaterialArray.length > 0
+    ) {
+      const packingMaterial = packingMaterialArray.map((record) => ({
+        form_id: eBMRRecords?.form_id,
+        materialCode: record.materialCode,
+        materialName: record.materialName,
+        UOM: record.UOM,
+        stepNo: record.stepNo,
+        standardQuantity: record.standardQuantity,
+        requiredQuantity: record.requiredQuantity,
+        quantityUsed: record.quantityUsed,
+        ARNo: record.ARNo,
+        checkedBy: record.checkedBy,
+        date: record.date,
+      }));
       await eBMRPackingMaterial.bulkCreate(packingMaterial, { transaction });
-
     }
 
+    if (
+      Array.isArray(solventForBatchToBatchCleaningArray) &&
+      solventForBatchToBatchCleaningArray.length > 0
+    ) {
+      const solventForBatchToBatchC = solventForBatchToBatchCleaningArray.map(
+        (record) => ({
+          form_id: eBMRRecords?.form_id,
+          materialCode: record.materialCode,
+          materialName: record.materialName,
+          UOM: record.UOM,
+          stepNo: record.stepNo,
+          standardQuantity: record.standardQuantity,
+          requiredQuantity: record.requiredQuantity,
+          quantityUsed: record.quantityUsed,
+          ARNo: record.ARNo,
+          checkedBy: record.checkedBy,
+          date: record.date,
+        })
+      );
+      await eBMRSolventForBatchToBatchC.bulkCreate(solventForBatchToBatchC, {
+        transaction,
+      });
+    }
+    if (
+      Array.isArray(solventForContainerCleaningArray) &&
+      solventForContainerCleaningArray.length > 0
+    ) {
+      const solventForContainer = solventForContainerCleaningArray.map(
+        (record) => ({
+          form_id: eBMRRecords?.form_id,
+          materialCode: record.materialCode,
+          materialName: record.materialName,
+          UOM: record.UOM,
+          stepNo: record.stepNo,
+          standardQuantity: record.standardQuantity,
+          requiredQuantity: record.requiredQuantity,
+          quantityUsed: record.quantityUsed,
+          ARNo: record.ARNo,
+          checkedBy: record.checkedBy,
+          date: record.date,
+        })
+      );
+      await ebmrSolventForContainerC.bulkCreate(solventForContainer, {
+        transaction,
+      });
+    }
+
+    if (
+      Array.isArray(intermediateIssuanceArray) &&
+      intermediateIssuanceArray.length > 0
+    ) {
+      const intermedaiteIssuance = intermediateIssuanceArray.map((record) => ({
+        form_id: eBMRRecords?.form_id,
+        inputQuantity: record.inputQuantity,
+        materialCode: record.materialCode,
+        batchNumber: record.batchNumber,
+        actualIssuedQuantity: record.actualIssuedQuantity,
+        sign: record.sign,
+        date: record.date,
+      }));
+      await eBMRIntermediateIssuance.bulkCreate(intermedaiteIssuance, {
+        transaction,
+      });
+    }
+
+    if (
+      Array.isArray(hazopRecommendationsArray) &&
+      hazopRecommendationsArray.length > 0
+    ) {
+      const hazopRecommendations = hazopRecommendationsArray.map((record) => ({
+        form_id: eBMRRecords?.form_id,
+        hazopRecommendations: record.hazopRecommendations,
+        category: record.category,
+      }));
+      await eBMRHazopRecommendations.bulkCreate(hazopRecommendations, {
+        transaction,
+      });
+    }
     // Commit transaction
     await transaction.commit();
 
     // Send success response
     res.status(200).json({
       error: false,
-      message: "eBMR Created successfully", 
+      message: "eBMR Created successfully",
     });
   } catch (error) {
     // Rollback transaction on error
     await transaction.rollback();
-    console.error('Transaction error:', error);
+    console.error("Transaction error:", error);
 
     // Send error response
     res.status(500).json({
@@ -131,5 +225,5 @@ export const InserteBMRRecord = async (req, res) => {
 //         checkedBy:checkedBy,
 //         date:date
 //     })
-//     res.status(200).json(InputRawMaterial.toJSON());   
+//     res.status(200).json(InputRawMaterial.toJSON());
 // }

@@ -31,7 +31,7 @@ export const upload = multer({ storage: storage });
 
 router.post("/admin-login", Adminlogin);
 router.get("/get-all-role-groups", getAllRoleGroups);
-router.post("/add-user", checkAdminJwtToken, upload.single("profile_pic"), createUser);
+router.post("/add-user",  checkAdminJwtToken,upload.single("profile_pic"), createUser);
 // router.put("/edit-user/:id", upload.single("profile_pic"), checkAdminJwtToken, editUser);
 router.put("/edit-user/:id", upload.single("profile_pic"), editUser);
 

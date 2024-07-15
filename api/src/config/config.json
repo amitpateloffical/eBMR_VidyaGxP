@@ -1,12 +1,12 @@
 { 
     "development" : {
-            "PORT": 1003,
+            "PORT": 1005,
             "dbName": "test",
             "username": "root",
             "password": "root",
             "dialect": "mysql",
             "host": "localhost",
-            "JWT_SECRET": "PANKAJ",
+        
             "JWT_ADMIN_SECRET": "GAURAV"
     },
     "production": {

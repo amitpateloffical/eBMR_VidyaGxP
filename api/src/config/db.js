@@ -11,6 +11,8 @@ const sequelize = new Sequelize(config.development.dbName,
   {
     dialect: config.development.dialect,
     host: config.development.host,
+    logging:false,
+    
   }
 );
 
