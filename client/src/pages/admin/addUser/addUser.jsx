@@ -93,7 +93,7 @@ function AddNewUser() {
     };
 
     axios
-      .post("http://ebmrapi.vidyagxp.com/user/add-user", formData, {
+      .post("http://localhost:1005/user/add-user", formData, {
         headers: myHeaders,
       })
       .then(() => {

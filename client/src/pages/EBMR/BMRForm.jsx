@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import HeaderTop from "../../components/Header/HeaderTop";
+import axios from "axios";
 
 const BMRForm = () => {
   const [tab, setTab] = useState("General");
@@ -49,50 +50,50 @@ const BMRForm = () => {
       ...next,
     }),
     {
-      eBMRId: uniqueId + 1,
-      process: "Batch Manufacturuing Record",
-      productName: "",
-      documentNo: "",
-      productCode: "",
-      effectiveDate: "",
-      stage: "",
-      supersedesNo: "",
-      batchNo: "",
-      pageNo: "",
-      standartBatchSize: "",
-      actualBatchSize: "",
-      batchStartingDate: "",
-      batchComplitionDate: "",
-      time: "",
-      expectedOutput: "",
-      actualOutput: "",
-      expectedYeild: "",
-      actualYeild: "",
-      manufacturingDate: "",
-      expiryRetestdate: "",
-      packingAndStoreCondition: "",
+      productName:"",
+      documentNo:"",
+      productCode:"",
+      effectiveDate:"",
+      stage:"",
+      supersedesNo:"",
+      batchNo:"",
+      pageNo:"",
+      standardBatchSize:"",
+      actualBatchSize:"",
+      batchStartingDate:"",
+      time:"",
+      batchComplitionDate:"",
+      _time:"",
+      expectedOutput:"",
+      actualOutput:"",
+      expectedYield:"",
+      actualYield:"",
+      manufacturingDate:"",
+      expiry_Retest_Date:"",
+      packingAndStorageCondition:"",
+   
     }
   );
   // console.log(ManufacturingRecord, "ManufacturingRecord");
   useEffect(() => {
     setManufacturingRecord({
-      gridData: allTableData,
-      batchCleaningTablesData: batchCleaningTablesData,
-      packingMaterialTablesData: packingMaterialTablesData,
-      accessoriesCleaningTablesData: accessoriesCleaningTablesData,
-      intermadiateIssuanceTablesData: intermadiateIssuanceTablesData,
-      hazopTablesData: hazopTablesData,
-      processSafetyTablesData: processSafetyTablesData,
-      ppeMatrixTablesData: ppeMatrixTablesData,
-      hazardAndControlTablesData: hazardAndControlTablesData,
-      readAndUnderstood: readAndUnderstood,
-      CriticalProcessPFQ: CriticalProcessPFQ,
-      criticalProcessPFS: criticalProcessPFS,
-      intermediateDispensing: intermediateDispensing,
-      afterDispensing: afterDispensing,
-      weightDetails: weightDetails,
-      rMR: rMR,
-      deviation: deviation,
+      InputRawMaterialArray: allTableData,
+      solventForBatchToBatchCleaningArray: batchCleaningTablesData,
+      packingMaterialArray: packingMaterialTablesData,
+      solventForContainerCleaningArray: accessoriesCleaningTablesData,
+      intermediateIssuanceArray: intermadiateIssuanceTablesData,
+      hazopRecommendationsArray: hazopTablesData,
+      processSafetyStudyDetailsArray: processSafetyTablesData,
+      personalProtectiveEquipmentArray: ppeMatrixTablesData,
+      identificationOfHazardsACArray: hazardAndControlTablesData,
+      readAndUnderstoodArray: readAndUnderstood,
+      criticalProcessPFQualityArray: CriticalProcessPFQ,
+      criticalProcessPFSafetyArray: criticalProcessPFS,
+      manufacturingProcessArray: intermediateDispensing,
+      manufacturingPAfterDispensingArray: afterDispensing,
+      MSAPOperationArray: weightDetails,
+      rawMaterialReconciliationArray: rMR,
+      deviationRemarkArray: deviation,
     });
   }, [
     allTableData,
@@ -115,10 +116,35 @@ const BMRForm = () => {
     deviation,
   ]);
 
-  const handleSave = (data) => {
-    toast.success("eBMR Saved Successfully!");
-    createObject(data);
+
+  const handleSave = () => {
+    const myHeaders={
+      Authorization:`Bearer ${localStorage.getItem("admin-token")}`,
+      "Content-Type": "multipart/form-data"
+    }
+
+    // axios.post('http://localhost:1005/user/add-eBMR',,{headers:myHeaders}).then(()=>{
+    //   toast.success("eBMR Saved Successfully!");
+    // navigate("/desktop");
+    // console.log(ManufacturingRecord)
+    // }).catch((error) => {gaurav
+    //   toast.error("Couldn't add eBMR! " + error.response.data.message);
+    // });
+  
+    axios.post('http://localhost:1005/user/add-eBMR', 
+      ManufacturingRecord
+    , 
+      myHeaders
+    )
+    .then(function (response) {
+      toast.success("eBMR Saved Successfully!");
     navigate("/desktop");
+    })
+    .catch(function (error) {
+        toast.error("Couldn't add eBMR! " + error.response.data.message);
+
+    });
+    
   };
 
   const createObject = (newObject) => {
@@ -2559,7 +2585,7 @@ const BMRForm = () => {
         <button
           className="themeBtn"
           onClick={() => {
-            handleSave(ManufacturingRecord);
+            handleSave();
           }}
         >
           Save
