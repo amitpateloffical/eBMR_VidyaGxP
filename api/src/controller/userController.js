@@ -51,6 +51,7 @@ export const Adminlogin = (req, res) => {
 
 export const createUser = async (req, res) => {
   const { password, email, name, rolesArray, age, gender } = req.body;
+  console.log(req.body);
   // console.log(req.body);
   if (!password || !email || !name || !rolesArray) {
     return res.status(400).json({

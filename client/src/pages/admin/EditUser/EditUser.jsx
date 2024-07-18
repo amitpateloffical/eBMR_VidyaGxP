@@ -23,7 +23,7 @@ function EditUser() {
 
   useEffect(() => {
     axios
-      .get(`http://ebmrapi.vidyagxp.com/user/get-a-user/${location.state.id}`, {
+      .get(`http://localhost:1005/user/get-a-user/${location.state.id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("admin-token")}`,
         },
@@ -37,7 +37,7 @@ function EditUser() {
       });
 
     axios
-      .get("http://ebmrapi.vidyagxp.com/user/get-all-role-groups")
+      .get("http://localhost:1005/user/get-all-role-groups")
       .then((response) => {
         setRoleGroups(response.data.response || []); // Ensure it's an array
       })
@@ -105,7 +105,7 @@ function EditUser() {
     };
 
     axios
-      .put(`http://ebmrapi.vidyagxp.com/user/edit-user/${location.state.id}`, resultObj, {
+      .put(`http://localhost:1005/user/edit-user/${location.state.id}`, resultObj, {
         headers: myHeaders,
       })
       .then(() => {
@@ -117,7 +117,7 @@ function EditUser() {
       });
   };
 
-  console.log(formData);
+  // console.log(formData);
 
   const buttonStyle = {
     backgroundColor: "#EFA035",

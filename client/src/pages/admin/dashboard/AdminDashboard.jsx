@@ -40,9 +40,11 @@ function AdminDashboard() {
   };
 
   const handleDelete = () => {
+    console.log(selectedUser.user_id);
     const config = {
       method: "delete",
-      url: `https://ebmrapi.vidyagxp.com/user/delete-user/${selectedUser.user_id}`,
+      // url: `https://ebmrapi.vidyagxp.com/user/delete-user/${selectedUser.user_id}`,
+      url: `http://localhost:1005/user/delete-user/${selectedUser.user_id}`,
       headers: {
         Authorization: `Bearer ${localStorage.getItem("admin-token")}`,
       },
@@ -63,7 +65,8 @@ function AdminDashboard() {
   const openPermissionsModal = (user) => {
     const token = localStorage.getItem("admin-token");
     axios
-      .get(`https://ebmrapi.vidyagxp.com/user/get-user-permissions/${user.user_id}`, {
+      // .get(`https://ebmrapi.vidyagxp.com/user/get-user-permissions/${user.user_id}`, {
+      .get(`http://localhost:1005/user/get-user-permissions/${user.user_id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
