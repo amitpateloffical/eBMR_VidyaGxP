@@ -1,15 +1,12 @@
-{ 
-    "development" : {
-            "PORT": 1005,
-            "dbName": "test",
-            "username": "root",
-            "password": "root",
-            "dialect": "mysql",
-            "host": "localhost",
-        
-            "JWT_ADMIN_SECRET": "GAURAV"
-    },
-    "production": {
-
-    }
+{
+  "development": {
+    "PORT": 1005,
+    "dbName": "ebmrDev",
+    "username": "root",
+    "password": "gaurav",
+    "dialect": "mysql",
+    "host": "localhost",
+    "JWT_ADMIN_SECRET": "GAURAV"
+  },
+  "production": {}
 }

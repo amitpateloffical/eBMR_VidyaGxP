@@ -30,7 +30,7 @@ export const upload = multer({ storage: storage });
 
 router.post("/admin-login", Adminlogin);
 router.get("/get-all-role-groups", getAllRoleGroups);
-router.post("/add-user",  checkAdminJwtToken,upload.single("profile_pic"), createUser);
+router.post("/add-user", checkAdminJwtToken, upload.single("profile_pic"), createUser);
 // router.put("/edit-user/:id", upload.single("profile_pic"), checkAdminJwtToken, editUser);
 router.put("/edit-user/:id", upload.single("profile_pic"), editUser);
 
@@ -40,6 +40,6 @@ router.get("/get-a-user/:id", getAUser);
 // router.get("/get-user-permissions/:id", checkAdminJwtToken, getUserPermissions);
 router.get("/get-user-permissions/:id", getUserPermissions);
 router.delete("/delete-user/:id", checkAdminJwtToken, deleteUser);
-router.post("/user-login",checkAdminJwtToken,Userlogin);
+router.post("/user-login", Userlogin);
 
 export default router;

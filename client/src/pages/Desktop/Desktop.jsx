@@ -26,7 +26,7 @@ function Desktop() {
       .get("http://localhost:1005/bmr/get-eBMR")
       .then((res) => setData(res.data)).catch((err)=>console.log(err))
   }, []);
-  console.log(data, "");
+  // console.log(data, "");
   return (
     <>
       <HeaderTop />

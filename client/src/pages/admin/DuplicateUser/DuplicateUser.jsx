@@ -24,12 +24,14 @@ function DuplicateUser() {
 
   useEffect(() => {
     axios
-      .get(`http://ebmrapi.vidyagxp.com/user/get-a-user/${location.state.id}`, {
+      // .get(`http://ebmrapi.vidyagxp.com/user/get-a-user/${location.state.id}`, {
+      .get(`http://localhost:1005/user/get-a-user/${location.state.id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("admin-token")}`,
         },
       })
       .then((response) => {
+        // console.log(response.data);
         setUserInfo(response.data);
         setSelectedOptions(response.data.roles || []);
       })
@@ -38,7 +40,8 @@ function DuplicateUser() {
       });
 
     axios
-      .get("http://ebmrapi.vidyagxp.com/user/get-all-role-groups")
+      // .get("http://ebmrapi.vidyagxp.com/user/get-all-role-groups")
+      .get("http://localhost:1005/user/get-all-role-groups")
       .then((response) => {
         setRoleGroups(response.data.response || []); // Ensure it's an array
       })
@@ -71,7 +74,8 @@ function DuplicateUser() {
   };
 
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
+    // console.log(event.target);
+    const { name, value } = event.target; 
     setFormData((prevData) => ({ ...prevData, [name]: value }));
     if (name === "password") {
       if (value.length < 8 || value.length > 25) {
@@ -90,11 +94,12 @@ function DuplicateUser() {
     }
     const myHeaders = {
       Authorization: `Bearer ${localStorage.getItem("admin-token")}`,
-      "Content-Type": "application/json",
+      "Content-Type": "multipart/form-data",
     };
 
     axios
-      .post("http://ebmrapi.vidyagxp.com/user/add-user", formData, {
+      // .post("http://ebmrapi.vidyagxp.com/user/add-user", formData, {
+      .post("http://localhost:1005/user/add-user", formData, {
         headers: myHeaders,
       })
       .then(() => {
