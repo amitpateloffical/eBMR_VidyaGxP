@@ -10,7 +10,7 @@ import Site from "../models/sites.model.js";
 import UserRole from "../models/userRoles.model.js";
 import User from "../models/users.model.js";
 import { sequelize } from "../config/db.js";
-import config from "../config/config.json" assert {type:'json'}
+import config from "../config/config.json" assert { type: "json" };
 dotenv.config();
 //   res.json({
 //     message: "Api route is working!!",
@@ -21,7 +21,7 @@ export const Adminlogin = (req, res) => {
   //   console.log("Hello", req.body);
   if (email.toLowerCase() !== "admin@vidyagxp.com") {
     res.status(401).json({
-      error: false,                                                                       
+      error: false,
       message: "Couldn't find User!",
     });
   } else {
@@ -141,6 +141,8 @@ export const createUser = async (req, res) => {
 
 export const Userlogin = async (req, res) => {
   const { email, password } = req.body;
+  // console.log(email, password);
+  // console.log(email, password);
   User.findOne({
     where: {
       email: email.toLowerCase(),
