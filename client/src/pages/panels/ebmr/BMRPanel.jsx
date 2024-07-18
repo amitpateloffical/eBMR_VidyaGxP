@@ -6,24 +6,19 @@ import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import HeaderTop from "../../../components/Header/HeaderTop";
+import axios from "axios";
 
 const BMRForm = () => {
   const [tab, setTab] = useState("General");
   const [allTableData, setAllTableData] = useState([]);
-  const [packingMaterialTablesData, setpackingMaterialTablesData] = useState(
-    []
-  );
+  const [packingMaterialTablesData, setpackingMaterialTablesData] = useState([]);
   const [batchCleaningTablesData, setbatchCleaningTablesData] = useState([]);
-  const [accessoriesCleaningTablesData, setAccessoriesCleaningTablesData] =
-    useState([]);
-  const [intermadiateIssuanceTablesData, setIntermadiateIssuanceTablesData] =
-    useState([]);
+  const [accessoriesCleaningTablesData, setAccessoriesCleaningTablesData] = useState([]);
+  const [intermadiateIssuanceTablesData, setIntermadiateIssuanceTablesData] = useState([]);
   const [hazopTablesData, setHazopTablesData] = useState([]);
   const [processSafetyTablesData, setProcessSafetyTablesData] = useState([]);
   const [ppeMatrixTablesData, setPPEMatrixTablesData] = useState([]);
-  const [hazardAndControlTablesData, setHazardAndControlTablesData] = useState(
-    []
-  );
+  const [hazardAndControlTablesData, setHazardAndControlTablesData] = useState([]);
   const [readAndUnderstood, setReadAndUnderstood] = useState([]);
   const [CriticalProcessPFQ, setCriticalProcessPFQ] = useState([]);
   const [criticalProcessPFS, setCriticalProcessPFS] = useState([]);
@@ -33,65 +28,98 @@ const BMRForm = () => {
   const [rMR, setRMR] = useState([]);
   const [deviation, setDeviation] = useState([]);
   const location = useLocation();
+  const navigate = useNavigate();
   const editedData = location.state;
-  console.log(editedData, "pankaj");
-  const uniqueId =
-    "ABC/" +
-    Math.floor(Math.random() * 1000)
-      .toString()
-      .padStart(3, "0") +
-    "/" +
-    Math.floor(Math.random() * 10000)
-      .toString()
-      .padStart(2, "0");
+  
   const [editData, setEditData] = useState({
-    eBMRId: uniqueId + 1,
-    process: "Batch Manufacturing Record",
-    productName: "",
-    documentNo: "",
+    productName:"",
+    documentNo:"",
     productCode: "",
     effectiveDate: "",
     stage: "",
     supersedesNo: "",
     batchNo: "",
     pageNo: "",
-    standartBatchSize: "",
+    standardBatchSize: "",
     actualBatchSize: "",
     batchStartingDate: "",
-    batchComplitionDate: "",
     time: "",
-    expectedOutput: "",
+    batchComplitionDate: "",
+    _time: "",
+    expectedOutput: ":",
     actualOutput: "",
-    expectedYeild: "",
-    actualYeild: "",
+    expectedYield: ":",
+    actualYield: "",
     manufacturingDate: "",
-    expiryRetestdate: "",
-    packingAndStoreCondition: "",
-    batchCleaningTablesData: [],
-    packingMaterialTablesData: [],
-    accessoriesCleaningTablesData: [],
-    intermadiateIssuanceTablesData: [],
-    hazopTablesData: [],
-    processSafetyTablesData: [],
-    ppeMatrixTablesData: [],
-    hazardAndControlTablesData: [],
-    readAndUnderstood: [],
-    CriticalProcessPFQ: [],
-    criticalProcessPFS: [],
-    gridData: [],
-    intermediateDispensing: [],
-    afterDispensing: [],
-    weightDetails: [],
-    rMR: [],
-    deviation: [],
+    expiry_Retest_Date: "",
+    packingAndStorageCondition: "",
+    eBMRInputRawMaterials: [],
+    eBMRPackingMaterials: [],
+    ebmrSolventBatchToBatchCs: [],
+    eBMRSolventForContainers: [],
+    eBMRIntermediateIssuances: [],
+    eBMRHazopRecommendations: [],
+    eBMRProcessSafetyStudyDetails: [],
+    eBMRPersonalProtectiveEquipments: [],
+    eBMRIdentificationOfHACs: [],
+    eBMRCriticalProcessParameterFs: [],
+    eBMRCriticalPPForQualities: [],
+    eBMRReadAndUnderstoods: [],
+    eBMRManufacturingProcesses: [],
+    eBMRMPAfterdispensings: [],
+    eBMRMSAPOperations: [],
+    eBMRRawMaterialReconciliations: [],
+    eBMRDeviationRemarks: [],
   });
+console.log(editData,"editData")
 
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
+  
+  useEffect(()=>{
+    console.log(editedData,"editedData")
+    if(editedData){
+     setEditData({
+       productName:editedData.productName||"",
+       documentNo:editedData.documentNo || "",
+       productCode: editedData.productCode||"",
+       effectiveDate:editedData.effectiveDate|| "",
+       stage:editedData.stage||"",
+       supersedesNo:editedData.supersedesNo ||"",
+       batchNo:editedData.batchNo|| "",
+       pageNo:editedData.pageNo|| "",
+       standardBatchSize:editedData.standardBatchSize|| "",
+       actualBatchSize:editedData.actualBatchSize|| "",
+       batchStartingDate:editedData.batchStartingDate|| "",
+       time:editedData.time|| "",
+       batchComplitionDate:editedData.batchComplitionDate|| "",
+       _time:editedData._time|| "",
+       expectedOutput: editedData.expectedOutput||"",
+       actualOutput:editedData.actualOutput|| "",
+       expectedYield:editedData.expectedYeild|| "",
+       actualYield:editedData.actualYeild|| "",
+       manufacturingDate:editedData.manufacturingDate|| "",
+       expiryRetestdate:editedData.expiryRetestdate ||"",
+       packingAndStorageCondition:editedData.packingAndStorageCondition|| "",
+       eBMRInputRawMaterials:editedData.eBMRInputRawMaterials|| [],
+       eBMRPackingMaterials:editedData.eBMRPackingMaterials|| [],
+       ebmrSolventBatchToBatchCs:editedData.ebmrSolventBatchToBatchCs ||[],
+       eBMRSolventForContainers: editedData.eBMRSolventForContainers ||[],
+       eBMRIntermediateIssuances:editedData.eBMRIntermediateIssuances ||[],
+       eBMRHazopRecommendations:editedData.eBMRHazopRecommendations ||[],
+       eBMRProcessSafetyStudyDetails: editedData.eBMRProcessSafetyStudyDetails||[],
+       eBMRPersonalProtectiveEquipments: editedData.eBMRPersonalProtectiveEquipments||[],
+       eBMRIdentificationOfHACs: editedData.eBMRIdentificationOfHACs||[],
+       eBMRCriticalProcessParameterFs: editedData.eBMRCriticalProcessParameterFs||[],
+       eBMRCriticalPPForQualities: editedData.eBMRCriticalPPForQualities||[],
+       eBMRReadAndUnderstoods:editedData.eBMRReadAndUnderstoods ||[],
+       eBMRManufacturingProcesses:editedData.eBMRManufacturingProcesses ||[],
+       eBMRMPAfterdispensings:editedData.eBMRMPAfterdispensings ||[],
+       eBMRMSAPOperations: editedData.eBMRMSAPOperations||[],
+       eBMRRawMaterialReconciliations:editedData.eBMRRawMaterialReconciliations||[],
+       eBMRDeviationRemarks:editedData.eBMRDeviationRemarks ||[],
+     })
+    } 
+   },[editedData])
 
-  useEffect(() => {
-    setEditData(editedData);
-  }, [editedData]);
 
   const handleInputChange1 = (e) => {
     const { name, value } = e.target;
@@ -99,15 +127,20 @@ const BMRForm = () => {
   };
 
   const handleSave = () => {
-    toast.success("eLog Saved Successfully!");
-    dispatch({
-      type: "EDIT-EBMR_FORM_DATA",
-      payload: { id: editData.eBMRId, editedData: editData },
-    });
-    navigate("/desktop");
-  };
+    const myHeaders = {
+      Authorization: `Bearer ${localStorage.getItem("admin-token")}`,
+      "Content-Type": "multipart/form-data",
+    };
+    axios.put(`http://localhost:1005/bmr/edit-eBMR/${editedData?.form_id}`,editData,myHeaders).then((res)=>(
+      toast.success("eLog Saved Successfully!"),
+      navigate("/desktop")
+    
+    )).catch((err)=>(
+      toast.error("Couldn't add eBMR! " + err.response.data.message)
+    ))
+  }
 
-  const createObject = () => {};
+
 
   const addRawMaterialRow = () => {
     const currentTime = new Date().toLocaleTimeString();
@@ -324,6 +357,50 @@ const BMRForm = () => {
     setAllTableData(updatedData);
   };
 
+
+
+  useEffect(() => {
+    setEditData((prev)=>({
+      ...prev,
+      eBMRInputRawMaterials: allTableData,
+      ebmrSolventBatchToBatchCs: batchCleaningTablesData,
+      eBMRPackingMaterials: packingMaterialTablesData,
+      eBMRSolventForContainers: accessoriesCleaningTablesData,
+      eBMRIntermediateIssuances: intermadiateIssuanceTablesData,
+      eBMRHazopRecommendations: hazopTablesData,
+      eBMRProcessSafetyStudyDetails: processSafetyTablesData,
+      eBMRPersonalProtectiveEquipments: ppeMatrixTablesData,
+      eBMRIdentificationOfHACs: hazardAndControlTablesData,
+      eBMRReadAndUnderstoods: readAndUnderstood,
+      eBMRCriticalPPForQualities: CriticalProcessPFQ,
+      eBMRCriticalProcessParameterFs: criticalProcessPFS,
+      eBMRManufacturingProcesses: intermediateDispensing,
+      eBMRMPAfterdispensings: afterDispensing,
+      eBMRMSAPOperations: weightDetails,
+      eBMRRawMaterialReconciliations: rMR,
+      eBMRDeviationRemarks: deviation,
+    }));
+  }, [
+    allTableData,
+    batchCleaningTablesData,
+    packingMaterialTablesData,
+    accessoriesCleaningTablesData,
+    intermadiateIssuanceTablesData,
+    hazopTablesData,
+    processSafetyTablesData,
+    ppeMatrixTablesData,
+    hazardAndControlTablesData,
+    readAndUnderstood,
+    CriticalProcessPFQ,
+    criticalProcessPFS,
+    intermediateDispensing,
+    weightDetails,
+    afterDispensing,
+    rMR,
+    deviation,
+ 
+  ]);
+ 
   return (
     <div id="config-form-document-page">
       <HeaderTop />
@@ -406,9 +483,9 @@ const BMRForm = () => {
                 <label>Product Name</label>
                 <input
                   name="productName"
-                  value={editData.productName || ""}
+                  value={editData.productName}
                   type="text"
-                  onChange={handleInputChange1}
+                  onChange={(e)=>setEditData({productName:e.target.value})}
                 />
               </div>
 
@@ -416,7 +493,7 @@ const BMRForm = () => {
                 <label>Document No</label>
                 <input
                   name="documentNo"
-                  value={editData.documentNo || ""}
+                  value={editData.documentNo }
                   type="text"
                   onChange={(e) => setEditData({ documentNo: e.target.value })}
                 />
@@ -426,7 +503,7 @@ const BMRForm = () => {
                 <label>Product Code </label>
                 <input
                   name="productCode"
-                  value={editData.productCode || ""}
+                  value={editData.productCode }
                   type="text"
                   onChange={(e) => setEditData({ productCode: e.target.value })}
                 />
@@ -436,7 +513,7 @@ const BMRForm = () => {
                 <label>Effective Date </label>
                 <input
                   name="effectiveDate"
-                  value={editData.effectiveDate || ""}
+                  value={editData.effectiveDate }
                   type="text"
                   onChange={(e) =>
                     setEditData({ effectiveDate: e.target.value })
@@ -447,7 +524,7 @@ const BMRForm = () => {
               <div className="group-input">
                 <label>Stage </label>
                 <input
-                  value={editData.stage || ""}
+                  value={editData.stage}
                   name="stage"
                   type="text"
                   onChange={(e) => setEditData({ stage: e.target.value })}
@@ -457,7 +534,7 @@ const BMRForm = () => {
               <div className="group-input">
                 <label>Supersedes No </label>
                 <input
-                  value={editData.supersedesNo || ""}
+                  value={editData.supersedesNo }
                   name="supersedesNo"
                   type="text"
                   onChange={(e) =>
@@ -469,7 +546,7 @@ const BMRForm = () => {
               <div className="group-input">
                 <label>Batch No</label>
                 <input
-                  value={editData.batchNo || ""}
+                  value={editData.batchNo }
                   name="batchNo"
                   type="text"
                   onChange={(e) => setEditData({ batchNo: e.target.value })}
@@ -479,7 +556,7 @@ const BMRForm = () => {
               <div className="group-input">
                 <label>Page No</label>
                 <input
-                  value={editData.pageNo || ""}
+                  value={editData.pageNo}
                   name="pageNo"
                   type="text"
                   onChange={(e) => setEditData({ pageNo: e.target.value })}
@@ -497,7 +574,7 @@ const BMRForm = () => {
               <div className="group-input">
                 <label>Standard Batch Size </label>
                 <input
-                  value={editData.standartBatchSize || ""}
+                  value={editData.standartBatchSize }
                   type="text"
                   onChange={(e) =>
                     setEditData({
@@ -509,7 +586,7 @@ const BMRForm = () => {
               <div className="group-input">
                 <label>Actual Batch Size </label>
                 <input
-                  value={editData.actualBatchSize || ""}
+                  value={editData.actualBatchSize }
                   type="text"
                   onChange={(e) =>
                     setEditData({ actualBatchSize: e.target.value })
@@ -520,7 +597,7 @@ const BMRForm = () => {
               <div className="group-input">
                 <label>Batch Starting Date </label>
                 <input
-                  value={editData.batchStartingDate || ""}
+                  value={editData.batchStartingDate}
                   type="date"
                   onChange={(e) =>
                     setEditData({
@@ -533,7 +610,7 @@ const BMRForm = () => {
               <div className="group-input">
                 <label> Time </label>
                 <input
-                  value={editData.time || ""}
+                  value={editData.time }
                   type="time"
                   onChange={(e) => setEditData({ time: e.target.value })}
                 />
@@ -542,7 +619,7 @@ const BMRForm = () => {
               <div className="group-input">
                 <label>Batch Complition Date </label>
                 <input
-                  value={editData.batchComplitionDate || ""}
+                  value={editData.batchComplitionDate }
                   type="date"
                   onChange={(e) =>
                     setEditData({
@@ -555,7 +632,7 @@ const BMRForm = () => {
               <div className="group-input">
                 <label>Time </label>
                 <input
-                  value={editData.time || ""}
+                  value={editData.time}
                   type="time"
                   onChange={(e) => setEditData({ time: e.target.value })}
                 />
@@ -564,7 +641,7 @@ const BMRForm = () => {
               <div className="group-input">
                 <label>Expected Output (kg) </label>
                 <input
-                  value={editData.expectedOutput || ""}
+                  value={editData.expectedOutput }
                   type="text"
                   onChange={(e) =>
                     setEditData({ expectedOutput: e.target.value })
@@ -575,7 +652,7 @@ const BMRForm = () => {
               <div className="group-input">
                 <label>Actual Output (Kg)</label>
                 <input
-                  value={editData.actualOutput || ""}
+                  value={editData.actualOutput }
                   type="text"
                   onChange={(e) =>
                     setEditData({ actualOutput: e.target.value })
@@ -586,7 +663,7 @@ const BMRForm = () => {
               <div className="group-input">
                 <label>Expected Yield (%)</label>
                 <input
-                  value={editData.expectedYeild || ""}
+                  value={editData.expectedYeild }
                   type="text"
                   onChange={(e) =>
                     setEditData({ expectedYeild: e.target.value })
@@ -597,7 +674,7 @@ const BMRForm = () => {
               <div className="group-input">
                 <label>Actual Yield (%) </label>
                 <input
-                  value={editData.actualYeild || ""}
+                  value={editData.actualYeild }
                   type="text"
                   onChange={(e) => setEditData({ actualYeild: e.target.value })}
                 />
@@ -605,7 +682,7 @@ const BMRForm = () => {
               <div className="group-input">
                 <label>Manufacturing Date </label>
                 <input
-                  value={editData.manufacturingDate || ""}
+                  value={editData.manufacturingDate }
                   type="date"
                   onChange={(e) =>
                     setEditData({
@@ -617,7 +694,7 @@ const BMRForm = () => {
               <div className="group-input">
                 <label>Expiry/Retest Date</label>
                 <input
-                  value={editData.expiryRetestdate || ""}
+                  value={editData.expiryRetestdate }
                   type="date"
                   onChange={(e) =>
                     setEditData({ expiryRetestdate: e.target.value })
@@ -628,7 +705,7 @@ const BMRForm = () => {
               <div className="group-input">
                 <label>Packing And Storage Condition</label>
                 <input
-                  value={editData.packingAndStoreCondition || ""}
+                  value={editData.packingAndStoreCondition }
                   type="text"
                   onChange={(e) =>
                     setEditData({
@@ -661,7 +738,7 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                {editedData.eBMRInputRawMaterials?.map((item, index) => (
+                {editData.eBMRInputRawMaterials?.map((item, index) => (
                   <tr key={index}>
                     <td>{index + 1}</td>
                     <td>
@@ -793,7 +870,7 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                {editedData?.eBMRPackingMaterials?.map((item, index) => (
+                {editData?.eBMRPackingMaterials?.map((item, index) => (
                   <tr key={index}>
                     <td>{index + 1}</td>
                     <td>
@@ -926,7 +1003,7 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                {editedData?.ebmrSolventBatchToBatchCs.map((item, index) => (
+                {editData?.ebmrSolventBatchToBatchCs.map((item, index) => (
                   <tr key={index}>
                     <td>{index + 1}</td>
                     <td>
@@ -1061,7 +1138,7 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                {editedData?.eBMRSolventForContainers.map((item, index) => (
+                {editData?.eBMRSolventForContainers.map((item, index) => (
                   <tr key={index}>
                     <td>{index + 1}</td>
                     <td>
@@ -1190,7 +1267,7 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                {editedData?.eBMRIntermediateIssuances.map((item, index) => (
+                {editData?.eBMRIntermediateIssuances.map((item, index) => (
                   <tr key={index}>
                     <td>{index + 1}</td>
                     <td>
@@ -1276,7 +1353,7 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                {editedData?.eBMRHazopRecommendations.map((item, index) => (
+                {editData?.eBMRHazopRecommendations.map((item, index) => (
                   <tr key={index}>
                     <td>{index + 1}</td>
                     <td>
@@ -1329,7 +1406,7 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                {editedData?.eBMRProcessSafetyStudyDetails.map(
+                {editData?.eBMRProcessSafetyStudyDetails.map(
                   (item, index) => (
                     <tr key={index}>
                       <td>{index + 1}</td>
@@ -1391,7 +1468,7 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                {editedData?.eBMRPersonalProtectiveEquipments.map(
+                {editData?.eBMRPersonalProtectiveEquipments.map(
                   (item, index) => (
                     <tr key={index}>
                       <td>{index + 1}</td>
@@ -1483,7 +1560,7 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                {editedData?.eBMRIdentificationOfHACs.map((item, index) => (
+                {editData?.eBMRIdentificationOfHACs.map((item, index) => (
                   <tr key={index}>
                     <td>{index + 1}</td>
                     <td>
@@ -1549,7 +1626,7 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                {editedData?.eBMRCriticalProcessParameterFs?.map(
+                {editData?.eBMRCriticalProcessParameterFs?.map(
                   (item, index) => {
                     return (
                       <tr>
@@ -1611,7 +1688,7 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                {editedData?.eBMRCriticalPPForQualities?.map((item, index) => {
+                {editData?.eBMRCriticalPPForQualities?.map((item, index) => {
                   return (
                     <tr>
                       <td>{index + 1}</td>
@@ -1669,7 +1746,7 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                {editedData?.eBMRReadAndUnderstoods?.map((itm, index) => {
+                {editData?.eBMRReadAndUnderstoods?.map((itm, index) => {
                   return (
                     <tr>
                       <td>{index + 1}</td>
@@ -1794,7 +1871,7 @@ const BMRForm = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {editedData.eBMRManufacturingProcesses.map(
+                    {editData.eBMRManufacturingProcesses.map(
                       (item, index) => {
                         return (
                           <tr>
@@ -1920,7 +1997,7 @@ const BMRForm = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {editedData.eBMRMPAfterdispensings.map((item, index) => {
+                    {editData.eBMRMPAfterdispensings.map((item, index) => {
                       return (
                         <tr>
                           <td>{index + 1}</td>
@@ -2080,7 +2157,7 @@ const BMRForm = () => {
                 </tr>
               </thead>
               <tbody>
-                {editedData.eBMRMSAPOperations.map((item, index) => {
+                {editData.eBMRMSAPOperations.map((item, index) => {
                   return (
                     <tr>
                       <td>
@@ -2347,7 +2424,7 @@ const BMRForm = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {editedData.eBMRRawMaterialReconciliations.map(
+                    {editData.eBMRRawMaterialReconciliations.map(
                       (item, index) => (
                         <tr key={index}>
                           <td>{index + 1}</td>
@@ -2439,7 +2516,7 @@ const BMRForm = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {editedData.eBMRDeviationRemarks?.map((item, index) => (
+                    {editData.eBMRDeviationRemarks?.map((item, index) => (
                       <tr key={index}>
                         <td>
                           <input
@@ -2520,7 +2597,7 @@ const BMRForm = () => {
         <button
           className="themeBtn"
           onClick={() => {
-            handleSave(editData);
+            handleSave()
           }}
         >
           Save
