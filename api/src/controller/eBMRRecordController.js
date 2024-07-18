@@ -41,23 +41,23 @@ export const InserteBMRRecord = async (req, res) => {
     manufacturingDate,
     expiry_Retest_Date,
     packingAndStorageCondition,
-    InputRawMaterialArray,
-    packingMaterialArray,
-    solventForBatchToBatchCleaningArray,
-    solventForContainerCleaningArray,
-    intermediateIssuanceArray,
-    hazopRecommendationsArray,
-    processSafetyStudyDetailsArray,
-    personalProtectiveEquipmentArray,
-    identificationOfHazardsACArray,
-    criticalProcessPFSafetyArray,
-    criticalProcessPFQualityArray,
-    readAndUnderstoodArray,
-    manufacturingProcessArray,
-    manufacturingPAfterDispensingArray,
-    MSAPOperationArray,
-    rawMaterialReconciliationArray,
-    deviationRemarkArray,
+    eBMRInputRawMaterials,
+    eBMRPackingMaterials,
+    ebmrSolventBatchToBatchCs,
+    eBMRSolventForContainers,
+    eBMRIntermediateIssuances,
+    eBMRHazopRecommendations,
+    eBMRProcessSafetyStudyDetails,
+    eBMRPersonalProtectiveEquipments,
+    eBMRIdentificationOfHACs,
+    eBMRCriticalProcessParameterFs,
+    eBMRCriticalPPForQualities,
+    eBMRReadAndUnderstoods,
+    eBMRManufacturingProcesses,
+    eBMRMPAfterdispensings,
+    eBMRMSAPOperations,
+    eBMRRawMaterialReconciliations,
+    eBMRDeviationRemarks,
   } = req.body;
   // Start transaction
   const transaction = await sequelize.transaction();
@@ -90,12 +90,12 @@ export const InserteBMRRecord = async (req, res) => {
       { transaction }
     );
 
-    // Insert InputRawMaterialArray if it exists
+    // Insert eBMRInputRawMaterials if it exists
     if (
-      Array.isArray(InputRawMaterialArray) &&
-      InputRawMaterialArray.length > 0
+      Array.isArray(eBMRInputRawMaterials) &&
+      eBMRInputRawMaterials.length > 0
     ) {
-      const bMRRecords = InputRawMaterialArray.map((record) => ({
+      const bMRRecords = eBMRInputRawMaterials.map((record) => ({
         form_id: eBMRRecords?.form_id,
         materialCode: record.materialCode,
         materialName: record.materialName,
@@ -112,10 +112,10 @@ export const InserteBMRRecord = async (req, res) => {
     }
 
     if (
-      Array.isArray(packingMaterialArray) &&
-      packingMaterialArray.length > 0
+      Array.isArray(eBMRPackingMaterials) &&
+      eBMRPackingMaterials.length > 0
     ) {
-      const packingMaterial = packingMaterialArray.map((record) => ({
+      const packingMaterial = eBMRPackingMaterials.map((record) => ({
         form_id: eBMRRecords?.form_id,
         materialCode: record.materialCode,
         materialName: record.materialName,
@@ -132,10 +132,10 @@ export const InserteBMRRecord = async (req, res) => {
     }
 
     if (
-      Array.isArray(solventForBatchToBatchCleaningArray) &&
-      solventForBatchToBatchCleaningArray.length > 0
+      Array.isArray(ebmrSolventBatchToBatchCs) &&
+      ebmrSolventBatchToBatchCs.length > 0
     ) {
-      const solventForBatchToBatchC = solventForBatchToBatchCleaningArray.map(
+      const solventForBatchToBatchC = ebmrSolventBatchToBatchCs.map(
         (record) => ({
           form_id: eBMRRecords?.form_id,
           materialCode: record.materialCode,
@@ -155,10 +155,10 @@ export const InserteBMRRecord = async (req, res) => {
       });
     }
     if (
-      Array.isArray(solventForContainerCleaningArray) &&
-      solventForContainerCleaningArray.length > 0
+      Array.isArray(eBMRSolventForContainers) &&
+      eBMRSolventForContainers.length > 0
     ) {
-      const solventForContainer = solventForContainerCleaningArray.map(
+      const solventForContainer = eBMRSolventForContainers.map(
         (record) => ({
           form_id: eBMRRecords?.form_id,
           materialCode: record.materialCode,
@@ -179,10 +179,10 @@ export const InserteBMRRecord = async (req, res) => {
     }
 
     if (
-      Array.isArray(intermediateIssuanceArray) &&
-      intermediateIssuanceArray.length > 0
+      Array.isArray(eBMRIntermediateIssuances) &&
+      eBMRIntermediateIssuances.length > 0
     ) {
-      const intermedaiteIssuance = intermediateIssuanceArray.map((record) => ({
+      const intermedaiteIssuance = eBMRIntermediateIssuances.map((record) => ({
         form_id: eBMRRecords?.form_id,
         inputQuantity: record.inputQuantity,
         materialCode: record.materialCode,
@@ -197,10 +197,10 @@ export const InserteBMRRecord = async (req, res) => {
     }
 
     if (
-      Array.isArray(hazopRecommendationsArray) &&
-      hazopRecommendationsArray.length > 0
+      Array.isArray(eBMRHazopRecommendations) &&
+      eBMRHazopRecommendations.length > 0
     ) {
-      const hazopRecommendations = hazopRecommendationsArray.map((record) => ({
+      const hazopRecommendations = eBMRHazopRecommendations.map((record) => ({
         form_id: eBMRRecords?.form_id,
         hazopRecommendations: record.hazopRecommendations,
         category: record.category,
@@ -211,10 +211,10 @@ export const InserteBMRRecord = async (req, res) => {
     }
 
     if (
-      Array.isArray(processSafetyStudyDetailsArray) &&
-      processSafetyStudyDetailsArray.length > 0
+      Array.isArray(eBMRProcessSafetyStudyDetails) &&
+      eBMRProcessSafetyStudyDetails.length > 0
     ) {
-      const processSafetyStudyDetails = processSafetyStudyDetailsArray.map(
+      const processSafetyStudyDetails = eBMRProcessSafetyStudyDetails.map(
         (record) => ({
           form_id: eBMRRecords?.form_id,
           test: record.test,
@@ -229,10 +229,10 @@ export const InserteBMRRecord = async (req, res) => {
     }
 
     if (
-      Array.isArray(personalProtectiveEquipmentArray) &&
-      personalProtectiveEquipmentArray.length > 0
+      Array.isArray(eBMRPersonalProtectiveEquipments) &&
+      eBMRPersonalProtectiveEquipments.length > 0
     ) {
-      const personalProtectiveEquipment = personalProtectiveEquipmentArray.map(
+      const personalProtectiveEquipment = eBMRPersonalProtectiveEquipments.map(
         (record) => ({
           form_id: eBMRRecords?.form_id,
           chemicalName: record.chemicalName,
@@ -250,10 +250,10 @@ export const InserteBMRRecord = async (req, res) => {
     }
 
     if (
-      Array.isArray(identificationOfHazardsACArray) &&
-      identificationOfHazardsACArray.length > 0
+      Array.isArray(eBMRIdentificationOfHACs) &&
+      eBMRIdentificationOfHACs.length > 0
     ) {
-      const identificationOfHAC = identificationOfHazardsACArray.map(
+      const identificationOfHAC = eBMRIdentificationOfHACs.map(
         (record) => ({
           form_id: eBMRRecords?.form_id,
           name: record.name,
@@ -269,10 +269,10 @@ export const InserteBMRRecord = async (req, res) => {
     }
 
     if (
-      Array.isArray(criticalProcessPFSafetyArray) &&
-      criticalProcessPFSafetyArray.length > 0
+      Array.isArray(eBMRCriticalProcessParameterFs) &&
+      eBMRCriticalProcessParameterFs.length > 0
     ) {
-      const criticalProcessPFSafety = criticalProcessPFSafetyArray.map(
+      const criticalProcessPFSafety = eBMRCriticalProcessParameterFs.map(
         (record) => ({
           form_id: eBMRRecords?.form_id,
           bMRStepNo: record.bMRStepNo,
@@ -286,10 +286,10 @@ export const InserteBMRRecord = async (req, res) => {
     }
 
     if (
-      Array.isArray(criticalProcessPFQualityArray) &&
-      criticalProcessPFQualityArray.length > 0
+      Array.isArray(eBMRCriticalPPForQualities) &&
+      eBMRCriticalPPForQualities.length > 0
     ) {
-      const criticalProcessPFQuality = criticalProcessPFQualityArray.map(
+      const criticalProcessPFQuality = eBMRCriticalPPForQualities.map(
         (record) => ({
           form_id: eBMRRecords?.form_id,
           bMRStepNo: record.bMRStepNo,
@@ -303,10 +303,10 @@ export const InserteBMRRecord = async (req, res) => {
     }
 
     if (
-      Array.isArray(readAndUnderstoodArray) &&
-      readAndUnderstoodArray.length > 0
+      Array.isArray(eBMRReadAndUnderstoods) &&
+      eBMRReadAndUnderstoods.length > 0
     ) {
-      const readAndUnderstood = readAndUnderstoodArray.map((record) => ({
+      const readAndUnderstood = eBMRReadAndUnderstoods.map((record) => ({
         form_id: eBMRRecords?.form_id,
         nameOfPerson: record.nameOfPerson,
         sign: record.sign,
@@ -318,10 +318,10 @@ export const InserteBMRRecord = async (req, res) => {
     }
 
     if (
-      Array.isArray(manufacturingProcessArray) &&
-      manufacturingProcessArray.length > 0
+      Array.isArray(eBMRManufacturingProcesses) &&
+      eBMRManufacturingProcesses.length > 0
     ) {
-      const manufacturingProcess = manufacturingProcessArray.map((record) => ({
+      const manufacturingProcess = eBMRManufacturingProcesses.map((record) => ({
         form_id: eBMRRecords?.form_id,
         materialCode: record.materialCode,
         batchNo: record.batchNo,
@@ -338,11 +338,11 @@ export const InserteBMRRecord = async (req, res) => {
     }
 
     if (
-      Array.isArray(manufacturingPAfterDispensingArray) &&
-      manufacturingPAfterDispensingArray.length > 0
+      Array.isArray(eBMRMPAfterdispensings) &&
+      eBMRMPAfterdispensings.length > 0
     ) {
       const manufacturingPAfterDispensing =
-        manufacturingPAfterDispensingArray.map((record) => ({
+        eBMRMPAfterdispensings.map((record) => ({
           form_id: eBMRRecords?.form_id,
           sOperationNo: record.sOperationNo,
           cleaningAfterDispensing: record.cleaningAfterDispensing,
@@ -359,8 +359,8 @@ export const InserteBMRRecord = async (req, res) => {
       );
     }
 
-    if (Array.isArray(MSAPOperationArray) && MSAPOperationArray.length > 0) {
-      const MSAPOperation = MSAPOperationArray.map((record) => ({
+    if (Array.isArray(eBMRMSAPOperations) && eBMRMSAPOperations.length > 0) {
+      const MSAPOperation = eBMRMSAPOperations.map((record) => ({
         form_id: eBMRRecords?.form_id,
         grossContainerNo: record.grossContainerNo,
         weight: record.weight,
@@ -375,10 +375,10 @@ export const InserteBMRRecord = async (req, res) => {
     }
 
     if (
-      Array.isArray(rawMaterialReconciliationArray) &&
-      rawMaterialReconciliationArray.length > 0
+      Array.isArray(eBMRRawMaterialReconciliations) &&
+      eBMRRawMaterialReconciliations.length > 0
     ) {
-      const rawMaterialReconciliation = rawMaterialReconciliationArray.map(
+      const rawMaterialReconciliation = eBMRRawMaterialReconciliations.map(
         (record) => ({
           form_id: eBMRRecords?.form_id,
           rawMaterialName: record.rawMaterialName,
@@ -395,10 +395,10 @@ export const InserteBMRRecord = async (req, res) => {
     }
 
     if (
-      Array.isArray(deviationRemarkArray) &&
-      deviationRemarkArray.length > 0
+      Array.isArray(eBMRDeviationRemarks) &&
+      eBMRDeviationRemarks.length > 0
     ) {
-      const deviationRemark = deviationRemarkArray.map((record) => ({
+      const deviationRemark = eBMRDeviationRemarks.map((record) => ({
         form_id: eBMRRecords?.form_id,
         date: record.date,
         stepNo: record.stepNo,
@@ -533,23 +533,23 @@ export const updateEBMRRecord = async (req, res) => {
     packingAndStorageCondition,
     eBMRInputRawMaterials,
     eBMRPackingMaterials,
-    solventForBatchToBatchCleaningArray,
-    solventForContainerCleaningArray,
-    intermediateIssuanceArray,
-    hazopRecommendationsArray,
-    processSafetyStudyDetailsArray,
-    personalProtectiveEquipmentArray,
-    identificationOfHazardsACArray,
-    criticalProcessPFSafetyArray,
-    criticalProcessPFQualityArray,
-    readAndUnderstoodArray,
-    manufacturingProcessArray,
-    manufacturingPAfterDispensingArray,
-    MSAPOperationArray,
-    rawMaterialReconciliationArray,
-    deviationRemarkArray,
+    ebmrSolventBatchToBatchCs,
+    eBMRSolventForContainers,
+    eBMRIntermediateIssuances,
+    eBMRHazopRecommendations,
+    eBMRProcessSafetyStudyDetails,
+    eBMRPersonalProtectiveEquipments,
+    eBMRIdentificationOfHACs,
+    eBMRCriticalProcessParameterFs,
+    eBMRCriticalPPForQualities,
+    eBMRReadAndUnderstoods,
+    eBMRManufacturingProcesses,
+    eBMRMPAfterdispensings,
+    eBMRMSAPOperations,
+    eBMRRawMaterialReconciliations,
+    eBMRDeviationRemarks,
   } = req.body;
-// console.log(req.body,"InputRawMaterialArray")
+// console.log(req.body,"eBMRInputRawMaterials")
   const transaction = await sequelize.transaction();
   try {
     // Update eBMRRecord
@@ -578,7 +578,7 @@ export const updateEBMRRecord = async (req, res) => {
         packingAndStorageCondition,
       },
       {
-        where: { form_id:form_id },
+        where: { form_id },
         transaction,
       }
     );
@@ -606,13 +606,12 @@ export const updateEBMRRecord = async (req, res) => {
       await eBMRInputRawMaterial.bulkCreate(bMRRecords, { transaction });
     }
 
-    // Update packingMaterialArray if it exists
-    if (Array.isArray(packingMaterialArray) && packingMaterialArray.length > 0) {
-      // Delete existing records
+ 
+    if (Array.isArray(eBMRPackingMaterials) && eBMRPackingMaterials.length > 0) {
+  
       await eBMRPackingMaterial.destroy({ where: { form_id }, transaction });
 
-      // Create updated records
-      const packingMaterial = packingMaterialArray.map((record) => ({
+      const packingMaterial = eBMRPackingMaterials.map((record) => ({
         form_id,
         materialCode: record.materialCode,
         materialName: record.materialName,
@@ -627,9 +626,316 @@ export const updateEBMRRecord = async (req, res) => {
       }));
       await eBMRPackingMaterial.bulkCreate(packingMaterial, { transaction });
     }
-    console.log(InputRawMaterialArray)
-    // Update other tables similarly...
+   
+    if (
+      Array.isArray(ebmrSolventBatchToBatchCs) &&
+      ebmrSolventBatchToBatchCs.length > 0
+    ) {
+      await eBMRSolventForBatchToBatchC.destroy({ where: { form_id }, transaction });
 
+      const solventForBatchToBatchC = ebmrSolventBatchToBatchCs.map(
+        (record) => ({
+          form_id,
+          materialCode: record.materialCode,
+          materialName: record.materialName,
+          UOM: record.UOM,
+          stepNo: record.stepNo,
+          standardQuantity: record.standardQuantity,
+          requiredQuantity: record.requiredQuantity,
+          quantityUsed: record.quantityUsed,
+          ARNo: record.ARNo,
+          checkedBy: record.checkedBy,
+          date: record.date,
+        })
+      );
+      await eBMRSolventForBatchToBatchC.bulkCreate(solventForBatchToBatchC, {
+        transaction,
+      });
+    }
+    if (
+      Array.isArray(eBMRSolventForContainers) &&
+      eBMRSolventForContainers.length > 0
+    ) {
+      await ebmrSolventForContainerC.destroy({ where: { form_id }, transaction });
+
+      const solventForContainer = eBMRSolventForContainers.map(
+        (record) => ({
+          form_id,
+          materialCode: record.materialCode,
+          materialName: record.materialName,
+          UOM: record.UOM,
+          stepNo: record.stepNo,
+          standardQuantity: record.standardQuantity,
+          requiredQuantity: record.requiredQuantity,
+          quantityUsed: record.quantityUsed,
+          ARNo: record.ARNo,
+          checkedBy: record.checkedBy,
+          date: record.date,
+        })
+      );
+      await ebmrSolventForContainerC.bulkCreate(solventForContainer, {
+        transaction,
+      });
+    }
+
+    if (
+      Array.isArray(eBMRIntermediateIssuances) &&
+      eBMRIntermediateIssuances.length > 0
+    ) {
+      await eBMRIntermediateIssuance.destroy({ where: { form_id }, transaction });
+
+      const intermedaiteIssuance = eBMRIntermediateIssuances.map((record) => ({
+        form_id,
+        inputQuantity: record.inputQuantity,
+        materialCode: record.materialCode,
+        batchNumber: record.batchNumber,
+        actualIssuedQuantity: record.actualIssuedQuantity,
+        sign: record.sign,
+        date: record.date,
+      }));
+      await eBMRIntermediateIssuance.bulkCreate(intermedaiteIssuance, {
+        transaction,
+      });
+    }
+
+    if (
+      Array.isArray(eBMRHazopRecommendations) &&
+      eBMRHazopRecommendations.length > 0
+    ) {
+      await eBMRHazopRecommendations.destroy({ where: { form_id }, transaction });
+
+      const hazopRecommendations = eBMRHazopRecommendations.map((record) => ({
+        form_id,
+        hazopRecommendations: record.hazopRecommendations,
+        category: record.category,
+      }));
+      await eBMRHazopRecommendations.bulkCreate(hazopRecommendations, {
+        transaction,
+      });
+    }
+
+    if (
+      Array.isArray(eBMRProcessSafetyStudyDetails) &&
+      eBMRProcessSafetyStudyDetails.length > 0
+    ) {
+      await eBMRProcessSafetyStudyDetails.destroy({ where: { form_id }, transaction });
+
+      const processSafetyStudyDetails = eBMRProcessSafetyStudyDetails.map(
+        (record) => ({
+          form_id,
+          test: record.test,
+          result: record.result,
+          remark: record.remark,
+        })
+      );
+      await eBMRProcessSafetyStudyDetails.bulkCreate(
+        processSafetyStudyDetails,
+        { transaction }
+      );
+    }
+
+    if (
+      Array.isArray(eBMRPersonalProtectiveEquipments) &&
+      eBMRPersonalProtectiveEquipments.length > 0
+    ) {
+      await eBMRPersonalProtectiveEquipment.destroy({ where: { form_id }, transaction });
+
+      const personalProtectiveEquipment = eBMRPersonalProtectiveEquipments.map(
+        (record) => ({
+          form_id,
+          chemicalName: record.chemicalName,
+          handProtection: record.handProtection,
+          eyeProtection: record.eyeProtection,
+          respiratoryProtection: record.respiratoryProtection,
+          footShoes: record.footShoes,
+          bodyProtection: record.bodyProtection,
+        })
+      );
+      await eBMRPersonalProtectiveEquipment.bulkCreate(
+        personalProtectiveEquipment,
+        { transaction }
+      );
+    }
+
+    if (
+      Array.isArray(eBMRIdentificationOfHACs) &&
+      eBMRIdentificationOfHACs.length > 0
+    ) {
+      await eBMRIdentificationOfHazardsAndControls.destroy({ where: { form_id }, transaction });
+
+      const identificationOfHAC = eBMRIdentificationOfHACs.map(
+        (record) => ({
+          form_id,
+          name: record.name,
+          antidote: record.antidote,
+          specificHazard: record.specificHazard,
+          precaution: record.precaution,
+        })
+      );
+      await eBMRIdentificationOfHazardsAndControls.bulkCreate(
+        identificationOfHAC,
+        { transaction }
+      );
+    }
+
+    if (
+      Array.isArray(eBMRCriticalProcessParameterFs) &&
+      eBMRCriticalProcessParameterFs.length > 0
+    ) {
+      await eBMRCriticalProcessParameterFS.destroy({ where: { form_id }, transaction });
+
+      const criticalProcessPFSafety = eBMRCriticalProcessParameterFs.map(
+        (record) => ({
+          form_id,
+          bMRStepNo: record.bMRStepNo,
+          criticalProcessParameter: record.criticalProcessParameter,
+          justification: record.justification,
+        })
+      );
+      await eBMRCriticalProcessParameterFS.bulkCreate(criticalProcessPFSafety, {
+        transaction,
+      });
+    }
+
+    if (
+      Array.isArray(eBMRCriticalPPForQualities) &&
+      eBMRCriticalPPForQualities.length > 0
+    ) {
+      await eBMRCriticalPPForQuality.destroy({ where: { form_id }, transaction });
+
+      const criticalProcessPFQuality = eBMRCriticalPPForQualities.map(
+        (record) => ({
+          form_id,
+          bMRStepNo: record.bMRStepNo,
+          criticalProcessParameter: record.criticalProcessParameter,
+          justification: record.justification,
+        })
+      );
+      await eBMRCriticalPPForQuality.bulkCreate(criticalProcessPFQuality, {
+        transaction,
+      });
+    }
+
+    if (
+      Array.isArray(eBMRReadAndUnderstoods) &&
+      eBMRReadAndUnderstoods.length > 0
+    ) {
+      await eBMRReadAndUnderstood.destroy({ where: { form_id }, transaction });
+
+      const readAndUnderstood = eBMRReadAndUnderstoods.map((record) => ({
+        form_id,
+        nameOfPerson: record.nameOfPerson,
+        sign: record.sign,
+        date: record.date,
+      }));
+      await eBMRReadAndUnderstood.bulkCreate(readAndUnderstood, {
+        transaction,
+      });
+    }
+
+    if (
+      Array.isArray(eBMRManufacturingProcesses) &&
+      eBMRManufacturingProcesses.length > 0
+    ) {
+      await eBMRManufacturingProcess.destroy({ where: { form_id }, transaction });
+
+      const manufacturingProcess = eBMRManufacturingProcesses.map((record) => ({
+        form_id,
+        materialCode: record.materialCode,
+        batchNo: record.batchNo,
+        timeFrom: record.timeFrom,
+        timeTo:record.timeTo,
+        dispensingGrossWeight: record.dispensingGrossWeight,
+        dispensingTareWeight:record.dispensingTareWeight,
+        dispensingNetWeight:record.dispensingNetWeight,
+        doneBy: record.doneBy,
+      }));
+      await eBMRManufacturingProcess.bulkCreate(manufacturingProcess, {
+        transaction,
+      });
+    }
+
+    if (
+      Array.isArray(eBMRMPAfterdispensings) &&
+      eBMRMPAfterdispensings.length > 0
+    ) {
+      await eBMRManufacturingProcessAfterD.destroy({ where: { form_id }, transaction });
+
+      const manufacturingPAfterDispensing =
+        eBMRMPAfterdispensings.map((record) => ({
+          form_id,
+          sOperationNo: record.sOperationNo,
+          cleaningAfterDispensing: record.cleaningAfterDispensing,
+          recordingsAndObservations: record.recordingsAndObservations,
+          date: record.date,
+          timeTo: record.timeTo,
+          timeFrom:record.timeFrom,
+          doneBy: record.doneBy,
+          cleanNotClean: record.cleanNotClean,
+        }));
+      await eBMRManufacturingProcessAfterD.bulkCreate(
+        manufacturingPAfterDispensing,
+        { transaction }
+      );
+    }
+
+    if (Array.isArray(eBMRMSAPOperations) && eBMRMSAPOperations.length > 0) {
+      await eBMRMSAPOperation.destroy({ where: { form_id }, transaction });
+
+      const MSAPOperation = eBMRMSAPOperations.map((record) => ({
+        form_id,
+        grossContainerNo: record.grossContainerNo,
+        weight: record.weight,
+        tareWeight: record.tareWeight,
+        netWeight: record.netWeight,
+        doneBy: record.doneBy,
+        sealByNo: record.sealByNo,
+        sealedByQC: record.sealedByQC,
+        checkedBy: record.checkedBy,
+      }));
+      await eBMRMSAPOperation.bulkCreate(MSAPOperation, { transaction });
+    }
+
+    if (
+      Array.isArray(eBMRRawMaterialReconciliations) &&
+      eBMRRawMaterialReconciliations.length > 0
+    ) {
+      await eBMRRawMaterialReconciliation.destroy({ where: { form_id }, transaction });
+
+      const rawMaterialReconciliation = eBMRRawMaterialReconciliations.map(
+        (record) => ({
+          form_id,
+          rawMaterialName: record.rawMaterialName,
+          UOM: record.UOM,
+          issuedQuantity: record.issuedQuantity,
+          usedQuantity: record.usedQuantity,
+          remark: record.remark,
+        })
+      );
+      await eBMRRawMaterialReconciliation.bulkCreate(
+        rawMaterialReconciliation,
+        { transaction }
+      );
+    }
+
+    if (
+      Array.isArray(eBMRDeviationRemarks) &&
+      eBMRDeviationRemarks.length > 0
+    ) {
+      await eBMRDeviationRemark.destroy({ where: { form_id }, transaction });
+
+      const deviationRemark = eBMRDeviationRemarks.map((record) => ({
+        form_id,
+        date: record.date,
+        stepNo: record.stepNo,
+        observation: record.observation,
+        reason: record.reason,
+        recordedOn: record.recordedOn,
+        recordedBy: record.recordedBy,
+      }));
+      await eBMRDeviationRemark.bulkCreate(deviationRemark, { transaction });
+    }
+  
     // Commit transaction
     await transaction.commit();
 
