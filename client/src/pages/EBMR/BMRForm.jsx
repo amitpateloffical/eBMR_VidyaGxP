@@ -50,28 +50,27 @@ const BMRForm = () => {
       ...next,
     }),
     {
-      productName:"",
-      documentNo:"",
-      productCode:"",
-      effectiveDate:"",
-      stage:"",
-      supersedesNo:"",
-      batchNo:"",
-      pageNo:"",
-      standardBatchSize:"",
-      actualBatchSize:"",
-      batchStartingDate:"",
-      time:"",
-      batchComplitionDate:"",
-      _time:"",
-      expectedOutput:"",
-      actualOutput:"",
-      expectedYield:"",
-      actualYield:"",
-      manufacturingDate:"",
-      expiry_Retest_Date:"",
-      packingAndStorageCondition:"",
-   
+      productName: "",
+      documentNo: "",
+      productCode: "",
+      effectiveDate: "",
+      stage: "",
+      supersedesNo: "",
+      batchNo: "",
+      pageNo: "",
+      standardBatchSize: "",
+      actualBatchSize: "",
+      batchStartingDate: "",
+      time: "",
+      batchComplitionDate: "",
+      _time: "",
+      expectedOutput: "",
+      actualOutput: "",
+      expectedYield: "",
+      actualYield: "",
+      manufacturingDate: "",
+      expiry_Retest_Date: "",
+      packingAndStorageCondition: "",
     }
   );
   // console.log(ManufacturingRecord, "ManufacturingRecord");
@@ -116,12 +115,11 @@ const BMRForm = () => {
     deviation,
   ]);
 
-
   const handleSave = () => {
-    const myHeaders={
-      Authorization:`Bearer ${localStorage.getItem("admin-token")}`,
-      "Content-Type": "multipart/form-data"
-    }
+    const myHeaders = {
+      Authorization: `Bearer ${localStorage.getItem("admin-token")}`,
+      "Content-Type": "multipart/form-data",
+    };
 
     // axios.post('http://localhost:1005/user/add-eBMR',,{headers:myHeaders}).then(()=>{
     //   toast.success("eBMR Saved Successfully!");
@@ -130,21 +128,20 @@ const BMRForm = () => {
     // }).catch((error) => {gaurav
     //   toast.error("Couldn't add eBMR! " + error.response.data.message);
     // });
-  
-    axios.post('http://localhost:1005/user/add-eBMR', 
-      ManufacturingRecord
-    , 
-      myHeaders
-    )
-    .then(function (response) {
-      toast.success("eBMR Saved Successfully!");
-    navigate("/desktop");
-    })
-    .catch(function (error) {
-        toast.error("Couldn't add eBMR! " + error.response.data.message);
 
-    });
-    
+    axios
+      .post(
+        "http://localhost:1005/bmr/add-eBMR",
+        ManufacturingRecord,
+        myHeaders
+      )
+      .then(function (response) {
+        toast.success("eBMR Saved Successfully!");
+        navigate("/desktop");
+      })
+      .catch(function (error) {
+        toast.error("Couldn't add eBMR! " + error.response.data.message);
+      });
   };
 
   const createObject = (newObject) => {
@@ -158,11 +155,11 @@ const BMRForm = () => {
       materialName: "",
       UOM: "",
       stepNo: "",
-      stdQty: "",
-      reqQty: "",
-      qtyUsed: "",
-      arNoBatchNo: "",
-      checkedBySign: "",
+      standardQuantity: "",
+      requiredQuantity: "",
+      quantityUsed: "",
+      ARNo: "",
+      checkedBy: "",
       Date: "",
     };
     setAllTableData([...allTableData, newRow]);
@@ -175,11 +172,11 @@ const BMRForm = () => {
       materialName: "",
       UOM: "",
       stepNo: "",
-      stdQty: "",
-      reqQty: "",
-      qtyUsed: "",
-      arNoBatchNo: "",
-      checkedBySign: "",
+      standardQuantity: "",
+      requiredQuantity: "",
+      quantityUsed: "",
+      ARNo: "",
+      checkedBy: "",
       Date: "",
     };
     setbatchCleaningTablesData([...batchCleaningTablesData, newRow]);
@@ -192,11 +189,11 @@ const BMRForm = () => {
       materialName: "",
       UOM: "",
       stepNo: "",
-      stdQty: "",
-      reqQty: "",
-      qtyUsed: "",
-      arNoBatchNo: "",
-      checkedBySign: "",
+      standardQuantity: "",
+      requiredQuantity: "",
+      quantityUsed: "",
+      ARNo: "",
+      checkedBy: "",
       Date: "",
     };
     setpackingMaterialTablesData([...packingMaterialTablesData, newRow]);
@@ -208,11 +205,11 @@ const BMRForm = () => {
       materialName: "",
       UOM: "",
       stepNo: "",
-      stdQty: "",
-      reqQty: "",
-      qtyUsed: "",
-      arNoBatchNo: "",
-      checkedBySign: "",
+      standardQuantity: "",
+      requiredQuantity: "",
+      quantityUsed: "",
+      ARNo: "",
+      checkedBy: "",
       Date: "",
     };
     setAccessoriesCleaningTablesData([
@@ -223,10 +220,10 @@ const BMRForm = () => {
 
   const addIntermediateIssanceRow = () => {
     const newRow = {
-      inpQtyKg: "",
+      inputQuantity: "",
       materialCode: "",
-      batchNo: "",
-      actualIssuedQty: "",
+      batchNumber: "",
+      actualIssuedQuantity: "",
       sign: "",
       date: "",
     };
@@ -238,7 +235,7 @@ const BMRForm = () => {
 
   const addHazopRow = () => {
     const newRow = {
-      HAZOP_Recommendation: "",
+      hazopRecommendations: "",
       category: "",
     };
     setHazopTablesData([...hazopTablesData, newRow]);
@@ -258,8 +255,9 @@ const BMRForm = () => {
       chemicalName: "",
       handProtection: "",
       eyeProtection: "",
-      respiratoryProtection: "",
-      footshoes: "",
+
+      respiratoryprotection: "",
+      footShoes: "",
       bodyProtection: "",
     };
     setPPEMatrixTablesData([...ppeMatrixTablesData, newRow]);
@@ -285,7 +283,7 @@ const BMRForm = () => {
   };
   const addCriticalProcessParameterForQuality = () => {
     const newRow = {
-      BMRStepNo: "",
+      bMRStepNo: "",
       criticalProcessParameter: "",
       justification: "",
     };
@@ -296,15 +294,18 @@ const BMRForm = () => {
     const newRow = {
       materialCode: "",
       batchNo: "",
-      time: { from: "", to: "" },
-      dispensing: { grossWt: "", tareWt: "", netWt: "" },
+      timeFrom: "",
+      timeTo: "",
+      dispensingGrossWeight: "",
+      dispensingTareWeight: "",
+      dispensingNetWeight: "",
       doneBy: "",
     };
     setIntermediateDispensing([...intermediateDispensing, newRow]);
   };
   const addCriticalProcessParameterForSafety = () => {
     const newRow = {
-      BMRStepNo: "",
+      bMRStepNo: "",
       criticalProcessParameter: "",
       justification: "",
     };
@@ -316,7 +317,8 @@ const BMRForm = () => {
       cleaningAfterDispensing: "",
       recordingsAndObservations: "",
       date: "",
-      time: { from: "", to: "" },
+      timeFrom: "",
+      timeTo: "",
       doneBy: "",
       cleanNotClean: "",
     };
@@ -341,8 +343,8 @@ const BMRForm = () => {
     const newRow = {
       rawMaterialName: "",
       UOM: "",
-      issuedQty: "",
-      usedQty: "",
+      issuedQuantity: "",
+      usedQuantity: "",
       remark: "",
     };
     setRMR([...rMR, newRow]);
@@ -354,7 +356,7 @@ const BMRForm = () => {
       observation: "",
       reason: "",
       recordedOn: "",
-      recordedSign: "",
+      recordedBy: "",
     };
     setDeviation([...deviation, newRow]);
   };
@@ -757,50 +759,50 @@ const BMRForm = () => {
                     </td>
                     <td>
                       <input
-                        value={item.stdQty}
+                        value={item.standardQuantity}
                         onChange={(e) => {
                           const newData = [...allTableData];
-                          newData[index].stdQty = e.target.value;
+                          newData[index].standardQuantity = e.target.value;
                           setAllTableData(newData);
                         }}
                       />
                     </td>
                     <td>
                       <input
-                        value={item.reqQty}
+                        value={item.requiredQuantity}
                         onChange={(e) => {
                           const newData = [...allTableData];
-                          newData[index].reqQty = e.target.value;
+                          newData[index].requiredQuantity = e.target.value;
                           setAllTableData(newData);
                         }}
                       />
                     </td>
                     <td>
                       <input
-                        value={item.qtyUsed}
+                        value={item.quantityUsed}
                         onChange={(e) => {
                           const newData = [...allTableData];
-                          newData[index].qtyUsed = e.target.value;
+                          newData[index].quantityUsed = e.target.value;
                           setAllTableData(newData);
                         }}
                       />
                     </td>
                     <td>
                       <input
-                        value={item.arNoBatchNo}
+                        value={item.ARNo}
                         onChange={(e) => {
                           const newData = [...allTableData];
-                          newData[index].arNoBatchNo = e.target.value;
+                          newData[index].ARNo = e.target.value;
                           setAllTableData(newData);
                         }}
                       />
                     </td>
                     <td>
                       <input
-                        value={item.checkedBySign}
+                        value={item.checkedBy}
                         onChange={(e) => {
                           const newData = [...allTableData];
-                          newData[index].checkedBySign = e.target.value;
+                          newData[index].checkedBy = e.target.value;
                           setAllTableData(newData);
                         }}
                       />
@@ -889,50 +891,50 @@ const BMRForm = () => {
                     </td>
                     <td>
                       <input
-                        value={item.stdQty}
+                        value={item.standardQuantity}
                         onChange={(e) => {
                           const newData = [...packingMaterialTablesData];
-                          newData[index].stdQty = e.target.value;
+                          newData[index].standardQuantity = e.target.value;
                           setpackingMaterialTablesData(newData);
                         }}
                       />
                     </td>
                     <td>
                       <input
-                        value={item.reqQty}
+                        value={item.requiredQuantity}
                         onChange={(e) => {
                           const newData = [...packingMaterialTablesData];
-                          newData[index].reqQty = e.target.value;
+                          newData[index].requiredQuantity = e.target.value;
                           setpackingMaterialTablesData(newData);
                         }}
                       />
                     </td>
                     <td>
                       <input
-                        value={item.qtyUsed}
+                        value={item.quantityUsed}
                         onChange={(e) => {
                           const newData = [...packingMaterialTablesData];
-                          newData[index].qtyUsed = e.target.value;
+                          newData[index].quantityUsed = e.target.value;
                           setpackingMaterialTablesData(newData);
                         }}
                       />
                     </td>
                     <td>
                       <input
-                        value={item.arNoBatchNo}
+                        value={item.ARNo}
                         onChange={(e) => {
                           const newData = [...packingMaterialTablesData];
-                          newData[index].arNoBatchNo = e.target.value;
+                          newData[index].ARNo = e.target.value;
                           setpackingMaterialTablesData(newData);
                         }}
                       />
                     </td>
                     <td>
                       <input
-                        value={item.checkedBySign}
+                        value={item.checkedBy}
                         onChange={(e) => {
                           const newData = [...packingMaterialTablesData];
-                          newData[index].checkedBySign = e.target.value;
+                          newData[index].checkedBy = e.target.value;
                           setpackingMaterialTablesData(newData);
                         }}
                       />
@@ -1022,50 +1024,50 @@ const BMRForm = () => {
                     </td>
                     <td>
                       <input
-                        value={item.stdQty}
+                        value={item.standardQuantity}
                         onChange={(e) => {
                           const newData = [...batchCleaningTablesData];
-                          newData[index].stdQty = e.target.value;
+                          newData[index].standardQuantity = e.target.value;
                           setbatchCleaningTablesData(newData);
                         }}
                       />
                     </td>
                     <td>
                       <input
-                        value={item.reqQty}
+                        value={item.requiredQuantity}
                         onChange={(e) => {
                           const newData = [...batchCleaningTablesData];
-                          newData[index].reqQty = e.target.value;
+                          newData[index].requiredQuantity = e.target.value;
                           setbatchCleaningTablesData(newData);
                         }}
                       />
                     </td>
                     <td>
                       <input
-                        value={item.qtyUsed}
+                        value={item.quantityUsed}
                         onChange={(e) => {
                           const newData = [...batchCleaningTablesData];
-                          newData[index].qtyUsed = e.target.value;
+                          newData[index].quantityUsed = e.target.value;
                           setbatchCleaningTablesData(newData);
                         }}
                       />
                     </td>
                     <td>
                       <input
-                        value={item.arNoBatchNo}
+                        value={item.ARNo}
                         onChange={(e) => {
                           const newData = [...batchCleaningTablesData];
-                          newData[index].arNoBatchNo = e.target.value;
+                          newData[index].ARNo = e.target.value;
                           setbatchCleaningTablesData(newData);
                         }}
                       />
                     </td>
                     <td>
                       <input
-                        value={item.checkedBySign}
+                        value={item.checkedBy}
                         onChange={(e) => {
                           const newData = [...batchCleaningTablesData];
-                          newData[index].checkedBySign = e.target.value;
+                          newData[index].checkedBy = e.target.value;
                           setbatchCleaningTablesData(newData);
                         }}
                       />
@@ -1157,50 +1159,50 @@ const BMRForm = () => {
                     </td>
                     <td>
                       <input
-                        value={item.stdQty}
+                        value={item.standardQuantity}
                         onChange={(e) => {
                           const newData = [...accessoriesCleaningTablesData];
-                          newData[index].stdQty = e.target.value;
+                          newData[index].standardQuantity = e.target.value;
                           setAccessoriesCleaningTablesData(newData);
                         }}
                       />
                     </td>
                     <td>
                       <input
-                        value={item.reqQty}
+                        value={item.requiredQuantity}
                         onChange={(e) => {
                           const newData = [...accessoriesCleaningTablesData];
-                          newData[index].reqQty = e.target.value;
+                          newData[index].requiredQuantity = e.target.value;
                           setAccessoriesCleaningTablesData(newData);
                         }}
                       />
                     </td>
                     <td>
                       <input
-                        value={item.qtyUsed}
+                        value={item.quantityUsed}
                         onChange={(e) => {
                           const newData = [...accessoriesCleaningTablesData];
-                          newData[index].qtyUsed = e.target.value;
+                          newData[index].quantityUsed = e.target.value;
                           setAccessoriesCleaningTablesData(newData);
                         }}
                       />
                     </td>
                     <td>
                       <input
-                        value={item.arNoBatchNo}
+                        value={item.ARNo}
                         onChange={(e) => {
                           const newData = [...accessoriesCleaningTablesData];
-                          newData[index].arNoBatchNo = e.target.value;
+                          newData[index].ARNo = e.target.value;
                           setAccessoriesCleaningTablesData(newData);
                         }}
                       />
                     </td>
                     <td>
                       <input
-                        value={item.checkedBySign}
+                        value={item.checkedBy}
                         onChange={(e) => {
                           const newData = [...accessoriesCleaningTablesData];
-                          newData[index].checkedBySign = e.target.value;
+                          newData[index].checkedBy = e.target.value;
                           setAccessoriesCleaningTablesData(newData);
                         }}
                       />
@@ -1246,10 +1248,10 @@ const BMRForm = () => {
                     <td>{index + 1}</td>
                     <td>
                       <input
-                        value={item.inpQtyKg}
+                        value={item.inputQuantity}
                         onChange={(e) => {
                           const newData = [...intermadiateIssuanceTablesData];
-                          newData[index].inpQtyKg = e.target.value;
+                          newData[index].inputQuantity = e.target.value;
                           setIntermadiateIssuanceTablesData(newData);
                         }}
                       />
@@ -1267,17 +1269,17 @@ const BMRForm = () => {
                     <td>
                       <input
                         type="number"
-                        value={item.batchNo}
+                        value={item.batchNumber}
                         onChange={(e) => {
                           const newData = [...intermadiateIssuanceTablesData];
-                          newData[index].batchNo = e.target.value;
+                          newData[index].batchNumber = e.target.value;
                           setIntermadiateIssuanceTablesData(newData);
                         }}
                       />
                     </td>
                     <td>
                       <input
-                        value={item.actualIssuedQty}
+                        value={item.actualIssuedQuantity}
                         onChange={(e) => {
                           const newData = [...intermadiateIssuanceTablesData];
                           newData[index].stepNo = e.target.value;
@@ -1332,10 +1334,10 @@ const BMRForm = () => {
                     <td>{index + 1}</td>
                     <td>
                       <input
-                        value={item.HAZOP_Recommendation}
+                        value={item.hazopRecommendations}
                         onChange={(e) => {
                           const newData = [...hazopTablesData];
-                          newData[index].HAZOP_Recommendation = e.target.value;
+                          newData[index].hazopRecommendations = e.target.value;
                           setHazopTablesData(newData);
                         }}
                       />
@@ -1476,20 +1478,20 @@ const BMRForm = () => {
 
                     <td>
                       <input
-                        value={item.respiratoryProtection}
+                        value={item.respiratoryprotection}
                         onChange={(e) => {
                           const newData = [...ppeMatrixTablesData];
-                          newData[index].respiratoryProtection = e.target.value;
+                          newData[index].respiratoryprotection = e.target.value;
                           setPPEMatrixTablesData(newData);
                         }}
                       />
                     </td>
                     <td>
                       <input
-                        value={item.footshoes}
+                        value={item.footShoes}
                         onChange={(e) => {
                           const newData = [...ppeMatrixTablesData];
-                          newData[index].footshoes = e.target.value;
+                          newData[index].footShoes = e.target.value;
                           setPPEMatrixTablesData(newData);
                         }}
                       />
@@ -1523,7 +1525,7 @@ const BMRForm = () => {
                 <tr>
                   <th>S no.</th>
                   <th>Name </th>
-                  <th> Antidote </th>
+                  <th> antidote </th>
                   <th>Specific Hazard</th>
                   <th>Precaution</th>
                 </tr>
@@ -1601,10 +1603,10 @@ const BMRForm = () => {
                       <td>{index + 1}</td>
                       <td>
                         <input
-                          value={item.BMRStepNo}
+                          value={item.bMRStepNo}
                           onChange={(e) => {
                             const newData = [...criticalProcessPFS];
-                            newData[index].BMRStepNo = e.target.value;
+                            newData[index].bMRStepNo = e.target.value;
                             setCriticalProcessPFS(newData);
                           }}
                         />
@@ -1661,10 +1663,10 @@ const BMRForm = () => {
                       <td>{index + 1}</td>
                       <td>
                         <input
-                          value={item.BMRStepNo}
+                          value={item.bMRStepNo}
                           onChange={(e) => {
                             const newData = [...CriticalProcessPFQ];
-                            newData[index].BMRStepNo = e.target.value;
+                            newData[index].bMRStepNo = e.target.value;
                             setCriticalProcessPFQ(newData);
                           }}
                         />
@@ -1865,30 +1867,30 @@ const BMRForm = () => {
                           </td>
                           <td>
                             <input
-                              value={item?.time?.from}
+                              value={item?.timeFrom}
                               onChange={(e) => {
                                 const newData = [...intermediateDispensing];
-                                newData[index].time.from = e.target.value;
+                                newData[index].timeFrom = e.target.value;
                                 setIntermediateDispensing(newData);
                               }}
                             />
                           </td>
                           <td>
                             <input
-                              value={item?.time?.to}
+                              value={item?.timeTo}
                               onChange={(e) => {
                                 const newData = [...intermediateDispensing];
-                                newData[index].time.to = e.target.value;
+                                newData[index].timeTo = e.target.value;
                                 setIntermediateDispensing(newData);
                               }}
                             />
                           </td>
                           <td>
                             <input
-                              value={item?.dispensing?.grossWt}
+                              value={item?.dispensingGrossWeight}
                               onChange={(e) => {
                                 const newData = [...intermediateDispensing];
-                                newData[index].dispensing.grossWt =
+                                newData[index].dispensingGrossWeight =
                                   e.target.value;
                                 setIntermediateDispensing(newData);
                               }}
@@ -1896,10 +1898,10 @@ const BMRForm = () => {
                           </td>
                           <td>
                             <input
-                              value={item?.dispensing?.tareWt}
+                              value={item?.dispensingTareWeight}
                               onChange={(e) => {
                                 const newData = [...intermediateDispensing];
-                                newData[index].dispensing.tareWt =
+                                newData[index].dispensingTareWeight =
                                   e.target.value;
                                 setIntermediateDispensing(newData);
                               }}
@@ -1907,10 +1909,10 @@ const BMRForm = () => {
                           </td>
                           <td>
                             <input
-                              value={item?.dispensing?.netWt}
+                              value={item?.dispensingNetWeight}
                               onChange={(e) => {
                                 const newData = [...intermediateDispensing];
-                                newData[index].dispensing.netWt =
+                                newData[index].dispensingNetWeight =
                                   e.target.value;
                                 setIntermediateDispensing(newData);
                               }}
@@ -2003,20 +2005,20 @@ const BMRForm = () => {
                           </td>
                           <td>
                             <input
-                              value={item.time.from}
+                              value={item.timeFrom}
                               onChange={(e) => {
                                 const newData = [...afterDispensing];
-                                newData[index].time.from = e.target.value;
+                                newData[index].timeFrom = e.target.value;
                                 setAfterDispensing(newData);
                               }}
                             />
                           </td>
                           <td>
                             <input
-                              value={item.time.to}
+                              value={item.timeTo}
                               onChange={(e) => {
                                 const newData = [...afterDispensing];
-                                newData[index].time.to = e.target.value;
+                                newData[index].timeTo = e.target.value;
                                 setAfterDispensing(newData);
                               }}
                             />
@@ -2445,10 +2447,10 @@ const BMRForm = () => {
                           <input
                             type="text"
                             className="p-2 border border-gray-300 rounded-md"
-                            value={item.issuedQty}
+                            value={item.issuedQuantity}
                             onChange={(e) => {
                               const newData = [...rMR];
-                              newData[index].issuedQty = e.target.value;
+                              newData[index].issuedQuantity = e.target.value;
                               setRMR(newData);
                             }}
                           />
@@ -2457,10 +2459,10 @@ const BMRForm = () => {
                           <input
                             type="text"
                             className="p-2 border border-gray-300 rounded-md"
-                            value={item.usedQty}
+                            value={item.usedQuantity}
                             onChange={(e) => {
                               const newData = [...rMR];
-                              newData[index].usedQty = e.target.value;
+                              newData[index].usedQuantity = e.target.value;
                               setRMR(newData);
                             }}
                           />
@@ -2565,10 +2567,10 @@ const BMRForm = () => {
                           <input
                             type="text"
                             className="p-2 border border-gray-300 rounded-md"
-                            value={item.recordedSign}
+                            value={item.recordedBy}
                             onChange={(e) => {
                               const newData = [...deviation];
-                              newData[index].recordedSign = e.target.value;
+                              newData[index].recordedBy = e.target.value;
                             }}
                           />
                         </td>

@@ -1,14 +1,13 @@
 import React, { useReducer, useState } from "react";
 import "./BmrPanel.css";
 import { NoteAdd } from "@mui/icons-material";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import HeaderTop from "../../../components/Header/HeaderTop";
 
 const BMRForm = () => {
-  const Ebmr = useSelector((state) => state.ebmrData.EBMRFormData);
   const [tab, setTab] = useState("General");
   const [allTableData, setAllTableData] = useState([]);
   const [packingMaterialTablesData, setpackingMaterialTablesData] = useState(
@@ -33,131 +32,82 @@ const BMRForm = () => {
   const [weightDetails, setWeightDetails] = useState([]);
   const [rMR, setRMR] = useState([]);
   const [deviation, setDeviation] = useState([]);
+  const location = useLocation();
+  const editedData = location.state;
+  console.log(editedData, "pankaj");
   const uniqueId =
-  "ABC/" +
-  Math.floor(Math.random() * 1000)
-    .toString()
-    .padStart(3, "0") +
-  "/" +
-  Math.floor(Math.random() * 10000)
-    .toString()
-    .padStart(2, "0");
- const [editData,setEditData]=useState({
-  eBMRId: uniqueId + 1,
-  process: "Batch Manufacturing Record",
-  productName: "",
-  documentNo: "",
-  productCode: "",
-  effectiveDate: "",
-  stage:"" ,
-  supersedesNo: "",
-  batchNo: "",
-  pageNo: "",
-  standartBatchSize: "",
-  actualBatchSize: "",
-  batchStartingDate: "",
-  batchComplitionDate: "",
-  time: "",
-  expectedOutput: "",
-  actualOutput: "",
-  expectedYeild: "",
-  actualYeild: "",
-  manufacturingDate: "",
-  expiryRetestdate: "",
-  packingAndStoreCondition: "",
-  batchCleaningTablesData: [],
-  packingMaterialTablesData: [],
-  accessoriesCleaningTablesData: [],
-  intermadiateIssuanceTablesData: [],
-  hazopTablesData: [],
-  processSafetyTablesData: [],
-  ppeMatrixTablesData: [],
-  hazardAndControlTablesData: [],
-  readAndUnderstood: [],
-  CriticalProcessPFQ: [],
-  criticalProcessPFS: [],
-  gridData: [],
-  intermediateDispensing: [],
-  afterDispensing:[], 
-  weightDetails:[],
-  rMR:[],
-  deviation:[],
- })
-  const editedData = useSelector((state) => state.dprPanelData.selectedRow);
+    "ABC/" +
+    Math.floor(Math.random() * 1000)
+      .toString()
+      .padStart(3, "0") +
+    "/" +
+    Math.floor(Math.random() * 10000)
+      .toString()
+      .padStart(2, "0");
+  const [editData, setEditData] = useState({
+    eBMRId: uniqueId + 1,
+    process: "Batch Manufacturing Record",
+    productName: "",
+    documentNo: "",
+    productCode: "",
+    effectiveDate: "",
+    stage: "",
+    supersedesNo: "",
+    batchNo: "",
+    pageNo: "",
+    standartBatchSize: "",
+    actualBatchSize: "",
+    batchStartingDate: "",
+    batchComplitionDate: "",
+    time: "",
+    expectedOutput: "",
+    actualOutput: "",
+    expectedYeild: "",
+    actualYeild: "",
+    manufacturingDate: "",
+    expiryRetestdate: "",
+    packingAndStoreCondition: "",
+    batchCleaningTablesData: [],
+    packingMaterialTablesData: [],
+    accessoriesCleaningTablesData: [],
+    intermadiateIssuanceTablesData: [],
+    hazopTablesData: [],
+    processSafetyTablesData: [],
+    ppeMatrixTablesData: [],
+    hazardAndControlTablesData: [],
+    readAndUnderstood: [],
+    CriticalProcessPFQ: [],
+    criticalProcessPFS: [],
+    gridData: [],
+    intermediateDispensing: [],
+    afterDispensing: [],
+    weightDetails: [],
+    rMR: [],
+    deviation: [],
+  });
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
- 
- 
 
-      useEffect(()=>{
-setEditData(editedData)
-      },[editedData])
-  // const [ManufacturingRecord, setManufacturingRecord] = useReducer(
-  //   (prev, next) => ({
-  //     ...prev,
-  //     ...next,
-  //   }),
-  //   {
-  //     eBMRId: uniqueId + 1,
-  //     process: "Batch Manufacturing Record",
-  //     productName: edited.productName,
-  //     documentNo: edited.documentNo,
-  //     productCode: edited.productCode,
-  //     effectiveDate: edited.effectiveDate,
-  //     stage: edited.stage,
-  //     supersedesNo: edited.supersedesNo,
-  //     batchNo: edited.batchNo,
-  //     pageNo: edited.pageNo,
-  //     standartBatchSize: edited.standartBatchSize,
-  //     actualBatchSize: edited.actualBatchSize,
-  //     batchStartingDate: edited.batchStartingDate,
-  //     batchComplitionDate: edited.batchComplitionDate,
-  //     time: edited.time,
-  //     expectedOutput: edited.expectedOutput,
-  //     actualOutput: edited.actualOutput,
-  //     expectedYeild: edited.expectedYeild,
-  //     actualYeild: edited.actualYeild,
-  //     manufacturingDate: edited.manufacturingDate,
-  //     expiryRetestdate: edited.expiryRetestdate,
-  //     packingAndStoreCondition: edited.packingAndStoreCondition,
-  //     batchCleaningTablesData: edited.batchCleaningTablesData,
-  //     packingMaterialTablesData: edited.packingMaterialTablesData,
-  //     accessoriesCleaningTablesData: edited.accessoriesCleaningTablesData,
-  //     intermadiateIssuanceTablesData: edited.intermadiateIssuanceTablesData,
-  //     hazopTablesData: edited.hazopTablesData,
-  //     processSafetyTablesData: edited.processSafetyTablesData,
-  //     ppeMatrixTablesData: edited.ppeMatrixTablesData,
-  //     hazardAndControlTablesData: edited.hazardAndControlTablesData,
-  //     readAndUnderstood: edited.readAndUnderstood,
-  //     CriticalProcessPFQ: edited.CriticalProcessPFQ,
-  //     criticalProcessPFS: edited.criticalProcessPFS,
-  //     gridData: edited.gridData,
-  //     intermediateDispensing: edited.intermediateDispensing,
-  //     afterDispensing:edited. afterDispensing,
-  //     weightDetails:edited. weightDetails,
-  //     rMR:edited. rMR,
-  //     deviation:edited. deviation,
-  //   }
-  // );
-  console.log(Ebmr, "Ebmr");
+  useEffect(() => {
+    setEditData(editedData);
+  }, [editedData]);
 
   const handleInputChange1 = (e) => {
     const { name, value } = e.target;
     setEditData({ ...editData, [name]: value });
   };
-  // useEffect(() => {
-  //   setManufacturingRecord({ gridData: allTableData });
-  // }, [allTableData]);
 
   const handleSave = () => {
     toast.success("eLog Saved Successfully!");
-    dispatch({ type: "EDIT-EBMR_FORM_DATA", payload:  { id: editData.eBMRId, editedData: editData } });
+    dispatch({
+      type: "EDIT-EBMR_FORM_DATA",
+      payload: { id: editData.eBMRId, editedData: editData },
+    });
     navigate("/desktop");
   };
 
-  const createObject = () => {
-   
-  };
+  const createObject = () => {};
 
   const addRawMaterialRow = () => {
     const currentTime = new Date().toLocaleTimeString();
@@ -166,11 +116,11 @@ setEditData(editedData)
       materialName: "",
       UOM: "",
       stepNo: "",
-      stdQty: "",
-      reqQty: "",
-      qtyUsed: "",
-      arNoBatchNo: "",
-      checkedBySign: "",
+      standardQuantity: "",
+      requiredQuantity: "",
+      quantityUsed: "",
+      ARNo: "",
+      checkedBy: "",
       Date: "",
     };
     setAllTableData([...allTableData, newRow]);
@@ -182,11 +132,11 @@ setEditData(editedData)
       materialName: "",
       UOM: "",
       stepNo: "",
-      stdQty: "",
-      reqQty: "",
-      qtyUsed: "",
-      arNoBatchNo: "",
-      checkedBySign: "",
+      standardQuantity: "",
+      requiredQuantity: "",
+      quantityUsed: "",
+      ARNo: "",
+      checkedBy: "",
       Date: "",
     };
     setbatchCleaningTablesData([...batchCleaningTablesData, newRow]);
@@ -199,11 +149,11 @@ setEditData(editedData)
       materialName: "",
       UOM: "",
       stepNo: "",
-      stdQty: "",
-      reqQty: "",
-      qtyUsed: "",
-      arNoBatchNo: "",
-      checkedBySign: "",
+      standardQuantity: "",
+      requiredQuantity: "",
+      quantityUsed: "",
+      ARNo: "",
+      checkedBy: "",
       Date: "",
     };
     setpackingMaterialTablesData([...packingMaterialTablesData, newRow]);
@@ -215,11 +165,11 @@ setEditData(editedData)
       materialName: "",
       UOM: "",
       stepNo: "",
-      stdQty: "",
-      reqQty: "",
-      qtyUsed: "",
-      arNoBatchNo: "",
-      checkedBySign: "",
+      standardQuantity: "",
+      requiredQuantity: "",
+      quantityUsed: "",
+      ARNo: "",
+      checkedBy: "",
       Date: "",
     };
     setAccessoriesCleaningTablesData([
@@ -230,10 +180,10 @@ setEditData(editedData)
 
   const addIntermediateIssanceRow = () => {
     const newRow = {
-      inpQtyKg: "",
+      inputQuantity: "",
       materialCode: "",
-      batchNo: "",
-      actualIssuedQty: "",
+      batchNumber: "",
+      actualIssuedQuantity: "",
       sign: "",
       date: "",
     };
@@ -245,7 +195,7 @@ setEditData(editedData)
 
   const addHazopRow = () => {
     const newRow = {
-      HAZOP_Recommendation: "",
+      hazopRecommendations: "",
       category: "",
     };
     setHazopTablesData([...hazopTablesData, newRow]);
@@ -265,8 +215,8 @@ setEditData(editedData)
       chemicalName: "",
       handProtection: "",
       eyeProtection: "",
-      respiratoryProtection: "",
-      footshoes: "",
+      respiratoryprotection: "",
+      footShoes: "",
       bodyProtection: "",
     };
     setPPEMatrixTablesData([...ppeMatrixTablesData, newRow]);
@@ -275,7 +225,7 @@ setEditData(editedData)
   const addHazardAndControlRow = () => {
     const newRow = {
       name: "",
-      antidot: "",
+      antidote: "",
       specificHazard: "",
       precaution: "",
     };
@@ -292,7 +242,7 @@ setEditData(editedData)
   };
   const addCriticalProcessParameterForQuality = () => {
     const newRow = {
-      BMRStepNo: "",
+      bMRStepNo: "",
       criticalProcessParameter: "",
       justification: "",
     };
@@ -301,7 +251,7 @@ setEditData(editedData)
 
   const addCriticalProcessParameterForSafety = () => {
     const newRow = {
-      BMRStepNo: "",
+      bMRStepNo: "",
       criticalProcessParameter: "",
       justification: "",
     };
@@ -312,8 +262,11 @@ setEditData(editedData)
     const newRow = {
       materialCode: "",
       batchNo: "",
-      time: { from: "", to: "" },
-      dispensing: { grossWt: "", tareWt: "", netWt: "" },
+      timeFrom: "",
+      timeTo: "",
+      dispensingGrossWeight: "",
+      dispensingNetWeight: "",
+      dispensingTareWeight: "",
       doneBy: "",
     };
     setIntermediateDispensing([...intermediateDispensing, newRow]);
@@ -452,42 +405,38 @@ setEditData(editedData)
               <div className="group-input">
                 <label>Product Name</label>
                 <input
-                name="productName"
-                  value={editData.productName||""}
+                  name="productName"
+                  value={editData.productName || ""}
                   type="text"
-                onChange={handleInputChange1}
+                  onChange={handleInputChange1}
                 />
               </div>
 
               <div className="group-input">
                 <label>Document No</label>
                 <input
-                name="documentNo"
-                  value={editData.documentNo||""}
+                  name="documentNo"
+                  value={editData.documentNo || ""}
                   type="text"
-                  onChange={(e) =>
-                    setEditData({ documentNo: e.target.value })
-                  }
+                  onChange={(e) => setEditData({ documentNo: e.target.value })}
                 />
               </div>
 
               <div className="group-input">
                 <label>Product Code </label>
                 <input
-                name="productCode"
-                  value={editData.productCode||""}
+                  name="productCode"
+                  value={editData.productCode || ""}
                   type="text"
-                  onChange={(e) =>
-                    setEditData({ productCode: e.target.value })
-                  }
+                  onChange={(e) => setEditData({ productCode: e.target.value })}
                 />
               </div>
 
               <div className="group-input">
                 <label>Effective Date </label>
                 <input
-                name="effectiveDate"
-                  value={editData.effectiveDate||""}
+                  name="effectiveDate"
+                  value={editData.effectiveDate || ""}
                   type="text"
                   onChange={(e) =>
                     setEditData({ effectiveDate: e.target.value })
@@ -498,19 +447,17 @@ setEditData(editedData)
               <div className="group-input">
                 <label>Stage </label>
                 <input
-                  value={editData.stage||""}
+                  value={editData.stage || ""}
                   name="stage"
                   type="text"
-                  onChange={(e) =>
-                    setEditData({ stage: e.target.value })
-                  }
+                  onChange={(e) => setEditData({ stage: e.target.value })}
                 />
               </div>
 
               <div className="group-input">
                 <label>Supersedes No </label>
                 <input
-                  value={editData.supersedesNo||""}
+                  value={editData.supersedesNo || ""}
                   name="supersedesNo"
                   type="text"
                   onChange={(e) =>
@@ -522,24 +469,20 @@ setEditData(editedData)
               <div className="group-input">
                 <label>Batch No</label>
                 <input
-                  value={editData.batchNo||""}
+                  value={editData.batchNo || ""}
                   name="batchNo"
                   type="text"
-                  onChange={(e) =>
-                    setEditData({ batchNo: e.target.value })
-                  }
+                  onChange={(e) => setEditData({ batchNo: e.target.value })}
                 />
               </div>
 
               <div className="group-input">
                 <label>Page No</label>
                 <input
-                  value={editData.pageNo||""}
+                  value={editData.pageNo || ""}
                   name="pageNo"
                   type="text"
-                  onChange={(e) =>
-                    setEditData({ pageNo: e.target.value })
-                  }
+                  onChange={(e) => setEditData({ pageNo: e.target.value })}
                 />
               </div>
             </div>
@@ -554,7 +497,7 @@ setEditData(editedData)
               <div className="group-input">
                 <label>Standard Batch Size </label>
                 <input
-                  value={editData.standartBatchSize||""}
+                  value={editData.standartBatchSize || ""}
                   type="text"
                   onChange={(e) =>
                     setEditData({
@@ -566,7 +509,7 @@ setEditData(editedData)
               <div className="group-input">
                 <label>Actual Batch Size </label>
                 <input
-                  value={editData.actualBatchSize||""}
+                  value={editData.actualBatchSize || ""}
                   type="text"
                   onChange={(e) =>
                     setEditData({ actualBatchSize: e.target.value })
@@ -577,7 +520,7 @@ setEditData(editedData)
               <div className="group-input">
                 <label>Batch Starting Date </label>
                 <input
-                  value={editData.batchStartingDate||""}
+                  value={editData.batchStartingDate || ""}
                   type="date"
                   onChange={(e) =>
                     setEditData({
@@ -590,18 +533,16 @@ setEditData(editedData)
               <div className="group-input">
                 <label> Time </label>
                 <input
-                  value={editData.time||""}
+                  value={editData.time || ""}
                   type="time"
-                  onChange={(e) =>
-                    setEditData({ time: e.target.value })
-                  }
+                  onChange={(e) => setEditData({ time: e.target.value })}
                 />
               </div>
 
               <div className="group-input">
                 <label>Batch Complition Date </label>
                 <input
-                  value={editData.batchComplitionDate||""}
+                  value={editData.batchComplitionDate || ""}
                   type="date"
                   onChange={(e) =>
                     setEditData({
@@ -614,18 +555,16 @@ setEditData(editedData)
               <div className="group-input">
                 <label>Time </label>
                 <input
-                  value={editData.time||""}
+                  value={editData.time || ""}
                   type="time"
-                  onChange={(e) =>
-                    setEditData({ time: e.target.value })
-                  }
+                  onChange={(e) => setEditData({ time: e.target.value })}
                 />
               </div>
 
               <div className="group-input">
                 <label>Expected Output (kg) </label>
                 <input
-                  value={editData.expectedOutput||""}
+                  value={editData.expectedOutput || ""}
                   type="text"
                   onChange={(e) =>
                     setEditData({ expectedOutput: e.target.value })
@@ -636,7 +575,7 @@ setEditData(editedData)
               <div className="group-input">
                 <label>Actual Output (Kg)</label>
                 <input
-                  value={editData.actualOutput||""}
+                  value={editData.actualOutput || ""}
                   type="text"
                   onChange={(e) =>
                     setEditData({ actualOutput: e.target.value })
@@ -647,7 +586,7 @@ setEditData(editedData)
               <div className="group-input">
                 <label>Expected Yield (%)</label>
                 <input
-                  value={editData.expectedYeild||""}
+                  value={editData.expectedYeild || ""}
                   type="text"
                   onChange={(e) =>
                     setEditData({ expectedYeild: e.target.value })
@@ -658,17 +597,15 @@ setEditData(editedData)
               <div className="group-input">
                 <label>Actual Yield (%) </label>
                 <input
-                  value={editData.actualYeild||""}
+                  value={editData.actualYeild || ""}
                   type="text"
-                  onChange={(e) =>
-                    setEditData({ actualYeild: e.target.value })
-                  }
+                  onChange={(e) => setEditData({ actualYeild: e.target.value })}
                 />
               </div>
               <div className="group-input">
                 <label>Manufacturing Date </label>
                 <input
-                  value={editData.manufacturingDate||""}
+                  value={editData.manufacturingDate || ""}
                   type="date"
                   onChange={(e) =>
                     setEditData({
@@ -680,7 +617,7 @@ setEditData(editedData)
               <div className="group-input">
                 <label>Expiry/Retest Date</label>
                 <input
-                  value={editData.expiryRetestdate||""}
+                  value={editData.expiryRetestdate || ""}
                   type="date"
                   onChange={(e) =>
                     setEditData({ expiryRetestdate: e.target.value })
@@ -691,7 +628,7 @@ setEditData(editedData)
               <div className="group-input">
                 <label>Packing And Storage Condition</label>
                 <input
-                  value={editData.packingAndStoreCondition||""}
+                  value={editData.packingAndStoreCondition || ""}
                   type="text"
                   onChange={(e) =>
                     setEditData({
@@ -724,7 +661,7 @@ setEditData(editedData)
                 </tr>
               </thead>
               <tbody>
-                {editData.gridData?.map((item, index) => (
+                {editedData.eBMRInputRawMaterials?.map((item, index) => (
                   <tr key={index}>
                     <td>{index + 1}</td>
                     <td>
@@ -769,50 +706,50 @@ setEditData(editedData)
                     </td>
                     <td>
                       <input
-                        value={item.stdQty}
+                        value={item.standardQuantity}
                         onChange={(e) => {
                           const newData = [...allTableData];
-                          newData[index].stdQty = e.target.value;
+                          newData[index].standardQuantity = e.target.value;
                           setAllTableData(newData);
                         }}
                       />
                     </td>
                     <td>
                       <input
-                        value={item.reqQty}
+                        value={item.requiredQuantity}
                         onChange={(e) => {
                           const newData = [...allTableData];
-                          newData[index].reqQty = e.target.value;
+                          newData[index].requiredQuantity = e.target.value;
                           setAllTableData(newData);
                         }}
                       />
                     </td>
                     <td>
                       <input
-                        value={item.qtyUsed}
+                        value={item.quantityUsed}
                         onChange={(e) => {
                           const newData = [...allTableData];
-                          newData[index].qtyUsed = e.target.value;
+                          newData[index].quantityUsed = e.target.value;
                           setAllTableData(newData);
                         }}
                       />
                     </td>
                     <td>
                       <input
-                        value={item.arNoBatchNo}
+                        value={item.ARNo}
                         onChange={(e) => {
                           const newData = [...allTableData];
-                          newData[index].arNoBatchNo = e.target.value;
+                          newData[index].ARNo = e.target.value;
                           setAllTableData(newData);
                         }}
                       />
                     </td>
                     <td>
                       <input
-                        value={item.checkedBySign}
+                        value={item.checkedBy}
                         onChange={(e) => {
                           const newData = [...allTableData];
-                          newData[index].checkedBySign = e.target.value;
+                          newData[index].checkedBy = e.target.value;
                           setAllTableData(newData);
                         }}
                       />
@@ -856,114 +793,112 @@ setEditData(editedData)
                 </tr>
               </thead>
               <tbody>
-                {editData?.packingMaterialTablesData?.map(
-                  (item, index) => (
-                    <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input
-                          value={item.materialCode}
-                          onChange={(e) => {
-                            const newData = [...packingMaterialTablesData];
-                            newData[index].materialCode = e.target.value;
-                            setpackingMaterialTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.materialName}
-                          onChange={(e) => {
-                            const newData = [...packingMaterialTablesData];
-                            newData[index].materialName = e.target.value;
-                            setpackingMaterialTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.UOM}
-                          onChange={(e) => {
-                            const newData = [...packingMaterialTablesData];
-                            newData[index].UOM = e.target.value;
-                            setpackingMaterialTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.stepNo}
-                          onChange={(e) => {
-                            const newData = [...packingMaterialTablesData];
-                            newData[index].stepNo = e.target.value;
-                            setpackingMaterialTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.stdQty}
-                          onChange={(e) => {
-                            const newData = [...packingMaterialTablesData];
-                            newData[index].stdQty = e.target.value;
-                            setpackingMaterialTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.reqQty}
-                          onChange={(e) => {
-                            const newData = [...packingMaterialTablesData];
-                            newData[index].reqQty = e.target.value;
-                            setpackingMaterialTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.qtyUsed}
-                          onChange={(e) => {
-                            const newData = [...packingMaterialTablesData];
-                            newData[index].qtyUsed = e.target.value;
-                            setpackingMaterialTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.arNoBatchNo}
-                          onChange={(e) => {
-                            const newData = [...packingMaterialTablesData];
-                            newData[index].arNoBatchNo = e.target.value;
-                            setpackingMaterialTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.checkedBySign}
-                          onChange={(e) => {
-                            const newData = [...packingMaterialTablesData];
-                            newData[index].checkedBySign = e.target.value;
-                            setpackingMaterialTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          type="date"
-                          value={item.Date}
-                          onChange={(e) => {
-                            const newData = [...packingMaterialTablesData];
-                            newData[index].Date = e.target.value;
-                            setpackingMaterialTablesData(newData);
-                          }}
-                        />
-                      </td>
-                    </tr>
-                  )
-                )}
+                {editedData?.eBMRPackingMaterials?.map((item, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>
+                      <input
+                        value={item.materialCode}
+                        onChange={(e) => {
+                          const newData = [...packingMaterialTablesData];
+                          newData[index].materialCode = e.target.value;
+                          setpackingMaterialTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.materialName}
+                        onChange={(e) => {
+                          const newData = [...packingMaterialTablesData];
+                          newData[index].materialName = e.target.value;
+                          setpackingMaterialTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.UOM}
+                        onChange={(e) => {
+                          const newData = [...packingMaterialTablesData];
+                          newData[index].UOM = e.target.value;
+                          setpackingMaterialTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.stepNo}
+                        onChange={(e) => {
+                          const newData = [...packingMaterialTablesData];
+                          newData[index].stepNo = e.target.value;
+                          setpackingMaterialTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.standardQuantity}
+                        onChange={(e) => {
+                          const newData = [...packingMaterialTablesData];
+                          newData[index].standardQuantity = e.target.value;
+                          setpackingMaterialTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.requiredQuantity}
+                        onChange={(e) => {
+                          const newData = [...packingMaterialTablesData];
+                          newData[index].requiredQuantity = e.target.value;
+                          setpackingMaterialTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.quantityUsed}
+                        onChange={(e) => {
+                          const newData = [...packingMaterialTablesData];
+                          newData[index].quantityUsed = e.target.value;
+                          setpackingMaterialTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.ARNo}
+                        onChange={(e) => {
+                          const newData = [...packingMaterialTablesData];
+                          newData[index].ARNo = e.target.value;
+                          setpackingMaterialTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.checkedBy}
+                        onChange={(e) => {
+                          const newData = [...packingMaterialTablesData];
+                          newData[index].checkedBy = e.target.value;
+                          setpackingMaterialTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="date"
+                        value={item.Date}
+                        onChange={(e) => {
+                          const newData = [...packingMaterialTablesData];
+                          newData[index].Date = e.target.value;
+                          setpackingMaterialTablesData(newData);
+                        }}
+                      />
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
 
@@ -991,114 +926,112 @@ setEditData(editedData)
                 </tr>
               </thead>
               <tbody>
-                {editData?.batchCleaningTablesData.map(
-                  (item, index) => (
-                    <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input
-                          value={item.materialCode}
-                          onChange={(e) => {
-                            const newData = [...batchCleaningTablesData];
-                            newData[index].materialCode = e.target.value;
-                            setbatchCleaningTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.materialName}
-                          onChange={(e) => {
-                            const newData = [...batchCleaningTablesData];
-                            newData[index].materialName = e.target.value;
-                            setbatchCleaningTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.UOM}
-                          onChange={(e) => {
-                            const newData = [...batchCleaningTablesData];
-                            newData[index].UOM = e.target.value;
-                            setbatchCleaningTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.stepNo}
-                          onChange={(e) => {
-                            const newData = [...batchCleaningTablesData];
-                            newData[index].stepNo = e.target.value;
-                            setbatchCleaningTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.stdQty}
-                          onChange={(e) => {
-                            const newData = [...batchCleaningTablesData];
-                            newData[index].stdQty = e.target.value;
-                            setbatchCleaningTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.reqQty}
-                          onChange={(e) => {
-                            const newData = [...batchCleaningTablesData];
-                            newData[index].reqQty = e.target.value;
-                            setbatchCleaningTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.qtyUsed}
-                          onChange={(e) => {
-                            const newData = [...batchCleaningTablesData];
-                            newData[index].qtyUsed = e.target.value;
-                            setbatchCleaningTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.arNoBatchNo}
-                          onChange={(e) => {
-                            const newData = [...batchCleaningTablesData];
-                            newData[index].arNoBatchNo = e.target.value;
-                            setbatchCleaningTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.checkedBySign}
-                          onChange={(e) => {
-                            const newData = [...batchCleaningTablesData];
-                            newData[index].checkedBySign = e.target.value;
-                            setbatchCleaningTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          type="date"
-                          value={item.Date}
-                          onChange={(e) => {
-                            const newData = [...batchCleaningTablesData];
-                            newData[index].Date = e.target.value;
-                            setbatchCleaningTablesData(newData);
-                          }}
-                        />
-                      </td>
-                    </tr>
-                  )
-                )}
+                {editedData?.ebmrSolventBatchToBatchCs.map((item, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>
+                      <input
+                        value={item.materialCode}
+                        onChange={(e) => {
+                          const newData = [...batchCleaningTablesData];
+                          newData[index].materialCode = e.target.value;
+                          setbatchCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.materialName}
+                        onChange={(e) => {
+                          const newData = [...batchCleaningTablesData];
+                          newData[index].materialName = e.target.value;
+                          setbatchCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.UOM}
+                        onChange={(e) => {
+                          const newData = [...batchCleaningTablesData];
+                          newData[index].UOM = e.target.value;
+                          setbatchCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.stepNo}
+                        onChange={(e) => {
+                          const newData = [...batchCleaningTablesData];
+                          newData[index].stepNo = e.target.value;
+                          setbatchCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.standardQuantity}
+                        onChange={(e) => {
+                          const newData = [...batchCleaningTablesData];
+                          newData[index].standardQuantity = e.target.value;
+                          setbatchCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.requiredQuantity}
+                        onChange={(e) => {
+                          const newData = [...batchCleaningTablesData];
+                          newData[index].requiredQuantity = e.target.value;
+                          setbatchCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.quantityUsed}
+                        onChange={(e) => {
+                          const newData = [...batchCleaningTablesData];
+                          newData[index].quantityUsed = e.target.value;
+                          setbatchCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.ARNo}
+                        onChange={(e) => {
+                          const newData = [...batchCleaningTablesData];
+                          newData[index].ARNo = e.target.value;
+                          setbatchCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.checkedBy}
+                        onChange={(e) => {
+                          const newData = [...batchCleaningTablesData];
+                          newData[index].checkedBy = e.target.value;
+                          setbatchCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="date"
+                        value={item.Date}
+                        onChange={(e) => {
+                          const newData = [...batchCleaningTablesData];
+                          newData[index].Date = e.target.value;
+                          setbatchCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
 
@@ -1128,114 +1061,112 @@ setEditData(editedData)
                 </tr>
               </thead>
               <tbody>
-                {editData?.accessoriesCleaningTablesData.map(
-                  (item, index) => (
-                    <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input
-                          value={item.materialCode}
-                          onChange={(e) => {
-                            const newData = [...accessoriesCleaningTablesData];
-                            newData[index].materialCode = e.target.value;
-                            setAccessoriesCleaningTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.materialName}
-                          onChange={(e) => {
-                            const newData = [...accessoriesCleaningTablesData];
-                            newData[index].materialName = e.target.value;
-                            setAccessoriesCleaningTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.UOM}
-                          onChange={(e) => {
-                            const newData = [...accessoriesCleaningTablesData];
-                            newData[index].UOM = e.target.value;
-                            setAccessoriesCleaningTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.stepNo}
-                          onChange={(e) => {
-                            const newData = [...accessoriesCleaningTablesData];
-                            newData[index].stepNo = e.target.value;
-                            setAccessoriesCleaningTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.stdQty}
-                          onChange={(e) => {
-                            const newData = [...accessoriesCleaningTablesData];
-                            newData[index].stdQty = e.target.value;
-                            setAccessoriesCleaningTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.reqQty}
-                          onChange={(e) => {
-                            const newData = [...accessoriesCleaningTablesData];
-                            newData[index].reqQty = e.target.value;
-                            setAccessoriesCleaningTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.qtyUsed}
-                          onChange={(e) => {
-                            const newData = [...accessoriesCleaningTablesData];
-                            newData[index].qtyUsed = e.target.value;
-                            setAccessoriesCleaningTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.arNoBatchNo}
-                          onChange={(e) => {
-                            const newData = [...accessoriesCleaningTablesData];
-                            newData[index].arNoBatchNo = e.target.value;
-                            setAccessoriesCleaningTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.checkedBySign}
-                          onChange={(e) => {
-                            const newData = [...accessoriesCleaningTablesData];
-                            newData[index].checkedBySign = e.target.value;
-                            setAccessoriesCleaningTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          type="date"
-                          value={item.Date}
-                          onChange={(e) => {
-                            const newData = [...accessoriesCleaningTablesData];
-                            newData[index].Date = e.target.value;
-                            setAccessoriesCleaningTablesData(newData);
-                          }}
-                        />
-                      </td>
-                    </tr>
-                  )
-                )}
+                {editedData?.eBMRSolventForContainers.map((item, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>
+                      <input
+                        value={item.materialCode}
+                        onChange={(e) => {
+                          const newData = [...accessoriesCleaningTablesData];
+                          newData[index].materialCode = e.target.value;
+                          setAccessoriesCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.materialName}
+                        onChange={(e) => {
+                          const newData = [...accessoriesCleaningTablesData];
+                          newData[index].materialName = e.target.value;
+                          setAccessoriesCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.UOM}
+                        onChange={(e) => {
+                          const newData = [...accessoriesCleaningTablesData];
+                          newData[index].UOM = e.target.value;
+                          setAccessoriesCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.stepNo}
+                        onChange={(e) => {
+                          const newData = [...accessoriesCleaningTablesData];
+                          newData[index].stepNo = e.target.value;
+                          setAccessoriesCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.standardQuantity}
+                        onChange={(e) => {
+                          const newData = [...accessoriesCleaningTablesData];
+                          newData[index].standardQuantity = e.target.value;
+                          setAccessoriesCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.requiredQuantity}
+                        onChange={(e) => {
+                          const newData = [...accessoriesCleaningTablesData];
+                          newData[index].requiredQuantity = e.target.value;
+                          setAccessoriesCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.quantityUsed}
+                        onChange={(e) => {
+                          const newData = [...accessoriesCleaningTablesData];
+                          newData[index].quantityUsed = e.target.value;
+                          setAccessoriesCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.ARNo}
+                        onChange={(e) => {
+                          const newData = [...accessoriesCleaningTablesData];
+                          newData[index].ARNo = e.target.value;
+                          setAccessoriesCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.checkedBy}
+                        onChange={(e) => {
+                          const newData = [...accessoriesCleaningTablesData];
+                          newData[index].checkedBy = e.target.value;
+                          setAccessoriesCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="date"
+                        value={item.Date}
+                        onChange={(e) => {
+                          const newData = [...accessoriesCleaningTablesData];
+                          newData[index].Date = e.target.value;
+                          setAccessoriesCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
 
@@ -1259,75 +1190,73 @@ setEditData(editedData)
                 </tr>
               </thead>
               <tbody>
-                {editData?.intermadiateIssuanceTablesData.map(
-                  (item, index) => (
-                    <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input
-                          value={item.inpQtyKg}
-                          onChange={(e) => {
-                            const newData = [...intermadiateIssuanceTablesData];
-                            newData[index].inpQtyKg = e.target.value;
-                            setIntermadiateIssuanceTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.materialCode}
-                          onChange={(e) => {
-                            const newData = [...intermadiateIssuanceTablesData];
-                            newData[index].materialCode = e.target.value;
-                            setIntermadiateIssuanceTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          type="number"
-                          value={item.batchNo}
-                          onChange={(e) => {
-                            const newData = [...intermadiateIssuanceTablesData];
-                            newData[index].batchNo = e.target.value;
-                            setIntermadiateIssuanceTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.actualIssuedQty}
-                          onChange={(e) => {
-                            const newData = [...intermadiateIssuanceTablesData];
-                            newData[index].stepNo = e.target.value;
-                            setIntermadiateIssuanceTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.sign}
-                          onChange={(e) => {
-                            const newData = [...intermadiateIssuanceTablesData];
-                            newData[index].sign = e.target.value;
-                            setAccessoriesCleaningTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          type="date"
-                          value={item.date}
-                          onChange={(e) => {
-                            const newData = [...intermadiateIssuanceTablesData];
-                            newData[index].date = e.target.value;
-                            setAccessoriesCleaningTablesData(newData);
-                          }}
-                        />
-                      </td>
-                    </tr>
-                  )
-                )}
+                {editedData?.eBMRIntermediateIssuances.map((item, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>
+                      <input
+                        value={item.inputQuantity}
+                        onChange={(e) => {
+                          const newData = [...intermadiateIssuanceTablesData];
+                          newData[index].inputQuantity = e.target.value;
+                          setIntermadiateIssuanceTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.materialCode}
+                        onChange={(e) => {
+                          const newData = [...intermadiateIssuanceTablesData];
+                          newData[index].materialCode = e.target.value;
+                          setIntermadiateIssuanceTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="number"
+                        value={item.batchNumber}
+                        onChange={(e) => {
+                          const newData = [...intermadiateIssuanceTablesData];
+                          newData[index].batchNumber = e.target.value;
+                          setIntermadiateIssuanceTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.actualIssuedQuantity}
+                        onChange={(e) => {
+                          const newData = [...intermadiateIssuanceTablesData];
+                          newData[index].actualIssuedQuantity = e.target.value;
+                          setIntermadiateIssuanceTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.sign}
+                        onChange={(e) => {
+                          const newData = [...intermadiateIssuanceTablesData];
+                          newData[index].sign = e.target.value;
+                          setAccessoriesCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        type="date"
+                        value={item.date}
+                        onChange={(e) => {
+                          const newData = [...intermadiateIssuanceTablesData];
+                          newData[index].date = e.target.value;
+                          setAccessoriesCleaningTablesData(newData);
+                        }}
+                      />
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
 
@@ -1347,15 +1276,15 @@ setEditData(editedData)
                 </tr>
               </thead>
               <tbody>
-                {editData?.hazopTablesData.map((item, index) => (
+                {editedData?.eBMRHazopRecommendations.map((item, index) => (
                   <tr key={index}>
                     <td>{index + 1}</td>
                     <td>
                       <input
-                        value={item.HAZOP_Recommendation}
+                        value={item.hazopRecommendations}
                         onChange={(e) => {
                           const newData = [...hazopTablesData];
-                          newData[index].HAZOP_Recommendation = e.target.value;
+                          newData[index].hazopRecommendations = e.target.value;
                           setHazopTablesData(newData);
                         }}
                       />
@@ -1400,7 +1329,7 @@ setEditData(editedData)
                 </tr>
               </thead>
               <tbody>
-                {editData?.processSafetyTablesData.map(
+                {editedData?.eBMRProcessSafetyStudyDetails.map(
                   (item, index) => (
                     <tr key={index}>
                       <td>{index + 1}</td>
@@ -1462,72 +1391,75 @@ setEditData(editedData)
                 </tr>
               </thead>
               <tbody>
-                {editData?.ppeMatrixTablesData.map((item, index) => (
-                  <tr key={index}>
-                    <td>{index + 1}</td>
-                    <td>
-                      <input
-                        value={item.chemicalName}
-                        onChange={(e) => {
-                          const newData = [...ppeMatrixTablesData];
-                          newData[index].chemicalName = e.target.value;
-                          setPPEMatrixTablesData(newData);
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        value={item.handProtection}
-                        onChange={(e) => {
-                          const newData = [...ppeMatrixTablesData];
-                          newData[index].handProtection = e.target.value;
-                          setPPEMatrixTablesData(newData);
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        value={item.eyeProtection}
-                        onChange={(e) => {
-                          const newData = [...ppeMatrixTablesData];
-                          newData[index].eyeProtection = e.target.value;
-                          setPPEMatrixTablesData(newData);
-                        }}
-                      />
-                    </td>
+                {editedData?.eBMRPersonalProtectiveEquipments.map(
+                  (item, index) => (
+                    <tr key={index}>
+                      <td>{index + 1}</td>
+                      <td>
+                        <input
+                          value={item.chemicalName}
+                          onChange={(e) => {
+                            const newData = [...ppeMatrixTablesData];
+                            newData[index].chemicalName = e.target.value;
+                            setPPEMatrixTablesData(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.handProtection}
+                          onChange={(e) => {
+                            const newData = [...ppeMatrixTablesData];
+                            newData[index].handProtection = e.target.value;
+                            setPPEMatrixTablesData(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.eyeProtection}
+                          onChange={(e) => {
+                            const newData = [...ppeMatrixTablesData];
+                            newData[index].eyeProtection = e.target.value;
+                            setPPEMatrixTablesData(newData);
+                          }}
+                        />
+                      </td>
 
-                    <td>
-                      <input
-                        value={item.respiratoryProtection}
-                        onChange={(e) => {
-                          const newData = [...ppeMatrixTablesData];
-                          newData[index].respiratoryProtection = e.target.value;
-                          setPPEMatrixTablesData(newData);
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        value={item.footshoes}
-                        onChange={(e) => {
-                          const newData = [...ppeMatrixTablesData];
-                          newData[index].footshoes = e.target.value;
-                          setPPEMatrixTablesData(newData);
-                        }}
-                      />
-                    </td>
-                    <td>
-                      <input
-                        value={item.bodyProtection}
-                        onChange={(e) => {
-                          const newData = [...ppeMatrixTablesData];
-                          newData[index].bodyProtection = e.target.value;
-                          setPPEMatrixTablesData(newData);
-                        }}
-                      />
-                    </td>
-                  </tr>
-                ))}
+                      <td>
+                        <input
+                          value={item.respiratoryprotection}
+                          onChange={(e) => {
+                            const newData = [...ppeMatrixTablesData];
+                            newData[index].respiratoryprotection =
+                              e.target.value;
+                            setPPEMatrixTablesData(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.footShoes}
+                          onChange={(e) => {
+                            const newData = [...ppeMatrixTablesData];
+                            newData[index].footShoes = e.target.value;
+                            setPPEMatrixTablesData(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.bodyProtection}
+                          onChange={(e) => {
+                            const newData = [...ppeMatrixTablesData];
+                            newData[index].bodyProtection = e.target.value;
+                            setPPEMatrixTablesData(newData);
+                          }}
+                        />
+                      </td>
+                    </tr>
+                  )
+                )}
               </tbody>
             </table>
 
@@ -1551,54 +1483,52 @@ setEditData(editedData)
                 </tr>
               </thead>
               <tbody>
-                {editData?.hazardAndControlTablesData.map(
-                  (item, index) => (
-                    <tr key={index}>
-                      <td>{index + 1}</td>
-                      <td>
-                        <input
-                          value={item.name}
-                          onChange={(e) => {
-                            const newData = [...hazardAndControlTablesData];
-                            newData[index].name = e.target.value;
-                            setHazardAndControlTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.antidot}
-                          onChange={(e) => {
-                            const newData = [...hazardAndControlTablesData];
-                            newData[index].antidot = e.target.value;
-                            setHazardAndControlTablesData(newData);
-                          }}
-                        />
-                      </td>
-                      <td>
-                        <input
-                          value={item.specificHazard}
-                          onChange={(e) => {
-                            const newData = [...hazardAndControlTablesData];
-                            newData[index].specificHazard = e.target.value;
-                            setHazardAndControlTablesData(newData);
-                          }}
-                        />
-                      </td>
+                {editedData?.eBMRIdentificationOfHACs.map((item, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>
+                      <input
+                        value={item.name}
+                        onChange={(e) => {
+                          const newData = [...hazardAndControlTablesData];
+                          newData[index].name = e.target.value;
+                          setHazardAndControlTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.antidote}
+                        onChange={(e) => {
+                          const newData = [...hazardAndControlTablesData];
+                          newData[index].antidote = e.target.value;
+                          setHazardAndControlTablesData(newData);
+                        }}
+                      />
+                    </td>
+                    <td>
+                      <input
+                        value={item.specificHazard}
+                        onChange={(e) => {
+                          const newData = [...hazardAndControlTablesData];
+                          newData[index].specificHazard = e.target.value;
+                          setHazardAndControlTablesData(newData);
+                        }}
+                      />
+                    </td>
 
-                      <td>
-                        <input
-                          value={item.precaution}
-                          onChange={(e) => {
-                            const newData = [...hazardAndControlTablesData];
-                            newData[index].precaution = e.target.value;
-                            setHazardAndControlTablesData(newData);
-                          }}
-                        />
-                      </td>
-                    </tr>
-                  )
-                )}
+                    <td>
+                      <input
+                        value={item.precaution}
+                        onChange={(e) => {
+                          const newData = [...hazardAndControlTablesData];
+                          newData[index].precaution = e.target.value;
+                          setHazardAndControlTablesData(newData);
+                        }}
+                      />
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
 
@@ -1619,37 +1549,46 @@ setEditData(editedData)
                 </tr>
               </thead>
               <tbody>
-                {editData?.criticalProcessPFS?.map((item, index) => {
-                  return (
-                    <tr>
-                    <td>{index + 1}</td>
-                    <td>
-                      <input value={item.BMRStepNo} onChange={(e)=>{
-                        const newData=[...criticalProcessPFS];
-                        newData[index].BMRStepNo=e.target.value;
-                        setCriticalProcessPFS(newData)
-                      }} />
-                    </td>
-                    <td>
-                      <input value={item.criticalProcessParameter} 
-                      onChange={(e)=>{
-                        const newData=[...criticalProcessPFS];
-                        newData[index].criticalProcessParameter=e.target.value;
-                        setCriticalProcessPFS(newData)
-                      }} />
-                    </td>
-                    <td>
-                      <input value={item.justification}
-                      onChange={(e)=>{
-                        const newData=[...criticalProcessPFS]
-                        newData[index].justification=e.target.value;
-                        setCriticalProcessPFS(newData)
-
-                      }} />
-                    </td>
-                  </tr>
-                  );
-                })}
+                {editedData?.eBMRCriticalProcessParameterFs?.map(
+                  (item, index) => {
+                    return (
+                      <tr>
+                        <td>{index + 1}</td>
+                        <td>
+                          <input
+                            value={item.bMRStepNo}
+                            onChange={(e) => {
+                              const newData = [...criticalProcessPFS];
+                              newData[index].bMRStepNo = e.target.value;
+                              setCriticalProcessPFS(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.criticalProcessParameter}
+                            onChange={(e) => {
+                              const newData = [...criticalProcessPFS];
+                              newData[index].criticalProcessParameter =
+                                e.target.value;
+                              setCriticalProcessPFS(newData);
+                            }}
+                          />
+                        </td>
+                        <td>
+                          <input
+                            value={item.justification}
+                            onChange={(e) => {
+                              const newData = [...criticalProcessPFS];
+                              newData[index].justification = e.target.value;
+                              setCriticalProcessPFS(newData);
+                            }}
+                          />
+                        </td>
+                      </tr>
+                    );
+                  }
+                )}
               </tbody>
             </table>
 
@@ -1672,35 +1611,42 @@ setEditData(editedData)
                 </tr>
               </thead>
               <tbody>
-                {editData?.CriticalProcessPFQ?.map((item, index) => {
+                {editedData?.eBMRCriticalPPForQualities?.map((item, index) => {
                   return (
                     <tr>
-                    <td>{index + 1}</td>
-                    <td>
-                      <input value={item.BMRStepNo} 
-                      onChange={(e)=>{
-                        const newData=[...CriticalProcessPFQ];
-                        newData[index].BMRStepNo=e.target.value;
-                        setCriticalProcessPFQ(newData)
-                      }}/>
-                    </td>
-                    <td>
-                      <input value={item.criticalProcessParameter}
-                      onChange={(e)=>{
-                        const newData=[...CriticalProcessPFQ];
-                        newData[index].criticalProcessParameter=e.target.value
-                        setCriticalProcessPFQ(newData)
-                      }}/>
-                    </td>
-                    <td>
-                      <input value={item.justification}
-                      onChange={(e)=>{
-                        const newData=[...CriticalProcessPFQ]
-                        newData[index].justification=e.target.value;
-                        setCriticalProcessPFQ(newData)
-                      }}/>
-                    </td>
-                  </tr>
+                      <td>{index + 1}</td>
+                      <td>
+                        <input
+                          value={item.bMRStepNo}
+                          onChange={(e) => {
+                            const newData = [...CriticalProcessPFQ];
+                            newData[index].bMRStepNo = e.target.value;
+                            setCriticalProcessPFQ(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.criticalProcessParameter}
+                          onChange={(e) => {
+                            const newData = [...CriticalProcessPFQ];
+                            newData[index].criticalProcessParameter =
+                              e.target.value;
+                            setCriticalProcessPFQ(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={item.justification}
+                          onChange={(e) => {
+                            const newData = [...CriticalProcessPFQ];
+                            newData[index].justification = e.target.value;
+                            setCriticalProcessPFQ(newData);
+                          }}
+                        />
+                      </td>
+                    </tr>
                   );
                 })}
               </tbody>
@@ -1723,34 +1669,42 @@ setEditData(editedData)
                 </tr>
               </thead>
               <tbody>
-                {editData?.readAndUnderstood?.map((itm, index) => {
+                {editedData?.eBMRReadAndUnderstoods?.map((itm, index) => {
                   return (
                     <tr>
-                    <td>{index + 1}</td>
-                    <td>
-                      <input value={itm.nameOfPerson} 
-                      onChange={(e)=>{
-                        const newData=[...readAndUnderstood];
-                        newData[index].nameOfPerson=e.target.value;
-                        setReadAndUnderstood(newData);
-                      }}/>
-                    </td>
-                    <td>
-                      <input value={itm.sign} 
-                      onChange={(e)=>{
-                        const newData=[...readAndUnderstood];
-                        newData[index].sign=e.target.value;
-                        setReadAndUnderstood(newData)
-                      }}/>
-                    </td>
-                    <td>
-                      <input type="date" value={itm.date}  onChange={(e)=>{
-                        const newData=[...readAndUnderstood];
-                        newData[index].date=e.target.value;
-                        setReadAndUnderstood(newData)
-                      }}/>
-                    </td>
-                  </tr>
+                      <td>{index + 1}</td>
+                      <td>
+                        <input
+                          value={itm.nameOfPerson}
+                          onChange={(e) => {
+                            const newData = [...readAndUnderstood];
+                            newData[index].nameOfPerson = e.target.value;
+                            setReadAndUnderstood(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          value={itm.sign}
+                          onChange={(e) => {
+                            const newData = [...readAndUnderstood];
+                            newData[index].sign = e.target.value;
+                            setReadAndUnderstood(newData);
+                          }}
+                        />
+                      </td>
+                      <td>
+                        <input
+                          type="date"
+                          value={itm.date}
+                          onChange={(e) => {
+                            const newData = [...readAndUnderstood];
+                            newData[index].date = e.target.value;
+                            setReadAndUnderstood(newData);
+                          }}
+                        />
+                      </td>
+                    </tr>
                   );
                 })}
               </tbody>
@@ -1808,7 +1762,7 @@ setEditData(editedData)
             <div className="sub-head">Manufacturing Process</div>
 
             <div className="flex flex-col gap-8">
-            <div>
+              <div>
                 <div className="AddRows d-flex">
                   <NoteAdd onClick={addIntermediateDispensing} />
                   <div className="addrowinstruction"></div>
@@ -1828,7 +1782,6 @@ setEditData(editedData)
                       <th rowSpan={2}> Material Code</th>
                       <th rowSpan={2}>Batch No.</th>
                       <th colspan="2">Time</th>
-
                       <th colspan="3"> Dispensing</th>
                       <th rowSpan={2}>Done by </th>
                     </tr>
@@ -1841,96 +1794,98 @@ setEditData(editedData)
                     </tr>
                   </thead>
                   <tbody>
-                    {editData.intermediateDispensing.map((item, index) => {
-                      return (
-                        <tr>
-                          <td>{index + 1}</td>
-                          <td>
-                            <input
-                              value={item.materialCode}
-                              onChange={(e) => {
-                                const newData = [...intermediateDispensing];
-                                newData[index].materialCode = e.target.value;
-                                setIntermediateDispensing(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item.batchNo}
-                              onChange={(e) => {
-                                const newData = [...intermediateDispensing];
-                                newData[index].batchNo = e.target.value;
-                                setIntermediateDispensing(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item?.time?.from}
-                              onChange={(e) => {
-                                const newData = [...intermediateDispensing];
-                                newData[index].time.from = e.target.value;
-                                setIntermediateDispensing(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item?.time?.to}
-                              onChange={(e) => {
-                                const newData = [...intermediateDispensing];
-                                newData[index].time.to = e.target.value;
-                                setIntermediateDispensing(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item?.dispensing?.grossWt}
-                              onChange={(e) => {
-                                const newData = [...intermediateDispensing];
-                                newData[index].dispensing.grossWt =
-                                  e.target.value;
-                                setIntermediateDispensing(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item?.dispensing?.tareWt}
-                              onChange={(e) => {
-                                const newData = [...intermediateDispensing];
-                                newData[index].dispensing.tareWt =
-                                  e.target.value;
-                                setIntermediateDispensing(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item?.dispensing?.netWt}
-                              onChange={(e) => {
-                                const newData = [...intermediateDispensing];
-                                newData[index].dispensing.netWt =
-                                  e.target.value;
-                                setIntermediateDispensing(newData);
-                              }}
-                            />
-                          </td>
-                          <td>
-                            <input
-                              value={item?.doneBy}
-                              onChange={(e) => {
-                                const newData = [...intermediateDispensing];
-                                newData[index].doneBy = e.target.value;
-                                setIntermediateDispensing(newData);
-                              }}
-                            />
-                          </td>
-                        </tr>
-                      );
-                    })}
+                    {editedData.eBMRManufacturingProcesses.map(
+                      (item, index) => {
+                        return (
+                          <tr>
+                            <td>{index + 1}</td>
+                            <td>
+                              <input
+                                value={item.materialCode}
+                                onChange={(e) => {
+                                  const newData = [...intermediateDispensing];
+                                  newData[index].materialCode = e.target.value;
+                                  setIntermediateDispensing(newData);
+                                }}
+                              />
+                            </td>
+                            <td>
+                              <input
+                                value={item.batchNo}
+                                onChange={(e) => {
+                                  const newData = [...intermediateDispensing];
+                                  newData[index].batchNo = e.target.value;
+                                  setIntermediateDispensing(newData);
+                                }}
+                              />
+                            </td>
+                            <td>
+                              <input
+                                value={item?.timeFrom}
+                                onChange={(e) => {
+                                  const newData = [...intermediateDispensing];
+                                  newData[index].timeFrom = e.target.value;
+                                  setIntermediateDispensing(newData);
+                                }}
+                              />
+                            </td>
+                            <td>
+                              <input
+                                value={item?.timeTo}
+                                onChange={(e) => {
+                                  const newData = [...intermediateDispensing];
+                                  newData[index].timeTo = e.target.value;
+                                  setIntermediateDispensing(newData);
+                                }}
+                              />
+                            </td>
+                            <td>
+                              <input
+                                value={item?.dispensingGrossWeight}
+                                onChange={(e) => {
+                                  const newData = [...intermediateDispensing];
+                                  newData[index].dispensingGrossWeight =
+                                    e.target.value;
+                                  setIntermediateDispensing(newData);
+                                }}
+                              />
+                            </td>
+                            <td>
+                              <input
+                                value={item?.dispensingTareWeight}
+                                onChange={(e) => {
+                                  const newData = [...intermediateDispensing];
+                                  newData[index].dispensingTareWeight =
+                                    e.target.value;
+                                  setIntermediateDispensing(newData);
+                                }}
+                              />
+                            </td>
+                            <td>
+                              <input
+                                value={item?.dispensingNetWeight}
+                                onChange={(e) => {
+                                  const newData = [...intermediateDispensing];
+                                  newData[index].dispensingNetWeight =
+                                    e.target.value;
+                                  setIntermediateDispensing(newData);
+                                }}
+                              />
+                            </td>
+                            <td>
+                              <input
+                                value={item?.doneBy}
+                                onChange={(e) => {
+                                  const newData = [...intermediateDispensing];
+                                  newData[index].doneBy = e.target.value;
+                                  setIntermediateDispensing(newData);
+                                }}
+                              />
+                            </td>
+                          </tr>
+                        );
+                      }
+                    )}
                   </tbody>
                 </table>
               </div>
@@ -1965,7 +1920,7 @@ setEditData(editedData)
                     </tr>
                   </thead>
                   <tbody>
-                    {editData.afterDispensing.map((item, index) => {
+                    {editedData.eBMRMPAfterdispensings.map((item, index) => {
                       return (
                         <tr>
                           <td>{index + 1}</td>
@@ -2004,20 +1959,20 @@ setEditData(editedData)
                           </td>
                           <td>
                             <input
-                              value={item.time.from}
+                              value={item.timeFrom}
                               onChange={(e) => {
                                 const newData = [...afterDispensing];
-                                newData[index].time.from = e.target.value;
+                                newData[index].timeFrom = e.target.value;
                                 setAfterDispensing(newData);
                               }}
                             />
                           </td>
                           <td>
                             <input
-                              value={item.time.to}
+                              value={item.timeTo}
                               onChange={(e) => {
                                 const newData = [...afterDispensing];
-                                newData[index].time.to = e.target.value;
+                                newData[index].timeTo = e.target.value;
                                 setAfterDispensing(newData);
                               }}
                             />
@@ -2125,7 +2080,7 @@ setEditData(editedData)
                 </tr>
               </thead>
               <tbody>
-                {editData.weightDetails.map((item, index) => {
+                {editedData.eBMRMSAPOperations.map((item, index) => {
                   return (
                     <tr>
                       <td>
@@ -2261,7 +2216,6 @@ setEditData(editedData)
                 </tr>
               </tbody>
             </table>
-            
 
             <div className="sub-head">Area Cleaning:</div>
             <div className="font-bold pb-1">Specimen Product label:</div>
@@ -2376,7 +2330,7 @@ setEditData(editedData)
             <div className="sub-head">Raw Material Reconciliation</div>
 
             <div className="flex flex-col gap-8">
-            <div>
+              <div>
                 <div className="AddRows d-flex">
                   <NoteAdd onClick={addrMR} />
                   <div className="addrowinstruction"></div>
@@ -2393,76 +2347,78 @@ setEditData(editedData)
                     </tr>
                   </thead>
                   <tbody>
-                    {editData.rMR.map((item, index) => (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>
-                          <input
-                            type="text"
-                            className="p-2 border border-gray-300 rounded-md"
-                            value={item.rawMaterialName}
-                            onChange={(e) => {
-                              const newData = [...rMR];
-                              newData[index].rawMaterialName = e.target.value;
-                              setRMR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="text"
-                            className="p-2 border border-gray-300 rounded-md"
-                            value={item.UOM}
-                            onChange={(e) => {
-                              const newData = [...rMR];
-                              newData[index].UOM = e.target.value;
-                              setRMR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="text"
-                            className="p-2 border border-gray-300 rounded-md"
-                            value={item.issuedQty}
-                            onChange={(e) => {
-                              const newData = [...rMR];
-                              newData[index].issuedQty = e.target.value;
-                              setRMR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="text"
-                            className="p-2 border border-gray-300 rounded-md"
-                            value={item.usedQty}
-                            onChange={(e) => {
-                              const newData = [...rMR];
-                              newData[index].usedQty = e.target.value;
-                              setRMR(newData);
-                            }}
-                          />
-                        </td>
-                        <td>
-                          <input
-                            type="text"
-                            className="p-2 border border-gray-300 rounded-md"
-                            value={item.remark}
-                            onChange={(e) => {
-                              const newData = [...rMR];
-                              newData[index].remark = e.target.value;
-                              setRMR(newData);
-                            }}
-                          />
-                        </td>
-                      </tr>
-                    ))}
+                    {editedData.eBMRRawMaterialReconciliations.map(
+                      (item, index) => (
+                        <tr key={index}>
+                          <td>{index + 1}</td>
+                          <td>
+                            <input
+                              type="text"
+                              className="p-2 border border-gray-300 rounded-md"
+                              value={item.rawMaterialName}
+                              onChange={(e) => {
+                                const newData = [...rMR];
+                                newData[index].rawMaterialName = e.target.value;
+                                setRMR(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="text"
+                              className="p-2 border border-gray-300 rounded-md"
+                              value={item.UOM}
+                              onChange={(e) => {
+                                const newData = [...rMR];
+                                newData[index].UOM = e.target.value;
+                                setRMR(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="text"
+                              className="p-2 border border-gray-300 rounded-md"
+                              value={item.issuedQty}
+                              onChange={(e) => {
+                                const newData = [...rMR];
+                                newData[index].issuedQty = e.target.value;
+                                setRMR(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="text"
+                              className="p-2 border border-gray-300 rounded-md"
+                              value={item.usedQty}
+                              onChange={(e) => {
+                                const newData = [...rMR];
+                                newData[index].usedQty = e.target.value;
+                                setRMR(newData);
+                              }}
+                            />
+                          </td>
+                          <td>
+                            <input
+                              type="text"
+                              className="p-2 border border-gray-300 rounded-md"
+                              value={item.remark}
+                              onChange={(e) => {
+                                const newData = [...rMR];
+                                newData[index].remark = e.target.value;
+                                setRMR(newData);
+                              }}
+                            />
+                          </td>
+                        </tr>
+                      )
+                    )}
                   </tbody>
                 </table>
               </div>
               <div>
-              <div className="AddRows d-flex">
+                <div className="AddRows d-flex">
                   <NoteAdd onClick={addDeviation} />
                   <div className="addrowinstruction"></div>
                 </div>
@@ -2483,7 +2439,7 @@ setEditData(editedData)
                     </tr>
                   </thead>
                   <tbody>
-                    {editData.deviation?.map((item, index) => (
+                    {editedData.eBMRDeviationRemarks?.map((item, index) => (
                       <tr key={index}>
                         <td>
                           <input
@@ -2555,7 +2511,6 @@ setEditData(editedData)
                     ))}
                   </tbody>
                 </table>
-
               </div>
             </div>
           </div>

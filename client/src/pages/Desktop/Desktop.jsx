@@ -4,22 +4,29 @@ import HeaderBottom from "../../components/Header/HeaderBottom";
 import "./Desktop.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 
 function Desktop() {
+  const [data, setData] = useState([]);
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  const Ebmr = useSelector((state) => state.ebmrData.EBMRFormData);
-  console.log(Ebmr, "Ebmr");
+  // const Ebmr = useSelector((state) => state.ebmrData.EBMRFormData);
+  // console.log(Ebmr, "Ebmr");
 
   const handleRowClick = (row) => {
     dispatch({ type: "SELECT_ROW", payload: row });
-    navigate("/eBMR-panel");
   };
 
-  const pankaj = useSelector((state) => state.dprPanelData.selectedRow);
-  console.log(pankaj, "ghj");
+  // const pankaj = useSelector((state) => state.dprPanelData.selectedRow);
+  // console.log(pankaj, "ghj");
 
+  useEffect(() => {
+    axios
+      .get("http://localhost:1005/bmr/get-eBMR")
+      .then((res) => setData(res.data)).catch((err)=>console.log(err))
+  }, []);
+  console.log(data, "");
   return (
     <>
       <HeaderTop />
@@ -28,27 +35,27 @@ function Desktop() {
         <table>
           <thead>
             <tr>
-              <th>S no</th>
-              <th>eBMR no</th>
+              <th>eBMR No</th>
               <th>Product Name</th>
               <th>Product Code</th>
               <th>Process</th>
             </tr>
           </thead>
           <tbody>
-            {Ebmr?.map((item, index) => {
+            {data?.map((item, index) => {
               return (
                 <tr key={index}>
-                  <td>{index + 1}</td>
                   <td
-                    onClick={() => handleRowClick(item)}
-                    className="cursor-pointer hover:text-blue-600"
+                    onClick={() => {
+                      navigate("/eBMR-panel", { state: item });
+                    }}
+                    className="cursor-pointer hover:text-blue-700 flex items-center justify-center"
                   >
-                    {item.eBMRId}
+                    {item.form_id}
                   </td>
                   <td>{item.productName}</td>
                   <td>{item.productCode}</td>
-                  <td>{item.process}</td>
+                  <td>{item.documentNo}</td>
                 </tr>
               );
             })}
