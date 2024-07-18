@@ -28,7 +28,11 @@ export const eBMRManufacturingProcessAfterD=sequelize.define("eBMRMPAfterdispens
         type:DataTypes.STRING,
         allowNull:true
       },
-      time:{
+      timeFrom:{
+        type:DataTypes.STRING,
+        allowNull:true
+      },
+      timeTo:{
         type:DataTypes.STRING,
         allowNull:true
       },

@@ -19,7 +19,6 @@ import { eBMRSolventForBatchToBatchC } from "../models/eBMRSolventForBatchToBatc
 import { ebmrSolventForContainerC } from "../models/eBMRSolventForContainer.model.js";
 
 export const InserteBMRRecord = async (req, res) => {
-
   const {
     productName,
     documentNo,
@@ -58,7 +57,7 @@ export const InserteBMRRecord = async (req, res) => {
     manufacturingPAfterDispensingArray,
     MSAPOperationArray,
     rawMaterialReconciliationArray,
-    deviationRemarkArray
+    deviationRemarkArray,
   } = req.body;
   // Start transaction
   const transaction = await sequelize.transaction();
@@ -326,70 +325,93 @@ export const InserteBMRRecord = async (req, res) => {
         form_id: eBMRRecords?.form_id,
         materialCode: record.materialCode,
         batchNo: record.batchNo,
-        time: record.time,
-        dispensing: record.dispensing,
+        timeFrom: record.timeFrom,
+        timeTo:record.timeTo,
+        dispensingGrossWeight: record.dispensingGrossWeight,
+        dispensingTareWeight:record.dispensingTareWeight,
+        dispensingNetWeight:record.dispensingNetWeight,
         doneBy: record.doneBy,
       }));
-      await eBMRManufacturingProcess.bulkCreate(manufacturingProcess,{transaction})
+      await eBMRManufacturingProcess.bulkCreate(manufacturingProcess, {
+        transaction,
+      });
     }
 
-    if(Array.isArray(manufacturingPAfterDispensingArray)&&manufacturingPAfterDispensingArray.length>0){
-      const manufacturingPAfterDispensing=manufacturingPAfterDispensingArray.map((record)=>({
-        form_id:eBMRRecords?.form_id,
-        sOperationNo:record.sOperationNo,
-        cleaningAfterDispensing:record.cleaningAfterDispensing,
-        recordingsAndObservations:record.recordingsAndObservations,
-        date:record.date,
-        time:record.time,
-        doneBy:record.doneBy,
-        cleanNotClean:record.cleanNotClean
-      }))
-      await eBMRManufacturingProcessAfterD.bulkCreate(manufacturingPAfterDispensing,{transaction})
+    if (
+      Array.isArray(manufacturingPAfterDispensingArray) &&
+      manufacturingPAfterDispensingArray.length > 0
+    ) {
+      const manufacturingPAfterDispensing =
+        manufacturingPAfterDispensingArray.map((record) => ({
+          form_id: eBMRRecords?.form_id,
+          sOperationNo: record.sOperationNo,
+          cleaningAfterDispensing: record.cleaningAfterDispensing,
+          recordingsAndObservations: record.recordingsAndObservations,
+          date: record.date,
+          timeTo: record.timeTo,
+          timeFrom:record.timeFrom,
+          doneBy: record.doneBy,
+          cleanNotClean: record.cleanNotClean,
+        }));
+      await eBMRManufacturingProcessAfterD.bulkCreate(
+        manufacturingPAfterDispensing,
+        { transaction }
+      );
     }
 
-    if(Array.isArray(MSAPOperationArray)&&MSAPOperationArray.length>0){
-      const MSAPOperation=MSAPOperationArray.map((record)=>({
-        form_id:eBMRRecords?.form_id,
-        grossContainerNo:record.grossContainerNo,
-        weight:record.weight,
-        tareWeight:record.tareWeight,
-        netWeight:record.netWeight,
-        doneBy:record.doneBy,
-        sealByNo:record.sealByNo,
-        sealedByQC:record.sealedByQC,
-        checkedBy:record.checkedBy
-      }))
-      await eBMRMSAPOperation.bulkCreate(MSAPOperation,{transaction})
+    if (Array.isArray(MSAPOperationArray) && MSAPOperationArray.length > 0) {
+      const MSAPOperation = MSAPOperationArray.map((record) => ({
+        form_id: eBMRRecords?.form_id,
+        grossContainerNo: record.grossContainerNo,
+        weight: record.weight,
+        tareWeight: record.tareWeight,
+        netWeight: record.netWeight,
+        doneBy: record.doneBy,
+        sealByNo: record.sealByNo,
+        sealedByQC: record.sealedByQC,
+        checkedBy: record.checkedBy,
+      }));
+      await eBMRMSAPOperation.bulkCreate(MSAPOperation, { transaction });
     }
 
-    if(Array.isArray(rawMaterialReconciliationArray)&&rawMaterialReconciliationArray.length>0){
-      const rawMaterialReconciliation=rawMaterialReconciliationArray.map((record)=>({
-        form_id:eBMRRecords?.form_id,
-rawMaterialName:record.rawMaterialName,
-UOM:record.UOM,
-issuedQuantity:record.issuedQuantity,
-usedQuantity:record.usedQuantity,
-remark:record.remark
-      }))
-      await eBMRRawMaterialReconciliation.bulkCreate(rawMaterialReconciliation,{transaction})
+    if (
+      Array.isArray(rawMaterialReconciliationArray) &&
+      rawMaterialReconciliationArray.length > 0
+    ) {
+      const rawMaterialReconciliation = rawMaterialReconciliationArray.map(
+        (record) => ({
+          form_id: eBMRRecords?.form_id,
+          rawMaterialName: record.rawMaterialName,
+          UOM: record.UOM,
+          issuedQuantity: record.issuedQuantity,
+          usedQuantity: record.usedQuantity,
+          remark: record.remark,
+        })
+      );
+      await eBMRRawMaterialReconciliation.bulkCreate(
+        rawMaterialReconciliation,
+        { transaction }
+      );
     }
 
-    if(Array.isArray(deviationRemarkArray)&&deviationRemarkArray.length>0){
-      const deviationRemark=deviationRemarkArray.map((record)=>({
-        form_id:eBMRRecords?.form_id,
-        date:record.date,
-        stepNo:record.stepNo,
-        observation:record.observation,
-        reason:record.reason,
-        recordedOn:record.recordedOn,
-        recordedBy:record.recordedBy
-      }))
-      await eBMRDeviationRemark.bulkCreate(deviationRemark,{transaction})
+    if (
+      Array.isArray(deviationRemarkArray) &&
+      deviationRemarkArray.length > 0
+    ) {
+      const deviationRemark = deviationRemarkArray.map((record) => ({
+        form_id: eBMRRecords?.form_id,
+        date: record.date,
+        stepNo: record.stepNo,
+        observation: record.observation,
+        reason: record.reason,
+        recordedOn: record.recordedOn,
+        recordedBy: record.recordedBy,
+      }));
+      await eBMRDeviationRemark.bulkCreate(deviationRemark, { transaction });
     }
     // Commit transaction
     await transaction.commit();
 
-    // Send success response
     res.status(200).json({
       error: false,
       message: "eBMR Created successfully",
@@ -399,28 +421,229 @@ remark:record.remark
     await transaction.rollback();
     console.error("Transaction error:", error);
 
-    // Send error response
     res.status(500).json({
       error: true,
       message: "Failed to create eBMR",
     });
   }
 };
-// export const InsertInputRawMaterial=async(req,res)=>{
-//     const {materialCode,materialName,UOM,stepNo,standardQuantity,requiredQuantity,quantityUsed,ARNo,checkedBy,date,form_id}=req.body;
 
-//     const InputRawMaterial=await eBMRInputRawMaterial.create({
-//         form_id:eBMRRecord.form_id,
-//         materialCode:materialCode,
-//         materialName:materialName,
-//         UOM:UOM,
-//         stepNo:stepNo,
-//         standardQuantity:standardQuantity,
-//         requiredQuantity:requiredQuantity,
-//         quantityUsed:quantityUsed,
-//         ARNo:ARNo,
-//         checkedBy:checkedBy,
-//         date:date
-//     })
-//     res.status(200).json(InputRawMaterial.toJSON());
-// }
+export const getAllEBMRData = async (req, res) => {
+  try {
+    // Fetch eBMRRecord with all associated data
+    const eBMRData = await eBMRRecord.findAll({
+      include: [
+        { model: eBMRInputRawMaterial },
+        { model: eBMRPackingMaterial },
+        { model: eBMRSolventForBatchToBatchC },
+        { model: ebmrSolventForContainerC },
+        { model: eBMRIntermediateIssuance },
+        { model: eBMRHazopRecommendations },
+        { model: eBMRProcessSafetyStudyDetails },
+        { model: eBMRPersonalProtectiveEquipment },
+        { model: eBMRIdentificationOfHazardsAndControls },
+        { model: eBMRCriticalProcessParameterFS },
+        { model: eBMRCriticalPPForQuality },
+        { model: eBMRReadAndUnderstood },
+        { model: eBMRManufacturingProcess },
+        { model: eBMRManufacturingProcessAfterD },
+        { model: eBMRMSAPOperation },
+        { model: eBMRRawMaterialReconciliation },
+        { model: eBMRDeviationRemark },
+      ],
+    });
+    res.status(200).json(eBMRData);
+  } catch (error) {
+    console.error("Error fetching eBMR data:", error);
+    res.status(500).json({
+      error: true,
+      message: "Failed to fetch eBMR data",
+    });
+  }
+};
+
+export const getEBMRRecordsByFormId = async (req, res) => {
+  const { form_id } = req.params; // Assuming form_id is passed as a route parameter
+
+  try {
+    // Fetch eBMRRecords by form_id with all associated data
+    const eBMRData = await eBMRRecord.findAll({
+      where: { form_id }, // Fetch records where form_id matches
+      include: [
+        { model: eBMRInputRawMaterial },
+        { model: eBMRPackingMaterial },
+        { model: eBMRSolventForBatchToBatchC },
+        { model: ebmrSolventForContainerC },
+        { model: eBMRIntermediateIssuance },
+        { model: eBMRHazopRecommendations },
+        { model: eBMRProcessSafetyStudyDetails },
+        { model: eBMRPersonalProtectiveEquipment },
+        { model: eBMRIdentificationOfHazardsAndControls },
+        { model: eBMRCriticalProcessParameterFS },
+        { model: eBMRCriticalPPForQuality },
+        { model: eBMRReadAndUnderstood },
+        { model: eBMRManufacturingProcess },
+        { model: eBMRManufacturingProcessAfterD },
+        { model: eBMRMSAPOperation },
+        { model: eBMRRawMaterialReconciliation },
+        { model: eBMRDeviationRemark },
+      ],
+    });
+
+    if (!eBMRData || eBMRData.length === 0) {
+      return res.status(404).json({
+        error: true,
+        message: "No eBMR records found for the given form_id",
+      });
+    }
+
+    res.status(200).json(eBMRData);
+  } catch (error) {
+    console.error("Error fetching eBMR data:", error);
+    res.status(500).json({
+      error: true,
+      message: "Failed to fetch eBMR records",
+    });
+  }
+};
+export const updateEBMRRecord = async (req, res) => {
+ 
+  const {
+    form_id,
+    productName,
+    documentNo,
+    productCode,
+    effectiveDate,
+    stage,
+    supersedesNo,
+    batchNo,
+    pageNo,
+    standardBatchSize,
+    actualBatchSize,
+    batchStartingDate,
+    time,
+    batchComplitionDate,
+    _time,
+    expectedOutput,
+    actualOutput,
+    expectedYield,
+    actualYield,
+    manufacturingDate,
+    expiry_Retest_Date,
+    packingAndStorageCondition,
+    eBMRInputRawMaterials,
+    eBMRPackingMaterials,
+    solventForBatchToBatchCleaningArray,
+    solventForContainerCleaningArray,
+    intermediateIssuanceArray,
+    hazopRecommendationsArray,
+    processSafetyStudyDetailsArray,
+    personalProtectiveEquipmentArray,
+    identificationOfHazardsACArray,
+    criticalProcessPFSafetyArray,
+    criticalProcessPFQualityArray,
+    readAndUnderstoodArray,
+    manufacturingProcessArray,
+    manufacturingPAfterDispensingArray,
+    MSAPOperationArray,
+    rawMaterialReconciliationArray,
+    deviationRemarkArray,
+  } = req.body;
+// console.log(req.body,"InputRawMaterialArray")
+  const transaction = await sequelize.transaction();
+  try {
+    // Update eBMRRecord
+    await eBMRRecord.update(
+      {
+        productName,
+        documentNo,
+        productCode,
+        effectiveDate,
+        stage,
+        supersedesNo,
+        batchNo,
+        pageNo,
+        standardBatchSize,
+        actualBatchSize,
+        batchStartingDate,
+        time,
+        batchComplitionDate,
+        _time,
+        expectedOutput,
+        actualOutput,
+        expectedYield,
+        actualYield,
+        manufacturingDate,
+        expiry_Retest_Date,
+        packingAndStorageCondition,
+      },
+      {
+        where: { form_id:form_id },
+        transaction,
+      }
+    );
+
+    // Update InputRawMaterialArray if it exists
+    if (Array.isArray(eBMRInputRawMaterials) && eBMRInputRawMaterials.length > 0) {
+      // Delete existing records
+    
+      await eBMRInputRawMaterial.destroy({ where: { form_id:form_id  }, transaction });
+
+      // Create updated records
+      const bMRRecords = eBMRInputRawMaterials.map((record) => ({
+        form_id,
+        materialCode: record.materialCode,
+        materialName: record.materialName,
+        UOM: record.UOM,
+        stepNo: record.stepNo,
+        standardQuantity: record.standardQuantity,
+        requiredQuantity: record.requiredQuantity,
+        quantityUsed: record.quantityUsed,
+        ARNo: record.ARNo,
+        checkedBy: record.checkedBy,
+        date: record.date,
+      }));
+      await eBMRInputRawMaterial.bulkCreate(bMRRecords, { transaction });
+    }
+
+    // Update packingMaterialArray if it exists
+    if (Array.isArray(packingMaterialArray) && packingMaterialArray.length > 0) {
+      // Delete existing records
+      await eBMRPackingMaterial.destroy({ where: { form_id }, transaction });
+
+      // Create updated records
+      const packingMaterial = packingMaterialArray.map((record) => ({
+        form_id,
+        materialCode: record.materialCode,
+        materialName: record.materialName,
+        UOM: record.UOM,
+        stepNo: record.stepNo,
+        standardQuantity: record.standardQuantity,
+        requiredQuantity: record.requiredQuantity,
+        quantityUsed: record.quantityUsed,
+        ARNo: record.ARNo,
+        checkedBy: record.checkedBy,
+        date: record.date,
+      }));
+      await eBMRPackingMaterial.bulkCreate(packingMaterial, { transaction });
+    }
+    console.log(InputRawMaterialArray)
+    // Update other tables similarly...
+
+    // Commit transaction
+    await transaction.commit();
+
+    res.status(200).json({
+      error: false,
+      message: "eBMR Record and related tables updated successfully",
+    });
+  } catch (error) {
+    await transaction.rollback();
+    console.error("Transaction error:", error);
+
+    res.status(500).json({
+      error: true,
+      message: "Failed to update eBMR Record and related tables",
+    });
+  }
+};

@@ -8,6 +8,7 @@ import { fileURLToPath } from "url";
 import { connectToDB } from "./src/config/db.js";
 import testrouter from "./src/routes/testRoute.js";
 import userRouter from "./src/routes/userRouter.js";
+import eBMRRouter from './src/routes/eBMRRouter.js';
 import config from "./src/config/config.json" assert { type: "json" };
 
 const app = express();
@@ -28,6 +29,7 @@ app.use(
 // Routes
 app.use("/test", testrouter);
 app.use("/user", userRouter);
+app.use('/bmr',eBMRRouter)
 
 // Start server and connect to database
 app.listen(port, "0.0.0.0", async () => {
